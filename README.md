@@ -1,12 +1,14 @@
 # Kizmeow-OpenSea-and-Etherscan-Discord-Bot
 A simple Discord bot wrote with Python. Kizmeow let you track your NFT project and display some useful information(e.g. market cap, floor price, total supply...etc) by calling Etherscan and OpenSea API.(this repl is developing)
 
+
+//this repl is not finish yet.if you want to try, you can invite the bot to your test server via [this link](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
 Note
 -----------------
 If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free.
-Or, you can just simply invite the bot to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
-
-//this repl is not finish yet.if you want to try, you can invite the bot to your test server via [this link](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
+Or you can just simply invite the bot to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
+You can use commands listed below
++/help
 
 Requirements
 -----------------
