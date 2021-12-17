@@ -21,7 +21,7 @@ packages
 Usage
 -----------------
 There are 2 ways to run this bot.
-You can run it on repl.it, just fork [it](https://replit.com/@Kizmeow-NFT-Tracker) and run. Remember to change discord bot token, OpenSea API token and Etherscan API key, and put them in environment variable. DO NOT PUT THEM IN YOUR CODE DIRECTLY CUZ REPLS ON REPLIT IS PUBLIC IF YOU USE FREE PLAN, AND THERE ARE 
+You can run it on repl.it, just fork [it](https://replit.com/@Kizmeow-NFT-Tracker) and run. Remember to change discord bot token, OpenSea API token and Etherscan API key, and put them in environment variable. **DO NOT PUT THEM IN YOUR CODE DIRECTLY CUZ REPLS ON REPLIT IS PUBLIC IF YOU USE FREE PLAN, AND THERE ARE SOME PPL USING SCRYPT TO GRAB YOUR TOKEN.**
 
 Just simply download [it](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/archive/refs/heads/main.zip) and 
 
