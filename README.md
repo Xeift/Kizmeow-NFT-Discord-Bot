@@ -11,6 +11,11 @@ packages
 + discord
 + discord-py-slash-command
 + qrcode
++ urllib
++ json
++ asyncio
++ request
++ flask
 Usage
 -----------------
 There are 2 ways to run this bot.
