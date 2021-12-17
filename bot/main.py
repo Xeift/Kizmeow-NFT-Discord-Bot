@@ -10,7 +10,7 @@ import json
 import qrcode
 import asyncio 
 import os
-import time
+import requests
 import keep_alive
 
 discord_token = os.environ['discord_token']
@@ -27,11 +27,83 @@ async def on_ready():
   print("Ready!")
 
 guild_ids = [906053473181769778] # Put your server ID in this array.
+################################################################################help
+@slash.slash(name="help",description="display help message", guild_ids=guild_ids)
+async def help(ctx):
+  BUTTONS = ["◀️","0️⃣","1️⃣","2️⃣","3️⃣","4️⃣"]
+  embed=discord.Embed(title="**/help**", description="指令列表\n請選擇分類", color=0xe8006f)
+
+  embed.add_field(name="[返回]", value="◀️", inline=True)
+  embed.add_field(name="[bot資訊]", value="0️⃣", inline=True)
+  embed.add_field(name="ㅤ", value="ㅤ", inline=True)#弄一行空白 單純排版用
+  embed.add_field(name="[系統]", value="1️⃣", inline=True)
+  embed.add_field(name="[NFT]", value="2️⃣", inline=True)
+  embed.add_field(name="[3]", value="3️⃣", inline=True)
+  embed.add_field(name="[4]", value="4️⃣", inline=True)
+  embed.add_field(name="參數說明", value="有些指令需輸入參數方可使用\ne.g. /account_info eth_address: 0x0000000000000000000000000000000000000000 \n其中`0x0000000000000000000000000000000000000000`就是此指令的參數。", inline=False)
+  embed.set_footer(text="last update:\n2021.12.17 4:01 p.m.")
+  msg = await ctx.send(embed=embed)
+  embed0=discord.Embed(title="**[bot資訊]**", description="關於本bot的資訊", color=0xe8006f)
+  embed0.add_field(name="bot名稱", value="Kizmeow", inline=False)
+  embed0.add_field(name="開發者", value="Xeift &", inline=False)
+  embed0.add_field(name="頭像繪師", value="姬玥", inline=False)
+  embed0.add_field(name="程式語言", value="Python", inline=False)
+  embed0.add_field(name="聯絡資訊", value="Xeift：Xeift#1230\n姬玥：https://www.facebook.com/profile.php?id=100026170072950", inline=False)
+  embed0.add_field(name="聲明", value="交易記錄功能調用Etherscan API，OpenSea相關功能調用OpenSea API，所有資料皆合法取得", inline=False)
+
+  embed1=discord.Embed(title="**[系統]**", description="系統類指令", color=0xe8006f)
+  embed1.add_field(name="/help", value="印出此結果", inline=False)
+  embed1.add_field(name="/invite", value="取得邀請網址，可將bot邀請至伺服器。", inline=False)
+  embed1.add_field(name="/ping", value="查看機器人的延遲。", inline=False)
+
+  embed2=discord.Embed(title="**[NFT]**", description="查詢關於項目的相關資訊", color=0xe8006f)
+  embed2.add_field(name="/demi-human", value="顯示demi-human實時資訊", inline=False)
+  embed2.add_field(name="/demi-human-history", value="顯示demi-human歷史資訊", inline=False)
+  embed2.add_field(name="/txn option: eth_address", value="輸入地址，顯示交易紀錄", inline=False)
+  embed2.add_field(name="/account_info option: eth_address", value="輸入地址，顯示ETH餘額和Demi balance", inline=False)
+  embed2.add_field(name="/project info", value="開發中", inline=False)
+
+  embed3=discord.Embed(title="**[3]**", description="3", color=0xe8006f)
+  embed3.add_field(name="3", value="3", inline=False)
+
+  embed4=discord.Embed(title="**[4]**", description="4", color=0xe8006f)
+  embed4.add_field(name="4", value="4", inline=False)
+
+
+  for b in BUTTONS:
+    await msg.add_reaction(b)
+  
+  while True:
+    try:
+      react, user = await bot.wait_for("reaction_add", timeout=60.0, check=lambda r, u: r.message.id == msg.id and u.id == ctx.author.id and r.emoji in BUTTONS)
+      await msg.remove_reaction(react.emoji, user) #user按了以後馬上清掉reaction
+    
+    except asyncio.TimeoutError:
+      pass
+
+    else:
+      if react.emoji == BUTTONS[0]:
+        await msg.edit(embed=embed)
+      if react.emoji == BUTTONS[1]:
+        await msg.edit(embed=embed0)
+      elif react.emoji == BUTTONS[2]:
+        await msg.edit(embed=embed1)
+      elif react.emoji == BUTTONS[3]:
+        await msg.edit(embed=embed2)
+      elif react.emoji == BUTTONS[4]:
+        await msg.edit(embed=embed3)
+      elif react.emoji == BUTTONS[5]:
+        await msg.edit(embed=embed4)
 
 ################################################################################ping
 @slash.slash(name="ping",description="return bot latency", guild_ids=guild_ids)
 async def _ping(ctx):
   await ctx.send(f"pong! ({bot.latency*1000} ms)")
+################################################################################invite
+@slash.slash(name="invite",description="invite bot to your server", guild_ids=guild_ids)
+async def invite(ctx):
+  embed=discord.Embed(title="**[Bot邀請連結]**", description="https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands", color=0xe8006f)
+  await ctx.send(embed = embed)
 ################################################################################balance
 @slash.slash(
 name="account_info",
@@ -326,6 +398,7 @@ async def demi_pass(ctx,message=None):
     img.save("qr_temp/qrcodeimg.png")
     qrpic = discord.File("qr_temp/qrcodeimg.png")
     msg = await ctx.send(file = qrpic)
+    os.remove("qr_temp/qrcodeimg.png")
   else:
     msg = await ctx.send("你還沒有DemiPASS唷，可以去https://opensea.io/collection/demihuman ||花10ETH||買一個Demi Human NFT")
 
@@ -345,6 +418,83 @@ async def demi_pass(ctx,message=None):
       if react.emoji == BUTTONS[0]:
         await msg.delete()
         await ctx.send("交易完成")
+################################################################################history volume
+@slash.slash(name="Demi-Human-History",description="return some useful hidtory information from OpenSea API", guild_ids=guild_ids)
+
+async def Demi_Human_History(ctx):
+  url1='https://api.opensea.io/api/v1/collection/demihuman/stats?format=json' #api url
+  print(url1)
+  site1 = ur.urlopen(url1)
+  page1 = site1.read()
+  contents1 = page1.decode()
+  data1 = json.loads(contents1)
+
+  one_day_volume = str(data1['stats']['one_day_volume'])[:5]#one_day_volume
+  one_day_change = str(data1['stats']['one_day_change'])[:5]
+  one_day_sales = str(data1['stats']['one_day_sales'])[:5]
+  one_day_average_price = str(data1['stats']['one_day_average_price'])[:5]
+  seven_day_volume = str(data1['stats']['seven_day_volume'])[:5]
+  seven_day_change = str(data1['stats']['seven_day_change'])[:5]
+  seven_day_sales = str(data1['stats']['seven_day_sales'])[:5]
+  seven_day_average_price = str(data1['stats']['seven_day_average_price'])[:5]
+  thirty_day_volume = str(data1['stats']['thirty_day_volume'])[:5]
+  thirty_day_change = str(data1['stats']['thirty_day_change'])[:5]
+  thirty_day_sales = str(data1['stats']['thirty_day_sales'])[:5]
+  thirty_day_average_price = str(data1['stats']['thirty_day_average_price'])[:5]
+
+  if(one_day_volume != 0):
+    embed=discord.Embed(title="[歷史價格]", color=0xe8006f)
+    embed.set_thumbnail(url="https://cdn.jsdelivr.net/gh/Xeift/image-hosting@main//1c0e140d3293a88391abaaa1e02f8e0e.png")
+    embed.add_field(name="1日總交易價格" , value=one_day_volume+" ETH", inline=False) 
+    embed.add_field(name="1日交易價格變化" , value=one_day_change+" ETH", inline=False) 
+    embed.add_field(name="1日交易數量" , value=one_day_sales+" Demi Human NFT", inline=False)
+    embed.add_field(name="1日平均交易價格" , value=one_day_average_price+"ETH\n ㅤ", inline=False) 
+    embed.add_field(name="7日總交易價格" , value=seven_day_volume+" ETH", inline=False) 
+    embed.add_field(name="7日交易價格變化" , value=seven_day_change+" ETH", inline=False) 
+    embed.add_field(name="7日交易數量" , value=seven_day_sales+" Demi Human NFT", inline=False)
+    embed.add_field(name="7日平均交易價格" , value=seven_day_average_price+" ETH\n ㅤ", inline=False) 
+    embed.add_field(name="30日總交易價格" , value=thirty_day_volume+" ETH", inline=False)
+    embed.add_field(name="30日交易價格變化" , value=thirty_day_change+" ETH", inline=False)
+    embed.add_field(name="30日交易數量" , value=thirty_day_sales+" Demi Human NFT", inline=False)
+    embed.add_field(name="30日平均交易價格" , value=thirty_day_average_price+" ETH", inline=False)        
+    await ctx.send(embed=embed)
+  else:
+      await ctx.send("錯誤")
+################################################################################project realtime stats
+@slash.slash(name="Demi-Human",description="return some useful realtime information from OpenSea API", guild_ids=guild_ids)
+
+async def Demi_Human(ctx):
+  url1='https://api.opensea.io/api/v1/collection/demihuman/stats?format=json' #api url
+  print(url1)
+  site1 = ur.urlopen(url1)
+  page1 = site1.read()
+  contents1 = page1.decode()
+  data1 = json.loads(contents1)
+
+  total_volume = str(data1['stats']['total_volume'])[:5]#total_volume
+  total_sales = str(data1['stats']['total_sales'])[:5]
+  total_supply = str(data1['stats']['total_supply'])[:4]
+  num_owners = str(data1['stats']['num_owners'])[:5]
+  average_price = str(data1['stats']['average_price'])[:5]
+  num_reports = str(data1['stats']['num_reports'])[:5]
+  market_cap = str(data1['stats']['market_cap'])[:5]
+  floor_price = str(data1['stats']['floor_price'])[:5]
+
+  if(total_volume != 0):
+    embed=discord.Embed(title="[實時數據]", color=0xe8006f)
+    embed.set_thumbnail(url="https://cdn.jsdelivr.net/gh/Xeift/image-hosting@main//1c0e140d3293a88391abaaa1e02f8e0e.png")
+    embed.add_field(name="總量" , value=total_supply+"/10000 Demi Human NFT", inline=False) 
+    embed.add_field(name="總持有者" , value=num_owners+" 位", inline=False)     
+    embed.add_field(name="地板價" , value=floor_price+" ETH", inline=False) 
+    embed.add_field(name="總交易價格" , value=total_volume+" ETH", inline=False) 
+    embed.add_field(name="總交易數量" , value=total_sales+" Demi Human NFT", inline=False)
+    embed.add_field(name="平均交易價格" , value=average_price+"ETH", inline=False) 
+    embed.add_field(name="被檢舉次數" , value=num_reports+" 次", inline=False) 
+    embed.add_field(name="總市值" , value=market_cap+" ETH", inline=False) 
+    
+    await ctx.send(embed=embed)
+  else:
+      await ctx.send("錯誤")
 ################################################################################
 keep_alive.keep_alive()
 bot.run(discord_token)
