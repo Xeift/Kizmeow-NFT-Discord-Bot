@@ -4,6 +4,7 @@ A simple Discord bot wrote with Python. Kizmeow let you track your NFT project a
 Note
 -----------------
 If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free.
+
 Requirements
 -----------------
 + Python > 3.8
