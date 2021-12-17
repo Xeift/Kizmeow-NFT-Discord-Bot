@@ -35,3 +35,8 @@ Just download [it](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discor
 Tutorial
 -----------------
 not finished yet:/
+
+Bot Avatar Illustrator
+-----------------
+[姬玥 Kiyue](https://www.facebook.com/profile.php?id=100026170072950)
+![avatar](https://user-images.githubusercontent.com/80938768/146544100-315cdd44-7461-441b-a3dd-d3ee653b145a.png)
