@@ -8,6 +8,7 @@ Note
 If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free.
 Or you can just simply invite the bot to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
 You can use commands listed below
+
 +/help
 
 Requirements
