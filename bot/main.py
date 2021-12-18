@@ -25,10 +25,36 @@ slash = SlashCommand(bot, sync_commands=True)
 @bot.event
 async def on_ready():
   print("Ready!")
+  while True:
+    url1='https://api.etherscan.io/api?module=stats&action=ethprice&apikey='+etherscan_api_key #api url
 
-guild_ids = [906053473181769778] # Put your server ID in this array.
+    site1 = ur.urlopen(url1)
+    page1 = site1.read()
+    contents1 = page1.decode()
+    data1 = json.loads(contents1)
+
+    ethusd = data1['result']['ethusd']
+    #####
+    url2='https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey='+etherscan_api_key #api url
+
+    site2 = ur.urlopen(url2)
+    page2 = site2.read()
+    contents2 = page2.decode()
+    data2 = json.loads(contents2)
+
+    SafeGasPrice = data2['result']['SafeGasPrice']
+    ProposeGasPrice = data2['result']['ProposeGasPrice']
+    FastGasPrice = data2['result']['FastGasPrice']
+
+    presence_ctx1 = 'Ξ '+ethusd
+    presence_ctx2 = '🚀'+FastGasPrice+'🚗'+ProposeGasPrice+'🚲'+SafeGasPrice
+
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=presence_ctx1))
+    await asyncio.sleep(5)
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=presence_ctx2))
+    await asyncio.sleep(5)
 ################################################################################help
-@slash.slash(name="help",description="display help message", guild_ids=guild_ids)
+@slash.slash(name="help",description="display help message")
 async def help(ctx):
   BUTTONS = ["◀️","0️⃣","1️⃣","2️⃣","3️⃣","4️⃣"]
   embed=discord.Embed(title="**/help**", description="指令列表\n請選擇分類", color=0xe8006f)
@@ -61,7 +87,8 @@ async def help(ctx):
   embed2.add_field(name="/demi-human-history", value="顯示demi-human歷史資訊", inline=False)
   embed2.add_field(name="/txn option: eth_address", value="輸入地址，顯示交易紀錄", inline=False)
   embed2.add_field(name="/account_info option: eth_address", value="輸入地址，顯示ETH餘額和Demi balance", inline=False)
-  embed2.add_field(name="/project info", value="開發中", inline=False)
+  embed2.add_field(name="/project", value="開發中", inline=False)
+  embed2.add_field(name="/project-history", value="開發中", inline=False)
 
   embed3=discord.Embed(title="**[3]**", description="3", color=0xe8006f)
   embed3.add_field(name="3", value="3", inline=False)
@@ -96,11 +123,11 @@ async def help(ctx):
         await msg.edit(embed=embed4)
 
 ################################################################################ping
-@slash.slash(name="ping",description="return bot latency", guild_ids=guild_ids)
+@slash.slash(name="ping",description="return bot latency")
 async def _ping(ctx):
   await ctx.send(f"pong! ({bot.latency*1000} ms)")
 ################################################################################invite
-@slash.slash(name="invite",description="invite bot to your server", guild_ids=guild_ids)
+@slash.slash(name="invite",description="invite bot to your server")
 async def invite(ctx):
   embed=discord.Embed(title="**[Bot邀請連結]**", description="https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands", color=0xe8006f)
   await ctx.send(embed = embed)
@@ -168,7 +195,6 @@ options=
 async def txn(ctx, eth_address: str):
   BUTTONS = ["◀️","▶️"]
   url1='https://api.etherscan.io/api?module=account&action=txlist&address='+eth_address+'&startblock=0&endblock=99999999&page=1&offset=10&sort=dsc&apikey='+etherscan_api_key #api url
-  print(url1)
 
   site1 = ur.urlopen(url1)
   page1 = site1.read()
@@ -177,43 +203,25 @@ async def txn(ctx, eth_address: str):
 
   index = 9
   blockNumber = data1['result'][index]['blockNumber']
-  print(blockNumber)
   timeStamp = data1['result'][index]['timeStamp']
-  print(timeStamp)
   hash = data1['result'][index]['hash']
-  print(hash)
   nonce = data1['result'][index]['nonce']
-  print(nonce)
   blockHash = data1['result'][index]['blockHash']
-  print(blockHash)
   transactionIndex = data1['result'][index]['transactionIndex']
-  print(transactionIndex)
   from1 = data1['result'][index]['from']
-  print(from1)
   to = data1['result'][index]['to']
-  print(to)
   value1 = data1['result'][index]['value']
-  print(value1)
   gas = data1['result'][index]['gas']
-  print(gas)
   gasPrice = data1['result'][index]['gasPrice']
-  print(gasPrice)
   isError = data1['result'][index]['isError']
-  print(isError)
   txreceipt_status = data1['result'][index]['txreceipt_status']
-  print(txreceipt_status)
   input1 = data1['result'][index]['input']
-  print(input1)
   contractAddress = data1['result'][index]['contractAddress']
-  print(contractAddress)
   if contractAddress == "":
     contractAddress = "empty"
   cumulativeGasUsed = data1['result'][index]['cumulativeGasUsed']
-  print(cumulativeGasUsed)
   gasUsed = data1['result'][index]['gasUsed']
-  print(gasUsed)
   confirmations = data1['result'][index]['confirmations']
-  print(confirmations)
 
   icount = 10#index count
 
@@ -262,43 +270,26 @@ async def txn(ctx, eth_address: str):
         index -= 1
 
       blockNumber = data1['result'][index]['blockNumber']
-      print(blockNumber)
       timeStamp = data1['result'][index]['timeStamp']
-      print(timeStamp)
       hash = data1['result'][index]['hash']
-      print(hash)
       nonce = data1['result'][index]['nonce']
-      print(nonce)
       blockHash = data1['result'][index]['blockHash']
-      print(blockHash)
       transactionIndex = data1['result'][index]['transactionIndex']
-      print(transactionIndex)
       from1 = data1['result'][index]['from']
-      print(from1)
       to = data1['result'][index]['to']
-      print(to)
-      value = data1['result'][index]['value']
-      print(value)
+      value1 = data1['result'][index]['value']
       gas = data1['result'][index]['gas']
-      print(gas)
       gasPrice = data1['result'][index]['gasPrice']
-      print(gasPrice)
       isError = data1['result'][index]['isError']
-      print(isError)
       txreceipt_status = data1['result'][index]['txreceipt_status']
-      print(txreceipt_status)
       input1 = data1['result'][index]['input']
-      print(input1)
       contractAddress = data1['result'][index]['contractAddress']
+
       if contractAddress == "":
         contractAddress = "empty"
-      print(contractAddress)
       cumulativeGasUsed = data1['result'][index]['cumulativeGasUsed']
-      print(cumulativeGasUsed)
       gasUsed = data1['result'][index]['gasUsed']
-      print(gasUsed)
       confirmations = data1['result'][index]['confirmations']
-      print(confirmations)
 
       embed=discord.Embed(title="[transaction history]", color=0xe8006f)
       embed.set_thumbnail(url="https://cdn.jsdelivr.net/gh/Xeift/image-hosting@main//a8eb74eaa4d1148c2b33db119edb9515.gif")
@@ -326,52 +317,9 @@ async def txn(ctx, eth_address: str):
       progresse2 = progresse[:9-index] + replacement + progresse[-index:]
       embed.add_field(name=f"{progresse2}" , value=f"頁數：{10-index}/{icount}", inline=False)
       await msg.edit(embed = embed)
-################################################################################project info(working)
-@slash.slash(
-name="project_info",
-description="get the project info of ERC-20 token from the contract address you enter",
-options=
-[
-  create_option
-  (
-    name="contract_address",
-    description="enter contract address",
-    option_type=3,
-    required=False
-  )
-]
-)
 
-async def project_info(ctx, *contract_address: str):
-# await ctx.send(content=f"{eth_address}")
-  
-  # etherscan_token = str(etherscan_api_key)
-  # if contract_address == "kkk":
-  #   url1='https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=0xa6916545a56f75acd43fb6a1527a73a41d2b4081&apikey='+etherscan_token #api url
-  #   print(url1)
-  # else:
-  #   url1='https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress='+contract_address+'&apikey='+etherscan_token #api url
-  #   print(url1)
-  
-  url1='https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=0xa6916545a56f75acd43fb6a1527a73a41d2b4081&apikey='+(etherscan_api_key) #api url
-  print(url1)
-  site1 = ur.urlopen(url1)
-  page1 = site1.read()
-  contents1 = page1.decode()
-  data1 = json.loads(contents1)
-
-  total_supply = data1['result']#total supply
-
-  if(total_supply != 0):
-    embed=discord.Embed(title="[total supply]", color=0xe8006f)
-    embed.set_thumbnail(url="https://cdn.jsdelivr.net/gh/Xeift/image-hosting@main//1c0e140d3293a88391abaaa1e02f8e0e.png")
-    embed.add_field(name="total supply" , value=total_supply, inline=False)
-          
-    await ctx.send(embed=embed)
-  else:
-      await ctx.send("no token in this address or you've entered the wrong address")
 ################################################################################demi_pass
-#@slash.slash(name="demi_pass",description="generate a qrcode for verification if you have demi-pass", guild_ids=guild_ids)
+#@slash.slash(name="demi_pass",description="generate a qrcode for verification if you have demi-pass")
 @bot.command()
 async def demi_pass(ctx,message=None):
   role = discord.utils.get(ctx.guild.roles, name="DemiPASS")
@@ -381,7 +329,6 @@ async def demi_pass(ctx,message=None):
     userid = ctx.message.author.id
     tz = timezone(timedelta(hours=+8))
     t_qr = datetime.now(tz).isoformat(timespec="seconds")
-    print(t_qr)
     date_qr = t_qr[:10]
     hour_qr = t_qr[11:13]
     minute_qr = t_qr[14:16]
@@ -392,6 +339,7 @@ async def demi_pass(ctx,message=None):
         hour_qr = str(int(hour_qr)+1-24)
     else:
       minute_qr2 =  str(int(minute_qr)+10)
+
     verifyctx = "[Demi-Pass]\n["+str(userid)+"]\n[創建時間："+date_qr+" "+hour_qr+":"+minute_qr+":"+second_qr+"]\n[失效時間："+date_qr+" "+hour_qr+":"+minute_qr2+":"+second_qr+"]\n[有效時間：10分鐘]"
     img = qrcode.make(verifyctx)
     type(img)  
@@ -401,7 +349,7 @@ async def demi_pass(ctx,message=None):
     os.remove("qr_temp/qrcodeimg.png")
   else:
     msg = await ctx.send("你還沒有DemiPASS唷，可以去https://opensea.io/collection/demihuman ||花10ETH||買一個Demi Human NFT")
-
+    
   BUTTONS = ["✅"]
   for b in BUTTONS:
     await msg.add_reaction(b)
@@ -419,11 +367,10 @@ async def demi_pass(ctx,message=None):
         await msg.delete()
         await ctx.send("交易完成")
 ################################################################################history volume
-@slash.slash(name="Demi-Human-History",description="return some useful hidtory information from OpenSea API", guild_ids=guild_ids)
+@slash.slash(name="Demi-Human-History",description="return some useful hidtory information from OpenSea API")
 
 async def Demi_Human_History(ctx):
   url1='https://api.opensea.io/api/v1/collection/demihuman/stats?format=json' #api url
-  print(url1)
   site1 = ur.urlopen(url1)
   page1 = site1.read()
   contents1 = page1.decode()
@@ -461,11 +408,10 @@ async def Demi_Human_History(ctx):
   else:
       await ctx.send("錯誤")
 ################################################################################project realtime stats
-@slash.slash(name="Demi-Human",description="return some useful realtime information from OpenSea API", guild_ids=guild_ids)
+@slash.slash(name="Demi-Human",description="return some useful realtime information from OpenSea API")
 
 async def Demi_Human(ctx):
   url1='https://api.opensea.io/api/v1/collection/demihuman/stats?format=json' #api url
-  print(url1)
   site1 = ur.urlopen(url1)
   page1 = site1.read()
   contents1 = page1.decode()
@@ -495,6 +441,196 @@ async def Demi_Human(ctx):
     await ctx.send(embed=embed)
   else:
       await ctx.send("錯誤")
-################################################################################
+################################################################################project history volume
+@slash.slash(name="project-history",
+description="return some useful history information from the project name you entered from OpenSea API",
+options=
+[
+  create_option
+  (
+    name="project_name",
+    description="enter the project name which is at the end of OpenSea url",
+    option_type=3,
+    required=True
+  )
+]
+)
+
+async def project_history(ctx,project_name):
+  url1='https://api.opensea.io/api/v1/collection/'+project_name+'/stats?format=json' #api url
+  site1 = ur.urlopen(url1)
+  page1 = site1.read()
+  contents1 = page1.decode()
+  data1 = json.loads(contents1)
+
+  one_day_volume = str(data1['stats']['one_day_volume'])[:5]#one_day_volume
+  one_day_change = str(data1['stats']['one_day_change'])[:5]
+  one_day_sales = str(data1['stats']['one_day_sales'])[:5]
+  one_day_average_price = str(data1['stats']['one_day_average_price'])[:5]
+  seven_day_volume = str(data1['stats']['seven_day_volume'])[:5]
+  seven_day_change = str(data1['stats']['seven_day_change'])[:5]
+  seven_day_sales = str(data1['stats']['seven_day_sales'])[:5]
+  seven_day_average_price = str(data1['stats']['seven_day_average_price'])[:5]
+  thirty_day_volume = str(data1['stats']['thirty_day_volume'])[:5]
+  thirty_day_change = str(data1['stats']['thirty_day_change'])[:5]
+  thirty_day_sales = str(data1['stats']['thirty_day_sales'])[:5]
+  thirty_day_average_price = str(data1['stats']['thirty_day_average_price'])[:5]
+
+  if(one_day_volume != 0):
+    embed=discord.Embed(title="["+project_name+"歷史價格]", color=0xe8006f)
+    embed.set_thumbnail(url="https://cdn.jsdelivr.net/gh/Xeift/image-hosting@main//1c0e140d3293a88391abaaa1e02f8e0e.png")
+    embed.add_field(name="1日總交易價格" , value=one_day_volume+" ETH", inline=False) 
+    embed.add_field(name="1日交易價格變化" , value=one_day_change+" ETH", inline=False) 
+    embed.add_field(name="1日交易數量" , value=one_day_sales+" Demi Human NFT", inline=False)
+    embed.add_field(name="1日平均交易價格" , value=one_day_average_price+"ETH\n ㅤ", inline=False) 
+    embed.add_field(name="7日總交易價格" , value=seven_day_volume+" ETH", inline=False) 
+    embed.add_field(name="7日交易價格變化" , value=seven_day_change+" ETH", inline=False) 
+    embed.add_field(name="7日交易數量" , value=seven_day_sales+" Demi Human NFT", inline=False)
+    embed.add_field(name="7日平均交易價格" , value=seven_day_average_price+" ETH\n ㅤ", inline=False) 
+    embed.add_field(name="30日總交易價格" , value=thirty_day_volume+" ETH", inline=False)
+    embed.add_field(name="30日交易價格變化" , value=thirty_day_change+" ETH", inline=False)
+    embed.add_field(name="30日交易數量" , value=thirty_day_sales+" Demi Human NFT", inline=False)
+    embed.add_field(name="30日平均交易價格" , value=thirty_day_average_price+" ETH", inline=False)        
+    await ctx.send(embed=embed)
+  else:
+      await ctx.send("錯誤")
+################################################################################project
+@slash.slash(name="project",
+description="return some useful realtime information from the project name you entered from OpenSea API",
+options=
+[
+  create_option
+  (
+    name="project_name",
+    description="enter the project name which is at the end of OpenSea url",
+    option_type=3,
+    required=True
+  )
+]
+)
+
+async def project(ctx,project_name):
+  url1='https://api.opensea.io/api/v1/collection/'+project_name+'/stats?format=json' #api url
+  site1 = ur.urlopen(url1)
+  page1 = site1.read()
+  contents1 = page1.decode()
+  data1 = json.loads(contents1)
+
+  total_volume = str(data1['stats']['total_volume'])[:10]
+  total_sales = str(data1['stats']['total_sales'])
+  total_supply = str(data1['stats']['total_supply'])
+  num_owners = str(data1['stats']['num_owners'])
+  average_price = str(data1['stats']['average_price'])[:10]
+  num_reports = str(data1['stats']['num_reports'])
+  market_cap = str(data1['stats']['market_cap'])[:10]
+  floor_price = str(data1['stats']['floor_price'])
+
+  if(total_volume != 0):
+    embed=discord.Embed(title="["+project_name+"實時數據]", color=0xe8006f)
+    embed.set_thumbnail(url="https://cdn.jsdelivr.net/gh/Xeift/image-hosting@main//1c0e140d3293a88391abaaa1e02f8e0e.png")
+    embed.add_field(name="總量" , value=total_supply+"  個NFT", inline=False) 
+    embed.add_field(name="總持有者" , value=num_owners+" 位", inline=False)     
+    embed.add_field(name="地板價" , value=floor_price+" ETH", inline=False) 
+    embed.add_field(name="總交易價格" , value=total_volume+" ETH", inline=False) 
+    embed.add_field(name="總交易數量" , value=total_sales+"  個NFT", inline=False)
+    embed.add_field(name="平均交易價格" , value=average_price+"ETH", inline=False) 
+    embed.add_field(name="被檢舉次數" , value=num_reports+" 次", inline=False) 
+    embed.add_field(name="總市值" , value=market_cap+" ETH", inline=False) 
+    
+    await ctx.send(embed=embed)
+  else:
+      await ctx.send("錯誤")
+################################################################################NFT
+@slash.slash(name="nft",
+description="return some useful information about your NFT from the contract address and token id you entered",
+options=
+[
+  create_option
+  (
+    name="contract_address",
+    description="enter the contract address of yor NFT",
+    option_type=3,
+    required=True
+  ),
+  create_option
+  (
+    name="token_id",
+    description="enter the token id of your NFT",
+    option_type=3,
+    required=True
+  )
+],
+)
+
+async def nft(ctx,contract_address,token_id):
+  url1='https://api.opensea.io/api/v1/asset/'+contract_address+'/'+token_id+'/?format=json' #api url
+  site1 = ur.urlopen(url1)
+  page1 = site1.read()
+  contents1 = page1.decode()
+  data1 = json.loads(contents1)
+
+  name = str(data1['name'])
+  image_original_url = str(data1['image_original_url'])
+  top_ownerships = str(data1['top_ownerships'][0]['owner']['user']['username'])
+  description = str(data1['description'])
+  external_link = str(data1['collection']['primary_asset_contracts'][0]['external_link'])
+  schema_name = str(data1['collection']['primary_asset_contracts'][0]['schema_name'])
+  token_id1 = str(data1['token_id'])
+  permalink = str(data1['permalink'])
+
+  embed=discord.Embed(title="["+name+"]", color=0xe8006f)
+  embed.set_thumbnail(url=image_original_url)
+  embed.add_field(name="NFT編號" , value=token_id1, inline=False) 
+  embed.add_field(name="簡介" , value=description, inline=False)     
+  embed.add_field(name="官網" , value=external_link, inline=False) 
+  embed.add_field(name="NFT類型" , value=schema_name, inline=False) 
+  embed.add_field(name="擁有者" , value=top_ownerships, inline=False)
+  embed.add_field(name="OpenSea" , value=permalink, inline=False)
+  embed.add_field(name="原始畫質圖片" , value=image_original_url, inline=False)
+
+  await ctx.send(embed=embed)
+################################################################################NFT
+@slash.slash(name="demi_nft",
+description="return some useful information about your Demi Human NFT from the token id you entered",
+options=
+[
+  create_option
+  (
+    name="token_id",
+    description="enter the token id of your NFT",
+    option_type=3,
+    required=True
+  )
+],
+)
+
+async def demi_nft(ctx,token_id):
+  url1='https://api.opensea.io/api/v1/asset/0xa6916545A56f75ACD43fb6A1527A73a41d2b4081/'+token_id+'/?format=json' #api url
+  site1 = ur.urlopen(url1)
+  page1 = site1.read()
+  contents1 = page1.decode()
+  data1 = json.loads(contents1)
+
+  name = str(data1['name'])
+  image_original_url = str(data1['image_original_url'])
+  top_ownerships = str(data1['top_ownerships'][0]['owner']['user']['username'])
+  description = str(data1['description'])
+  external_link = str(data1['collection']['primary_asset_contracts'][0]['external_link'])
+  schema_name = str(data1['collection']['primary_asset_contracts'][0]['schema_name'])
+  token_id1 = str(data1['token_id'])
+  permalink = str(data1['permalink'])
+  
+  embed=discord.Embed(title="["+name+"]", color=0xe8006f)
+  embed.set_thumbnail(url=image_original_url)
+  embed.add_field(name="NFT編號" , value=token_id1, inline=False) 
+  embed.add_field(name="簡介" , value=description, inline=False)     
+  embed.add_field(name="官網" , value=external_link, inline=False) 
+  embed.add_field(name="NFT類型" , value=schema_name, inline=False) 
+  embed.add_field(name="擁有者" , value=top_ownerships, inline=False)
+  embed.add_field(name="OpenSea" , value=permalink, inline=False)
+  embed.add_field(name="原始畫質圖片" , value=image_original_url, inline=False)
+
+  await ctx.send(embed=embed)
+
 keep_alive.keep_alive()
 bot.run(discord_token)
