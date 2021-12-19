@@ -19,6 +19,7 @@ Or you can just simply invite the bot to your server.
 
 You can use the commands listed below
 
+
 `/demi-human`
 
 display real-time price of Demi-Human.
