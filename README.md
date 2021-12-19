@@ -30,7 +30,7 @@ display history price of Demi-Human.
 `/demi-nft`
 
 search specific Demi-Human NFT by token id. option: token_id
-ㅤㅤ
+
 `/project`
 
 display real-time price of specific project. option:project_name
