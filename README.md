@@ -20,7 +20,9 @@ Or you can just simply invite the bot to your server.
 You can use the commands listed below
 
 /demi-human
+
 display real-time price of Demi-Human.
+
 /demi-human-history
 display history price of Demi-Human.
 /demi-nft
