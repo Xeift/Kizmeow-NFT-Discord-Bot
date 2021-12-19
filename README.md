@@ -74,11 +74,11 @@ Usage
 -----------------
 There are 2 ways to run this bot.
 
-### 1.run it on repl.it
+### 1.run it on repl.it(cloud)
 You can run it on repl.it, just fork [it](https://replit.com/@Kizmeow-NFT-Tracker) and run. Remember to change discord bot token, OpenSea API token, Etherscan API key and guild id and put them in environment variable. **DO NOT PUT TOKENS IN YOUR CODE DIRECTLY** cuz repls on replit is public if you use their free plan, and there are some ppl using scrypt to grab your token.
 Next, copy the link here, ![image](https://user-images.githubusercontent.com/80938768/146533872-021b05b3-f18c-44db-a943-527903dc6616.png) create a [Uptimerbot](https://uptimerobot.com/) account and paste your link here. ![image](https://user-images.githubusercontent.com/80938768/146534310-74201ab2-700e-4271-94a2-f2ecf8d12acb.png)
 
-### 2.run it on your computer
+### 2.run it on your computer(local)
 Just download [it](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/archive/refs/heads/main.zip) and install all the packages in **Requirement**, make sure you have install python. Remember to change discord bot token, OpenSea API token , Etherscan API key and giild id. Then, run main.py
 
 Tutorial
