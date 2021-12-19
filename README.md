@@ -23,10 +23,10 @@ You can use the commands listed below
 
 Requirements
 -----------------
-environment
+# environment
 + Python > 3.8
 
-packages
+# packages
 + discord
 + discord-py-slash-command
 + qrcode
