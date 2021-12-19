@@ -15,7 +15,7 @@ import keep_alive
 
 discord_token = os.environ['discord_token']
 etherscan_api_key = os.environ['etherscan_api_key']
-opensea_api_key = os.environ['opensea_api_key']
+#opensea_api_key = os.environ['opensea_api_key']
 
 bot = commands.Bot(command_prefix="k!",
 intents=discord.Intents.all(),
@@ -71,7 +71,7 @@ async def help(ctx):
   msg = await ctx.send(embed=embed)
   embed0=discord.Embed(title="**[bot資訊]**", description="關於本bot的資訊", color=0xe8006f)
   embed0.add_field(name="bot名稱", value="Kizmeow", inline=False)
-  embed0.add_field(name="開發者", value="Xeift &", inline=False)
+  embed0.add_field(name="開發者", value="Xeift", inline=False)
   embed0.add_field(name="頭像繪師", value="姬玥", inline=False)
   embed0.add_field(name="程式語言", value="Python", inline=False)
   embed0.add_field(name="GitHub", value="https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot", inline=False)
@@ -88,8 +88,8 @@ async def help(ctx):
   embed2.add_field(name="/demi-human-history", value="顯示Demi-Human歷史價格資訊", inline=False)
   embed2.add_field(name="/demi-nft", value="查詢特定編號的Demi-Human NFT 參數：`token_id`", inline=False)
   embed2.add_field(name="ㅤ", value="ㅤ", inline=True)#弄一行空白 單純排版用
-  embed2.add_field(name="/project", value="顯示項目實時價格資訊", inline=False)
-  embed2.add_field(name="/project-history", value="顯示項目歷史價格資訊", inline=False)
+  embed2.add_field(name="/project", value="顯示項目實時價格資訊 參數：`project_name`", inline=False)
+  embed2.add_field(name="/project-history", value="顯示項目歷史價格資訊 參數：`project_name`", inline=False)
   embed2.add_field(name="/nft", value="查詢特定項目、特定編號的NFT 參數：`contract_address` `token_id`", inline=False)
   embed2.add_field(name="/txn", value="輸入地址，顯示交易紀錄 參數：`eth_address`", inline=False)
   embed2.add_field(name="/account_info", value="輸入地址，顯示ETH餘額和Demi NFT balance 參數：`eth_address`", inline=False)
@@ -426,7 +426,7 @@ async def Demi_Human(ctx):
   num_owners = str(data1['stats']['num_owners'])[:5]
   average_price = str(data1['stats']['average_price'])[:5]
   num_reports = str(data1['stats']['num_reports'])[:5]
-  market_cap = str(data1['stats']['market_cap'])[:5]
+  market_cap = str(data1['stats']['market_cap'])
   floor_price = str(data1['stats']['floor_price'])[:5]
 
   if(total_volume != 0):
@@ -525,7 +525,7 @@ async def project(ctx,project_name):
   num_owners = str(data1['stats']['num_owners'])
   average_price = str(data1['stats']['average_price'])[:10]
   num_reports = str(data1['stats']['num_reports'])
-  market_cap = str(data1['stats']['market_cap'])[:10]
+  market_cap = str(data1['stats']['market_cap'])
   floor_price = str(data1['stats']['floor_price'])
 
   if(total_volume != 0):
