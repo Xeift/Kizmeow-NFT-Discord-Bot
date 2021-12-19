@@ -19,35 +19,35 @@ Or you can just simply invite the bot to your server.
 
 You can use the commands listed below
 
-/demi-human
+`/demi-human`
 
 display real-time price of Demi-Human.
 
-/demi-human-history
+`/demi-human-history`
 
 display history price of Demi-Human.
 
-/demi-nft
+`/demi-nft`
 
 search specific Demi-Human NFT by token id. option: token_id
 ㅤㅤ
-/project
+`/project`
 
 display real-time price of specific project. option:project_name
 
-/project-history
+`/project-history`
 
 display history price of specific project. option:project_name
 
-/nft
+`/nft`
 
 search the NFT of a specific item and a specific number. option:contract_address token_id
 
-/txn
+`/txn`
 
 enter the address and display the transaction record. option: eth_address
 
-/account_info
+`/account_info`
 
 enter the address to display ETH balance and Demi NFT balance. option: eth_address
 
