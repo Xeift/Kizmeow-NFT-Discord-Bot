@@ -3,7 +3,7 @@ A simple Discord bot wrote with Python. Kizmeow let you track your NFT project a
 
 
 //this repl is not finish yet.if you want to try, you can invite the bot to your test server via [this link](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
-i will make an english ver bot later:)
+i will make an english ver bot and more detailed tutorial later:)
 
 Note
 -----------------
