@@ -19,15 +19,15 @@ Or you can just simply invite the bot to your server.
 
 You can use the commands listed below
 
-`/demi-human` //you can change this command to your project in code. You can contact me if you know nothing about coding.
+`/demi-human`   //you can change this command to your project in code. You can contact me if you know nothing about coding.
 
 display real-time price of Demi-Human.
 
-`/demi-human-history` //you can change this command to your project in code. You can contact me if you know nothing about coding.
+`/demi-human-history`   //you can change this command to your project in code. You can contact me if you know nothing about coding.
 
 display history price of Demi-Human.
 
-`/demi-nft` //you can change this command to your project in code. You can contact me if you know nothing about coding.
+`/demi-nft`   //you can change this command to your project in code. You can contact me if you know nothing about coding.
 
 search specific Demi-Human NFT by token id. option: token_id
 
