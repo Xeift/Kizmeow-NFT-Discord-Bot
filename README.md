@@ -6,12 +6,12 @@ A Discord bot wrote with Python. Kizmeow let you track your NFT project and disp
 
 This repl is not finish yet. If you want to try, you can invite the bot to your test server. [Chinese bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [English bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
 
-I will make an  more detailed tutorial later:)
+I will make a more detailed tutorial later:)
 
 Note
 -----------------
 If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free.
-Or you can just simply invite the bot to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
+Or you can just simply invite the bot to your server.[Chinese bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [English bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands)
 
 You can use the commands listed below
 
