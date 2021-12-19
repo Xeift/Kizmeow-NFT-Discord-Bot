@@ -26,6 +26,7 @@ Requirements
 **environment**
 
 + Python > 3.8
+
 **packages**
 
 + discord
