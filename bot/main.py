@@ -50,23 +50,23 @@ async def on_ready():
     presence_ctx2 = '🚀'+FastGasPrice+'🚗'+ProposeGasPrice+'🚲'+SafeGasPrice
 
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=presence_ctx1))
-    await asyncio.sleep(5)
+    await asyncio.sleep(10)
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=presence_ctx2))
-    await asyncio.sleep(5)
+    await asyncio.sleep(10)
 ################################################################################help
 @slash.slash(name="help",description="display help message")
 async def help(ctx):
   BUTTONS = ["◀️","0️⃣","1️⃣","2️⃣","3️⃣","4️⃣"]
-  embed=discord.Embed(title="**/help**", description="指令列表\n請選擇分類", color=0xe8006f)
+  embed=discord.Embed(title="**/help**", description="指令列表\n請按emoji選擇分類", color=0xe8006f)
 
   embed.add_field(name="[返回]", value="◀️", inline=True)
   embed.add_field(name="[bot資訊]", value="0️⃣", inline=True)
   embed.add_field(name="ㅤ", value="ㅤ", inline=True)#弄一行空白 單純排版用
   embed.add_field(name="[系統]", value="1️⃣", inline=True)
   embed.add_field(name="[NFT]", value="2️⃣", inline=True)
-  embed.add_field(name="[3]", value="3️⃣", inline=True)
-  embed.add_field(name="[4]", value="4️⃣", inline=True)
-  embed.add_field(name="參數說明", value="有些指令需輸入參數方可使用\ne.g. /account_info eth_address: 0x0000000000000000000000000000000000000000 \n其中`0x0000000000000000000000000000000000000000`就是此指令的參數。", inline=False)
+  embed.add_field(name="[3(開發中)]", value="3️⃣", inline=True)
+  embed.add_field(name="[4（開發中）]", value="4️⃣", inline=True)
+  embed.add_field(name="參數說明", value="有些指令需輸入參數方可使用\ne.g. /demi-nft token_id: 824 \n其中`824`就是此指令的參數。若超過2個參數，輸入完第一個後可按鍵盤上的`tab`鍵切換至下一個參數。", inline=False)
   embed.set_footer(text="last update:\n2021.12.17 4:01 p.m.")
   msg = await ctx.send(embed=embed)
   embed0=discord.Embed(title="**[bot資訊]**", description="關於本bot的資訊", color=0xe8006f)
@@ -74,28 +74,31 @@ async def help(ctx):
   embed0.add_field(name="開發者", value="Xeift &", inline=False)
   embed0.add_field(name="頭像繪師", value="姬玥", inline=False)
   embed0.add_field(name="程式語言", value="Python", inline=False)
+  embed0.add_field(name="GitHub", value="https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot", inline=False)
   embed0.add_field(name="聯絡資訊", value="Xeift：Xeift#1230\n姬玥：https://www.facebook.com/profile.php?id=100026170072950", inline=False)
   embed0.add_field(name="聲明", value="交易記錄功能調用Etherscan API，OpenSea相關功能調用OpenSea API，所有資料皆合法取得", inline=False)
 
   embed1=discord.Embed(title="**[系統]**", description="系統類指令", color=0xe8006f)
-  embed1.add_field(name="/help", value="印出此結果", inline=False)
-  embed1.add_field(name="/invite", value="取得邀請網址，可將bot邀請至伺服器。", inline=False)
-  embed1.add_field(name="/ping", value="查看機器人的延遲。", inline=False)
+  embed1.add_field(name="/help", value="顯示幫助訊息", inline=False)
+  embed1.add_field(name="/invite", value="取得邀請網址，可將bot邀請至伺服器 `需有該伺服器的管理者權限`", inline=False)
+  embed1.add_field(name="/ping", value="顯示機器人的回應延遲時間", inline=False)
 
-  embed2=discord.Embed(title="**[NFT]**", description="查詢關於項目的相關資訊", color=0xe8006f)
-  embed2.add_field(name="/demi-human", value="顯示demi-human實時資訊", inline=False)
-  embed2.add_field(name="/demi-human-history", value="顯示demi-human歷史資訊", inline=False)
-  embed2.add_field(name="/txn option: eth_address", value="輸入地址，顯示交易紀錄", inline=False)
-  embed2.add_field(name="/account_info option: eth_address", value="輸入地址，顯示ETH餘額和Demi balance", inline=False)
-  embed2.add_field(name="/project", value="開發中", inline=False)
-  embed2.add_field(name="/project-history", value="開發中", inline=False)
+  embed2=discord.Embed(title="**[NFT]**", description="查詢關於NFT項目的相關資訊", color=0xe8006f)
+  embed2.add_field(name="/demi-human", value="顯示Demi-Human實時價格資訊", inline=False)
+  embed2.add_field(name="/demi-human-history", value="顯示Demi-Human歷史價格資訊", inline=False)
+  embed2.add_field(name="/demi-nft", value="查詢特定編號的Demi-Human NFT 參數：`token_id`", inline=False)
+  embed2.add_field(name="ㅤ", value="ㅤ", inline=True)#弄一行空白 單純排版用
+  embed2.add_field(name="/project", value="顯示項目實時價格資訊", inline=False)
+  embed2.add_field(name="/project-history", value="顯示項目歷史價格資訊", inline=False)
+  embed2.add_field(name="/nft", value="查詢特定項目、特定編號的NFT 參數：`contract_address` `token_id`", inline=False)
+  embed2.add_field(name="/txn", value="輸入地址，顯示交易紀錄 參數：`eth_address`", inline=False)
+  embed2.add_field(name="/account_info", value="輸入地址，顯示ETH餘額和Demi NFT balance 參數：`eth_address`", inline=False)
 
   embed3=discord.Embed(title="**[3]**", description="3", color=0xe8006f)
   embed3.add_field(name="3", value="3", inline=False)
 
   embed4=discord.Embed(title="**[4]**", description="4", color=0xe8006f)
   embed4.add_field(name="4", value="4", inline=False)
-
 
   for b in BUTTONS:
     await msg.add_reaction(b)
@@ -578,6 +581,23 @@ async def nft(ctx,contract_address,token_id):
   token_id1 = str(data1['token_id'])
   permalink = str(data1['permalink'])
 
+  if name == "None":
+    name = "no data"
+  if image_original_url == "None":
+    image_original_url = "no data"
+  if top_ownerships == "None":
+    top_ownerships = "no data"   
+  if description == "None":
+    description = "no data"
+  if external_link == "None":
+    external_link = "no data"
+  if schema_name == "None":
+    schema_name = "no data" 
+  if token_id1 == "None":
+    token_id1 = "no data"
+  if permalink == "None":
+    permalink = "no data"
+
   embed=discord.Embed(title="["+name+"]", color=0xe8006f)
   embed.set_thumbnail(url=image_original_url)
   embed.add_field(name="NFT編號" , value=token_id1, inline=False) 
@@ -619,7 +639,24 @@ async def demi_nft(ctx,token_id):
   schema_name = str(data1['collection']['primary_asset_contracts'][0]['schema_name'])
   token_id1 = str(data1['token_id'])
   permalink = str(data1['permalink'])
-  
+
+  if name == "None":
+    name = "no data"
+  if image_original_url == "None":
+    image_original_url = "no data"
+  if top_ownerships == "None":
+    top_ownerships = "no data"   
+  if description == "None":
+    description = "no data"
+  if external_link == "None":
+    external_link = "no data"
+  if schema_name == "None":
+    schema_name = "no data" 
+  if token_id1 == "None":
+    token_id1 = "no data"
+  if permalink == "None":
+    permalink = "no data"
+
   embed=discord.Embed(title="["+name+"]", color=0xe8006f)
   embed.set_thumbnail(url=image_original_url)
   embed.add_field(name="NFT編號" , value=token_id1, inline=False) 
@@ -631,6 +668,6 @@ async def demi_nft(ctx,token_id):
   embed.add_field(name="原始畫質圖片" , value=image_original_url, inline=False)
 
   await ctx.send(embed=embed)
-
+################################################################################
 keep_alive.keep_alive()
 bot.run(discord_token)
