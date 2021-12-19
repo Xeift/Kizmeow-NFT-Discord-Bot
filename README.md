@@ -73,6 +73,7 @@ Requirements
 Usage
 -----------------
 There are 2 ways to run this bot.
+Whether you choose first or second method, you'll need [Discord bot token](https://discord.com/developers/applications) and [Etherscan API](https://etherscan.io/myapikey). If you choose the second method, you need [Uptimerbot](https://uptimerobot.com/) account.
 
 ### 1.run it on repl.it(cloud)
 You can run it on repl.it, just fork [it](https://replit.com/@Kizmeow-NFT-Tracker/Kizmeow-Etherscan-And-OpenseaEnglish#main.py) or [it](https://replit.com/@Kizmeow-NFT-Tracker/Kizmeow-Etherscan-And-OpenseaChinese#main.py) and run. Remember to change discord bot token and Etherscan API key, then put them in environment variable. **DO NOT PUT TOKENS IN YOUR CODE DIRECTLY** cuz repls on replit is public if you use their free plan, and there are some ppl using scrypt to grab your token.
