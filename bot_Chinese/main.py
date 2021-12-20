@@ -572,31 +572,52 @@ async def nft(ctx,contract_address,token_id):
   contents1 = page1.decode()
   data1 = json.loads(contents1)
 
-  name = str(data1['name'])
-  image_original_url = str(data1['image_original_url'])
-  top_ownerships = str(data1['top_ownerships'][0]['owner']['user']['username'])
-  description = str(data1['description'])
-  external_link = str(data1['collection']['primary_asset_contracts'][0]['external_link'])
-  schema_name = str(data1['collection']['primary_asset_contracts'][0]['schema_name'])
-  token_id1 = str(data1['token_id'])
-  permalink = str(data1['permalink'])
-
-  if name == "None":
+  if data1['name'] == None:
     name = "no data"
-  if image_original_url == "None":
+  else:
+    name = str(data1['name'])
+    
+
+  if data1['image_original_url'] == None:
     image_original_url = "no data"
-  if top_ownerships == "None":
-    top_ownerships = "no data"   
-  if description == "None":
+  else:
+    image_original_url = str(data1['image_original_url'])
+
+
+  if data1['top_ownerships'][0]['owner']['user'] == None:
+    top_ownerships = "no data"
+  else:
+    top_ownerships = str(data1['top_ownerships'][0]['owner']['user']['username'])
+
+
+  if data1['description'] == None:
     description = "no data"
-  if external_link == "None":
+  else:
+    description = str(data1['description'])
+
+
+  if data1['collection']['primary_asset_contracts'][0]['external_link'] == None:
     external_link = "no data"
-  if schema_name == "None":
-    schema_name = "no data" 
-  if token_id1 == "None":
+  else:
+    external_link = str(data1['collection']['primary_asset_contracts'][0]['external_link'])
+
+
+  if data1['collection']['primary_asset_contracts'][0]['schema_name'] == None:
+    schema_name = "no data"
+  else:
+    schema_name = str(data1['collection']['primary_asset_contracts'][0]['schema_name'])
+
+
+  if data1['token_id'] == None:
     token_id1 = "no data"
-  if permalink == "None":
+  else:
+    token_id1 = str(data1['token_id'])
+
+
+  if data1['permalink'] == None:
     permalink = "no data"
+  else:
+    permalink = str(data1['permalink'])
 
   embed=discord.Embed(title="["+name+"]", color=0xe8006f)
   embed.set_thumbnail(url=image_original_url)
@@ -631,31 +652,52 @@ async def demi_nft(ctx,token_id):
   contents1 = page1.decode()
   data1 = json.loads(contents1)
 
-  name = str(data1['name'])
-  image_original_url = str(data1['image_original_url'])
-  top_ownerships = str(data1['top_ownerships'][0]['owner']['user']['username'])
-  description = str(data1['description'])
-  external_link = str(data1['collection']['primary_asset_contracts'][0]['external_link'])
-  schema_name = str(data1['collection']['primary_asset_contracts'][0]['schema_name'])
-  token_id1 = str(data1['token_id'])
-  permalink = str(data1['permalink'])
-
-  if name == "None":
+  if data1['name'] == None:
     name = "no data"
-  if image_original_url == "None":
+  else:
+    name = str(data1['name'])
+    
+
+  if data1['image_original_url'] == None:
     image_original_url = "no data"
-  if top_ownerships == "None":
-    top_ownerships = "no data"   
-  if description == "None":
+  else:
+    image_original_url = str(data1['image_original_url'])
+
+
+  if data1['top_ownerships'][0]['owner']['user'] == None:
+    top_ownerships = "no data"
+  else:
+    top_ownerships = str(data1['top_ownerships'][0]['owner']['user']['username'])
+
+
+  if data1['description'] == None:
     description = "no data"
-  if external_link == "None":
+  else:
+    description = str(data1['description'])
+
+
+  if data1['collection']['primary_asset_contracts'][0]['external_link'] == None:
     external_link = "no data"
-  if schema_name == "None":
-    schema_name = "no data" 
-  if token_id1 == "None":
+  else:
+    external_link = str(data1['collection']['primary_asset_contracts'][0]['external_link'])
+
+
+  if data1['collection']['primary_asset_contracts'][0]['schema_name'] == None:
+    schema_name = "no data"
+  else:
+    schema_name = str(data1['collection']['primary_asset_contracts'][0]['schema_name'])
+
+
+  if data1['token_id'] == None:
     token_id1 = "no data"
-  if permalink == "None":
+  else:
+    token_id1 = str(data1['token_id'])
+
+
+  if data1['permalink'] == None:
     permalink = "no data"
+  else:
+    permalink = str(data1['permalink'])
 
   embed=discord.Embed(title="["+name+"]", color=0xe8006f)
   embed.set_thumbnail(url=image_original_url)
