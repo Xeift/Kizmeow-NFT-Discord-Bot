@@ -420,14 +420,14 @@ async def Demi_Human(ctx):
   contents1 = page1.decode()
   data1 = json.loads(contents1)
 
-  total_volume = str(data1['stats']['total_volume'])[:5]#total_volume
-  total_sales = str(data1['stats']['total_sales'])[:5]
-  total_supply = str(data1['stats']['total_supply'])[:4]
-  num_owners = str(data1['stats']['num_owners'])[:5]
-  average_price = str(data1['stats']['average_price'])[:5]
-  num_reports = str(data1['stats']['num_reports'])[:5]
-  market_cap = str(data1['stats']['market_cap'])
-  floor_price = str(data1['stats']['floor_price'])[:5]
+  total_volume = str(float(round(data1['stats']['total_volume'],3)))
+  total_sales = str(float(round(data1['stats']['total_sales'],3)))
+  total_supply = str(float(round(data1['stats']['total_supply'],3)))
+  num_owners = str(float(round(data1['stats']['num_owners'],3)))
+  average_price = str(float(round(data1['stats']['average_price'],3)))
+  num_reports = str(float(round(data1['stats']['num_reports'],3)))
+  market_cap = str(float(round(data1['stats']['market_cap'],3)))
+  floor_price = str(float(round(data1['stats']['floor_price'],3)))
 
   if(total_volume != 0):
     embed=discord.Embed(title="[實時數據]", color=0xe8006f)
@@ -466,18 +466,18 @@ async def project_history(ctx,project_name):
   contents1 = page1.decode()
   data1 = json.loads(contents1)
 
-  one_day_volume = str(data1['stats']['one_day_volume'])[:5]#one_day_volume
-  one_day_change = str(data1['stats']['one_day_change'])[:5]
-  one_day_sales = str(data1['stats']['one_day_sales'])[:5]
-  one_day_average_price = str(data1['stats']['one_day_average_price'])[:5]
-  seven_day_volume = str(data1['stats']['seven_day_volume'])[:5]
-  seven_day_change = str(data1['stats']['seven_day_change'])[:5]
-  seven_day_sales = str(data1['stats']['seven_day_sales'])[:5]
-  seven_day_average_price = str(data1['stats']['seven_day_average_price'])[:5]
-  thirty_day_volume = str(data1['stats']['thirty_day_volume'])[:5]
-  thirty_day_change = str(data1['stats']['thirty_day_change'])[:5]
-  thirty_day_sales = str(data1['stats']['thirty_day_sales'])[:5]
-  thirty_day_average_price = str(data1['stats']['thirty_day_average_price'])[:5]
+  one_day_volume = str(data1['stats']['one_day_volume'],3)#one_day_volume
+  one_day_change = str(data1['stats']['one_day_change'],3)
+  one_day_sales = str(data1['stats']['one_day_sales'],3)
+  one_day_average_price = str(data1['stats']['one_day_average_price'],3)
+  seven_day_volume = str(data1['stats']['seven_day_volume'],3)
+  seven_day_change = str(data1['stats']['seven_day_change'],3)
+  seven_day_sales = str(data1['stats']['seven_day_sales'],3)
+  seven_day_average_price = str(data1['stats']['seven_day_average_price'],3)
+  thirty_day_volume = str(data1['stats']['thirty_day_volume'],3)
+  thirty_day_change = str(data1['stats']['thirty_day_change'],3)
+  thirty_day_sales = str(data1['stats']['thirty_day_sales'],3)
+  thirty_day_average_price = str(data1['stats']['thirty_day_average_price'],3)
 
   if(one_day_volume != 0):
     embed=discord.Embed(title="["+project_name+"歷史價格]", color=0xe8006f)
@@ -519,14 +519,14 @@ async def project(ctx,project_name):
   contents1 = page1.decode()
   data1 = json.loads(contents1)
 
-  total_volume = str(data1['stats']['total_volume'])[:10]
-  total_sales = str(data1['stats']['total_sales'])
-  total_supply = str(data1['stats']['total_supply'])
-  num_owners = str(data1['stats']['num_owners'])
-  average_price = str(data1['stats']['average_price'])[:10]
-  num_reports = str(data1['stats']['num_reports'])
-  market_cap = str(data1['stats']['market_cap'])
-  floor_price = str(data1['stats']['floor_price'])
+  total_volume = str(float(round(data1['stats']['total_volume'],3)))
+  total_sales = str(float(round(data1['stats']['total_sales'],3)))
+  total_supply = str(float(round(data1['stats']['total_supply'],3)))
+  num_owners = str(float(round(data1['stats']['num_owners'],3)))
+  average_price = str(float(round(data1['stats']['average_price'],3)))
+  num_reports = str(float(round(data1['stats']['num_reports'],3)))
+  market_cap = str(float(round(data1['stats']['market_cap'],3)))
+  floor_price = str(float(round(data1['stats']['floor_price'],3)))
 
   if(total_volume != 0):
     embed=discord.Embed(title="["+project_name+"實時數據]", color=0xe8006f)
