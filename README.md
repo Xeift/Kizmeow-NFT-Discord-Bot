@@ -10,7 +10,7 @@ This repl is not finish yet. If you want to try, you can simply click the blue l
 [Chinese bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [English bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [Chinese community bot](https://discord.com/api/oauth2/authorize?client_id=922439962325028905&permissions=534727097920&scope=bot%20applications.commands) | [English community bot](https://discord.com/api/oauth2/authorize?client_id=922648421364531321&permissions=534727097920&scope=bot%20applications.commands)
 
 These bots are just demos, if you found commands not work, please kick the bot and reinvite it to your server.
-If you found bots offline, that's normal, I run these bots on reol.it, somtimes bots will offline because many people use my demo bots.
+If you found bots offline, that's normal, I run these bots on repl.it, somtimes bots will offline because many people use my demo bots.
 If you want a stable bot, I suggest you build your own bot base on my code, or run the bot on your computer insted of on repl.it
 
 Difference between normal bot and community bot?
