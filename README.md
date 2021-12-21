@@ -10,6 +10,15 @@ This repl is not finish yet. If you want to try, you can simply click the blue l
 [Chinese bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [English bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [Chinese community bot](https://discord.com/api/oauth2/authorize?client_id=922439962325028905&permissions=534727097920&scope=bot%20applications.commands) | [English community bot](https://discord.com/api/oauth2/authorize?client_id=922648421364531321&permissions=534727097920&scope=bot%20applications.commands 
 )
 
+Difference between normal bot and community bot?
+There's no these commands in community version, community version is for crypto disscussion Discord group.
+
+`/demi-human`  
+
+`/demi-human-history`
+
+`/demi-nft`
+
 I will make a more detailed tutorial later:)
 
 Note
