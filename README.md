@@ -102,7 +102,6 @@ Video Tutorial
 If you want to use different version bot, change the repl.it link I fork in the video.
 
 https://www.youtube.com/watch?v=WFP9LdiB8yk
-YouTube
 
 Bot Avatar Illustrator
 -----------------
