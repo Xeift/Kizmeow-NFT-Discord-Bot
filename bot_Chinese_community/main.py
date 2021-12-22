@@ -337,18 +337,65 @@ async def project_history(ctx,project_name):
   contents1 = page1.decode()
   data1 = json.loads(contents1)
 
-  one_day_volume = str(data1['stats']['one_day_volume'],3)#one_day_volume
-  one_day_change = str(data1['stats']['one_day_change'],3)
-  one_day_sales = str(data1['stats']['one_day_sales'],3)
-  one_day_average_price = str(data1['stats']['one_day_average_price'],3)
-  seven_day_volume = str(data1['stats']['seven_day_volume'],3)
-  seven_day_change = str(data1['stats']['seven_day_change'],3)
-  seven_day_sales = str(data1['stats']['seven_day_sales'],3)
-  seven_day_average_price = str(data1['stats']['seven_day_average_price'],3)
-  thirty_day_volume = str(data1['stats']['thirty_day_volume'],3)
-  thirty_day_change = str(data1['stats']['thirty_day_change'],3)
-  thirty_day_sales = str(data1['stats']['thirty_day_sales'],3)
-  thirty_day_average_price = str(data1['stats']['thirty_day_average_price'],3)
+  if data1['stats']['one_day_volume'] == None:
+    one_day_volume = "no data"
+  else:
+    one_day_volume = str(round(data1['stats']['one_day_volume'],3))#one_day_volume
+
+  if data1['stats']['one_day_change'] == None:
+    one_day_change = "no data"
+  else:
+    one_day_change = str(round(data1['stats']['one_day_change'],3))
+
+  if data1['stats']['one_day_sales'] == None:
+    one_day_sales = "no data"
+  else:
+    one_day_sales = str(round(data1['stats']['one_day_sales'],3))
+
+  if data1['stats']['one_day_average_price'] == None:
+    one_day_average_price = "no data"
+  else:
+    one_day_average_price = str(round(data1['stats']['one_day_average_price'],3))
+
+  if data1['stats']['seven_day_volume'] == None:
+    seven_day_volume = "no data"
+  else:
+    seven_day_volume = str(round(data1['stats']['seven_day_volume'],3))
+
+  if data1['stats']['seven_day_change'] == None:
+    seven_day_change = "no data"
+  else:
+    seven_day_change = str(round(data1['stats']['seven_day_change'],3))
+
+  if data1['stats']['seven_day_sales'] == None:
+    seven_day_sales = "no data"
+  else:
+    seven_day_sales = str(round(data1['stats']['seven_day_sales'],3))
+
+  if data1['stats']['seven_day_average_price'] == None:
+    seven_day_average_price = "no data"
+  else:
+    seven_day_average_price = str(round(data1['stats']['seven_day_average_price'],3))
+
+  if data1['stats']['thirty_day_volume'] == None:
+    thirty_day_volume = "no data"
+  else:
+    thirty_day_volume = str(round(data1['stats']['thirty_day_volume'],3))
+
+  if data1['stats']['thirty_day_change'] == None:
+    thirty_day_change = "no data"
+  else:
+    thirty_day_change = str(round(data1['stats']['thirty_day_change'],3))
+
+  if data1['stats']['thirty_day_sales'] == None:
+    thirty_day_sales = "no data"
+  else:
+    thirty_day_sales = str(round(data1['stats']['thirty_day_sales'],3))
+
+  if data1['stats']['thirty_day_average_price'] == None:
+    thirty_day_average_price = "no data"
+  else:
+    thirty_day_average_price = str(round(data1['stats']['thirty_day_average_price'],3))
 
   if(one_day_volume != 0):
     embed=discord.Embed(title="["+project_name+"歷史價格]", color=0xe8006f)
@@ -390,14 +437,48 @@ async def project(ctx,project_name):
   contents1 = page1.decode()
   data1 = json.loads(contents1)
 
-  total_volume = str(float(round(data1['stats']['total_volume'],3)))
-  total_sales = str(float(round(data1['stats']['total_sales'],3)))
-  total_supply = str(float(round(data1['stats']['total_supply'],3)))
-  num_owners = str(float(round(data1['stats']['num_owners'],3)))
-  average_price = str(float(round(data1['stats']['average_price'],3)))
-  num_reports = str(float(round(data1['stats']['num_reports'],3)))
-  market_cap = str(float(round(data1['stats']['market_cap'],3)))
-  floor_price = str(float(round(data1['stats']['floor_price'],3)))
+  if data1['stats']['floor_price'] == None:
+    floor_price = "no data"
+  else:
+    floor_price = str(float(round(data1['stats']['floor_price'],3)))
+
+
+  if data1['stats']['total_volume'] == None:
+    total_volume = "no data"
+  else:
+    total_volume = str(float(round(data1['stats']['total_volume'],3)))
+
+
+  if data1['stats']['total_sales'] == None:
+    total_sales = "no data"
+  else:
+    total_sales = str(float(round(data1['stats']['total_sales'],3)))
+
+  if data1['stats']['total_supply'] == None:
+    total_supply = "no data"
+  else:
+    total_supply = str(float(round(data1['stats']['total_supply'],3)))
+
+  if data1['stats']['num_owners'] == None:
+    num_owners = "no data"
+  else:
+    num_owners = str(float(round(data1['stats']['num_owners'],3)))
+
+  if data1['stats']['average_price'] == None:
+    average_price = "no data"
+  else:
+    average_price = str(float(round(data1['stats']['average_price'],3)))
+
+  if data1['stats']['num_reports'] == None:
+    num_reports = "no data"
+  else:
+    num_reports = str(float(round(data1['stats']['num_reports'],3)))
+
+  if data1['stats']['market_cap'] == None:
+    market_cap = "no data"
+  else:
+    market_cap = str(float(round(data1['stats']['market_cap'],3)))
+
 
   if(total_volume != 0):
     embed=discord.Embed(title="["+project_name+"實時數據]", color=0xe8006f)
