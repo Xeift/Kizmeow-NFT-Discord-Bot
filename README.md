@@ -6,6 +6,9 @@ A Discord bot wrote with Python. Kizmeow let you track your NFT project and disp
 If you like this project, please give me star on the upper right corner:)
 
 This repl is not finish yet. If you want to try, you can simply click the blue letter below and invite the bot to your test server.
+There are still some bugs, I'll fix them ASAP.
+![image](https://user-images.githubusercontent.com/80938768/147106225-3cf60824-1ec1-4b10-b6e4-68948fb7ea8d.png)
+
 
 [Chinese bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [English bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [Chinese community bot](https://discord.com/api/oauth2/authorize?client_id=922439962325028905&permissions=534727097920&scope=bot%20applications.commands) | [English community bot](https://discord.com/api/oauth2/authorize?client_id=922648421364531321&permissions=534727097920&scope=bot%20applications.commands)
 
