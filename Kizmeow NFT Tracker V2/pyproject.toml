@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "kizmeow-etherscan"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+discord-py-slash-command = "^3.0.1"
+discord = "^1.7.3"
+Flask = "^2.0.2"
+qrcode = "^7.3.1"
+zxing = "^0.14"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
