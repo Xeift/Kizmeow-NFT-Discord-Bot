@@ -10,7 +10,9 @@ There are still some bugs, I'll fix them ASAP.
 
 Please use this version, V2 follows the modular design and I fixed some bugs in the previous version. There's no Chinese version for V2 currently.
 
-[Kizmeow NFT Tracker V2](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=534723951680&scope=applications.commands%20bot)
+[Kizmeow NFT Tracker V2 invite link](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=534723951680&scope=applications.commands%20bot)
+
+[Kizmeow NFT Tracker V2 repl.it](https://replit.com/@xeiftc/Kizmeow-NFT-Tracker-V2)
 
 ![image](https://user-images.githubusercontent.com/80938768/147106225-3cf60824-1ec1-4b10-b6e4-68948fb7ea8d.png)
 
