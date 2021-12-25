@@ -8,6 +8,10 @@ If you like this project, please give me star on the upper right corner:)
 This repl is not finish yet. If you want to try, you can simply click the blue letter below and invite the bot to your test server.
 There are still some bugs, I'll fix them ASAP.
 
+Please use this version, V2 follows the modular design and I fixed some bugs in the previous version. There's no Chinese version for V2 currently.
+
+[Kizmeow NFT Tracker V2](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=534723951680&scope=applications.commands%20bot)
+
 ![image](https://user-images.githubusercontent.com/80938768/147106225-3cf60824-1ec1-4b10-b6e4-68948fb7ea8d.png)
 
 
