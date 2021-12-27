@@ -115,7 +115,8 @@ https://www.youtube.com/watch?v=WFP9LdiB8yk
 
 Official Website
 -----------------
-https://watercatuwu.github.io/kizmeow-nft-site/ by WaterCatMeow
+https://watercatuwu.github.io/kizmeow-nft-site/ 
+by WaterCatMeow
 
 Bot Avatar Illustrator
 -----------------
