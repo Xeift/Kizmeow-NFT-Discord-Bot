@@ -55,10 +55,10 @@ extensions = [
   'cogs.account',
 	'cogs.help',
   'cogs.invite',
-  'cogs.nft',
   'cogs.ping', 
   'cogs.project_history',
-  'cogs.project',
+  'cogs.project_nft',
+  'cogs.project_realtime',
   'cogs.txn'
 ]
 

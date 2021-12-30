@@ -5,8 +5,8 @@ import json
 from discord_slash import cog_ext
 from core.cog_core import cogcore
 
-class project(cogcore):
-  @cog_ext.cog_slash(name="project",
+class project_realtime(cogcore):
+  @cog_ext.cog_slash(name="project_realtime",
   description="return some useful realtime information from the project name you entered from OpenSea API",
   options=
   [
@@ -20,7 +20,14 @@ class project(cogcore):
   ]
   )
 
-  async def project(self,ctx,project_name):
+  async def project_realtime(self,ctx,project_name):
+    url0='https://api.opensea.io/api/v1/collection/'+project_name+'?format=json' #api url
+    site0 = ur.urlopen(url0)
+    page0 = site0.read()
+    contents0 = page0.decode()
+    data0 = json.loads(contents0)
+    img0 = data0['collection']['primary_asset_contracts'][0]['image_url']
+
     url1='https://api.opensea.io/api/v1/collection/'+project_name+'/stats?format=json' #api url
     site1 = ur.urlopen(url1)
     page1 = site1.read()
@@ -70,8 +77,8 @@ class project(cogcore):
       market_cap = str(float(round(data1['stats']['market_cap'],3)))
 
     if(total_volume != 0):
-      embed=discord.Embed(title="["+project_name+"realtime information]", color=0xe8006f)
-      embed.set_thumbnail(url="https://cdn.jsdelivr.net/gh/Xeift/image-hosting@main//1c0e140d3293a88391abaaa1e02f8e0e.png")
+      embed=discord.Embed(title="["+project_name+" realtime information]", color=0xe8006f)
+      embed.set_thumbnail(url=img0)
       embed.add_field(name="total supply" , value=total_supply+"  NFT", inline=False) 
       embed.add_field(name="holders" , value=num_owners, inline=False)     
       embed.add_field(name="floor price" , value=floor_price+" ETH", inline=False) 
@@ -85,4 +92,4 @@ class project(cogcore):
     else:
         await ctx.send("error")
 def setup(bot):
-  bot.add_cog(project(bot))
+  bot.add_cog(project_realtime(bot))

@@ -21,6 +21,13 @@ class project_history(cogcore):
   )
 
   async def project_history(self,ctx,project_name):
+    url0='https://api.opensea.io/api/v1/collection/'+project_name+'?format=json' #api url
+    site0 = ur.urlopen(url0)
+    page0 = site0.read()
+    contents0 = page0.decode()
+    data0 = json.loads(contents0)
+    img0 = data0['collection']['primary_asset_contracts'][0]['image_url']
+
     url1='https://api.opensea.io/api/v1/collection/'+project_name+'/stats?format=json' #api url
     site1 = ur.urlopen(url1)
     page1 = site1.read()
@@ -89,7 +96,7 @@ class project_history(cogcore):
 
     if(one_day_volume != 0):
       embed=discord.Embed(title="["+project_name+" history volume]", color=0xe8006f)
-      embed.set_thumbnail(url="https://cdn.jsdelivr.net/gh/Xeift/image-hosting@main//1c0e140d3293a88391abaaa1e02f8e0e.png")
+      embed.set_thumbnail(url=img0)
       embed.add_field(name="1 day total trade volume" , value=one_day_volume+" ETH", inline=False) 
       embed.add_field(name="1 day total trade volume change" , value=one_day_change+" ETH", inline=False) 
       embed.add_field(name="1 day sales quantity" , value=one_day_sales+" NFT", inline=False)

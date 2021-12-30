@@ -5,8 +5,8 @@ import json
 from discord_slash import cog_ext
 from core.cog_core import cogcore
 
-class nft(cogcore):
-  @cog_ext.cog_slash(name="nft",
+class project_nft(cogcore):
+  @cog_ext.cog_slash(name="project_nft",
   description="return some useful information about your NFT from the contract address and token id you entered",
   options=
   [
@@ -95,4 +95,4 @@ class nft(cogcore):
     await ctx.send(embed=embed)
 
 def setup(bot):
-  bot.add_cog(nft(bot))
+  bot.add_cog(project_nft(bot))
