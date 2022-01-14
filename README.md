@@ -14,25 +14,11 @@ Please use this version, V2 follows the modular design and I fixed some bugs in 
 
 [Kizmeow NFT Tracker V2 repl.it](https://replit.com/@xeiftc/Kizmeow-NFT-Tracker-V2)
 
-![image](https://user-images.githubusercontent.com/80938768/147106225-3cf60824-1ec1-4b10-b6e4-68948fb7ea8d.png)
-
-
-[Chinese bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [English bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [Chinese community bot](https://discord.com/api/oauth2/authorize?client_id=922439962325028905&permissions=534727097920&scope=bot%20applications.commands) | [English community bot](https://discord.com/api/oauth2/authorize?client_id=922648421364531321&permissions=534727097920&scope=bot%20applications.commands)
 
 These bots are just demos, if you found commands not work, please kick the bot and reinvite it to your server.
 If you found bots offline, that's normal, I run these bots on repl.it, somtimes bots will offline because many people use my demo bots.
 If you want a stable bot, I suggest you build your own bot base on my code, or run the bot on your computer insted of on repl.it
 
-Difference between normal bot and community bot?
-There's no these commands in community version, community version is for crypto disscussion Discord group.
-
-`/demi-human`  
-
-`/demi-human-history`
-
-`/demi-nft`
-
-I will make a more detailed tutorial later:)
 
 Note
 -----------------
@@ -101,7 +87,7 @@ There are 2 ways to run this bot.
 Whether you choose first or second method, you'll need [Discord bot token](https://discord.com/developers/applications) and [Etherscan API](https://etherscan.io/myapikey). If you choose the second method, you'll also need [Uptimerbot](https://uptimerobot.com/) account.
 
 ### 1.run it on repl.it(cloud)
-You can run it on repl.it, just fork [it](https://replit.com/@Kizmeow-NFT-Tracker/Kizmeow-Etherscan-And-OpenseaEnglish#main.py) , [it](https://replit.com/@Kizmeow-NFT-Tracker/Kizmeow-Etherscan-And-OpenseaChinese#main.py) ,[it](https://replit.com/@Kizmeow-NFT-Tracker/Kizmeow-Etherscan-And-OpenseaChinese-community) or [it](https://replit.com/@Kizmeow-NFT-Tracker/Kizmeow-NFT-Trackercommunity) and run. Remember to change discord bot token and Etherscan API key, then put them in environment variable. **DO NOT PUT TOKENS IN YOUR CODE DIRECTLY** cuz repls on replit is public if you use their free plan, and there are some ppl using scrypt to grab your token.
+You can run it on repl.it, just fork [it](https://replit.com/@xeiftc/Kizmeow-NFT-Tracker-V2) and run. Remember to change discord bot token and Etherscan API key, then put them in environment variable. **DO NOT PUT TOKENS IN YOUR CODE DIRECTLY** cuz repls on replit is public if you use their free plan, and there are some ppl using scrypt to grab your token.
 Next, copy the link here, ![image](https://user-images.githubusercontent.com/80938768/146533872-021b05b3-f18c-44db-a943-527903dc6616.png) create a [Uptimerbot](https://uptimerobot.com/) account and paste your link here. ![image](https://user-images.githubusercontent.com/80938768/146534310-74201ab2-700e-4271-94a2-f2ecf8d12acb.png)
 
 ### 2.run it on your computer(local)
