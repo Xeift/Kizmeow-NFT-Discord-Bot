@@ -25,6 +25,8 @@ Note
 If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free.
 Or you can just simply click the blue letter below and invite the bot to your server.
 
+[Kizmeow NFT Tracker V2 invite link](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=534723951680&scope=applications.commands%20bot)
+
 You can use the commands listed below
 
 `/demi-human`   //you can change these three commands below to your project in code. You can contact me if you know nothing about coding.
