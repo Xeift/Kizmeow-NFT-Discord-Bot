@@ -85,6 +85,12 @@ Requirements
 + request
 + flask
 
+Video Tutorial
+-----------------
+If you want to use different version bot, change the repl.it link I fork in the video.
+
+https://www.youtube.com/watch?v=WFP9LdiB8yk
+
 Usage
 -----------------
 There are 2 ways to run this bot.
@@ -96,12 +102,6 @@ Next, copy the link here, ![image](https://user-images.githubusercontent.com/809
 
 ### 2.run it on your computer(local)
 Just download [it](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/archive/refs/heads/main.zip) and install all the packages in **Requirement**, make sure you have install python. Remember to change discord bot token and Etherscan API key. Then, run main.py
-
-Video Tutorial
------------------
-If you want to use different version bot, change the repl.it link I fork in the video.
-
-https://www.youtube.com/watch?v=WFP9LdiB8yk
 
 Official Website
 -----------------
