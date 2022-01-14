@@ -48,7 +48,7 @@ search specific Demi-Human NFT by token id. option: token_id
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
-`/project`
+`/project-realtime`
 
 display real-time price of specific project. option:project_name
 
@@ -56,7 +56,7 @@ display real-time price of specific project. option:project_name
 
 display history price of specific project. option:project_name
 
-`/nft`
+`/project-nft`
 
 search the NFT of a specific item and a specific number. option:contract_address token_id
 
