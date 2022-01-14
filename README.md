@@ -19,13 +19,15 @@ These bots are just demos, if you found commands not work, please kick the bot a
 If you found bots offline, that's normal, I run these bots on repl.it, somtimes bots will offline because many people use my demo bots.
 If you want a stable bot, I suggest you build your own bot base on my code, or run the bot on your computer insted of on repl.it
 
-
 Note
 -----------------
 If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free.
 Or you can just simply click the blue letter below and invite the bot to your server.
 
 [Kizmeow NFT Tracker V2 invite link](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=534723951680&scope=applications.commands%20bot)
+
+What can this bot do?
+-----------------
 
 You can use the commands listed below
 
