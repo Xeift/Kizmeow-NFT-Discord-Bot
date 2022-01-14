@@ -25,9 +25,6 @@ Note
 If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free.
 Or you can just simply click the blue letter below and invite the bot to your server.
 
-[Chinese bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [English bot](https://discord.com/api/oauth2/authorize?client_id=886198731328868402&permissions=534727097920&scope=bot%20applications.commands) | [Chinese community bot](https://discord.com/api/oauth2/authorize?client_id=922439962325028905&permissions=534727097920&scope=bot%20applications.commands) | [English community bot](https://discord.com/api/oauth2/authorize?client_id=922648421364531321&permissions=534727097920&scope=bot%20applications.commands 
-)
-
 You can use the commands listed below
 
 `/demi-human`   //you can change these three commands below to your project in code. You can contact me if you know nothing about coding.
