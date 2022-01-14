@@ -28,6 +28,10 @@ Or you can just simply click the blue letter below and invite the bot to your se
 
 What can this bot do?
 -----------------
+send message in specific channel when there's a listing or sold event of your NFT collection on OpenSea
+
+![image](https://user-images.githubusercontent.com/80938768/149489498-5e80a294-a9a6-4a3d-8af2-fdcb6d530ba1.png)
+
 
 You can use the commands listed below
 
