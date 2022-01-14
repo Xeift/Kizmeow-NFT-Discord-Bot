@@ -32,8 +32,7 @@ send message in specific channel when there's a listing or sold event of your NF
 
 ![image](https://user-images.githubusercontent.com/80938768/149489498-5e80a294-a9a6-4a3d-8af2-fdcb6d530ba1.png)
 
-
-You can use the commands listed below
+In addition to the above function, you can also use the commands listed below
 
 `/demi-human`   //you can change these three commands below to your project in code. You can contact me if you know nothing about coding.
 
