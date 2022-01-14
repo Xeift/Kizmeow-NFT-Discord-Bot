@@ -55,6 +55,7 @@ extensions = [
   'cogs.account',
 	'cogs.help',
   'cogs.invite',
+  'cogs.list_trade_notify',
   'cogs.ping', 
   'cogs.project_history',
   'cogs.project_nft',
