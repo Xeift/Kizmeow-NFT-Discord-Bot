@@ -22,7 +22,7 @@ If you want a stable bot, I suggest you build your own bot base on my code, or r
 
 Note
 -----------------
-If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free.
+If you no nothing about coding, I suggest you contact me via Discord Xeift#1230, I can create customize bot for your project for free(for minor changes in original bot, I don't have time to create a fully customize bot for you).
 Or you can just simply click the blue letter below and invite the bot to your server.
 
 [Kizmeow NFT Tracker V2 invite link](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=534723951680&scope=applications.commands%20bot)
