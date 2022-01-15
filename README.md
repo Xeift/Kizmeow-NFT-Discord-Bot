@@ -1,6 +1,6 @@
 # Kizmeow-OpenSea-and-Etherscan-Discord-Bot
 
-###Note: bot is under maintainance now. start time: gmt+8 2022/1/15 2:06 p.m. 
+### Note: bot is under maintainance now. start time: gmt+8 2022/1/15 2:06 p.m. 
 
 ### [中文版](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/blob/main/%E8%AE%80%E6%88%91.md) | [English Ver](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/blob/main/README.md)
 A Discord bot wrote with Python. Kizmeow let you track your NFT project and display some useful information(e.g. market cap, floor price, total supply, eth price, gas fee, transaction history, display NFT owner, download original resolution NFT image...etc) by calling Etherscan and OpenSea API.(This repl is in development)
