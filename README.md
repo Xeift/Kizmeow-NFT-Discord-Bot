@@ -14,6 +14,7 @@ Please use this version, V2 follows the modular design and I fixed some bugs in 
 
 [Kizmeow NFT Tracker V2 repl.it](https://replit.com/@xeiftc/Kizmeow-NFT-Tracker-V2)
 
+[Kizmeow NFT Tracker V2 (without list/sold notify) repl.it](https://replit.com/@Kizmeow-NFT-Tracker/Kizmeow-NFT-Tracker-V2without-listsold-notify)
 
 These bots are just demos, if you found commands not work, please kick the bot and reinvite it to your server.
 If you found bots offline, that's normal, I run these bots on repl.it, somtimes bots will offline because many people use my demo bots.
@@ -97,7 +98,7 @@ There are 2 ways to run this bot.
 Whether you choose first or second method, you'll need [Discord bot token](https://discord.com/developers/applications) and [Etherscan API](https://etherscan.io/myapikey). If you choose the second method, you'll also need [Uptimerbot](https://uptimerobot.com/) account. If you want to use "send message in specific channel when there's a list or sold event of your NFT collection on OpenSea" this function, you'll also need OpenSea API key, you can apply for the API key [here](https://docs.opensea.io/reference/request-an-api-key). Fill in the google form to apply for the API key. They will send API key to your gmail in about 2 days
 
 ### 1.run it on repl.it(cloud)
-You can run it on repl.it, just fork [it](https://replit.com/@xeiftc/Kizmeow-NFT-Tracker-V2) and run. Remember to change discord bot token and Etherscan API key, then put them in environment variable. **DO NOT PUT TOKENS IN YOUR CODE DIRECTLY** cuz repls on replit is public if you use their free plan, and there are some ppl using scrypt to grab your token.
+You can run it on repl.it, just fork [it](https://replit.com/@Kizmeow-NFT-Tracker/Kizmeow-NFT-Tracker-V2without-listsold-notify) and run. Remember to change discord bot token and Etherscan API key, then put them in environment variable. **DO NOT PUT TOKENS IN YOUR CODE DIRECTLY** cuz repls on replit is public if you use their free plan, and there are some ppl using scrypt to grab your token.
 Next, copy the link here, ![image](https://user-images.githubusercontent.com/80938768/146533872-021b05b3-f18c-44db-a943-527903dc6616.png) create a [Uptimerbot](https://uptimerobot.com/) account and paste your link here. ![image](https://user-images.githubusercontent.com/80938768/146534310-74201ab2-700e-4271-94a2-f2ecf8d12acb.png)
 
 ### 2.run it on your computer(local)
