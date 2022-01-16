@@ -7,6 +7,7 @@ import requests
 import time
 
 discord_token = os.environ['discord_token']
+osapikey = os.environ['osapikey']
 
 bot = commands.Bot(
 	command_prefix="k!", #  bot prefix
@@ -18,8 +19,6 @@ bot = commands.Bot(
 @bot.event
 async def on_ready():
   print("Ready!")
-
-  osapikey = os.environ['osapikey']
   while True:
     ################################################################################# event_list
     l_url = "https://api.opensea.io/api/v1/events?asset_contract_address=0xa6916545a56f75acd43fb6a1527a73a41d2b4081&event_type=created&only_opensea=false&offset=0&limit=1"
@@ -43,10 +42,7 @@ async def on_ready():
     file = open("temp.json", "r")
     p = json.load(file)
     listed = p['listed']
-    print(listed)
     file.close()
-     
-
     #################################################################################
 
     ################################################################################# event_sold
@@ -75,9 +71,8 @@ async def on_ready():
     file = open("temp.json", "r")
     p = json.load(file)
     sold = p['sold']
-    print(sold)
     file.close()
-###
+
     if listed != l_name:
       jsonObject = {
           "listed": l_name,
