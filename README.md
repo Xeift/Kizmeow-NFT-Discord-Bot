@@ -33,7 +33,7 @@ I put the code of old bot in `achive` folder.
 
 `Kizmeow OpenSea Trade Tracker` is the bot that will send embed message in specific channel when there's a list or sold event on OpenSea. This is its only function. In order to use this bot, you need **Etherscan API key** and **OpenSea API key**.
 
-What can this bot do?
+What can these bots do?
 -----------------
 ### `Kizmeow OpenSea Trade Tracker`
 
