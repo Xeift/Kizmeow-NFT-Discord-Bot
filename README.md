@@ -31,7 +31,7 @@ As you can see, there are 3 folders.
 
 I put the code of old bot in `achive` folder.
 
-
+`Kizmeow NFT Tracker V2`
 
 What can this bot do?
 -----------------
