@@ -35,7 +35,7 @@ I put the code of old bot in `achive` folder.
 
 What can this bot do?
 -----------------
--`Kizmeow OpenSea Trade Tracker`
+#### `Kizmeow OpenSea Trade Tracker`
 
 send message in specific channel when there's a list or sold event of your NFT collection on OpenSea
 
