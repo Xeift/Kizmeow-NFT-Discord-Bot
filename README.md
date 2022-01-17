@@ -23,6 +23,13 @@ Or you can just simply click the blue letter below and invite the bot to your se
 
 [Kizmeow NFT Tracker V2 invite link](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=534723951680&scope=applications.commands%20bot)
 
+Quickstart
+-----------------
+As you can see, there are 3 folders.
+![image](https://user-images.githubusercontent.com/80938768/149684882-782ed648-f0cc-4721-9a52-6e50c168c185.png)
+
+The fir
+
 What can this bot do?
 -----------------
 send message in specific channel when there's a list or sold event of your NFT collection on OpenSea
