@@ -26,9 +26,12 @@ Or you can just simply click the blue letter below and invite the bot to your se
 Quickstart
 -----------------
 As you can see, there are 3 folders.
+
 ![image](https://user-images.githubusercontent.com/80938768/149684882-782ed648-f0cc-4721-9a52-6e50c168c185.png)
 
-The fir
+I put the code of old bot in `achive` folder.
+
+
 
 What can this bot do?
 -----------------
