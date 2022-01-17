@@ -31,7 +31,9 @@ As you can see, there are 3 folders.
 
 I put the code of old bot in `achive` folder.
 
-`Kizmeow NFT Tracker V2`
+`Kizmeow NFT Tracker V2` is the main bot, most functions are in this bot. In order to use this bot, you need **Etherscan API key**.
+
+`Kizmeow OpenSea Trade Tracker` is the bot that will send embed message in specific channel when there's a list or sold event on OpenSea. This is its only function. In order to use this bot, you need **Etherscan API key** and **OpenSea API key**.
 
 What can this bot do?
 -----------------
