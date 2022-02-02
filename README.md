@@ -43,18 +43,6 @@ send message in specific channel when there's a list or sold event of your NFT c
 
 ### `Kizmeow NFT Tracker V2`
 
-`/demi-human`   //you can change these three commands below to your project in code. You can contact me if you know nothing about coding.
-
-display real-time price of Demi-Human.
-
-`/demi-human-history`
-
-display history price of Demi-Human.
-
-`/demi-nft`
-
-search specific Demi-Human NFT by token id. option: token_id
-
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 `/project-realtime`
