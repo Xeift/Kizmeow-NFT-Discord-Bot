@@ -55,7 +55,11 @@ display history price of specific project. option:project_name
 
 `/project-nft`
 
-search the NFT of a specific item and a specific number. option:contract_address token_id
+search the NFT of a specific collection and token id. option:contract_address token_id
+
+`/project-rarity`
+
+calculate the rarity of a specific NFT. option:collection_slug token_id
 
 `/txn`
 
