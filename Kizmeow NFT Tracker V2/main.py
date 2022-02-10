@@ -59,6 +59,7 @@ extensions = [
   'cogs.project_history',
   'cogs.project_nft',
   'cogs.project_realtime',
+  'cogs.project_rarity',
   'cogs.txn'
 ]
 

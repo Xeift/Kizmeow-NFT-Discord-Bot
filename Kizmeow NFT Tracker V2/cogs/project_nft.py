@@ -29,7 +29,9 @@ class project_nft(cogcore):
 
   async def nft(self,ctx,contract_address,token_id):
     url1='https://api.opensea.io/api/v1/asset/'+contract_address+'/'+token_id+'/?format=json' #api url
-    site1 = ur.urlopen(url1)
+    req = ur.Request(url=url1,headers={'User-Agent': 'Mozilla/5.0'})
+
+    site1 = ur.urlopen(req)
     page1 = site1.read()
     contents1 = page1.decode()
     data1 = json.loads(contents1)
