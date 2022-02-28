@@ -45,7 +45,9 @@ send message in specific channel when there's a list or sold event of your NFT c
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
-note: collection_slug is the text at the end of OpenSea url![image](https://user-images.githubusercontent.com/80938768/155941533-a9e86c86-54e5-4708-b1fe-0b05ca48033c.png)
+note: collection_slug is the text at the end of OpenSea url
+
+![image](https://user-images.githubusercontent.com/80938768/155941533-a9e86c86-54e5-4708-b1fe-0b05ca48033c.png)
 
 
 `/project-realtime`
