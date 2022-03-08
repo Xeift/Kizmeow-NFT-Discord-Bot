@@ -90,7 +90,7 @@ async def on_ready():
       embed.add_field(name="seller", value=f"{l_seller_address}", inline=False) 
       embed.add_field(name="OpenSea", value=f"{l_permalink}", inline=False) 
       await channel.send(embed=embed)
-    time.sleep(5)
+    asyncio.sleep(10)
 
     if sold != s_name:
       jsonObject = {
@@ -110,7 +110,7 @@ async def on_ready():
       embed.add_field(name="buyer", value=f"{s_buyer_address}", inline=False) 
       embed.add_field(name="OpenSea", value=f"{s_permalink}", inline=False) 
       await channel.send(embed=embed)
-    time.sleep(5) 
+    asyncio.sleep(10) 
     #################################################################################
 keep_alive.keep_alive()
 discord_token = os.environ['discord_token']
