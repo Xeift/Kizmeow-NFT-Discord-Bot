@@ -84,7 +84,6 @@ Requirements
 
 + discord
 + discord-py-slash-command
-+ qrcode
 + urllib
 + json
 + asyncio
