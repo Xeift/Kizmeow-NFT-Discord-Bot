@@ -14,7 +14,7 @@ Please use this version, V2 follows the modular design and I fixed some bugs in 
 
 [Kizmeow NFT Tracker V2 repl.it](https://replit.com/@xeiftc/Kizmeow-NFT-Tracker-V2)
 
-#Announcement
+# Announcement
 
 I'm going to rewrite the bot using pycord recently, simplify the code and add new features :)
 
