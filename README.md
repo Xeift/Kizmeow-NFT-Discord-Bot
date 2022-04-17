@@ -14,6 +14,10 @@ Please use this version, V2 follows the modular design and I fixed some bugs in 
 
 [Kizmeow NFT Tracker V2 repl.it](https://replit.com/@xeiftc/Kizmeow-NFT-Tracker-V2)
 
+#Announcement
+
+I'm going to rewrite the bot using pycord recently, simplify the code and add new features :)
+
 These bots are just demos, if you found commands not work, please kick the bot and reinvite it to your server.
 If you found bots offline, that's normal, I run these bots on repl.it, somtimes bots will offline because many people use my demo bots.
 If you want a stable bot, I suggest you build your own bot base on my code, or run the bot on your computer insted of on repl.it
