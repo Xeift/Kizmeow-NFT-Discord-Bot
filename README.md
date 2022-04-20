@@ -46,6 +46,8 @@ note: project_name is the text at the end of OpenSea url
 \[system commands]
 
 `/help` display help message
+![image](https://user-images.githubusercontent.com/80938768/164337448-46de8952-c06c-444d-87a0-414273be0d44.png)
+
 
 `/meow` return bot latency
 
