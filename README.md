@@ -42,33 +42,22 @@ note: project_name is the text at the end of OpenSea url
 ![image](https://user-images.githubusercontent.com/80938768/155941533-a9e86c86-54e5-4708-b1fe-0b05ca48033c.png)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
+
 \[system commands]
 
-`/help`
+`/help` display help message
 
-display help message
+`/meow` return bot latency
 
-`/meow`
+`/invite` invite Kizmeow to your server
 
-return bot latency
+\[NFT commands] 
 
-`/invite`
+`/project_realtime` display project realtime information
 
-invite Kizmeow to your server
+`/project_history` display project history information
 
-\[NFT commands]
-
-`/project_realtime`
-
-display project realtime information
-
-`/project_history`
-
-display project history information
-
-`/project_nft`
-
-display information of specific NFT
+`/project_nft` display information of specific NFT
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -81,29 +70,27 @@ Requirements
 **packages**
 
 + discord
-+ discord-py-slash-command
-+ urllib
-+ json
-+ asyncio
-+ request
++ py-cord 2.0.0b1
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 Video Tutorial
 -----------------
-check out 
+
+check out the [tutorial](https://www.youtube.com/watch?v=WFP9LdiB8yk) from V2.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Usage
 -----------------
-There are 2 ways to run this bot.
-Whether you choose first or second method, you'll need [Discord bot token](https://discord.com/developers/applications) and [Etherscan API](https://etherscan.io/myapikey). If you choose the second method, you'll also need [Uptimerbot](https://uptimerobot.com/) account. If you want to use "send message in specific channel when there's a list or sold event of your NFT collection on OpenSea" this function, you'll also need OpenSea API key, you can apply for the API key [here](https://docs.opensea.io/reference/request-an-api-key). Fill in the google form to apply for the API key. They will send API key to your gmail in about 2 days
+You need [Discord bot token](https://discord.com/developers/applications). And if you want to use "send message in specific channel when there's a list or sold event of your NFT collection on OpenSea" this function, you'll also need OpenSea API key, you can apply for the API key [here](https://docs.opensea.io/reference/request-an-api-key). Fill in the google form to apply for the API key. They will send API key to your gmail in about 2 days
 
-### 1.run it on repl.it(cloud)
-You can run it on repl.it, just fork [it](https://replit.com/@xeiftc/Kizmeow-NFT-Tracker-V2) and run. Remember to change discord bot token and Etherscan API key, then put them in environment variable. **DO NOT PUT TOKENS IN YOUR CODE DIRECTLY** cuz repls on replit is public if you use their free plan, and there are some ppl using scrypt to grab your token.
-Next, copy the link here, ![image](https://user-images.githubusercontent.com/80938768/146533872-021b05b3-f18c-44db-a943-527903dc6616.png) create a [Uptimerbot](https://uptimerobot.com/) account and paste your link here. ![image](https://user-images.githubusercontent.com/80938768/146534310-74201ab2-700e-4271-94a2-f2ecf8d12acb.png)
+1. Download [it](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/archive/refs/heads/main.zip)
+2. Make sure you have install python, Install all the packages in **Requirement** using `pip install PACKAGE_NAME`.
+3. Remember to change discord bot token.
+4. Run main.py with Visual Studio Code or Python's built-in IDLE.
 
-### 2.run it on your computer(local)
-Just download [it](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/archive/refs/heads/main.zip) and install all the packages in **Requirement**, make sure you have install python. Remember to change discord bot token and Etherscan API key. Then, run main.py
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Official Website
 -----------------
@@ -111,7 +98,16 @@ https://watercatuwu.github.io/kizmeow-nft-site/
 
 by WaterCatMeow
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Bot Avatar Illustrator
 -----------------
 [姬玥 Kiyue](https://www.facebook.com/profile.php?id=100026170072950)
 ![avatar](https://user-images.githubusercontent.com/80938768/146544100-315cdd44-7461-441b-a3dd-d3ee653b145a.png)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Author
+-----------------
+
+Xeift#1230
