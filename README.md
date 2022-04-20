@@ -19,7 +19,7 @@ As you can see, there are 3 folders.
 ![image](https://user-images.githubusercontent.com/80938768/164334232-7e6c6a00-a9ec-417d-bb7a-2fc7f82d926f.png)
 
 
-I put the code of old bot in `achive` folder.
+I put the code of old bots in `achive` folder.
 
 `Kizmeow NFT Tracker V3` is the main bot, most functions are in this bot.
 
@@ -58,25 +58,17 @@ invite Kizmeow to your server
 
 \[NFT commands]
 
-`/project-history`
+`/project_realtime`
 
-display history price of specific project. option:project_name
+display project realtime information
 
-`/project-nft`
+`/project_history`
 
-search the NFT of a specific collection and token id. option:contract_address token_id
+display project history information
 
-`/project-rarity`
+`/project_nft`
 
-calculate the rarity of a specific NFT. option:collection_slug token_id
-
-`/txn`
-
-enter the address and display the transaction record. option: eth_address
-
-`/account_info`
-
-enter the address to display ETH balance and Demi NFT balance. option: eth_address
+display information of specific NFT
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -94,7 +86,6 @@ Requirements
 + json
 + asyncio
 + request
-+ flask
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
