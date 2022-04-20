@@ -15,13 +15,14 @@ Quickstart
 -----------------
 As you can see, there are 3 folders.
 
-![image](https://user-images.githubusercontent.com/80938768/149684882-782ed648-f0cc-4721-9a52-6e50c168c185.png)
+![image](https://user-images.githubusercontent.com/80938768/164334232-7e6c6a00-a9ec-417d-bb7a-2fc7f82d926f.png)
+
 
 I put the code of old bot in `achive` folder.
 
-`Kizmeow NFT Tracker V2` is the main bot, most functions are in this bot. In order to use this bot, you need **Etherscan API key**.
+`Kizmeow NFT Tracker V3` is the main bot, most functions are in this bot.
 
-`Kizmeow OpenSea Trade Tracker` is the bot that will send embed message in specific channel when there's a list or sold event on OpenSea. This is its only function. In order to use this bot, you need **Etherscan API key** and **OpenSea API key**.
+`Kizmeow OpenSea Trade Tracker` is the bot that will send embed message in specific channel when there's a list or sold event on OpenSea. This is its only function. In order to use this bot, you need **OpenSea API key**.
 
 What can these bots do?
 -----------------
@@ -31,7 +32,7 @@ send message in specific channel when there's a list or sold event of your NFT c
 
 ![image](https://user-images.githubusercontent.com/80938768/149489498-5e80a294-a9a6-4a3d-8af2-fdcb6d530ba1.png)
 
-### `Kizmeow NFT Tracker V2`
+### `Kizmeow NFT Tracker V3`
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
