@@ -1,6 +1,5 @@
 # Kizmeow-OpenSea-and-Etherscan-Discord-Bot
 
-### [中文版](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/blob/main/%E8%AE%80%E6%88%91.md) | [English Ver](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/blob/main/README.md)
 A Discord bot wrote with Python. Kizmeow let you track your NFT project and display some useful information(e.g. market cap, floor price, total supply, eth price, gas fee, transaction history, display NFT owner, download original resolution NFT image...etc) by calling Etherscan and OpenSea API.
 
 If you like this project, please give me star on the upper right corner:)
@@ -10,6 +9,8 @@ I rewrote my code and updated bot to V3, if you still need V2, it's in the `achi
 [Kizmeow NFT Tracker V3 invite link](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=277025508352&scope=applications.commands%20bot)
 
 If you no nothing about coding, you can just simply click the blue letter above and invite the bot to your server.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
 Quickstart
 -----------------
@@ -24,6 +25,8 @@ I put the code of old bot in `achive` folder.
 
 `Kizmeow OpenSea Trade Tracker` is the bot that will send embed message in specific channel when there's a list or sold event on OpenSea. This is its only function. In order to use this bot, you need **OpenSea API key**.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 What can these bots do?
 -----------------
 ### `Kizmeow OpenSea Trade Tracker`
@@ -33,8 +36,6 @@ send message in specific channel when there's a list or sold event of your NFT c
 ![image](https://user-images.githubusercontent.com/80938768/149489498-5e80a294-a9a6-4a3d-8af2-fdcb6d530ba1.png)
 
 ### `Kizmeow NFT Tracker V3`
-
--------------------------------------------------------------------------------------------------------------------------------------------------
 
 note: collection_slug is the text at the end of OpenSea url
 
@@ -65,6 +66,8 @@ enter the address and display the transaction record. option: eth_address
 
 enter the address to display ETH balance and Demi NFT balance. option: eth_address
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Requirements
 -----------------
 **environment**
@@ -81,11 +84,11 @@ Requirements
 + request
 + flask
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Video Tutorial
 -----------------
-If you want to use different version bot, change the repl.it link I fork in the video.
-
-https://www.youtube.com/watch?v=WFP9LdiB8yk
+check out 
 
 Usage
 -----------------
