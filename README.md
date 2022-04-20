@@ -46,20 +46,30 @@ note: project_name is the text at the end of OpenSea url
 \[system commands]
 
 `/help` display help message
-![image](https://user-images.githubusercontent.com/80938768/164337448-46de8952-c06c-444d-87a0-414273be0d44.png)
 
+![image](https://user-images.githubusercontent.com/80938768/164337448-46de8952-c06c-444d-87a0-414273be0d44.png)
 
 `/meow` return bot latency
 
+![image](https://user-images.githubusercontent.com/80938768/164338206-20e35442-ce34-4d24-aa86-2d8e934e938f.png)
+
 `/invite` invite Kizmeow to your server
+
+![image](https://user-images.githubusercontent.com/80938768/164338268-dd8b3a89-04c6-473b-8103-f5b12d4e4f39.png)
 
 \[NFT commands] 
 
 `/project_realtime` display project realtime information
 
+![image](https://user-images.githubusercontent.com/80938768/164338371-d34321e9-f0f1-4958-a3ad-3c6e93dbbf6e.png)
+
 `/project_history` display project history information
 
+![image](https://user-images.githubusercontent.com/80938768/164338500-c11125c9-45d9-4e39-899f-d3e0bf323282.png)
+
 `/project_nft` display information of specific NFT
+
+![image](https://user-images.githubusercontent.com/80938768/164338606-84142664-055a-4231-af88-a82e7598a266.png)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
