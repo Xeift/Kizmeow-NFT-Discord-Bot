@@ -4,7 +4,7 @@ A Discord bot wrote with Python. Kizmeow let you track your NFT project and disp
 
 If you like this project, please give me star on the upper right corner:)
 
-I rewrote my code and updated bot to V3, if you still need V2, it's in the `achive` folder.
+I rewrote my code and updated bot to V3, if you still need V2, it's in the `archive` folder.
 
 V3 is more stable and faster than V2. I add buttons to the commands, makes it easier to use. I also remove some unnecessary permissions, makes Kizmeow safer.
 
