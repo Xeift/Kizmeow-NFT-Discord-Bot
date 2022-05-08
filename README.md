@@ -6,7 +6,7 @@ If you like this project, please give me star on the upper right corner:)
 
 I rewrote my code and updated bot to V3, if you still need V2, it's in the `archive` folder.
 
-V3 is more stable and faster than V2. I add buttons to the commands, makes it easier to use. I also remove some unnecessary permissions, makes Kizmeow safer.
+V3 is more stable and faster than V2. I add buttons to the commands and replace the old library with Pycord 2.0.0, it's easier to use now. I also remove some unnecessary permissions, makes Kizmeow safer.
 
 [Kizmeow NFT Tracker V3 invite link](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=277025508352&scope=applications.commands%20bot)
 
