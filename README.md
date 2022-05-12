@@ -73,6 +73,10 @@ note: project_name is the text at the end of OpenSea url
 
 ![image](https://user-images.githubusercontent.com/80938768/164338606-84142664-055a-4231-af88-a82e7598a266.png)
 
+`/contract_source_code` display contract source code
+
+![image](https://user-images.githubusercontent.com/80938768/168047834-2d45eb71-6794-4d74-a715-06cec72ee604.png)
+
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 Requirements
