@@ -101,7 +101,7 @@ check out the [tutorial](https://www.youtube.com/watch?v=WFP9LdiB8yk) from V2.
 
 Usage
 -----------------
-You need [Discord bot token](https://discord.com/developers/applications). And if you want to use "send message in specific channel when there's a list or sold event of your NFT collection on OpenSea" this function, you'll also need OpenSea API key, you can apply for the API key [here](https://docs.opensea.io/reference/request-an-api-key). Fill in the google form to apply for the API key. They will send API key to your gmail in about 2 days
+You need [Discord bot token](https://discord.com/developers/applications). And if you want to use list/sold event bot, you'll also need OpenSea API key, you can apply for the API key [here](https://docs.opensea.io/reference/request-an-api-key). Fill in the google form to apply for the API key. They will send API key to your gmail in about 2 days
 
 1. Download [it](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/archive/refs/heads/main.zip) and unzip it.
 2. Make sure you have install python, Install all the packages in **Requirement** using `pip install PACKAGE_NAME`.
