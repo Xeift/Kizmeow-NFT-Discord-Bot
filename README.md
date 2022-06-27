@@ -140,4 +140,4 @@ Bot Avatar Illustrator
 Author
 -----------------
 
-Xeift#1230
+Xeift#1230 & c0mradΞ.eth
