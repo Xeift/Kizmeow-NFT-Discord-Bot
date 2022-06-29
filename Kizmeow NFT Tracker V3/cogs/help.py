@@ -87,6 +87,7 @@ class help(commands.Cog):
             embed.add_field(name='**/project_realtime**', value='`display project realtime information`', inline=False)
             embed.add_field(name='**/project_history**', value='`display project history information`', inline=False)
             embed.add_field(name='**/project_nft**', value='`display information of specific NFT`', inline=False)
+            embed.add_field(name='**/project_rarity**', value='`calculate the rarity of a specific NFT`', inline=False)
 
             view = View()
             view.add_item(b_return)
