@@ -1,83 +1,82 @@
+import datetime
+
 import discord
+from discord.commands import Option
 from discord.commands import slash_command
 from discord.ext import commands
-from discord.commands import Option
-import os
-import json
-import urllib.request as ur
-from core.cog_core import cogcore
-from discord.ui import Button,View
+from discord.ui import Button, View
+from opensea import OpenseaAPI
+
 
 class project_nft(commands.Cog):
-    @slash_command(name='project_nft',description='display information of specific NFT')
-    async def project_nft(
-        self,
-        ctx: discord.ApplicationContext,
-        contract_address: Option(str, 'smart contract address of the project'),
-        token_id: Option(str, 'token id of the NFT')
-    ):
-        req = ur.Request(url='https://api.opensea.io/api/v1/asset/'+contract_address+'/'+token_id+'/?format=json',headers={'User-Agent': 'Mozilla/5.0'})
-        api0 = json.loads(ur.urlopen(req).read().decode())
 
-        if api0['name'] == None:
+    def __init__(self, bot):
+        self.bot = bot
+
+    @slash_command(name='project_nft', description='display information of specific NFT')
+    async def project_nft(
+            self,
+            ctx: discord.ApplicationContext,
+            contract_address: Option(str, 'smart contract address of the project'),
+            token_id: Option(str, 'token id of the NFT')
+    ):
+        api = OpenseaAPI(apikey='OS_API')
+        info = api.asset(asset_contract_address=contract_address,
+                         token_id=token_id)
+
+        if info['name'] == None:
             name = 'no data'
         else:
-            name = api0['name']
-        
-        if api0['image_original_url'] == None:
-            image_original_url = 'no data'
-        else:
-            image_original_url = api0['image_original_url']
+            name = info['name']
 
-        if api0['image_thumbnail_url'] == None:
-            image_thumbnail_url = 'no data'
+        if info['image_url'] == None:
+            image_url = 'no data'
         else:
-            image_thumbnail_url = api0['image_thumbnail_url']
+            image_url = info['image_url']
 
-        if api0['top_ownerships'][0]['owner']['user'] == None:
+        if info['top_ownerships'][0]['owner']['user'] == None:
             top_ownerships = 'no data'
         else:
-            top_ownerships = api0['top_ownerships'][0]['owner']['user']['username']
+            top_ownerships = info['top_ownerships'][0]['owner']['user']['username']
 
-        if api0['description'] == None:
+        if info['description'] == None:
             description = 'no data'
         else:
-            description = api0['description']
+            description = info['description']
 
-        if api0['collection']['primary_asset_contracts'][0]['external_link'] == None:
+        if info['collection']['primary_asset_contracts'][0]['external_link'] == None:
             external_link = 'no data'
         else:
-            external_link = api0['collection']['primary_asset_contracts'][0]['external_link']
+            external_link = info['collection']['primary_asset_contracts'][0]['external_link']
 
-        if api0['collection']['primary_asset_contracts'][0]['schema_name'] == None:
+        if info['collection']['primary_asset_contracts'][0]['schema_name'] == None:
             schema_name = 'no data'
         else:
-            schema_name = api0['collection']['primary_asset_contracts'][0]['schema_name']
+            schema_name = info['collection']['primary_asset_contracts'][0]['schema_name']
 
-        if api0['token_id'] == None:
-            token_id1 = 'no data'
-        else:
-            token_id1 = api0['token_id']
-
-        if api0['permalink'] == None:
+        if info['permalink'] == None:
             permalink = 'no data'
         else:
-            permalink = api0['permalink']
+            permalink = info['permalink']
 
-        button = Button(label='Download original resolution image', style=discord.ButtonStyle.link, url=image_original_url)
+        button1 = Button(label='Official website', style=discord.ButtonStyle.link,
+                         url=external_link)
+        button2 = Button(label='Original resolution image', style=discord.ButtonStyle.link,
+                         url=image_url)
         view = View()
-        view.add_item(button)
+        view.add_item(button1)
+        view.add_item(button2)
 
-        embed=discord.Embed(title='project NFT', color=0xFFA46E)
-        embed.set_thumbnail(url=image_thumbnail_url)
-        embed.add_field(name='token id' , value=token_id1, inline=False) 
-        embed.add_field(name='description' , value=description, inline=False)     
-        embed.add_field(name='official website' , value=external_link, inline=False) 
-        embed.add_field(name='token type' , value=schema_name, inline=False) 
-        embed.add_field(name='owner' , value=top_ownerships, inline=False)
-        embed.add_field(name='OpenSea' , value=permalink, inline=False)
-        embed.add_field(name='original resolution image' , value=image_original_url, inline=False)
-        
-        await ctx.respond(embed=embed,view=view)
+        embed = discord.Embed(title='**' + name + '**', url=permalink, color=0xFFA46E)
+        embed.set_image(url=image_url)
+        embed.add_field(name='Owner', value='`' + top_ownerships + '`', inline=True)
+        embed.add_field(name='Token type', value='`' + schema_name + '`', inline=True)
+        embed.add_field(name='Description', value='`' + description + '`', inline=False)
+        embed.timestamp = datetime.datetime.now()
+        embed.set_footer(text=name)
+
+        await ctx.respond(embed=embed, view=view)
+
+
 def setup(bot):
     bot.add_cog(project_nft(bot))
