@@ -47,13 +47,13 @@ class help(commands.Cog):
         async def b_bot_info_callback(interaction):
             embed = discord.Embed(title='**Bot info**', description='', color=0xFFA46E)
             embed.add_field(name='**Bot name**', value='[Kizmeow NFT Tracker V3#2184]('
-                                                   'https://discord.com/api/oauth2/authorize?client_id'
-                                                   '=923512417907015693&permissions=277025508352&scope=applications'
-                                                   '.commands%20bot)', inline=False)
+                                                       'https://discord.com/api/oauth2/authorize?client_id'
+                                                       '=923512417907015693&permissions=277025508352&scope=applications'
+                                                       '.commands%20bot)', inline=False)
             embed.add_field(name='**Developer**', value='[Xeift#1230](https://discord.com/users/874806243208871977)',
                             inline=False)
             embed.add_field(name='**Bot avatar illustrator**', value='[Kiyue](https://www.facebook.com/profile.php?id'
-                                                                 '=100026170072950)', inline=False)
+                                                                     '=100026170072950)', inline=False)
             embed.add_field(name='**Programming language**', value='[Python](https://www.python.org/)', inline=False)
             b_github = Button(label='GitHub', style=discord.ButtonStyle.link,
                               url='https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot')
