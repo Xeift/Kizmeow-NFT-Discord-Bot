@@ -12,13 +12,12 @@ class gas(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='gas', description='check ETH gas')
+    @slash_command(name='gas', description='check eth gas')
     async def gas(
             self,
             ctx: discord.ApplicationContext,
     ):
-        url = 'https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey' \
-              '=6QWR9PMXTHM9B5SCN756Q6BPCRRYA8WC92'  # api url 
+        url = 'https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=' +etherscan_api_key  # api url
 
         site = ur.urlopen(url)
         page = site.read()
@@ -30,7 +29,7 @@ class gas(commands.Cog):
         FastGasPrice = data['result']['FastGasPrice']
 
         embed = discord.Embed(title='**⛽ETH Gas Prices**', url='https://etherscan.io/gastracker', color=0xFFA46E)
-        embed.set_image(url=)
+        embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/960985313608605728/992414103962390588/ETH.png')
         embed.add_field(name='Slow🐢', value='`' + SafeGasPrice + ' Gwei`', inline=False)
         embed.add_field(name='Normal🚶🏼‍♂', value='`' + ProposeGasPrice + ' Gwei`', inline=False)
         embed.add_field(name='Fast⚡', value='`' + FastGasPrice + ' Gwei`', inline=False)
