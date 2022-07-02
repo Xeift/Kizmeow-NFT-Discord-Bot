@@ -1,4 +1,5 @@
 import discord
+import datetime
 from discord.ext import commands
 from discord.commands import slash_command
 from discord.ui import Button, View
@@ -18,6 +19,7 @@ class help(commands.Cog):
         b_bot_info = Button(label='Bot info', style=discord.ButtonStyle.blurple)
         b_system_commands = Button(label='System commands', style=discord.ButtonStyle.blurple)
         b_nft_commands = Button(label='NFT commands', style=discord.ButtonStyle.blurple)
+        b_eth_commands = Button(label='eth commands', style=discord.ButtonStyle.blurple)
         b_return = Button(style=discord.ButtonStyle.gray, emoji='↩️')
 
         # ----------------------------------------------------------------------------------------------------buttons
@@ -30,6 +32,7 @@ class help(commands.Cog):
             view.add_item(b_bot_info)
             view.add_item(b_system_commands)
             view.add_item(b_nft_commands)
+            view.add_item(b_eth_commands)
             view.add_item(b_return)
 
             embed = discord.Embed(title='**Help**', description='`click the button below to select different section`',
@@ -37,6 +40,7 @@ class help(commands.Cog):
             embed.add_field(name='**Bot info**', value='`information about the bot`', inline=False)
             embed.add_field(name='**System commands**', value='`list of system commands`', inline=False)
             embed.add_field(name='**NFT commands**', value='`list of NFT commands`', inline=False)
+            embed.timestamp = datetime.datetime.now()
             await interaction.response.edit_message(embed=embed, view=view)
 
         b_return.callback = b_return_callback
@@ -57,6 +61,8 @@ class help(commands.Cog):
             embed.add_field(name='**Programming language**', value='[Python](https://www.python.org/)', inline=False)
             b_github = Button(label='GitHub', style=discord.ButtonStyle.link,
                               url='https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot')
+            embed.timestamp = datetime.datetime.now()
+
             view = View()
             view.add_item(b_github)
             view.add_item(b_return)
@@ -72,6 +78,7 @@ class help(commands.Cog):
             embed.add_field(name='**/help**', value='`display this message`', inline=False)
             embed.add_field(name='**/meow**', value='`return bot latency`', inline=False)
             embed.add_field(name='**/invite**', value='`invite Kizmeow to your server`', inline=False)
+            embed.timestamp = datetime.datetime.now()
 
             view = View()
             view.add_item(b_return)
@@ -88,6 +95,7 @@ class help(commands.Cog):
             embed.add_field(name='**/project_history**', value='`display project history information`', inline=False)
             embed.add_field(name='**/project_nft**', value='`display information of specific NFT`', inline=False)
             embed.add_field(name='**/project_rarity**', value='`calculate the rarity of a specific NFT`', inline=False)
+            embed.timestamp = datetime.datetime.now()
 
             view = View()
             view.add_item(b_return)
@@ -96,21 +104,38 @@ class help(commands.Cog):
         b_nft_commands.callback = b_nft_commands_callback
         # ----------------------------------------------------------------------------------------------------NFT commands callback
 
+        # ----------------------------------------------------------------------------------------------------eth commands callback
+        async def b_eth_commands_callback(interaction):
+            embed = discord.Embed(title='**ETH commands**', description='', color=0xFFA46E)
+            embed.add_field(name='**/gas**', value='`returns the last price for gas`', inline=False)
+            embed.add_field(name='**/eth**', value='`returns the last price for eth in usd`', inline=False)
+            embed.timestamp = datetime.datetime.now()
+
+            view = View()
+            view.add_item(b_return)
+            await interaction.response.edit_message(embed=embed, view=view)
+
+        b_eth_commands.callback = b_eth_commands_callback
+
+        # ----------------------------------------------------------------------------------------------------eth commands callback
+
         # ----------------------------------------------------------------------------------------------------default buttons
         view = View()
 
         view.add_item(b_bot_info)
         view.add_item(b_system_commands)
         view.add_item(b_nft_commands)
+        view.add_item(b_eth_commands)
         view.add_item(b_return)
         # ----------------------------------------------------------------------------------------------------default buttons
 
         # ----------------------------------------------------------------------------------------------------default embed
         embed = discord.Embed(title='**Help**', description='`click the button below to select different section`',
                               color=0xFFA46E)
-        embed.add_field(name='**Dot info**', value='`information about the bot`', inline=False)
+        embed.add_field(name='**Bot info**', value='`information about the bot`', inline=False)
         embed.add_field(name='**System commands**', value='`list of system commands`', inline=False)
         embed.add_field(name='**NFT commands**', value='`list of NFT commands`', inline=False)
+        embed.timestamp = datetime.datetime.now()
         await ctx.respond(embed=embed, view=view)
         # ----------------------------------------------------------------------------------------------------default embed
 

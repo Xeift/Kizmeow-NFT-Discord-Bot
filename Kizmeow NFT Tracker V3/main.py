@@ -10,7 +10,7 @@ bot = discord.Bot(intents=discord.Intents.all(), )
 async def on_ready():
     print(f'We have logged in as {bot.user}')
     while True:
-        url = 'https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=' +etherscan_api_key  # api url
+        url = 'https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=' + etherscan_api_key  # api url
 
         site = ur.urlopen(url)
         page = site.read()
@@ -38,6 +38,7 @@ extensions = [  # load cogs
     'cogs.gas',
     'cogs.eth',
     # --------------------etherscan commands
+
     # --------------------NFT commands
     'cogs.project_rarity',
     'cogs.project_realtime',

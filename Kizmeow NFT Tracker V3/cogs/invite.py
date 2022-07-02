@@ -1,4 +1,5 @@
 import discord
+import datetime
 from discord.commands import slash_command
 from discord.ext import commands
 from discord.ui import Button, View
@@ -21,7 +22,9 @@ class invite(commands.Cog):
         view.add_item(button)
         embed = discord.Embed(title='**Invite**', description='**Click the button below to invite bot to your server**',
                               color=0xFFA46E)
-        embed.set_thumbnail(url='https://user-images.githubusercontent.com/80938768/146544100-315cdd44-7461-441b-a3dd-d3ee653b145a.png')
+        embed.set_thumbnail(url='https://user-images.githubusercontent.com/80938768/146544100-315cdd44-7461-441b-a3dd'
+                                '-d3ee653b145a.png')
+        embed.timestamp = datetime.datetime.now()
         await ctx.respond(embed=embed, view=view)
 
 
