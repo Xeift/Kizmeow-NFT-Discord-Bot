@@ -52,7 +52,7 @@ class project_rarity(commands.Cog):
         file = open("traits.json", "r")
         data = json.load(file)
 
-        api = OpenseaAPI(apikey="bc734b71e4c94692992026987967b1fc")
+        api = OpenseaAPI(apikey="OS_API")
         info1 = api.asset(asset_contract_address=contract_address,
                           token_id=token_id)
 
