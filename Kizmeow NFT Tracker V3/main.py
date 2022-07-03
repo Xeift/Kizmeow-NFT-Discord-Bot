@@ -24,7 +24,7 @@ async def on_ready():
         presence_ctx = '⚡️' + FastGasPrice + '| 🚶🏼‍♂️' + ProposeGasPrice + '| 🐢' + SafeGasPrice
 
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=presence_ctx))
-        await asyncio.sleep(25)
+        await asyncio.sleep(60)
 
 
 extensions = [  # load cogs
