@@ -1,6 +1,4 @@
 import datetime
-import json
-
 import discord
 from discord.commands import Option
 from discord.commands import slash_command
@@ -52,7 +50,7 @@ class project_rarity(commands.Cog):
         file = open("traits.json", "r")
         data = json.load(file)
 
-        api = OpenseaAPI(apikey="OS_API")
+        api = OpenseaAPI(apikey="bc734b71e4c94692992026987967b1fc")
         info1 = api.asset(asset_contract_address=contract_address,
                           token_id=token_id)
 
