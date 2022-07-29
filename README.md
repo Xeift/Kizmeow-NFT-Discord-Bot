@@ -4,10 +4,6 @@ A Discord bot wrote with Python. Kizmeow let you track your NFT project and disp
 
 If you like this project, please give me star on the upper right corner:)
 
-I rewrote my code and updated bot to V3, if you still need V2, it's in the `archive` folder.
-
-V3 is more stable and faster than V2. I add buttons to the commands and replace the old library with Pycord 2.0.0, it's easier to use now. I also remove some unnecessary permissions, makes Kizmeow safer.
-
 [Kizmeow NFT Tracker V3 invite link](https://discord.com/api/oauth2/authorize?client_id=923512417907015693&permissions=277025508352&scope=applications.commands%20bot)
 
 If you no nothing about coding, you can just simply click the blue letter above and invite the bot to your server.
@@ -16,10 +12,6 @@ If you no nothing about coding, you can just simply click the blue letter above 
 
 Quickstart
 -----------------
-As you can see, there are 3 folders.
-
-![image](https://user-images.githubusercontent.com/80938768/164334232-7e6c6a00-a9ec-417d-bb7a-2fc7f82d926f.png)
-
 
 I put the code of old bots in `achive` folder.
 
