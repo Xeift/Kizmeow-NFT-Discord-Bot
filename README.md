@@ -73,7 +73,7 @@ You need [Discord bot token](https://discord.com/developers/applications)
 
 FAQ
 -----------------
-* **Why did I see "The application did not respond"?**
+**Why did I see "The application did not respond"?**
 
 ![image](https://user-images.githubusercontent.com/80938768/174103309-8c31a358-8078-40bb-b0b2-7b19b6509548.png)
 
@@ -82,7 +82,7 @@ FAQ
 3. You entered wrong parameter. For example, you use `/project_nft` command, entered `0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d` and `45678` as parameter. Since there 's no BAYC#45678, your command failed.
 4. My old pc shutdown for some reason. Very likely because of the fucking win10 update.
 
-* **What is `collection_slug`? **
+**What is `collection_slug`? **
 
 collection_slug is the text at the end of OpenSea collection url
 
