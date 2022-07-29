@@ -13,6 +13,7 @@ If you no nothing about coding, you can just simply click the blue letter above 
 What can this bots do?
 -----------------
 
+note: collection_slug is the text at the end of OpenSea collection url
 ![image](https://user-images.githubusercontent.com/80938768/155941533-a9e86c86-54e5-4708-b1fe-0b05ca48033c.png)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
