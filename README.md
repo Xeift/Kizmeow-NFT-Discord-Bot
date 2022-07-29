@@ -10,15 +10,7 @@ If you no nothing about coding, you can just simply click the blue letter above 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
-What can this bots do?
------------------
-
-note: `collection_slug` is the text at the end of OpenSea collection url
-![image](https://user-images.githubusercontent.com/80938768/155941533-a9e86c86-54e5-4708-b1fe-0b05ca48033c.png)
-
--------------------------------------------------------------------------------------------------------------------------------------------------
-
-\[system commands]
+[system commands]
 
 `/help` display help message
 
@@ -89,6 +81,12 @@ Why did I see "The application did not respond"?
 2. The collection is not on ETH Mainnet(Polygon, Solana). Currently, Kizmeow only support NFTs on Mainnet.
 3. You entered wrong parameter. For example, you use `/project_nft` command, entered `0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d` and `45678` as parameter. Since there 's no BAYC#45678, your command failed.
 4. My old pc shutdown for some reason. Very likely because of the fucking win10 update.
+
+What is `collection_slug`? 
+
+collection_slug is the text at the end of OpenSea collection url
+
+![image](https://user-images.githubusercontent.com/80938768/155941533-a9e86c86-54e5-4708-b1fe-0b05ca48033c.png)
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
