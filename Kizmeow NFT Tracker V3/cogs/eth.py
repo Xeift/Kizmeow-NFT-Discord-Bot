@@ -17,7 +17,10 @@ class eth(commands.Cog):
             self,
             ctx: discord.ApplicationContext,
     ):
-        url = 'https://api.etherscan.io/api?module=stats&action=ethprice&apikey=' +etherscan_api_key  # api url
+        with open('Kizmeow NFT Tracker V3/config.json','r') as of:
+            config = json.load(of)
+            
+        url = 'https://api.etherscan.io/api?module=stats&action=ethprice&apikey=' + config['ETHERSCAN_API_KEY']  # api url
 
         site = ur.urlopen(url)
         page = site.read()
