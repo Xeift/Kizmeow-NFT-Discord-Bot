@@ -67,7 +67,8 @@ You need [Discord bot token](https://discord.com/developers/applications)
 1. Download [it](https://github.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/archive/refs/heads/main.zip) and unzip it.
 2. Make sure you have install python, Install all the packages in **Requirement** using `pip install PACKAGE_NAME`.
 3. Remember to change discord bot token.
-4. Run main.py with Visual Studio Code or Python's built-in IDLE.
+4. Run config.py with Visual Studio Code or Python's built-in IDLE, enter your Etherscan API key and Discord bot token to configure your bot.
+5. Run main.py with Visual Studio Code or Python's built-in IDLE to start the bot.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
