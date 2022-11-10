@@ -4,7 +4,6 @@ import datetime
 from etherscan import Etherscan
 from dotenv import load_dotenv
 from discord.ext import commands
-from discord.commands import slash_command
 
 
 class eth(commands.Cog):
@@ -12,7 +11,7 @@ class eth(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='eth', description='Check eth price')
+    @commands.slash_command(name='eth', description='Check eth price')
     async def gas(
             self,
             ctx: discord.ApplicationContext,
@@ -31,7 +30,7 @@ class eth(commands.Cog):
         embed.set_author(name='Etherscan', url='https://etherscan.io',
                          icon_url="https://raw.githubusercontent.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/main/access/etherscan-logo-circle.png")
 
-        await ctx.send_response(embed=embed)
+        await ctx.send_response(embed=embed, ephemeral=True)
 
 
 def setup(bot):

@@ -14,7 +14,7 @@ class meow(commands.Cog):
             ctx: discord.ApplicationContext
     ):
         embed = discord.Embed(title='Nyaa!', description=f'{self.bot.latency * 1000:.2f} ms', color=0xFFA46E)
-        await ctx.respond(embed=embed)
+        await ctx.respond(embed=embed, ephemeral=True)
 
 
 def setup(bot):  # add cog

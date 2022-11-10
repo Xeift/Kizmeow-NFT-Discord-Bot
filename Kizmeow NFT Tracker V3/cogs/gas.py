@@ -4,7 +4,6 @@ import datetime
 from dotenv import load_dotenv
 from etherscan import Etherscan
 from discord.ext import commands
-from discord.commands import slash_command
 
 
 class gas(commands.Cog):
@@ -12,7 +11,7 @@ class gas(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='gas', description='Check eth gas')
+    @commands.slash_command(name='gas', description='Check eth gas')
     async def gas(
             self,
             ctx: discord.ApplicationContext,
@@ -25,8 +24,10 @@ class gas(commands.Cog):
         embed.set_thumbnail(
             url='https://raw.githubusercontent.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/main/access/eth-diamond-black.png')
         embed.add_field(name='_ _',
-                        value='**Slow🐢 ║** `' + gas_oracle['SafeGasPrice'] + ' Gwei`\n\n**Normal🚶🏼‍♂ ║** `' + gas_oracle[
-                            'ProposeGasPrice'] + ' Gwei`\n\n**Fast⚡ ║** `' + gas_oracle['FastGasPrice'] + ' Gwei`',
+                        value='**Slow🐢 ║** `' + gas_oracle['SafeGasPrice'] + ' Gwei`\n\n**Normal🚶🏼‍♂ ║** `' +
+                              gas_oracle[
+                                  'ProposeGasPrice'] + ' Gwei`\n\n**Fast⚡ ║** `' + gas_oracle[
+                                  'FastGasPrice'] + ' Gwei`',
                         inline=False)
         embed.timestamp = datetime.datetime.now()
         embed.set_footer(text='Powered by',
@@ -34,7 +35,7 @@ class gas(commands.Cog):
         embed.set_author(name='Etherscan', url='https://etherscan.io/gastracker',
                          icon_url="https://raw.githubusercontent.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/main/access/etherscan-logo-circle.png")
 
-        await ctx.respond(embed=embed)
+        await ctx.respond(embed=embed, ephemeral=True)
 
 
 def setup(bot):
