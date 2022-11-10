@@ -1,10 +1,10 @@
-import datetime
-import asyncio
-import json
-import urllib.request as ur
+import os
 import discord
-from discord.commands import slash_command
+import datetime
+from dotenv import load_dotenv
+from etherscan import Etherscan
 from discord.ext import commands
+from discord.commands import slash_command
 
 
 class gas(commands.Cog):
@@ -12,31 +12,27 @@ class gas(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='gas', description='check eth gas')
+    @slash_command(name='gas', description='Check eth gas')
     async def gas(
             self,
             ctx: discord.ApplicationContext,
     ):
-        with open('Kizmeow NFT Tracker V3/config.json','r') as of:
-            config = json.load(of)
-        url = 'https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=' + config['ETHERSCAN_API_KEY']  # api url
+        load_dotenv()
+        eth = Etherscan(os.getenv('ETHERSCAN_API_KEY'))
+        gas_oracle = eth.get_gas_oracle()
 
-        site = ur.urlopen(url)
-        page = site.read()
-        contents = page.decode()
-        data = json.loads(contents)
-
-        SafeGasPrice = data['result']['SafeGasPrice']
-        ProposeGasPrice = data['result']['ProposeGasPrice']
-        FastGasPrice = data['result']['FastGasPrice']
-
-        embed = discord.Embed(title='**⛽ETH Gas Prices**', url='https://etherscan.io/gastracker', color=0xFFA46E)
-        embed.set_thumbnail(url='https://cdn.discordapp.com/attachments/960985313608605728/992414103962390588/ETH.png')
-        embed.add_field(name='Slow🐢', value='`' + SafeGasPrice + ' Gwei`', inline=False)
-        embed.add_field(name='Normal🚶🏼‍♂', value='`' + ProposeGasPrice + ' Gwei`', inline=False)
-        embed.add_field(name='Fast⚡', value='`' + FastGasPrice + ' Gwei`', inline=False)
+        embed = discord.Embed(title='**ETH Gas Prices**', color=0xFFA46E)
+        embed.set_thumbnail(
+            url='https://raw.githubusercontent.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/main/access/eth-diamond-black.png')
+        embed.add_field(name='_ _',
+                        value='**Slow🐢 ║** `' + gas_oracle['SafeGasPrice'] + ' Gwei`\n\n**Normal🚶🏼‍♂ ║** `' + gas_oracle[
+                            'ProposeGasPrice'] + ' Gwei`\n\n**Fast⚡ ║** `' + gas_oracle['FastGasPrice'] + ' Gwei`',
+                        inline=False)
         embed.timestamp = datetime.datetime.now()
-        embed.set_footer(text='Fetched from etherscan')
+        embed.set_footer(text='Powered by',
+                         icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/main/access/etherscan-logo-circle.png')
+        embed.set_author(name='Etherscan', url='https://etherscan.io/gastracker',
+                         icon_url="https://raw.githubusercontent.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/main/access/etherscan-logo-circle.png")
 
         await ctx.respond(embed=embed)
 
