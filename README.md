@@ -103,4 +103,5 @@ Bot Avatar Illustrator
 Author
 -----------------
 
-`xeift.eth (Xeift#1230)` & `c0mradΞ.eth (c0mradΞ.eth#0084)`
+`xeift.eth` (Xeift#1230)
+`c0mradΞ.eth` (c0mradΞ.eth#0084)
