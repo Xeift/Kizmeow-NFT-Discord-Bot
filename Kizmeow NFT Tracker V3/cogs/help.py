@@ -33,7 +33,7 @@ class help(commands.Cog):
             view.add_item(b_system_commands)
             view.add_item(b_nft_commands)
             view.add_item(b_eth_commands)
-            view.add_item(b_return)
+            #view.add_item(b_return)
 
             embed = discord.Embed(title='**Help**', description='`click the button below to select different section`',
                                   color=0xFFA46E)
@@ -126,7 +126,7 @@ class help(commands.Cog):
         view.add_item(b_system_commands)
         view.add_item(b_nft_commands)
         view.add_item(b_eth_commands)
-        view.add_item(b_return)
+        #view.add_item(b_return)
         # ----------------------------------------------------------------------------------------------------default buttons
 
         # ----------------------------------------------------------------------------------------------------default embed

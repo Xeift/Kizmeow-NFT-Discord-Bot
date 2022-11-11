@@ -30,7 +30,7 @@ class eth(commands.Cog):
         embed.set_author(name='Etherscan', url='https://etherscan.io',
                          icon_url="https://raw.githubusercontent.com/Xeift/Kizmeow-OpenSea-and-Etherscan-Discord-Bot/main/access/etherscan-logo-circle.png")
 
-        await ctx.send_response(embed=embed, ephemeral=True)
+        await ctx.respond(embed=embed, ephemeral=True)
 
 
 def setup(bot):
