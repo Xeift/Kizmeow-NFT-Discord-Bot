@@ -24,7 +24,7 @@ If you no nothing about coding, you can just simply click the blue letter above 
 
 ![image](https://user-images.githubusercontent.com/80938768/164338268-dd8b3a89-04c6-473b-8103-f5b12d4e4f39.png)
 
-\[NFT commands] 
+[NFT commands] 
 
 `/project_realtime` display project realtime information
 
