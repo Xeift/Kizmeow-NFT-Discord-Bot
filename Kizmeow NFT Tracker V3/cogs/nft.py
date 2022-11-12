@@ -1,0 +1,264 @@
+import os
+import discord
+import datetime
+import requests
+from dotenv import load_dotenv
+from discord.ext import commands
+from discord.ui import Button, View
+from discord.commands import Option
+from discord.commands import slash_command
+
+
+class nft(commands.Cog):
+
+    def __init__(self, bot):
+        self.bot = bot
+
+    @commands.slash_command(name='nft', description='View all information about the nft')
+    async def nft(
+            self,
+            ctx: discord.ApplicationContext,
+            collection: Option(str, 'Specify the collection slug'),
+            token_id: Option(str, 'Enter the token number')
+    ):
+        b_rarity = Button(label='Rarity💎', style=discord.ButtonStyle.blurple)
+        b_last_sale = Button(label='Last Sale💳', style=discord.ButtonStyle.green)
+        # b_x2y2 = Button(label='X2Y2🌀', style=discord.ButtonStyle.grey)
+        b_return = Button(label='EXIT', style=discord.ButtonStyle.red)
+
+        async def b_return_callback(interaction):
+            view = View(timeout=None)
+            view.add_item(b_rarity)
+            view.add_item(b_last_sale)
+            # view.add_item(b_x2y2)
+            load_dotenv()
+            url0 = "https://api.modulenft.xyz/api/v2/eth/nft/token?slug="f'{collection}'"&tokenId="f'{token_id}'
+
+            headers0 = {
+                "accept": "application/json",
+                "X-API-KEY": os.getenv('MODULE_API_KEY')
+            }
+
+            r0 = requests.get(url0, headers=headers0).json()
+
+            if r0['data']['collection']['name'] == None:
+                name = 'no data'
+            else:
+                name = r0['data']['collection']['name']
+
+            if r0['data']['collection']['slug'] == None:
+                slug = 'no data'
+            else:
+                slug = r0['data']['collection']['slug']
+
+            if r0['data']['collection']['contractAddress'] == None:
+                contractAddress = 'no data'
+            else:
+                contractAddress = str(r0['data']['collection']['contractAddress'])
+
+            if r0['data']['collection']['images']['image_url'] == None:
+                image_url = 'https://imgur.com/aSSH1jL'
+            else:
+                image_url = r0['data']['collection']['images']['image_url']
+
+            if r0['data']['metadata']['name'] == None:
+                name_token = 'no data'
+            else:
+                name_token = r0['data']['metadata']['name']
+
+            if r0['data']['metadata']['image'] == None:
+                image_url_token = 'https://imgur.com/aSSH1jL'
+            else:
+                image_url_token = r0['data']['metadata']['image']
+
+            if r0['data']['metadata']['token_id'] == None:
+                id_ = '0'
+            else:
+                id_ = str(r0['data']['metadata']['token_id'])
+
+            if r0['data']['owner']['owner'] == None:
+                owner = 0x0000000000000000000000000000000000000000
+            else:
+                owner = r0['data']['owner']['owner']
+
+            embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
+            embed.set_image(url=image_url_token)
+            embed.add_field(name='Owner', value="["f'{owner[0:6]}'"](https://etherscan.io/address/"f'{owner}'")",
+                            inline=False)
+            # embed.add_field(name=, value=, inline=False)
+            embed.set_author(name=f'{name}', url="https://opensea.io/assets/"f'{contractAddress}'"/"f'{id_}',
+                             icon_url=image_url)
+            embed.set_footer(text=f'{name}', icon_url=image_url)
+            embed.timestamp = datetime.datetime.now()
+
+            await interaction.response.edit_message(embed=embed, view=view)
+
+        b_return.callback = b_return_callback
+
+        async def b_rarity_callback(interaction):
+            load_dotenv()
+
+            url1 = f'https://api.traitsniper.com/v1/collections/{contractAddress}/nfts?token_ids={id_}'
+
+            headers1 = {
+                "accept": "application/json",
+                "x-ts-api-key": os.getenv('TRAITSNIPER_API_KEY')
+            }
+
+            r1 = requests.get(url1, headers=headers1).json()
+
+            if r1['nfts'][0]['rarity_rank'] == None:
+                rarity_rank = '0'
+            else:
+                rarity_rank = r1['nfts'][0]['rarity_rank']
+
+            if r1['nfts'][0]['rarity_score'] == None:
+                rarity_score = '0'
+            else:
+                rarity_score = r1['nfts'][0]['rarity_score']
+
+            embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
+            embed.set_image(url=image_url_token)
+            embed.add_field(name='Owner', value="["f'{owner[0:6]}'"](https://etherscan.io/address/"f'{owner}'")",
+                            inline=False)
+            embed.add_field(name='Rank', value=f'{rarity_rank}', inline=True)
+            embed.add_field(name='Score', value=f'{rarity_score:.2f}', inline=True)
+            embed.add_field(name='═════════════Traits═════════════', value='_ _', inline=False)
+            for t in r1['nfts'][0]['traits']:
+                if (t['name']) == None:
+                    name_t = 'no data'
+                else:
+                    name_t = (t['name'])
+                if (t['value']) == None:
+                    value = 'no data'
+                else:
+                    value = (t['value'])
+                if (t['score']) == None:
+                    score = 'no data'
+                else:
+                    score = float(t['score'])
+                embed.add_field(name=f'{name_t}', value=f'{value}\n'f'`{score:.2f}`', inline=True)
+                embed.set_author(name=f'{name}', url="https://opensea.io/assets/"f'{contractAddress}'"/"f'{id_}',
+                                 icon_url=image_url)
+                embed.set_footer(text=f'{name}', icon_url=image_url)
+                embed.timestamp = datetime.datetime.now()
+
+            view = View(timeout=None)
+            view.add_item(b_return)
+            await interaction.response.edit_message(embed=embed, view=view)
+
+        b_rarity.callback = b_rarity_callback
+
+        async def b_last_sale_callback(interaction):
+            if r0['data']['lastSale']['from_address'] == None:
+                from_address = 'no data'
+            else:
+                from_address = r0['data']['lastSale']['from_address']
+
+            if r0['data']['lastSale']['to_address'] == None:
+                to_address = 'no data'
+            else:
+                to_address = r0['data']['lastSale']['to_address']
+
+            if r0['data']['lastSale']['timestamp'] == None:
+                time_stamp = datetime.datetime.now()
+            else:
+                time_stamp = r0['data']['lastSale']['timestamp']
+
+            if r0['data']['lastSale']['sale_price_in_eth'] == None:
+                sale_price_in_eth = 'no data'
+            else:
+                sale_price_in_eth = r0['data']['lastSale']['sale_price_in_eth']
+
+            embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
+            embed.set_image(url=image_url_token)
+            embed.add_field(name='From',
+                            value="["f'{from_address[0:6]}'"](https://etherscan.io/address/"f'{from_address}'")",
+                            inline=True)
+            embed.add_field(name='To',
+                            value="["f'{to_address[0:6]}'"](https://etherscan.io/address/"f'{to_address}'")",
+                            inline=True)
+            embed.add_field(name='It was', value='<t:'f'{time_stamp}'':R>', inline=True)
+            embed.add_field(name='Sales Price', value=f'{sale_price_in_eth} ETH', inline=True)
+            embed.set_author(name=f'{name}', url="https://opensea.io/assets/"f'{contractAddress}'"/"f'{id_}',
+                             icon_url=image_url)
+            embed.set_footer(text=f'{name}', icon_url=image_url)
+            embed.timestamp = datetime.datetime.now()
+
+            view = View(timeout=None)
+            view.add_item(b_return)
+            await interaction.response.edit_message(embed=embed, view=view)
+
+        b_last_sale.callback = b_last_sale_callback
+
+        view = View(timeout=None)
+
+        view.add_item(b_rarity)
+        view.add_item(b_last_sale)
+        # view.add_item(b_x2y2)
+
+        load_dotenv()
+        url0 = "https://api.modulenft.xyz/api/v2/eth/nft/token?slug="f'{collection}'"&tokenId="f'{token_id}'
+
+        headers0 = {
+            "accept": "application/json",
+            "X-API-KEY": os.getenv('MODULE_API_KEY')
+        }
+
+        r0 = requests.get(url0, headers=headers0).json()
+
+        if r0['data']['collection']['name'] == None:
+            name = 'no data'
+        else:
+            name = r0['data']['collection']['name']
+
+        if r0['data']['collection']['slug'] == None:
+            slug = 'no data'
+        else:
+            slug = r0['data']['collection']['slug']
+
+        if r0['data']['collection']['contractAddress'] == None:
+            contractAddress = 'no data'
+        else:
+            contractAddress = str(r0['data']['collection']['contractAddress'])
+
+        if r0['data']['collection']['images']['image_url'] == None:
+            image_url = 'https://imgur.com/aSSH1jL'
+        else:
+            image_url = r0['data']['collection']['images']['image_url']
+
+        if r0['data']['metadata']['name'] == None:
+            name_token = 'no data'
+        else:
+            name_token = r0['data']['metadata']['name']
+
+        if r0['data']['metadata']['image'] == None:
+            image_url_token = 'https://imgur.com/aSSH1jL'
+        else:
+            image_url_token = r0['data']['metadata']['image']
+
+        if r0['data']['metadata']['token_id'] == None:
+            id_ = '0'
+        else:
+            id_ = str(r0['data']['metadata']['token_id'])
+
+        if r0['data']['owner']['owner'] == None:
+            owner = 0x0000000000000000000000000000000000000000
+        else:
+            owner = r0['data']['owner']['owner']
+
+        embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
+        embed.set_image(url=image_url_token)
+        embed.add_field(name='Owner', value="["f'{owner[0:6]}'"](https://etherscan.io/address/"f'{owner}'")",
+                        inline=False)
+        # embed.add_field(name=, value=, inline=False)
+        embed.set_author(name=f'{name}', url="https://opensea.io/assets/"f'{contractAddress}'"/"f'{id_}',
+                         icon_url=image_url)
+        embed.set_footer(text=f'{name}', icon_url=image_url)
+        embed.timestamp = datetime.datetime.now()
+
+        await ctx.respond(embed=embed, view=view)
+
+
+def setup(bot):
+    bot.add_cog(nft(bot))
