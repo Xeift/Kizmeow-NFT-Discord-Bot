@@ -23,14 +23,12 @@ class nft(commands.Cog):
     ):
         b_rarity = Button(label='Rarity💎', style=discord.ButtonStyle.blurple)
         b_last_sale = Button(label='Last Sale💳', style=discord.ButtonStyle.green)
-        # b_x2y2 = Button(label='X2Y2🌀', style=discord.ButtonStyle.grey)
         b_return = Button(label='EXIT', style=discord.ButtonStyle.red)
 
         async def b_return_callback(interaction):
             view = View(timeout=None)
             view.add_item(b_rarity)
             view.add_item(b_last_sale)
-            # view.add_item(b_x2y2)
             load_dotenv()
             url0 = "https://api.modulenft.xyz/api/v2/eth/nft/token?slug="f'{collection}'"&tokenId="f'{token_id}'
 
@@ -45,11 +43,6 @@ class nft(commands.Cog):
                 name = 'no data'
             else:
                 name = r0['data']['collection']['name']
-
-            if r0['data']['collection']['slug'] == None:
-                slug = 'no data'
-            else:
-                slug = r0['data']['collection']['slug']
 
             if r0['data']['collection']['contractAddress'] == None:
                 contractAddress = 'no data'
@@ -195,7 +188,6 @@ class nft(commands.Cog):
 
         view.add_item(b_rarity)
         view.add_item(b_last_sale)
-        # view.add_item(b_x2y2)
 
         load_dotenv()
         url0 = "https://api.modulenft.xyz/api/v2/eth/nft/token?slug="f'{collection}'"&tokenId="f'{token_id}'
@@ -211,11 +203,6 @@ class nft(commands.Cog):
             name = 'no data'
         else:
             name = r0['data']['collection']['name']
-
-        if r0['data']['collection']['slug'] == None:
-            slug = 'no data'
-        else:
-            slug = r0['data']['collection']['slug']
 
         if r0['data']['collection']['contractAddress'] == None:
             contractAddress = 'no data'
