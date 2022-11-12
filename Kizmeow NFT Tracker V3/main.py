@@ -12,8 +12,7 @@ async def on_ready():
 
 extensions = [  # load cogs
     # --------------------system commands
-    'cogs.meow',
-    'cogs.invite',
+    'cogs.ping',
     'cogs.help',
     # --------------------system commands
 

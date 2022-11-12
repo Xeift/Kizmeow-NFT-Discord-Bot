@@ -37,7 +37,7 @@ class project(commands.Cog):
 
             headers0 = {
                 "accept": "application/json",
-                "X-API-KEY": os.getenv('MODULE')
+                "X-API-KEY": os.getenv('MODULE_API_KEY')
             }
 
             r0 = requests.get(url0, headers=headers0).json()
@@ -112,7 +112,7 @@ class project(commands.Cog):
 
             headers1 = {
                 "accept": "application/json",
-                "X-API-KEY": os.getenv('MODULE')
+                "X-API-KEY": os.getenv('MODULE_API_KEY')
             }
 
             r1 = requests.get(url1, headers=headers1).json()
@@ -190,7 +190,7 @@ class project(commands.Cog):
 
             headers2 = {
                 "accept": "application/json",
-                "X-API-KEY": os.getenv('MODULE')
+                "X-API-KEY": os.getenv('MODULE_API_KEY')
             }
 
             r2 = requests.get(url2, headers=headers2).json()
@@ -292,7 +292,7 @@ class project(commands.Cog):
 
             headers3 = {
                 "accept": "application/json",
-                "X-API-KEY": os.getenv('MODULE')
+                "X-API-KEY": os.getenv('MODULE_API_KEY')
             }
 
             r3 = requests.get(url3, headers=headers3).json()
@@ -393,7 +393,7 @@ class project(commands.Cog):
 
         headers0 = {
             "accept": "application/json",
-            "X-API-KEY": os.getenv('MODULE')
+            "X-API-KEY": os.getenv('MODULE_API_KEY')
         }
 
         r0 = requests.get(url0, headers=headers0).json()
