@@ -14,11 +14,11 @@ class project(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='project', description='Display project history information')
+    @slash_command(name='project', description='View project information from Opensea, LooksRare and X2Y2')
     async def project(
             self,
             ctx: discord.ApplicationContext,
-            collection: Option(str, 'collection slug at the end of OpenSea url')
+            collection: Option(str, 'Specify the collection slug')
     ):
         b_opensea = Button(label='OpenSea🌊', style=discord.ButtonStyle.blurple)
         b_looksrare = Button(label='LooksRare👀', style=discord.ButtonStyle.green)
@@ -27,7 +27,7 @@ class project(commands.Cog):
 
         async def b_return_callback(interaction):
             global author_url
-            view = View()
+            view = View(timeout=None)
             view.add_item(b_opensea)
             view.add_item(b_looksrare)
             view.add_item(b_x2y2)
@@ -178,7 +178,7 @@ class project(commands.Cog):
                              icon_url='https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.png')
             embed.timestamp = datetime.datetime.now()
 
-            view = View()
+            view = View(timeout=None)
             view.add_item(b_return)
             await interaction.response.edit_message(embed=embed, view=view)
 
@@ -280,7 +280,7 @@ class project(commands.Cog):
                              icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/main/access/looks-green.png')
             embed.timestamp = datetime.datetime.now()
 
-            view = View()
+            view = View(timeout=None)
             view.add_item(b_return)
             await interaction.response.edit_message(embed=embed, view=view)
 
@@ -376,13 +376,13 @@ class project(commands.Cog):
                              icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/main/access/x2y2_logo.png')
             embed.timestamp = datetime.datetime.now()
 
-            view = View()
+            view = View(timeout=None)
             view.add_item(b_return)
             await interaction.response.edit_message(embed=embed, view=view)
 
         b_x2y2.callback = b_x2y2_callback
 
-        view = View()
+        view = View(timeout=None)
 
         view.add_item(b_opensea)
         view.add_item(b_looksrare)
