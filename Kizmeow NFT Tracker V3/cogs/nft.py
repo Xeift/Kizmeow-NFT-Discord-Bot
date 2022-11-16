@@ -38,7 +38,7 @@ class nft(commands.Cog):
             }
 
             r0 = requests.get(url0, headers=headers0).json()
-            print(r0)
+            print(r0)# TODO handle with no last sale
             if r0['data']['collection']['name'] == None:
                 name = 'no data'
             else:
@@ -143,7 +143,6 @@ class nft(commands.Cog):
         b_rarity.callback = b_rarity_callback
 
         async def b_last_sale_callback(interaction):
-            print(r0['data']['lastSale'])
             if r0['data']['lastSale']['from_address'] == None:
                 from_address = 'no data'
             else:
