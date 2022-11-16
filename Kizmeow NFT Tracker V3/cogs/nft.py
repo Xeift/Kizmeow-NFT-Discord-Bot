@@ -30,7 +30,7 @@ class nft(commands.Cog):
             view.add_item(b_rarity)
             view.add_item(b_last_sale)
             load_dotenv()
-            url0 = "https://api.modulenft.xyz/api/v2/eth/nft/token?slug="f'{collection}'"&tokenId="f'{token_id}'
+            url0 = f'https://api.modulenft.xyz/api/v2/eth/nft/token?slug={collection}&tokenId={token_id}'
 
             headers0 = {
                 "accept": "application/json",
@@ -38,7 +38,7 @@ class nft(commands.Cog):
             }
 
             r0 = requests.get(url0, headers=headers0).json()
-
+            print(r0)
             if r0['data']['collection']['name'] == None:
                 name = 'no data'
             else:
@@ -54,15 +54,15 @@ class nft(commands.Cog):
             else:
                 image_url = r0['data']['collection']['images']['image_url']
 
-            if r0['data']['metadata']['name'] == None:
+            if r0['data']['collection']['name'] == None:
                 name_token = 'no data'
             else:
-                name_token = r0['data']['metadata']['name']
+                name_token = r0['data']['collection']['name']
 
-            if r0['data']['metadata']['image'] == None:
+            if r0['data']['metadata']['image_cached'] == None:
                 image_url_token = 'https://imgur.com/aSSH1jL'
             else:
-                image_url_token = r0['data']['metadata']['image']
+                image_url_token = r0['data']['metadata']['image_cached']
 
             if r0['data']['metadata']['token_id'] == None:
                 id_ = '0'
@@ -143,6 +143,7 @@ class nft(commands.Cog):
         b_rarity.callback = b_rarity_callback
 
         async def b_last_sale_callback(interaction):
+            print(r0['data']['lastSale'])
             if r0['data']['lastSale']['from_address'] == None:
                 from_address = 'no data'
             else:
@@ -214,15 +215,15 @@ class nft(commands.Cog):
         else:
             image_url = r0['data']['collection']['images']['image_url']
 
-        if r0['data']['metadata']['name'] == None:
+        if r0['data']['collection']['name'] == None:
             name_token = 'no data'
         else:
-            name_token = r0['data']['metadata']['name']
+            name_token = r0['data']['collection']['name']
 
         if r0['data']['metadata']['image'] == None:
             image_url_token = 'https://imgur.com/aSSH1jL'
         else:
-            image_url_token = r0['data']['metadata']['image']
+            image_url_token = r0['data']['metadata']['image_cached']
 
         if r0['data']['metadata']['token_id'] == None:
             id_ = '0'
