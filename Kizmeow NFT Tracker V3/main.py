@@ -4,11 +4,9 @@ from dotenv import load_dotenv
 
 bot = discord.Bot(intents=discord.Intents.all(), )
 
-
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
-
 
 extensions = [  # load cogs
     # --------------------system commands

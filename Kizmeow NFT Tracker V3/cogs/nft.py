@@ -1,3 +1,4 @@
+import re
 import os
 import discord
 import datetime
@@ -14,7 +15,7 @@ class nft(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='nft', description='View all information about the nft')
+    @commands.slash_command(name='nft', description='View information about the NFT')
     async def nft(
             self,
             ctx: discord.ApplicationContext,
@@ -219,10 +220,16 @@ class nft(commands.Cog):
         else:
             name_token = r0['data']['collection']['name']
 
-        if r0['data']['metadata']['image'] == None:
+        if r0['data']['metadata']['image_cached'] == None:
             image_url_token = 'https://imgur.com/aSSH1jL'
         else:
             image_url_token = r0['data']['metadata']['image_cached']
+
+        if r0['data']['metadata']['image'] == None:
+            image_original = 'https://imgur.com/aSSH1jL'
+        else:
+            image_original = r0['data']['metadata']['image']
+            image_original = re.sub('ipfs://', 'https://ipfs.io/ipfs/', r0['data']['metadata']['image'])
 
         if r0['data']['metadata']['token_id'] == None:
             id_ = '0'
@@ -233,6 +240,9 @@ class nft(commands.Cog):
             owner = 0x0000000000000000000000000000000000000000
         else:
             owner = r0['data']['owner']['owner']
+
+        b_image_link = Button(label='IPFS🧊', style=discord.ButtonStyle.link, url=image_original)
+        view.add_item(b_image_link)
 
         embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
         embed.set_image(url=image_url_token)
