@@ -30,6 +30,7 @@ class nft(commands.Cog):
             view = View(timeout=None)
             view.add_item(b_rarity)
             view.add_item(b_last_sale)
+            view.add_item(b_image_link)
             load_dotenv()
             url0 = f'https://api.modulenft.xyz/api/v2/eth/nft/token?slug={collection}&tokenId={token_id}'
 
@@ -39,7 +40,7 @@ class nft(commands.Cog):
             }
 
             r0 = requests.get(url0, headers=headers0).json()
-            print(r0)# TODO handle with no last sale
+            print(r0)  # TODO handle with no last sale
             if r0['data']['collection']['name'] == None:
                 name = 'no data'
             else:
