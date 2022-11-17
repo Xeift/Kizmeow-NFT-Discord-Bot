@@ -71,18 +71,17 @@ class nft(commands.Cog):
                 id_ = str(r0['data']['metadata']['token_id'])
 
             if r0['data']['owner']['owner'] == None:
-                owner = 0x0000000000000000000000000000000000000000
+                owner = '0x0000000000000000000000000000000000000000'
             else:
                 owner = r0['data']['owner']['owner']
 
-            embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
+            embed = discord.Embed(title=name_token', color=0xFFA46E)
             embed.set_image(url=image_url_token)
-            embed.add_field(name='Owner', value="["f'{owner[0:6]}'"](https://etherscan.io/address/"f'{owner}'")",
+            embed.add_field(name='Owner', value=f'[{owner[0:6]}](https://etherscan.io/address/{owner})',
                             inline=False)
-            # embed.add_field(name=, value=, inline=False)
-            embed.set_author(name=f'{name}', url="https://opensea.io/assets/"f'{contractAddress}'"/"f'{id_}',
+            embed.set_author(name=name, url=f'https://opensea.io/assets/{contractAddress}/{id_}',
                              icon_url=image_url)
-            embed.set_footer(text=f'{name}', icon_url=image_url)
+            embed.set_footer(text=name, icon_url=image_url)
             embed.timestamp = datetime.datetime.now()
 
             await interaction.response.edit_message(embed=embed, view=view)
@@ -95,8 +94,8 @@ class nft(commands.Cog):
             url1 = f'https://api.traitsniper.com/v1/collections/{contractAddress}/nfts?token_ids={id_}'
 
             headers1 = {
-                "accept": "application/json",
-                "x-ts-api-key": os.getenv('TRAITSNIPER_API_KEY')
+                'accept': 'application/json',
+                'x-ts-api-key': os.getenv('TRAITSNIPER_API_KEY')
             }
 
             r1 = requests.get(url1, headers=headers1).json()
@@ -113,9 +112,9 @@ class nft(commands.Cog):
 
             embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
             embed.set_image(url=image_url_token)
-            embed.add_field(name='Owner', value="["f'{owner[0:6]}'"](https://etherscan.io/address/"f'{owner}'")",
+            embed.add_field(name='Owner', value=f'[{owner[0:6]}](https://etherscan.io/address/{owner})',
                             inline=False)
-            embed.add_field(name='Rank', value=f'{rarity_rank}', inline=True)
+            embed.add_field(name='Rank', value=rarity_rank, inline=True)
             embed.add_field(name='Score', value=f'{rarity_score:.2f}', inline=True)
             embed.add_field(name='═════════════Traits═════════════', value='_ _', inline=False)
             for t in r1['nfts'][0]['traits']:
@@ -131,10 +130,10 @@ class nft(commands.Cog):
                     score = 'no data'
                 else:
                     score = float(t['score'])
-                embed.add_field(name=f'{name_t}', value=f'{value}\n'f'`{score:.2f}`', inline=True)
-                embed.set_author(name=f'{name}', url="https://opensea.io/assets/"f'{contractAddress}'"/"f'{id_}',
+                embed.add_field(name=name_t, value=f'{value}\n`{score:.2f}`', inline=True)
+                embed.set_author(name=name, url=f'https://opensea.io/assets/'{contractAddress}/{id_}',
                                  icon_url=image_url)
-                embed.set_footer(text=f'{name}', icon_url=image_url)
+                embed.set_footer(text=name, icon_url=image_url)
                 embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
@@ -164,19 +163,19 @@ class nft(commands.Cog):
             else:
                 sale_price_in_eth = r0['data']['lastSale']['sale_price_in_eth']
 
-            embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
+            embed = discord.Embed(title=name_token, color=0xFFA46E)
             embed.set_image(url=image_url_token)
             embed.add_field(name='From',
-                            value="["f'{from_address[0:6]}'"](https://etherscan.io/address/"f'{from_address}'")",
+                            value=f'[{from_address[0:6]}](https://etherscan.io/address/{from_address})',
                             inline=True)
             embed.add_field(name='To',
-                            value="["f'{to_address[0:6]}'"](https://etherscan.io/address/"f'{to_address}'")",
+                            value=f'[{to_address[0:6]}](https://etherscan.io/address/{to_address})',
                             inline=True)
-            embed.add_field(name='It was', value='<t:'f'{time_stamp}'':R>', inline=True)
+            embed.add_field(name='It was', value=f'<t:{time_stamp}:R>', inline=True)
             embed.add_field(name='Sales Price', value=f'{sale_price_in_eth} ETH', inline=True)
-            embed.set_author(name=f'{name}', url="https://opensea.io/assets/"f'{contractAddress}'"/"f'{id_}',
+            embed.set_author(name=name, url=f'https://opensea.io/assets/{contractAddress}/{id_}',
                              icon_url=image_url)
-            embed.set_footer(text=f'{name}', icon_url=image_url)
+            embed.set_footer(text=name, icon_url=image_url)
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
@@ -191,11 +190,11 @@ class nft(commands.Cog):
         view.add_item(b_last_sale)
 
         load_dotenv()
-        url0 = "https://api.modulenft.xyz/api/v2/eth/nft/token?slug="f'{collection}'"&tokenId="f'{token_id}'
+        url0 = f'https://api.modulenft.xyz/api/v2/eth/nft/token?slug={collection}&tokenId={token_id}'
 
         headers0 = {
-            "accept": "application/json",
-            "X-API-KEY": os.getenv('MODULE_API_KEY')
+            'accept': 'application/json',
+            'X-API-KEY': os.getenv('MODULE_API_KEY')
         }
 
         r0 = requests.get(url0, headers=headers0).json()
@@ -237,7 +236,7 @@ class nft(commands.Cog):
             id_ = str(r0['data']['metadata']['token_id'])
 
         if r0['data']['owner']['owner'] == None:
-            owner = 0x0000000000000000000000000000000000000000
+            owner = '0x0000000000000000000000000000000000000000'
         else:
             owner = r0['data']['owner']['owner']
 
@@ -246,12 +245,11 @@ class nft(commands.Cog):
 
         embed = discord.Embed(title=f'{name_token}', color=0xFFA46E)
         embed.set_image(url=image_url_token)
-        embed.add_field(name='Owner', value="["f'{owner[0:6]}'"](https://etherscan.io/address/"f'{owner}'")",
+        embed.add_field(name='Owner', value=f'[{owner[0:6]}](https://etherscan.io/address/{owner})',
                         inline=False)
-        # embed.add_field(name=, value=, inline=False)
-        embed.set_author(name=f'{name}', url="https://opensea.io/assets/"f'{contractAddress}'"/"f'{id_}',
+        embed.set_author(name=name, url=f'https://opensea.io/assets/'{contractAddress}/{id_}',
                          icon_url=image_url)
-        embed.set_footer(text=f'{name}', icon_url=image_url)
+        embed.set_footer(text=name, icon_url=image_url)
         embed.timestamp = datetime.datetime.now()
 
         await ctx.respond(embed=embed, view=view)
