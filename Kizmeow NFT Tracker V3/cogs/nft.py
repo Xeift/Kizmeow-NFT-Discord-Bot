@@ -15,7 +15,7 @@ class nft(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='nft', description='View information about the NFT')
+    @commands.slash_command(name='nft', description='View information of the NFT')
     async def nft(
             self,
             ctx: discord.ApplicationContext,
