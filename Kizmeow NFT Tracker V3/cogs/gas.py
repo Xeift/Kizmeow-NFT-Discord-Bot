@@ -11,7 +11,7 @@ class gas(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='gas', description='Check eth gas')
+    @commands.slash_command(name='gas', description='Check eth gas price')
     async def gas(
             self,
             ctx: discord.ApplicationContext,
