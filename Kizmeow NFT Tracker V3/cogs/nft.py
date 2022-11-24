@@ -23,13 +23,12 @@ class nft(commands.Cog):
             token_id: Option(str, 'Enter the token number')
     ):
         load_dotenv()
-        print('a')
+
         b_rarity = Button(label='Rarity💎', style=discord.ButtonStyle.blurple)
         b_last_sale = Button(label='Last Sale💳', style=discord.ButtonStyle.green)
         b_return = Button(label='EXIT', style=discord.ButtonStyle.red)
 
         async def b_return_callback(interaction):# exit button
-            
             view = View(timeout=None)
             view.add_item(b_rarity, b_last_sale, b_image_link)
             

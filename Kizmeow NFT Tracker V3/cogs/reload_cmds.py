@@ -11,7 +11,7 @@ class reload_cmds(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='r', description='reload cmds [for debug]')
+    @commands.slash_command(name='reload_cmds', description='reload cmds [for debug]')
     async def reload_cmds(
             self,
             ctx: discord.ApplicationContext,
