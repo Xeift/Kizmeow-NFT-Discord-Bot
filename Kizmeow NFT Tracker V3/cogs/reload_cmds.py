@@ -16,27 +16,30 @@ class reload_cmds(commands.Cog):
             self,
             ctx: discord.ApplicationContext,
     ):
-        extensions = [  # load cogs
-            # --------------------system commands
-            'cogs.ping',
-            'cogs.help',
-            # --------------------system commands
+        if (ctx.author.id == 510830627893805069 or ctx.author.id == 874806243208871977):
+            extensions = [  # load cogs
+                # --------------------system commands
+                'cogs.ping',
+                'cogs.help',
+                # --------------------system commands
 
-            # --------------------etherscan commands
-            'cogs.gas',
-            'cogs.eth',
-            # --------------------etherscan commands
+                # --------------------etherscan commands
+                'cogs.gas',
+                'cogs.eth',
+                # --------------------etherscan commands
 
-            # --------------------NFT commands
-            'cogs.project',
-            'cogs.nft'
-            # --------------------NFT commands
-        ]
-        for extension in extensions:
-            self.bot.unload_extension(extension)
-            self.bot.load_extension(extension)
+                # --------------------NFT commands
+                'cogs.project',
+                'cogs.nft'
+                # --------------------NFT commands
+            ]
+            for extension in extensions:
+                self.bot.unload_extension(extension)
+                self.bot.load_extension(extension)
 
-        await ctx.respond('reload complete', ephemeral=True)
+            await ctx.respond('reload complete', ephemeral=True)
+        else:
+            await ctx.respond('[PERMISSION DENIED] only owner can use this command', ephemeral=True)
 
 def setup(bot):
     bot.add_cog(reload_cmds(bot))
