@@ -14,6 +14,7 @@ extensions = [  # load cogs
     # --------------------system commands
     'cogs.ping',
     'cogs.help',
+    'cogs.reload_cmds',# only for debug
     # --------------------system commands
 
     # --------------------etherscan commands

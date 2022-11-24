@@ -15,23 +15,24 @@ class nft(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='nft', description='View information of the NFT')
+    @commands.slash_command(name='nft', description='View NFT information')
     async def nft(
             self,
             ctx: discord.ApplicationContext,
             collection: Option(str, 'Specify the collection slug'),
             token_id: Option(str, 'Enter the token number')
     ):
+        load_dotenv()
+        print('a')
         b_rarity = Button(label='Rarity💎', style=discord.ButtonStyle.blurple)
         b_last_sale = Button(label='Last Sale💳', style=discord.ButtonStyle.green)
         b_return = Button(label='EXIT', style=discord.ButtonStyle.red)
 
-        async def b_return_callback(interaction):
+        async def b_return_callback(interaction):# exit button
+            
             view = View(timeout=None)
-            view.add_item(b_rarity)
-            view.add_item(b_last_sale)
-            view.add_item(b_image_link)
-            load_dotenv()
+            view.add_item(b_rarity, b_last_sale, b_image_link)
+            
             url0 = f'https://api.modulenft.xyz/api/v2/eth/nft/token?slug={collection}&tokenId={token_id}'
 
             headers0 = {
