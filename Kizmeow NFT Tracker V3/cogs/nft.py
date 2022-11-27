@@ -6,8 +6,7 @@ import requests
 from dotenv import load_dotenv
 from discord.ext import commands
 from discord.ui import Button, View
-from discord.commands import Option
-from discord.commands import slash_command
+from discord.commands import Option, slash_command
 
 
 class nft(commands.Cog):
