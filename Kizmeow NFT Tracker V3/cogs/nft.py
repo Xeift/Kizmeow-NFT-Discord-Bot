@@ -106,7 +106,7 @@ class nft(commands.Cog):
 
         rarityButton.callback = rarityButtonCallback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
-        async def lastSaleButton_callback(interaction):
+        async def lastSaleButtonCallback(interaction):
             embed = discord.Embed(title=f'{collectionName}#{token_id}', color=0xFFA46E)
             embed.set_image(url=nftImage)
             embed.add_field(name='From', value=f'[{fromAddress[0:6]}](https://etherscan.io/address/{fromAddress})', inline=True)
@@ -119,13 +119,13 @@ class nft(commands.Cog):
             view.add_item(returnButton)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        lastSaleButton.callback = lastSaleButton_callback
+        lastSaleButton.callback = lastSaleButtonCallback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
-        async def returnButton_callback(interaction):# exit button
+        async def returnButtonCallback(interaction):
             (embed, view) = await initialEmbed()
             await interaction.response.edit_message(embed=embed, view=view)
 
-        returnButton.callback = returnButton_callback
+        returnButton.callback = returnButtonCallback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
 def setup(bot):
     bot.add_cog(nft(bot))
