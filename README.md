@@ -1,7 +1,7 @@
 # Kizmeow-NFT-Discord-Bot
 
 <a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/"><img src="https://img.shields.io/badge/read-doc-green"></a>
-![](https://tokei.rs/b1/github/Xeift/Kizmeow-NFT-Discord-Bot)
+![](https://tokei.ekzhang.com/b1/github/Xeift/Kizmeow-NFT-Discord-Bot)
 
 
 [click me](https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/) to read the doc.
