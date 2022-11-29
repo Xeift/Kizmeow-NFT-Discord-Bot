@@ -18,7 +18,6 @@
   z-index: 1;
   color: #FFA46E;
 }
-
 .btn:after {
   position: absolute;
   content: "";
@@ -30,16 +29,13 @@
   background: #FFA46E;
   transition: all 0.3s ease;
 }
-
 .btn:hover {
   color: rgb(0, 0, 0);
 }
-
 .btn:hover:after {
   top: 0;
   height: 100%;
 }
-
 .btn:active {
   top: 2px;
 }
