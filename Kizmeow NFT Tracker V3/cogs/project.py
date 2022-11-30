@@ -20,17 +20,17 @@ class project(commands.Cog):
             ctx: discord.ApplicationContext,
             collection: Option(str, 'Specify the collection slug')
     ):
-        b_opensea = Button(label='OpenSea🌊', style=discord.ButtonStyle.blurple)
-        b_looksrare = Button(label='LooksRare👀', style=discord.ButtonStyle.green)
-        b_x2y2 = Button(label='X2Y2🌀', style=discord.ButtonStyle.grey)
-        b_return = Button(label='EXIT', style=discord.ButtonStyle.red)
+        openseaButton = Button(label='OpenSea🌊', style=discord.ButtonStyle.blurple)
+        looksrareButton = Button(label='LooksRare👀', style=discord.ButtonStyle.green)
+        x2y2Button = Button(label='X2Y2🌀', style=discord.ButtonStyle.grey)
+        returnButton = Button(label='EXIT', style=discord.ButtonStyle.red)
 
-        async def b_return_callback(interaction):
+        async def returnButton_callback(interaction):
             global author_url
             view = View(timeout=None)
-            view.add_item(b_opensea)
-            view.add_item(b_looksrare)
-            view.add_item(b_x2y2)
+            view.add_item(openseaButton)
+            view.add_item(looksrareButton)
+            view.add_item(x2y2Button)
 
             load_dotenv()
             url0 = "https://api.modulenft.xyz/api/v2/eth/nft/collection?slug="f'{collection}'
@@ -104,9 +104,9 @@ class project(commands.Cog):
 
             await interaction.response.edit_message(embed=embed, view=view)
 
-        b_return.callback = b_return_callback
+        returnButton.callback = returnButton_callback
 
-        async def b_opensea_callback(interaction):
+        async def openseaButton_callback(interaction):
             load_dotenv()
             url1 = "https://api.modulenft.xyz/api/v2/eth/nft/stats?slug="f'{collection}'"&marketplace=Opensea"
 
@@ -179,12 +179,12 @@ class project(commands.Cog):
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
-            view.add_item(b_return)
+            view.add_item(returnButton)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        b_opensea.callback = b_opensea_callback
+        openseaButton.callback = openseaButton_callback
 
-        async def b_looksrare_callback(interaction):
+        async def looksrareButton_callback(interaction):
             load_dotenv()
             url2 = "https://api.modulenft.xyz/api/v2/eth/nft/stats?slug="f'{collection}'"&marketplace=Looksrare"
 
@@ -281,12 +281,12 @@ class project(commands.Cog):
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
-            view.add_item(b_return)
+            view.add_item(returnButton)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        b_looksrare.callback = b_looksrare_callback
+        looksrareButton.callback = looksrareButton_callback
 
-        async def b_x2y2_callback(interaction):
+        async def x2y2Button_callback(interaction):
             load_dotenv()
             url3 = "https://api.modulenft.xyz/api/v2/eth/nft/stats?slug="f'{collection}'"&marketplace=X2Y2"
 
@@ -377,16 +377,16 @@ class project(commands.Cog):
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
-            view.add_item(b_return)
+            view.add_item(returnButton)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        b_x2y2.callback = b_x2y2_callback
+        x2y2Button.callback = x2y2Button_callback
 
         view = View(timeout=None)
 
-        view.add_item(b_opensea)
-        view.add_item(b_looksrare)
-        view.add_item(b_x2y2)
+        view.add_item(openseaButton)
+        view.add_item(looksrareButton)
+        view.add_item(x2y2Button)
 
         load_dotenv()
         url0 = "https://api.modulenft.xyz/api/v2/eth/nft/collection?slug="f'{collection}'
