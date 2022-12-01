@@ -22,10 +22,10 @@ class nft(commands.Cog):
             token_id: Option(str, 'Enter the token number')
     ):
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        rarityButton = Button(label='Rarity💎', style=discord.ButtonStyle.blurple)
-        lastSaleButton = Button(label='Last Sale💳', style=discord.ButtonStyle.green)
-        ipfsButton = Button(label='IPFS🧊', style=discord.ButtonStyle.link)
-        returnButton = Button(label='EXIT', style=discord.ButtonStyle.red)
+        rarity_button = Button(label='Rarity💎', style=discord.ButtonStyle.blurple)
+        lastSale_button = Button(label='Last Sale💳', style=discord.ButtonStyle.green)
+        ipfs_button = Button(label='IPFS🧊', style=discord.ButtonStyle.link)
+        return_button = Button(label='EXIT', style=discord.ButtonStyle.red)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         load_dotenv()
         url = f'https://api.modulenft.xyz/api/v2/eth/nft/token?slug={collection}&tokenId={token_id}'
@@ -35,96 +35,94 @@ class nft(commands.Cog):
         }
         r = requests.get(url=url, headers=headers).json()
 
-        collectionName = 'no dara' if r['data']['collection']['name'] == None else r['data']['collection']['name']
-        nftImage = 'no data' if r['data']['metadata']['image_cached'] == None else r['data']['metadata']['image_cached']
-        nftOwner = 'no data' if r['data']['owner']['owner'] == None else r['data']['owner']['owner']
-        collectionImage = 'https://imgur.com/aSSH1jL' if r['data']['collection']['images']['image_url'] == None else r['data']['collection']['images']['image_url']
-        collectionContractAddress = 'no data' if r['data']['collection']['contractAddress'] == None else r['data']['collection']['contractAddress']
-        nftIPFSImage = 'https://imgur.com/aSSH1jL' if r['data']['metadata']['image'] == None else r['data']['metadata']['image']
-        nftIPFSImage = re.sub('ipfs://', 'https://ipfs.io/ipfs/', nftIPFSImage)
-        ercType = 'no data' if r['data']['collection']['ercType'] == None else r['data']['collection']['ercType']
+        collection_name = 'no dara' if r['data']['collection']['name'] == None else r['data']['collection']['name']
+        nft_image = 'no data' if r['data']['metadata']['image_cached'] == None else r['data']['metadata']['image_cached']
+        nft_owner = 'no data' if r['data']['owner']['owner'] == None else r['data']['owner']['owner']
+        collection_image = 'https://imgur.com/aSSH1jL' if r['data']['collection']['images']['image_url'] == None else r['data']['collection']['images']['image_url']
+        collection_contract_address = 'no data' if r['data']['collection']['contractAddress'] == None else r['data']['collection']['contractAddress']
+        nft_IPFS_image = 'https://imgur.com/aSSH1jL' if r['data']['metadata']['image'] == None else r['data']['metadata']['image']
+        nft_IPFS_image = re.sub('ipfs://', 'https://ipfs.io/ipfs/', nft_IPFS_image)
+        erc_type = 'no data' if r['data']['collection']['ercType'] == None else r['data']['collection']['ercType']
 
-        fromAddress = 'no data' if r['data']['lastSale']['from_address'] == None else r['data']['lastSale']['from_address']
-        toAddress = 'no data' if r['data']['lastSale']['to_address'] == None else r['data']['lastSale']['to_address']
+        from_address = 'no data' if r['data']['lastSale']['from_address'] == None else r['data']['lastSale']['from_address']
+        to_address = 'no data' if r['data']['lastSale']['to_address'] == None else r['data']['lastSale']['to_address']
         timestamp = 'no data' if r['data']['lastSale']['timestamp'] == None else r['data']['lastSale']['timestamp']
-        salePrice = 'no data' if r['data']['lastSale']['sale_price_in_eth'] == None else r['data']['lastSale']['sale_price_in_eth']
+        sale_price = 'no data' if r['data']['lastSale']['sale_price_in_eth'] == None else r['data']['lastSale']['sale_price_in_eth']
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        url = f'https://api.traitsniper.com/v1/collections/{collectionContractAddress}/nfts?token_ids={token_id}'
-        print(collectionContractAddress)
-        print(token_id)
+        url = f'https://api.traitsniper.com/v1/collections/{collection_contract_address}/nfts?token_ids={token_id}'
         headers = {
             'accept': 'application/json',
             'x-ts-api-key': os.getenv('TRAITSNIPER_API_KEY')
         }
         r = requests.get(url, headers=headers).json()
 
-        rarityRank = 'no data' if r['nfts'][0]['rarity_rank'] == None else r['nfts'][0]['rarity_rank']
-        rarityScore = 'no data' if r['nfts'][0]['rarity_score'] == None else r['nfts'][0]['rarity_score']
-        nftTraits = 'no data' if r['nfts'][0]['traits'] == None else r['nfts'][0]['traits']
+        rarity_rank = 'no data' if r['nfts'][0]['rarity_rank'] == None else r['nfts'][0]['rarity_rank']
+        rarity_score = 'no data' if r['nfts'][0]['rarity_score'] == None else r['nfts'][0]['rarity_score']
+        nft_traits = 'no data' if r['nfts'][0]['traits'] == None else r['nfts'][0]['traits']
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        async def initialEmbed():
-            ipfsButton.url = nftIPFSImage
-            ipfsButton.custom_id = None
+        async def initial_embed():
+            ipfs_button.url = nft_IPFS_image
+            ipfs_button.custom_id = None
             view = View(timeout=None)
-            view.add_item(rarityButton)
-            view.add_item(lastSaleButton)
-            view.add_item(ipfsButton)
+            view.add_item(rarity_button)
+            view.add_item(lastSale_button)
+            view.add_item(ipfs_button)
             
             embed = discord.Embed(title='', color=0xFFA46E)
-            embed.set_image(url=nftImage)
-            embed.set_author(name=f'{collectionName}#{token_id}', url=f'https://opensea.io/assets/{collectionContractAddress}/{token_id}', icon_url=collectionImage)
-            embed.add_field(name='Owner', value=f'[{nftOwner[0:6]}](https://etherscan.io/address/{nftOwner})', inline=False)
-            embed.add_field(name='Type', value=ercType, inline=False)
+            embed.set_image(url=nft_image)
+            embed.set_author(name=f'{collection_name}#{token_id}', url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
+            embed.add_field(name='Owner', value=f'[{nft_owner[0:6]}](https://etherscan.io/address/{nft_owner})', inline=False)
+            embed.add_field(name='Type', value=erc_type, inline=False)
             embed.timestamp = datetime.datetime.now()
 
             return (embed, view)
 
-        (embed, view) = await initialEmbed()
+        (embed, view) = await initial_embed()
         await ctx.respond(embed=embed, view=view)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        async def rarityButtonCallback(interaction):
-            embed = discord.Embed(title=f'{collectionName}#{token_id}', color=0xFFA46E)
-            embed.set_image(url=nftImage)
-            embed.add_field(name='Owner', value=f'[{nftOwner[0:6]}](https://etherscan.io/address/{nftOwner})', inline=False)
-            embed.add_field(name='Rank', value=rarityRank, inline=True)
-            embed.add_field(name='Score', value=f'{rarityScore:.2f}', inline=True)
+        async def rarity_button_callback(interaction):
+            embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
+            embed.set_image(url=nft_image)
+            embed.add_field(name='Owner', value=f'[{nft_owner[0:6]}](https://etherscan.io/address/{nft_owner})', inline=False)
+            embed.add_field(name='Rank', value=rarity_rank, inline=True)
+            embed.add_field(name='Score', value=f'{rarity_score:.2f}', inline=True)
             embed.add_field(name='═════════════Traits═════════════', value='_ _', inline=False)
 
-            for t in nftTraits:
-                nameTrait = t['name']
-                valueTrait = t['value']
-                scoreTrait = t['score']
-                embed.add_field(name=nameTrait, value=f'{valueTrait}\n`{scoreTrait:.2f}`', inline=True)
+            for t in nft_traits:
+                trait_name = t['name']
+                trait_value = t['value']
+                trait_score = t['score']
+                embed.add_field(name=trait_name, value=f'{trait_value}\n`{trait_score:.2f}`', inline=True)
 
-            embed.set_author(name=collectionName, url=f'https://opensea.io/assets/{collectionContractAddress}/{token_id}', icon_url=collectionImage)
+            embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
-            view.add_item(returnButton)
+            view.add_item(return_button)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        rarityButton.callback = rarityButtonCallback
+        rarity_button.callback = rarity_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
-        async def lastSaleButtonCallback(interaction):
-            embed = discord.Embed(title=f'{collectionName}#{token_id}', color=0xFFA46E)
-            embed.set_image(url=nftImage)
-            embed.add_field(name='From', value=f'[{fromAddress[0:6]}](https://etherscan.io/address/{fromAddress})', inline=True)
-            embed.add_field(name='To', value=f'[{toAddress[0:6]}](https://etherscan.io/address/{toAddress})', inline=True)
+        async def lastSale_button_callback(interaction):
+            embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
+            embed.set_image(url=nft_image)
+            embed.add_field(name='From', value=f'[{from_address[0:6]}](https://etherscan.io/address/{from_address})', inline=True)
+            embed.add_field(name='To', value=f'[{to_address[0:6]}](https://etherscan.io/address/{to_address})', inline=True)
             embed.add_field(name='It was', value=f'<t:{timestamp}:R>', inline=True)
-            embed.add_field(name='Sales Price', value=f'{salePrice} ETH', inline=True)
+            embed.add_field(name='Sales Price', value=f'{sale_price} ETH', inline=True)
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
-            view.add_item(returnButton)
+            view.add_item(return_button)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        lastSaleButton.callback = lastSaleButtonCallback
+        lastSale_button.callback = lastSale_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
-        async def returnButtonCallback(interaction):
-            (embed, view) = await initialEmbed()
+        async def return_button_callback(interaction):
+            (embed, view) = await initial_embed()
             await interaction.response.edit_message(embed=embed, view=view)
 
-        returnButton.callback = returnButtonCallback
+        return_button.callback = return_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
 def setup(bot):
     bot.add_cog(nft(bot))
