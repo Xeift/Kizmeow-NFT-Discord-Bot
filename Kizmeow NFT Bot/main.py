@@ -4,11 +4,9 @@ from dotenv import load_dotenv
 
 bot = discord.Bot(intents=discord.Intents.all(), )
 
-
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
-
 
 extensions = [# load cogs
     # --------------------system commands
@@ -17,10 +15,10 @@ extensions = [# load cogs
     'cogs.reload_cmds',# only for debug
     # --------------------system commands
 
-    # --------------------etherscan commands
+    # --------------------Web3 commands
     'cogs.gas',
     'cogs.eth',
-    # --------------------etherscan commands
+    # --------------------Web3 commands
 
     # --------------------NFT commands
     'cogs.collection',
