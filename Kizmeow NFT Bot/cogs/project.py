@@ -14,16 +14,94 @@ class project(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='project', description='View project information from Opensea, LooksRare and X2Y2')
+    @slash_command(name='project', description='Check project information from Opensea, LooksRare and X2Y2')
     async def project(
             self,
             ctx: discord.ApplicationContext,
             collection: Option(str, 'Specify the collection slug')
     ):
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         openseaButton = Button(label='OpenSea🌊', style=discord.ButtonStyle.blurple)
         looksrareButton = Button(label='LooksRare👀', style=discord.ButtonStyle.green)
         x2y2Button = Button(label='X2Y2🌀', style=discord.ButtonStyle.grey)
         returnButton = Button(label='EXIT', style=discord.ButtonStyle.red)
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        load_dotenv()
+        url = f'https://api.modulenft.xyz/api/v2/eth/nft/collection?slug={collection}'
+        headers = {
+            "accept": "application/json",
+            "X-API-KEY": os.getenv('MODULE_API_KEY')
+        }
+        r = requests.get(url, headers=headers).json()
+
+        if r['data']['name'] == None:
+            name = 'no data'
+        else:
+            name = r['data']['name']
+
+        if r['data']['slug'] == None:
+            slug = 'no data'
+        else:
+            slug = r['data']['slug']
+
+        if r['data']['description'] == None:
+            description = 'no data'
+        else:
+            description = r['data']['description']
+
+        if r['data']['socials']['external_url'] == None:
+            external_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        else:
+            external_url = r['data']['socials']['external_url']
+
+        if r['data']['socials']['discord_url'] == None:
+            discord_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        else:
+            discord_url = r['data']['socials']['discord_url']
+
+        if r['data']['socials']['twitter_username'] == None:
+            twitter_username = 'rickastley'
+        else:
+            twitter_username = r['data']['socials']['twitter_username']
+
+        if r['data']['images']['image_url'] == None:
+            image_url = 'https://imgur.com/aSSH1jL'
+        else:
+            image_url = r['data']['images']['image_url']
+
+        if r['data']['images']['banner_image_url'] == None:
+            banner_image_url = 'https://tenor.com/view/glitch-discord-gif-gif-20819419'
+        else:
+            banner_image_url = r['data']['images']['banner_image_url']
+
+        if r['data']['createdDate'] == None:
+            time_ = '757371600'
+        else:
+            time_ = r['data']['createdDate']
+
+        dt = datetime.datetime.fromisoformat(time_)
+        stamp = int(dt.timestamp())
+        result = str(stamp)
+
+        view = View(timeout=None)
+
+        view.add_item(openseaButton)
+        view.add_item(looksrareButton)
+        view.add_item(x2y2Button)
+
+        embed = discord.Embed(title=f'{name}', color=0xFFA46E)
+        embed.set_image(url=banner_image_url)
+        embed.add_field(name='Description', value=f'{description}...', inline=False)
+        embed.add_field(name='Created', value='<t:'f'{result}'':R>', inline=False)
+        embed.add_field(name='_ _',
+                        value='[Website]('f'{external_url})║[Discord]('f'{discord_url})║[Twitter](https://twitter.com/'f'{twitter_username})',
+                        inline=False)
+        embed.set_author(name=f'{name}', url="https://opensea.io/collection/"f'{slug}', icon_url=image_url)
+        embed.set_footer(text=f'{name}', icon_url=image_url)
+        embed.timestamp = datetime.datetime.now()
+
+        await ctx.respond(embed=embed, view=view)
+
 
         async def returnButton_callback(interaction):
             global author_url
@@ -33,59 +111,59 @@ class project(commands.Cog):
             view.add_item(x2y2Button)
 
             load_dotenv()
-            url0 = "https://api.modulenft.xyz/api/v2/eth/nft/collection?slug="f'{collection}'
+            url = "https://api.modulenft.xyz/api/v2/eth/nft/collection?slug="f'{collection}'
 
-            headers0 = {
+            headers = {
                 "accept": "application/json",
                 "X-API-KEY": os.getenv('MODULE_API_KEY')
             }
 
-            r0 = requests.get(url0, headers=headers0).json()
+            r = requests.get(url, headers=headers).json()
 
-            if r0['data']['name'] == None:
+            if r['data']['name'] == None:
                 name = 'no data'
             else:
-                name = r0['data']['name']
+                name = r['data']['name']
 
-            if r0['data']['slug'] == None:
+            if r['data']['slug'] == None:
                 slug = 'no data'
             else:
-                slug = r0['data']['slug']
+                slug = r['data']['slug']
 
-            if r0['data']['description'] == None:
+            if r['data']['description'] == None:
                 description = 'no data'
             else:
-                description = r0['data']['description']
+                description = r['data']['description']
 
-            if r0['data']['socials']['external_url'] == None:
+            if r['data']['socials']['external_url'] == None:
                 external_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
             else:
-                external_url = r0['data']['socials']['external_url']
+                external_url = r['data']['socials']['external_url']
 
-            if r0['data']['socials']['discord_url'] == None:
+            if r['data']['socials']['discord_url'] == None:
                 discord_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
             else:
-                discord_url = r0['data']['socials']['discord_url']
+                discord_url = r['data']['socials']['discord_url']
 
-            if r0['data']['socials']['twitter_username'] == None:
+            if r['data']['socials']['twitter_username'] == None:
                 twitter_username = 'rickastley'
             else:
-                twitter_username = r0['data']['socials']['twitter_username']
+                twitter_username = r['data']['socials']['twitter_username']
 
-            if r0['data']['images']['image_url'] == None:
+            if r['data']['images']['image_url'] == None:
                 image_url = 'https://imgur.com/aSSH1jL'
             else:
-                image_url = r0['data']['images']['image_url']
+                image_url = r['data']['images']['image_url']
 
-            if r0['data']['images']['banner_image_url'] == None:
+            if r['data']['images']['banner_image_url'] == None:
                 banner_image_url = 'https://tenor.com/view/glitch-discord-gif-gif-20819419'
             else:
-                banner_image_url = r0['data']['images']['banner_image_url']
+                banner_image_url = r['data']['images']['banner_image_url']
 
-            if r0['data']['createdDate'] == None:
+            if r['data']['createdDate'] == None:
                 time_ = '757371600'
             else:
-                time_ = r0['data']['createdDate']
+                time_ = r['data']['createdDate']
 
             dt = datetime.datetime.fromisoformat(time_)
             stamp = int(dt.timestamp())
@@ -382,83 +460,6 @@ class project(commands.Cog):
 
         x2y2Button.callback = x2y2Button_callback
 
-        view = View(timeout=None)
-
-        view.add_item(openseaButton)
-        view.add_item(looksrareButton)
-        view.add_item(x2y2Button)
-
-        load_dotenv()
-        url0 = "https://api.modulenft.xyz/api/v2/eth/nft/collection?slug="f'{collection}'
-
-        headers0 = {
-            "accept": "application/json",
-            "X-API-KEY": os.getenv('MODULE_API_KEY')
-        }
-
-        r0 = requests.get(url0, headers=headers0).json()
-
-        if r0['data']['name'] == None:
-            name = 'no data'
-        else:
-            name = r0['data']['name']
-
-        if r0['data']['slug'] == None:
-            slug = 'no data'
-        else:
-            slug = r0['data']['slug']
-
-        if r0['data']['description'] == None:
-            description = 'no data'
-        else:
-            description = r0['data']['description']
-
-        if r0['data']['socials']['external_url'] == None:
-            external_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        else:
-            external_url = r0['data']['socials']['external_url']
-
-        if r0['data']['socials']['discord_url'] == None:
-            discord_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        else:
-            discord_url = r0['data']['socials']['discord_url']
-
-        if r0['data']['socials']['twitter_username'] == None:
-            twitter_username = 'rickastley'
-        else:
-            twitter_username = r0['data']['socials']['twitter_username']
-
-        if r0['data']['images']['image_url'] == None:
-            image_url = 'https://imgur.com/aSSH1jL'
-        else:
-            image_url = r0['data']['images']['image_url']
-
-        if r0['data']['images']['banner_image_url'] == None:
-            banner_image_url = 'https://tenor.com/view/glitch-discord-gif-gif-20819419'
-        else:
-            banner_image_url = r0['data']['images']['banner_image_url']
-
-        if r0['data']['createdDate'] == None:
-            time_ = '757371600'
-        else:
-            time_ = r0['data']['createdDate']
-
-        dt = datetime.datetime.fromisoformat(time_)
-        stamp = int(dt.timestamp())
-        result = str(stamp)
-
-        embed = discord.Embed(title=f'{name}', color=0xFFA46E)
-        embed.set_image(url=banner_image_url)
-        embed.add_field(name='Description', value=f'{description}...', inline=False)
-        embed.add_field(name='Created', value='<t:'f'{result}'':R>', inline=False)
-        embed.add_field(name='_ _',
-                        value='[Website]('f'{external_url})║[Discord]('f'{discord_url})║[Twitter](https://twitter.com/'f'{twitter_username})',
-                        inline=False)
-        embed.set_author(name=f'{name}', url="https://opensea.io/collection/"f'{slug}', icon_url=image_url)
-        embed.set_footer(text=f'{name}', icon_url=image_url)
-        embed.timestamp = datetime.datetime.now()
-
-        await ctx.respond(embed=embed, view=view)
 
 
 def setup(bot):
