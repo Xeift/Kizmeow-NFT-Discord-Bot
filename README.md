@@ -8,14 +8,4 @@
 
 <a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/"><img src="https://user-images.githubusercontent.com/80938768/204586063-290c515d-6b7b-471a-b3d9-b54015e38e27.png"></a> to read the doc!
 
-Code
------------------
-
-`xeift.eth` (Xeift#1230)
-
-`c0mradΞ.eth` (c0mradΞ.eth#0084)
-
-Bot Avatar Illustrator
------------------
-`姬玥 Kiyue`
 ![avatar](https://user-images.githubusercontent.com/80938768/146544100-315cdd44-7461-441b-a3dd-d3ee653b145a.png)
