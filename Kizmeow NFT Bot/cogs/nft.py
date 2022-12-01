@@ -80,6 +80,12 @@ class nft(commands.Cog):
         (embed, view) = await initial_embed()
         await ctx.respond(embed=embed, view=view)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        async def return_button_callback(interaction):
+            (embed, view) = await initial_embed()
+            await interaction.response.edit_message(embed=embed, view=view)
+
+        return_button.callback = return_button_callback
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
         async def rarity_button_callback(interaction):
             embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
             embed.set_image(url=nft_image)
@@ -117,12 +123,6 @@ class nft(commands.Cog):
             await interaction.response.edit_message(embed=embed, view=view)
 
         lastSale_button.callback = lastSale_button_callback
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
-        async def return_button_callback(interaction):
-            (embed, view) = await initial_embed()
-            await interaction.response.edit_message(embed=embed, view=view)
-
-        return_button.callback = return_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
 def setup(bot):
     bot.add_cog(nft(bot))
