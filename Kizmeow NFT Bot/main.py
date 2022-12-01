@@ -10,7 +10,7 @@ async def on_ready():
     print(f'We have logged in as {bot.user}')
 
 
-extensions = [  # load cogs
+extensions = [# load cogs
     # --------------------system commands
     'cogs.ping',
     'cogs.help',
@@ -28,9 +28,9 @@ extensions = [  # load cogs
     # --------------------NFT commands
 ]
 
-if __name__ == '__main__':  # import cogs from cogs folder
+if __name__ == '__main__':# import cogs from cogs folder
     for extension in extensions:
         bot.load_extension(extension)
 
 load_dotenv()
-bot.run(os.getenv('TOKEN'))  # bot token
+bot.run(os.getenv('TOKEN'))# bot token
