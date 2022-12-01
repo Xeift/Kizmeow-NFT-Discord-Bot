@@ -70,9 +70,9 @@ class nft(commands.Cog):
             view.add_item(lastSaleButton)
             view.add_item(ipfsButton)
             
-            embed = discord.Embed(title=f'{collectionName}#{token_id}', color=0xFFA46E)
+            embed = discord.Embed(title='', color=0xFFA46E)
             embed.set_image(url=nftImage)
-            embed.set_author(name=collectionName, url=f'https://opensea.io/assets/{collectionContractAddress}/{token_id}', icon_url=collectionImage)
+            embed.set_author(name=f'{collectionName}#{token_id}', url=f'https://opensea.io/assets/{collectionContractAddress}/{token_id}', icon_url=collectionImage)
             embed.add_field(name='Owner', value=f'[{nftOwner[0:6]}](https://etherscan.io/address/{nftOwner})', inline=False)
             embed.add_field(name='Type', value=ercType, inline=False)
             embed.timestamp = datetime.datetime.now()

@@ -6,4 +6,5 @@
 ![](https://tokei.ekzhang.com/b1/github/Xeift/Kizmeow-NFT-Discord-Bot)
 
 
-<a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/"><img src="https://user-images.githubusercontent.com/80938768/204586063-290c515d-6b7b-471a-b3d9-b54015e38e27.png"></a> to read the doc!
+<a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/"><img src="https://user-images.githubusercontent.com/80938768/204586063-290c515d-6b7b-471a-b3d9-b54015e38e27.png"></a>
+<h2>↑Read The Doc!</h2>

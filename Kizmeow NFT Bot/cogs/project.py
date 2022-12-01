@@ -34,6 +34,9 @@ class project(commands.Cog):
         }
         r = requests.get(url, headers=headers).json()
 
+
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         if r['data']['name'] == None:
             name = 'no data'
         else:
@@ -89,7 +92,7 @@ class project(commands.Cog):
         view.add_item(looksrareButton)
         view.add_item(x2y2Button)
 
-        embed = discord.Embed(title=f'{name}', color=0xFFA46E)
+        embed = discord.Embed(title='', color=0xFFA46E)
         embed.set_image(url=banner_image_url)
         embed.add_field(name='Description', value=f'{description}...', inline=False)
         embed.add_field(name='Created', value='<t:'f'{result}'':R>', inline=False)
@@ -97,7 +100,6 @@ class project(commands.Cog):
                         value='[Website]('f'{external_url})║[Discord]('f'{discord_url})║[Twitter](https://twitter.com/'f'{twitter_username})',
                         inline=False)
         embed.set_author(name=f'{name}', url="https://opensea.io/collection/"f'{slug}', icon_url=image_url)
-        embed.set_footer(text=f'{name}', icon_url=image_url)
         embed.timestamp = datetime.datetime.now()
 
         await ctx.respond(embed=embed, view=view)
