@@ -37,7 +37,7 @@ class collection(commands.Cog):
 
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        name = 'no data' if r['data']['name'] == None else r['data']['name']
+        collectionName = 'no data' if r['data']['name'] == None else r['data']['name']
         slug = 'no data'if r['data']['slug'] == None else r['data']['slug']
         description = 'no data' if r['data']['description'] == None else r['data']['description']
         external_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' if r['data']['socials']['external_url'] == None else r['data']['socials']['external_url']
@@ -45,12 +45,13 @@ class collection(commands.Cog):
         twitter_username = 'no data' if r['data']['socials']['twitter_username'] == None else r['data']['socials']['twitter_username']
         image_url = 'https://imgur.com/aSSH1jL' if r['data']['images']['image_url'] == None else r['data']['images']['image_url']
         banner_image_url = 'https://tenor.com/view/glitch-discord-gif-gif-20819419' if r['data']['images']['banner_image_url'] == None else r['data']['images']['banner_image_url']
-        time_ = '757371600' if r['data']['createdDate'] == None else r['data']['createdDate']
+        collectionCreateDate = '757371600' if r['data']['createdDate'] == None else r['data']['createdDate']
 
-        dt = datetime.datetime.fromisoformat(time_)
+        dt = datetime.datetime.fromisoformat(collectionCreateDate)
         stamp = int(dt.timestamp())
         result = str(stamp)
-
+        print(f"{dt} {stamp} {result}")
+        print(f"{type(dt)} {type(stamp)} {type(result)}")
         view = View(timeout=None)
 
         view.add_item(openseaButton)
@@ -64,7 +65,7 @@ class collection(commands.Cog):
         embed.add_field(name='_ _',
                         value='[Website]('f'{external_url})║[Discord]('f'{discord_url})║[Twitter](https://twitter.com/'f'{twitter_username})',
                         inline=False)
-        embed.set_author(name=f'{name}', url="https://opensea.io/collection/"f'{slug}', icon_url=image_url)
+        embed.set_author(name=f'{collectionName}', url="https://opensea.io/collection/"f'{slug}', icon_url=image_url)
         embed.timestamp = datetime.datetime.now()
 
         await ctx.respond(embed=embed, view=view)
@@ -128,11 +129,11 @@ class collection(commands.Cog):
                 banner_image_url = r['data']['images']['banner_image_url']
 
             if r['data']['createdDate'] == None:
-                time_ = '757371600'
+                collectionCreateDate = '757371600'
             else:
-                time_ = r['data']['createdDate']
+                collectionCreateDate = r['data']['createdDate']
 
-            dt = datetime.datetime.fromisoformat(time_)
+            dt = datetime.datetime.fromisoformat(collectionCreateDate)
             stamp = int(dt.timestamp())
             result = str(stamp)
 
@@ -207,7 +208,7 @@ class collection(commands.Cog):
             else:
                 monthlyAveragePrice_opensea = float(r1['data']['monthlyAveragePrice'])
 
-            embed = discord.Embed(title=f'{name}', color=0x6495ed)
+            embed = discord.Embed(title=f'{collectionName}', color=0x6495ed)
             embed.set_image(url='https://open-graph.opensea.io/v1/collections/'f'{slug}')
             embed.add_field(name='Volume daily', value=f'{dailyVolume_opensea:.2f} ETH', inline=True)
             embed.add_field(name='Volume Weekly', value=f'{WeeklyVolume_opensea:.2f} ETH', inline=True)
@@ -218,7 +219,7 @@ class collection(commands.Cog):
             embed.add_field(name='Average daily', value=f'{dailyAveragePrice_opensea:.2f} ETH', inline=True)
             embed.add_field(name='Average Weekly', value=f'{weeklyAveragePrice_opensea:.2f} ETH', inline=True)
             embed.add_field(name='Average Monthly', value=f'{monthlyAveragePrice_opensea:.2f} ETH', inline=True)
-            embed.set_author(name=f'{name}', url='https://opensea.io/collection/'f'{slug}', icon_url=image_url)
+            embed.set_author(name=f'{collectionName}', url='https://opensea.io/collection/'f'{slug}', icon_url=image_url)
             embed.set_footer(text='OpenSea🌊',
                              icon_url='https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.png')
             embed.timestamp = datetime.datetime.now()
@@ -305,7 +306,7 @@ class collection(commands.Cog):
             else:
                 floor_looksrare = float(r2['data']['floorPrice']['price'])
 
-            embed = discord.Embed(title=f'{name}', color=0x5ccf51)
+            embed = discord.Embed(title=f'{collectionName}', color=0x5ccf51)
             embed.set_image(url=banner_image_url)
             embed.add_field(name='Volume daily', value=f'{dailyVolume_looksrare:.2f} ETH', inline=True)
             embed.add_field(name='Volume Weekly', value=f'{WeeklyVolume_looksrare:.2f} ETH', inline=True)
@@ -319,7 +320,7 @@ class collection(commands.Cog):
             embed.add_field(name='Listed Count', value=f'{tokenListedCount_looksrare} NFT', inline=True)
             embed.add_field(name='Holders', value=f'{holders_looksrare} PPL', inline=True)
             embed.add_field(name='Floor', value=f'{floor_looksrare:.2f} ETH', inline=True)
-            embed.set_author(name=f'{name}', url='https://looksrare.org/collections/'f'{address_looksrare}',
+            embed.set_author(name=f'{collectionName}', url='https://looksrare.org/collections/'f'{address_looksrare}',
                              icon_url=image_url)
             embed.set_footer(text='LooksRare👀',
                              icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/main/access/looks-green.png')
@@ -402,7 +403,7 @@ class collection(commands.Cog):
             else:
                 floor_x2y2 = float(r3['data']['floorPrice']['price'])
 
-            embed = discord.Embed(title=f'{name}', color=0x444072)
+            embed = discord.Embed(title=f'{collectionName}', color=0x444072)
             embed.set_image(url=banner_image_url)
             embed.add_field(name='Volume daily', value=f'{dailyVolume_x2y2:.2f} ETH', inline=True)
             embed.add_field(name='Volume Weekly', value=f'{WeeklyVolume_x2y2:.2f} ETH', inline=True)
@@ -416,7 +417,7 @@ class collection(commands.Cog):
             embed.add_field(name='Listed Count', value=f'{tokenListedCount_x2y2} NFT', inline=True)
             embed.add_field(name='Holders', value=f'{holders_x2y2} PPL', inline=True)
             embed.add_field(name='Floor', value=f'{floor_x2y2:.2f} ETH', inline=True)
-            embed.set_author(name=f'{name}', url="https://x2y2.io/collection/"f'{slug}'"/items", icon_url=image_url)
+            embed.set_author(name=f'{collectionName}', url="https://x2y2.io/collection/"f'{slug}'"/items", icon_url=image_url)
             embed.set_footer(text='X2Y2🌀',
                              icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/main/access/x2y2_logo.png')
             embed.timestamp = datetime.datetime.now()
