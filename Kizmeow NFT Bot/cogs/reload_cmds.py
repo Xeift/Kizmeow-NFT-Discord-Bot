@@ -29,7 +29,7 @@ class reload_cmds(commands.Cog):
                 # --------------------etherscan commands
 
                 # --------------------NFT commands
-                'cogs.project',
+                'cogs.collection',
                 'cogs.nft'
                 # --------------------NFT commands
             ]

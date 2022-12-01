@@ -21,24 +21,21 @@ class collection(commands.Cog):
             collection: Option(str, 'Specify the collection slug')
     ):
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        openseaButton = Button(label='OpenSea🌊', style=discord.ButtonStyle.blurple)
-        looksrareButton = Button(label='LooksRare👀', style=discord.ButtonStyle.green)
-        x2y2Button = Button(label='X2Y2🌀', style=discord.ButtonStyle.grey)
-        returnButton = Button(label='EXIT', style=discord.ButtonStyle.red)
+        opensea_button = Button(label='OpenSea🌊', style=discord.ButtonStyle.blurple)
+        looksrare_button = Button(label='LooksRare👀', style=discord.ButtonStyle.green)
+        x2y2_button = Button(label='X2Y2🌀', style=discord.ButtonStyle.grey)
+        return_button = Button(label='EXIT', style=discord.ButtonStyle.red)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         load_dotenv()
         url = f'https://api.modulenft.xyz/api/v2/eth/nft/collection?slug={collection}'
         headers = {
-            "accept": "application/json",
-            "X-API-KEY": os.getenv('MODULE_API_KEY')
+            'accept': 'application/json',
+            'X-API-KEY': os.getenv('MODULE_API_KEY')
         }
         r = requests.get(url, headers=headers).json()
 
-
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         collectionName = 'no data' if r['data']['name'] == None else r['data']['name']
-        slug = 'no data'if r['data']['slug'] == None else r['data']['slug']
+        collectionSlug = 'no data'if r['data']['slug'] == None else r['data']['slug']
         description = 'no data' if r['data']['description'] == None else r['data']['description']
         external_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' if r['data']['socials']['external_url'] == None else r['data']['socials']['external_url']
         discord_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' if r['data']['socials']['discord_url'] == None else r['data']['socials']['discord_url']
@@ -46,37 +43,34 @@ class collection(commands.Cog):
         image_url = 'https://imgur.com/aSSH1jL' if r['data']['images']['image_url'] == None else r['data']['images']['image_url']
         banner_image_url = 'https://tenor.com/view/glitch-discord-gif-gif-20819419' if r['data']['images']['banner_image_url'] == None else r['data']['images']['banner_image_url']
         collectionCreateDate = '757371600' if r['data']['createdDate'] == None else r['data']['createdDate']
+        collectionCreateDate = datetime.datetime.fromisoformat(collectionCreateDate)
+        collectionCreateDate = str(int(collectionCreateDate.timestamp()))
 
-        dt = datetime.datetime.fromisoformat(collectionCreateDate)
-        stamp = int(dt.timestamp())
-        result = str(stamp)
-        print(f"{dt} {stamp} {result}")
-        print(f"{type(dt)} {type(stamp)} {type(result)}")
         view = View(timeout=None)
 
-        view.add_item(openseaButton)
-        view.add_item(looksrareButton)
-        view.add_item(x2y2Button)
+        view.add_item(opensea_button)
+        view.add_item(looksrare_button)
+        view.add_item(x2y2_button)
 
         embed = discord.Embed(title='', color=0xFFA46E)
         embed.set_image(url=banner_image_url)
         embed.add_field(name='Description', value=f'{description}...', inline=False)
-        embed.add_field(name='Created', value='<t:'f'{result}'':R>', inline=False)
+        embed.add_field(name='Created', value=f'<t:{collectionCreateDate}:R>', inline=False)
         embed.add_field(name='_ _',
                         value='[Website]('f'{external_url})║[Discord]('f'{discord_url})║[Twitter](https://twitter.com/'f'{twitter_username})',
                         inline=False)
-        embed.set_author(name=f'{collectionName}', url="https://opensea.io/collection/"f'{slug}', icon_url=image_url)
+        embed.set_author(name=f'{collectionName}', url="https://opensea.io/collection/"f'{collectionSlug}', icon_url=image_url)
         embed.timestamp = datetime.datetime.now()
 
         await ctx.respond(embed=embed, view=view)
 
 
-        async def returnButton_callback(interaction):
+        async def return_button_callback(interaction):
             global author_url
             view = View(timeout=None)
-            view.add_item(openseaButton)
-            view.add_item(looksrareButton)
-            view.add_item(x2y2Button)
+            view.add_item(opensea_button)
+            view.add_item(looksrare_button)
+            view.add_item(x2y2_button)
 
             load_dotenv()
             url = "https://api.modulenft.xyz/api/v2/eth/nft/collection?slug="f'{collection}'
@@ -150,9 +144,9 @@ class collection(commands.Cog):
 
             await interaction.response.edit_message(embed=embed, view=view)
 
-        returnButton.callback = returnButton_callback
+        return_button.callback = return_button_callback
 
-        async def openseaButton_callback(interaction):
+        async def opensea_button_callback(interaction):
             load_dotenv()
             url1 = "https://api.modulenft.xyz/api/v2/eth/nft/stats?slug="f'{collection}'"&marketplace=Opensea"
 
@@ -209,7 +203,7 @@ class collection(commands.Cog):
                 monthlyAveragePrice_opensea = float(r1['data']['monthlyAveragePrice'])
 
             embed = discord.Embed(title=f'{collectionName}', color=0x6495ed)
-            embed.set_image(url='https://open-graph.opensea.io/v1/collections/'f'{slug}')
+            embed.set_image(url='https://open-graph.opensea.io/v1/collections/'f'{collectionSlug}')
             embed.add_field(name='Volume daily', value=f'{dailyVolume_opensea:.2f} ETH', inline=True)
             embed.add_field(name='Volume Weekly', value=f'{WeeklyVolume_opensea:.2f} ETH', inline=True)
             embed.add_field(name='Volume Monthly', value=f'{monthlyVolume_opensea:.2f} ETH', inline=True)
@@ -219,18 +213,18 @@ class collection(commands.Cog):
             embed.add_field(name='Average daily', value=f'{dailyAveragePrice_opensea:.2f} ETH', inline=True)
             embed.add_field(name='Average Weekly', value=f'{weeklyAveragePrice_opensea:.2f} ETH', inline=True)
             embed.add_field(name='Average Monthly', value=f'{monthlyAveragePrice_opensea:.2f} ETH', inline=True)
-            embed.set_author(name=f'{collectionName}', url='https://opensea.io/collection/'f'{slug}', icon_url=image_url)
+            embed.set_author(name=f'{collectionName}', url='https://opensea.io/collection/'f'{collectionSlug}', icon_url=image_url)
             embed.set_footer(text='OpenSea🌊',
                              icon_url='https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.png')
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
-            view.add_item(returnButton)
+            view.add_item(return_button)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        openseaButton.callback = openseaButton_callback
+        opensea_button.callback = opensea_button_callback
 
-        async def looksrareButton_callback(interaction):
+        async def looksrare_button_callback(interaction):
             load_dotenv()
             url2 = "https://api.modulenft.xyz/api/v2/eth/nft/stats?slug="f'{collection}'"&marketplace=Looksrare"
 
@@ -327,12 +321,12 @@ class collection(commands.Cog):
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
-            view.add_item(returnButton)
+            view.add_item(return_button)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        looksrareButton.callback = looksrareButton_callback
+        looksrare_button.callback = looksrare_button_callback
 
-        async def x2y2Button_callback(interaction):
+        async def x2y2_button_callback(interaction):
             load_dotenv()
             url3 = "https://api.modulenft.xyz/api/v2/eth/nft/stats?slug="f'{collection}'"&marketplace=X2Y2"
 
@@ -417,16 +411,16 @@ class collection(commands.Cog):
             embed.add_field(name='Listed Count', value=f'{tokenListedCount_x2y2} NFT', inline=True)
             embed.add_field(name='Holders', value=f'{holders_x2y2} PPL', inline=True)
             embed.add_field(name='Floor', value=f'{floor_x2y2:.2f} ETH', inline=True)
-            embed.set_author(name=f'{collectionName}', url="https://x2y2.io/collection/"f'{slug}'"/items", icon_url=image_url)
+            embed.set_author(name=f'{collectionName}', url="https://x2y2.io/collection/"f'{collectionSlug}'"/items", icon_url=image_url)
             embed.set_footer(text='X2Y2🌀',
                              icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/main/access/x2y2_logo.png')
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
-            view.add_item(returnButton)
+            view.add_item(return_button)
             await interaction.response.edit_message(embed=embed, view=view)
 
-        x2y2Button.callback = x2y2Button_callback
+        x2y2_button.callback = x2y2_button_callback
 
 
 
