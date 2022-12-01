@@ -45,6 +45,46 @@ class collection(commands.Cog):
         collection_create_date = '757371600' if r['data']['createdDate'] == None else r['data']['createdDate']
         collection_create_date = datetime.datetime.fromisoformat(collection_create_date)
         collection_create_date = str(int(collection_create_date.timestamp()))
+        
+        async def marketplace_embed(marketplace_name):
+            load_dotenv()
+            url = f'https://api.modulenft.xyz/api/v2/eth/nft/stats?slug={collection}&marketplace=Opensea'
+            headers = {
+                'accept': 'application/json',
+                'X-API-KEY': os.getenv('MODULE_API_KEY')
+            }
+            r = requests.get(url, headers=headers).json()
+
+            dailyVolume_opensea = 0 if r['data']['dailyVolume'] == None else float(r['data']['dailyVolume'])
+            WeeklyVolume_opensea = 0 if r['data']['WeeklyVolume'] == None else float(r['data']['WeeklyVolume'])
+            monthlyVolume_opensea = 0 if r['data']['monthlyVolume'] == None else float(r['data']['monthlyVolume'])
+            dailySalesCount_opensea = 0 if r['data']['dailySalesCount'] == None else float(r['data']['dailySalesCount'])
+            weeklySalesCount_opensea = 0 if r['data']['weeklySalesCount'] == None else float(r['data']['weeklySalesCount'])
+            monthlySalesCount_opensea = 0 if r['data']['monthlySalesCount'] == None else float(r['data']['monthlySalesCount'])
+            dailyAveragePrice_opensea = 0 if r['data']['dailyAveragePrice'] == None else float(r['data']['dailyAveragePrice'])
+            weeklyAveragePrice_opensea = 0 if r['data']['weeklyAveragePrice'] == None else float(r['data']['weeklyAveragePrice'])
+            monthlyAveragePrice_opensea = 0 if r['data']['monthlyAveragePrice'] == None else float(r['data']['monthlyAveragePrice'])
+
+            embed = discord.Embed(title=f'{collection_name}', color=0x6495ed)
+            embed.set_image(url='https://open-graph.opensea.io/v1/collections/'f'{collection_slug}')
+            embed.add_field(name='Volume daily', value=f'{dailyVolume_opensea:.2f} ETH', inline=True)
+            embed.add_field(name='Volume Weekly', value=f'{WeeklyVolume_opensea:.2f} ETH', inline=True)
+            embed.add_field(name='Volume Monthly', value=f'{monthlyVolume_opensea:.2f} ETH', inline=True)
+            embed.add_field(name='Sales daily', value=f'{dailySalesCount_opensea} NFT', inline=True)
+            embed.add_field(name='Sales Weekly', value=f'{weeklySalesCount_opensea} NFT', inline=True)
+            embed.add_field(name='Sales Monthly', value=f'{monthlySalesCount_opensea} NFT', inline=True)
+            embed.add_field(name='Average daily', value=f'{dailyAveragePrice_opensea:.2f} ETH', inline=True)
+            embed.add_field(name='Average Weekly', value=f'{weeklyAveragePrice_opensea:.2f} ETH', inline=True)
+            embed.add_field(name='Average Monthly', value=f'{monthlyAveragePrice_opensea:.2f} ETH', inline=True)
+            embed.set_author(name=f'{collection_name}', url='https://opensea.io/collection/'f'{collection_slug}', icon_url=image_url)
+            embed.set_footer(text='OpenSea🌊',
+                             icon_url='https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.png')
+            embed.timestamp = datetime.datetime.now()
+
+            view = View(timeout=None)
+            view.add_item(return_button)
+
+            return (embed, view)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def initial_embed():
             view = View(timeout=None)
@@ -73,83 +113,10 @@ class collection(commands.Cog):
 
         return_button.callback = return_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
-
         async def opensea_button_callback(interaction):
-            load_dotenv()
-            url1 = "https://api.modulenft.xyz/api/v2/eth/nft/stats?slug="f'{collection}'"&marketplace=Opensea"
-
-            headers1 = {
-                "accept": "application/json",
-                "X-API-KEY": os.getenv('MODULE_API_KEY')
-            }
-
-            r1 = requests.get(url1, headers=headers1).json()
-
-            if r1['data']['dailyVolume'] == None:
-                dailyVolume_opensea = 0
-            else:
-                dailyVolume_opensea = float(r1['data']['dailyVolume'])
-
-            if r1['data']['WeeklyVolume'] == None:
-                WeeklyVolume_opensea = 0
-            else:
-                WeeklyVolume_opensea = float(r1['data']['WeeklyVolume'])
-
-            if r1['data']['monthlyVolume'] == None:
-                monthlyVolume_opensea = 0
-            else:
-                monthlyVolume_opensea = float(r1['data']['monthlyVolume'])
-
-            if r1['data']['dailySalesCount'] == None:
-                dailySalesCount_opensea = 0
-            else:
-                dailySalesCount_opensea = float(r1['data']['dailySalesCount'])
-
-            if r1['data']['weeklySalesCount'] == None:
-                weeklySalesCount_opensea = 0
-            else:
-                weeklySalesCount_opensea = float(r1['data']['weeklySalesCount'])
-
-            if r1['data']['monthlySalesCount'] == None:
-                monthlySalesCount_opensea = 0
-            else:
-                monthlySalesCount_opensea = float(r1['data']['monthlySalesCount'])
-
-            if r1['data']['dailyAveragePrice'] == None:
-                dailyAveragePrice_opensea = 0
-            else:
-                dailyAveragePrice_opensea = float(r1['data']['dailyAveragePrice'])
-
-            if r1['data']['weeklyAveragePrice'] == None:
-                weeklyAveragePrice_opensea = 0
-            else:
-                weeklyAveragePrice_opensea = float(r1['data']['weeklyAveragePrice'])
-
-            if r1['data']['monthlyAveragePrice'] == None:
-                monthlyAveragePrice_opensea = 0
-            else:
-                monthlyAveragePrice_opensea = float(r1['data']['monthlyAveragePrice'])
-
-            embed = discord.Embed(title=f'{collection_name}', color=0x6495ed)
-            embed.set_image(url='https://open-graph.opensea.io/v1/collections/'f'{collection_slug}')
-            embed.add_field(name='Volume daily', value=f'{dailyVolume_opensea:.2f} ETH', inline=True)
-            embed.add_field(name='Volume Weekly', value=f'{WeeklyVolume_opensea:.2f} ETH', inline=True)
-            embed.add_field(name='Volume Monthly', value=f'{monthlyVolume_opensea:.2f} ETH', inline=True)
-            embed.add_field(name='Sales daily', value=f'{dailySalesCount_opensea} NFT', inline=True)
-            embed.add_field(name='Sales Weekly', value=f'{weeklySalesCount_opensea} NFT', inline=True)
-            embed.add_field(name='Sales Monthly', value=f'{monthlySalesCount_opensea} NFT', inline=True)
-            embed.add_field(name='Average daily', value=f'{dailyAveragePrice_opensea:.2f} ETH', inline=True)
-            embed.add_field(name='Average Weekly', value=f'{weeklyAveragePrice_opensea:.2f} ETH', inline=True)
-            embed.add_field(name='Average Monthly', value=f'{monthlyAveragePrice_opensea:.2f} ETH', inline=True)
-            embed.set_author(name=f'{collection_name}', url='https://opensea.io/collection/'f'{collection_slug}', icon_url=image_url)
-            embed.set_footer(text='OpenSea🌊',
-                             icon_url='https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.png')
-            embed.timestamp = datetime.datetime.now()
-
-            view = View(timeout=None)
-            view.add_item(return_button)
+            (embed, view) = await marketplace_embed('OpenSea')
             await interaction.response.edit_message(embed=embed, view=view)
-
+        
         opensea_button.callback = opensea_button_callback
 
         async def looksrare_button_callback(interaction):
