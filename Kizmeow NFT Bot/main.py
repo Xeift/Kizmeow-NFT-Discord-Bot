@@ -23,7 +23,7 @@ extensions = [  # load cogs
     # --------------------etherscan commands
 
     # --------------------NFT commands
-    'cogs.project',
+    'cogs.collection',
     'cogs.nft'
     # --------------------NFT commands
 ]

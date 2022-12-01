@@ -9,13 +9,13 @@ from discord.commands import Option
 from discord.commands import slash_command
 
 
-class project(commands.Cog):
+class collection(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='project', description='Check project information from Opensea, LooksRare and X2Y2')
-    async def project(
+    @slash_command(name='collection', description='Check collection information from Opensea, LooksRare and X2Y2')
+    async def collection(
             self,
             ctx: discord.ApplicationContext,
             collection: Option(str, 'Specify the collection slug')
@@ -37,50 +37,15 @@ class project(commands.Cog):
 
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        if r['data']['name'] == None:
-            name = 'no data'
-        else:
-            name = r['data']['name']
-
-        if r['data']['slug'] == None:
-            slug = 'no data'
-        else:
-            slug = r['data']['slug']
-
-        if r['data']['description'] == None:
-            description = 'no data'
-        else:
-            description = r['data']['description']
-
-        if r['data']['socials']['external_url'] == None:
-            external_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        else:
-            external_url = r['data']['socials']['external_url']
-
-        if r['data']['socials']['discord_url'] == None:
-            discord_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        else:
-            discord_url = r['data']['socials']['discord_url']
-
-        if r['data']['socials']['twitter_username'] == None:
-            twitter_username = 'rickastley'
-        else:
-            twitter_username = r['data']['socials']['twitter_username']
-
-        if r['data']['images']['image_url'] == None:
-            image_url = 'https://imgur.com/aSSH1jL'
-        else:
-            image_url = r['data']['images']['image_url']
-
-        if r['data']['images']['banner_image_url'] == None:
-            banner_image_url = 'https://tenor.com/view/glitch-discord-gif-gif-20819419'
-        else:
-            banner_image_url = r['data']['images']['banner_image_url']
-
-        if r['data']['createdDate'] == None:
-            time_ = '757371600'
-        else:
-            time_ = r['data']['createdDate']
+        name = 'no data' if r['data']['name'] == None else r['data']['name']
+        slug = 'no data'if r['data']['slug'] == None else r['data']['slug']
+        description = 'no data' if r['data']['description'] == None else r['data']['description']
+        external_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' if r['data']['socials']['external_url'] == None else r['data']['socials']['external_url']
+        discord_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' if r['data']['socials']['discord_url'] == None else r['data']['socials']['discord_url']
+        twitter_username = 'no data' if r['data']['socials']['twitter_username'] == None else r['data']['socials']['twitter_username']
+        image_url = 'https://imgur.com/aSSH1jL' if r['data']['images']['image_url'] == None else r['data']['images']['image_url']
+        banner_image_url = 'https://tenor.com/view/glitch-discord-gif-gif-20819419' if r['data']['images']['banner_image_url'] == None else r['data']['images']['banner_image_url']
+        time_ = '757371600' if r['data']['createdDate'] == None else r['data']['createdDate']
 
         dt = datetime.datetime.fromisoformat(time_)
         stamp = int(dt.timestamp())
@@ -465,4 +430,4 @@ class project(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(project(bot))
+    bot.add_cog(collection(bot))
