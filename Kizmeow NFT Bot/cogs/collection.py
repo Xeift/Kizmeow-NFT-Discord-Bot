@@ -16,7 +16,7 @@ class collection(commands.Cog):
         self.bot = bot
 
     def collection_name_autocomplete(self: discord.AutocompleteContext):
-        with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
+        with open('collection_name_autocomplete.json','r') as of:
             collection_name_data = json.load(of)
         return collection_name_data.keys()
 
@@ -27,7 +27,7 @@ class collection(commands.Cog):
         collection: Option(str, 'Specify the collection slug', autocomplete=collection_name_autocomplete)
     ):
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
+        with open('collection_name_autocomplete.json','r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:
             collection = collection_name_data[collection]
@@ -36,6 +36,12 @@ class collection(commands.Cog):
         looksrare_button = Button(label='LooksRare👀', style=discord.ButtonStyle.success)
         x2y2_button = Button(label='X2Y2🌀', style=discord.ButtonStyle.secondary)
         return_button = Button(label='EXIT', style=discord.ButtonStyle.danger)
+        git_book = Button(label='GitBook', style=discord.ButtonStyle.link, emoji='<:gitbook:1047912317427400704>')
+        git_book.url = "https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq"
+        git_book.custom_id = None
+        invite = Button(label='Kizmeow Support Server', style=discord.ButtonStyle.link, emoji='<:kizmeow:1047912736224448562>')
+        invite.url = "https://discord.gg/PxNF9PaSKv"
+        invite.custom_id = None
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         load_dotenv()
         url = f'https://api.modulenft.xyz/api/v2/eth/nft/collection?slug={collection}'
@@ -45,10 +51,13 @@ class collection(commands.Cog):
         }
         r = requests.get(url, headers=headers).json()
         if r['error'] != None:
+            view = View(timeout=None)
+            view.add_item(git_book)
+            view.add_item(invite)
             embed = discord.Embed(title='[ERROR]',
                                   description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv',
                                   color=0xFFA46E)
-            await ctx.respond(embed=embed, ephemeral=True)
+            await ctx.respond(embed=embed, view=view, ephemeral=True)
             return
 
         collection_name = 'no data' if r['data']['name'] == None else r['data']['name']
@@ -96,8 +105,13 @@ class collection(commands.Cog):
 
             r = requests.get(url, headers=headers).json()
             if r['error'] != None:
-                embed = discord.Embed(title='[API ERROR]', description='Possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
-                await ctx.respond(embed=embed, ephemeral=True)
+                view = View(timeout=None)
+                view.add_item(git_book)
+                view.add_item(invite)
+                embed = discord.Embed(title='[ERROR]',
+                                      description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv',
+                                      color=0xFFA46E)
+                await ctx.respond(embed=embed, view=view, ephemeral=True)
                 return
             match marketplace_name:
                 case 'Opensea':  # why tf requests result are all different? I'm very confused too.
