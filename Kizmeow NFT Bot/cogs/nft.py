@@ -34,7 +34,7 @@ class nft(commands.Cog):
             'X-API-KEY': os.getenv('MODULE_API_KEY')
         }
         r = requests.get(url=url, headers=headers).json()
-        print(r)
+        # print(r)
         if r['error'] != None:
             embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
             await ctx.respond(embed=embed, ephemeral=True)
@@ -60,11 +60,6 @@ class nft(commands.Cog):
             'x-ts-api-key': os.getenv('TRAITSNIPER_API_KEY')
         }
         r = requests.get(url, headers=headers).json()
-        print(r)
-        if r['error'] != None:
-            embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
-            await ctx.respond(embed=embed, ephemeral=True)
-            return
 
         rarity_rank = 'no data' if r['nfts'][0]['rarity_rank'] == None else r['nfts'][0]['rarity_rank']
         rarity_score = 'no data' if r['nfts'][0]['rarity_score'] == None else r['nfts'][0]['rarity_score']
