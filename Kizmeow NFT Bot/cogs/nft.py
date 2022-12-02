@@ -15,7 +15,7 @@ class nft(commands.Cog):
         self.bot = bot
 
     def collection_name_autocomplete(self: discord.AutocompleteContext):
-        with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
+        with open('collection_name_autocomplete.json','r') as of:
             collection_name_data = json.load(of)
         return collection_name_data.keys()
 
@@ -27,7 +27,7 @@ class nft(commands.Cog):
         token_id: Option(str, 'Enter the token id')
     ):
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
+        with open('collection_name_autocomplete.json','r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:
             collection = collection_name_data[collection]
@@ -86,7 +86,7 @@ class nft(commands.Cog):
             view.add_item(rarity_button)
             view.add_item(lastSale_button)
             view.add_item(ipfs_button)
-            
+
             embed = discord.Embed(title='', color=0xFFA46E)
             embed.set_image(url=nft_image)
             embed.set_author(name=f'{collection_name}#{token_id}', url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
@@ -105,7 +105,7 @@ class nft(commands.Cog):
             await interaction.response.edit_message(embed=embed, view=view)
 
         return_button.callback = return_button_callback
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def rarity_button_callback(interaction):
             embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
             embed.set_image(url=nft_image)
@@ -128,7 +128,7 @@ class nft(commands.Cog):
             await interaction.response.edit_message(embed=embed, view=view)
 
         rarity_button.callback = rarity_button_callback
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def lastSale_button_callback(interaction):
             if last_sale_exist:
                 embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
@@ -145,6 +145,6 @@ class nft(commands.Cog):
             await interaction.response.edit_message(embed=embed, view=view)
 
         lastSale_button.callback = lastSale_button_callback
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(nft(bot))
