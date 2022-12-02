@@ -72,7 +72,7 @@ class nft(commands.Cog):
             last_sale_exist = False
         else:
             last_sale_exist = False
-            from_address =  r['data']['lastSale']['from_address']
+            from_address = r['data']['lastSale']['from_address']
             to_address = r['data']['lastSale']['to_address']
             timestamp = r['data']['lastSale']['timestamp']
             sale_price = r['data']['lastSale']['sale_price_in_eth']
@@ -153,6 +153,9 @@ class nft(commands.Cog):
                 embed.timestamp = datetime.datetime.now()
             else:
                 embed = discord.Embed(title=f'{collection_name}#{token_id} is never sold', color=0xFFA46E)
+                embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
+                embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
+                embed.timestamp = datetime.datetime.now()
             view = View(timeout=None)
             view.add_item(return_button)
             await interaction.response.edit_message(embed=embed, view=view)
