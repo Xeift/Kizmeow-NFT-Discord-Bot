@@ -32,9 +32,9 @@ class collection(commands.Cog):
         if collection in collection_name_data:
             collection = collection_name_data[collection]
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        opensea_button = Button(label='OpenSea🌊', style=discord.ButtonStyle.primary)
-        looksrare_button = Button(label='LooksRare👀', style=discord.ButtonStyle.success)
-        x2y2_button = Button(label='X2Y2🌀', style=discord.ButtonStyle.secondary)
+        opensea_button = Button(label='OpenSea', style=discord.ButtonStyle.primary, emoji='<:opensea:1048240029371224104>')
+        looksrare_button = Button(label='LooksRare', style=discord.ButtonStyle.success, emoji='<:looksgreen:1048239565233729546>')
+        x2y2_button = Button(label='X2Y2', style=discord.ButtonStyle.secondary, emoji='<:x2y2:1048239487148359731>')
         return_button = Button(label='EXIT', style=discord.ButtonStyle.danger)
         git_book = Button(label='GitBook', style=discord.ButtonStyle.link, emoji='<:gitbook:1047912317427400704>')
         git_book.url = "https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq"
@@ -156,15 +156,15 @@ class collection(commands.Cog):
             match marketplace_name:
                 case 'Opensea':
                     collection_link = f'https://opensea.io/collection/{collection_slug}'
-                    footer_marketplace = 'OpenSea🌊'
+                    footer_marketplace = 'OpenSea'
                     footer_icon = 'https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.png'
                 case 'Looksrare':
                     collection_link = f'https://looksrare.org/collections/{collection_address}'
-                    footer_marketplace = 'LooksRare👀'
+                    footer_marketplace = 'LooksRare'
                     footer_icon = 'https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/main/access/looks-green.png'
                 case 'X2Y2':
                     collection_link = f'https://x2y2.io/collection/{collection_slug}/items'
-                    footer_marketplace = 'X2Y2🌀'
+                    footer_marketplace = 'X2Y2'
                     footer_icon = 'https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/main/access/x2y2_logo.png'
 
             embed.set_author(name=collection_name, url=collection_link, icon_url=image_url)

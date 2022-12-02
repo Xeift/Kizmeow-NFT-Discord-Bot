@@ -32,10 +32,16 @@ class nft(commands.Cog):
         if collection in collection_name_data:
             collection = collection_name_data[collection]
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        rarity_button = Button(label='Rarity💎', style=discord.ButtonStyle.blurple)
-        lastSale_button = Button(label='Last Sale💳', style=discord.ButtonStyle.green)
-        ipfs_button = Button(label='IPFS🧊', style=discord.ButtonStyle.link)
+        rarity_button = Button(label='Rarity', style=discord.ButtonStyle.blurple, emoji='💎')
+        lastSale_button = Button(label='Last Sale', style=discord.ButtonStyle.green, emoji='💳')
+        ipfs_button = Button(label='IPFS', style=discord.ButtonStyle.link, emoji='🧊')
         return_button = Button(label='EXIT', style=discord.ButtonStyle.red)
+        git_book = Button(label='GitBook', style=discord.ButtonStyle.link, emoji='<:gitbook:1047912317427400704>')
+        git_book.url = "https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq"
+        git_book.custom_id = None
+        invite = Button(label='Kizmeow Support Server', style=discord.ButtonStyle.link, emoji='<:kizmeow:1047912736224448562>')
+        invite.url = "https://discord.gg/PxNF9PaSKv"
+        invite.custom_id = None
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         load_dotenv()
         url = f'https://api.modulenft.xyz/api/v2/eth/nft/token?slug={collection}&tokenId={token_id}'
@@ -46,12 +52,15 @@ class nft(commands.Cog):
         r = requests.get(url=url, headers=headers).json()
 
         if r['error'] != None:
+            view = View(timeout=None)
+            view.add_item(git_book)
+            view.add_item(invite)
             embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
-            await ctx.respond(embed=embed, ephemeral=True)
+            await ctx.respond(embed=embed, view=view, ephemeral=True)
             return
 
         collection_name = 'no data' if r['data']['collection']['name'] == None else r['data']['collection']['name']
-        nft_image = 'no data' if r['data']['collection']['images']['image_url'] == None else r['data']['collection']['images']['image_url']
+        nft_image = 'no data' if r['data']['metadata']['image'] == None else r['data']['metadata']['image']
         nft_owner = 'no data' if r['data']['owner']['owner'] == None else r['data']['owner']['owner']
         collection_image = 'https://imgur.com/aSSH1jL' if r['data']['collection']['images']['image_url'] == None else r['data']['collection']['images']['image_url']
         collection_contract_address = 'no data' if r['data']['collection']['contractAddress'] == None else r['data']['collection']['contractAddress']
@@ -90,8 +99,8 @@ class nft(commands.Cog):
             embed = discord.Embed(title='', color=0xFFA46E)
             embed.set_image(url=nft_image)
             embed.set_author(name=f'{collection_name}#{token_id}', url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
-            embed.add_field(name='Owner', value=f'[{nft_owner[0:6]}](https://etherscan.io/address/{nft_owner})', inline=False)
-            embed.add_field(name='Type', value=erc_type, inline=False)
+            embed.add_field(name='Owner', value=f'[{nft_owner[0:6]}](https://etherscan.io/address/{nft_owner})', inline=True)
+            embed.add_field(name='Type', value=erc_type, inline=True)
             embed.timestamp = datetime.datetime.now()
 
             return (embed, view)
