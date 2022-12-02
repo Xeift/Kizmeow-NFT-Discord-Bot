@@ -3,6 +3,7 @@ import json
 import discord
 import datetime
 import requests
+from discord import bot
 from dotenv import load_dotenv
 from discord.ext import commands
 from discord.ui import Button, View
@@ -84,7 +85,7 @@ class collection(commands.Cog):
             embed.add_field(name='Created', value=f'<t:{collection_create_date}:R>', inline=False)
             embed.add_field(name='_ _', value=f'[Website]({external_url})║[Discord]({discord_url})║[Twitter](https://twitter.com/{twitter_username})', inline=False)
             embed.set_author(name=f'{collection_name}', url=f'https://opensea.io/collection/{collection_slug}', icon_url=image_url)
-            embed.set_footer(text=f'{collection_name}', icon_url=image_url)
+            embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
             embed.timestamp = datetime.datetime.now()
 
             return (embed, view)

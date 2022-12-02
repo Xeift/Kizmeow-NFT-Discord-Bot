@@ -27,7 +27,7 @@ class nft(commands.Cog):
         token_id: Option(str, 'Enter the token id')
     ):
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        with open('collection_name_autocomplete.json','r') as of:
+        with open('collection_name_autocomplete.json', 'r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:
             collection = collection_name_data[collection]
@@ -101,6 +101,7 @@ class nft(commands.Cog):
             embed.set_author(name=f'{collection_name}#{token_id}', url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
             embed.add_field(name='Owner', value=f'[{nft_owner[0:6]}](https://etherscan.io/address/{nft_owner})', inline=True)
             embed.add_field(name='Type', value=erc_type, inline=True)
+            embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
             embed.timestamp = datetime.datetime.now()
 
             return (embed, view)
@@ -130,6 +131,7 @@ class nft(commands.Cog):
                 embed.add_field(name=trait_name, value=f'{trait_value}\n`{trait_score:.2f}`', inline=True)
 
             embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
+            embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
             embed.timestamp = datetime.datetime.now()
 
             view = View(timeout=None)
@@ -146,6 +148,8 @@ class nft(commands.Cog):
                 embed.add_field(name='To', value=f'[{to_address[0:6]}](https://etherscan.io/address/{to_address})', inline=True)
                 embed.add_field(name='It was', value=f'<t:{timestamp}:R>', inline=True)
                 embed.add_field(name='Sales Price', value=f'{sale_price} ETH', inline=True)
+                embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
+                embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
                 embed.timestamp = datetime.datetime.now()
             else:
                 embed = discord.Embed(title=f'{collection_name}#{token_id} is never sold', color=0xFFA46E)
