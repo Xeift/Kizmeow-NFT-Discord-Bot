@@ -44,7 +44,7 @@ class nft(commands.Cog):
             'X-API-KEY': os.getenv('MODULE_API_KEY')
         }
         r = requests.get(url=url, headers=headers).json()
-        print(r)
+
         if r['error'] != None:
             embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
             await ctx.respond(embed=embed, ephemeral=True)
