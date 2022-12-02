@@ -1,4 +1,5 @@
 import os
+import json
 import discord
 import datetime
 import requests
@@ -14,12 +15,22 @@ class collection(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def collection_name_autocomplete(self: discord.AutocompleteContext):
+        with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
+            collection_name_data = json.load(of)
+        return collection_name_data.keys()
+        
     @slash_command(name='collection', description='Check collection information from Opensea, LooksRare and X2Y2')
     async def collection(
-            self,
-            ctx: discord.ApplicationContext,
-            collection: Option(str, 'Specify the collection slug')
+        self,
+        ctx: discord.ApplicationContext,
+        collection: Option(str, 'Specify the collection slug', autocomplete=collection_name_autocomplete)
     ):
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
+            collection_name_data = json.load(of)
+        if collection in collection_name_data:
+            collection = collection_name_data[collection]
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         opensea_button = Button(label='OpenSea🌊', style=discord.ButtonStyle.blurple)
         looksrare_button = Button(label='LooksRare👀', style=discord.ButtonStyle.green)
