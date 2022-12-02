@@ -4,6 +4,7 @@ import datetime
 from etherscan import Etherscan
 from dotenv import load_dotenv
 from discord.ext import commands
+from discord.commands import slash_command
 
 
 class eth(commands.Cog):
@@ -11,7 +12,7 @@ class eth(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='eth', description='Check eth price')
+    @slash_command(name='eth', description='Check eth price')
     async def gas(
             self,
             ctx: discord.ApplicationContext,
