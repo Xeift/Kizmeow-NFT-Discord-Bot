@@ -3,7 +3,6 @@ import json
 import discord
 import datetime
 import requests
-from discord import bot
 from dotenv import load_dotenv
 from discord.ext import commands
 from discord.ui import Button, View
