@@ -19,7 +19,7 @@ class nft(commands.Cog):
             collection_name_data = json.load(of)
         return collection_name_data.keys()
 
-    @commands.slash_command(name='nft', description='View NFT information')
+    @slash_command(name='nft', description='View NFT information')
     async def nft(
         self,
         ctx: discord.ApplicationContext,

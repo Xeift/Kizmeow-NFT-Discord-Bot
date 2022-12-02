@@ -1,9 +1,6 @@
-import os
 import discord
-import datetime
-from etherscan import Etherscan
-from dotenv import load_dotenv
 from discord.ext import commands
+from discord.commands import slash_command
 
 
 class reload_cmds(commands.Cog):
@@ -11,12 +8,12 @@ class reload_cmds(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='reload_cmds', description='reload cmds [for debug]')
+    @slash_command(guild_ids=[1041165809013243924], name='reload_cmds', description='reload cmds [for debug]')
     async def reload_cmds(
             self,
             ctx: discord.ApplicationContext,
     ):
-        if (ctx.author.id == 510830627893805069 or ctx.author.id == 874806243208871977):
+        if ctx.author.id == 510830627893805069 or ctx.author.id == 874806243208871977:
             extensions = [  # load cogs
                 # --------------------system commands
                 'cogs.ping',
@@ -40,6 +37,7 @@ class reload_cmds(commands.Cog):
             await ctx.respond('reload complete', ephemeral=True)
         else:
             await ctx.respond('[PERMISSION DENIED] only owner can use this command', ephemeral=True)
+
 
 def setup(bot):
     bot.add_cog(reload_cmds(bot))

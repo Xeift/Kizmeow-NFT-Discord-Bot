@@ -31,12 +31,12 @@ class collection(commands.Cog):
             collection_name_data = json.load(of)
         if collection in collection_name_data:
             collection = collection_name_data[collection]
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        opensea_button = Button(label='OpenSea🌊', style=discord.ButtonStyle.blurple)
-        looksrare_button = Button(label='LooksRare👀', style=discord.ButtonStyle.green)
-        x2y2_button = Button(label='X2Y2🌀', style=discord.ButtonStyle.grey)
-        return_button = Button(label='EXIT', style=discord.ButtonStyle.red)
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        opensea_button = Button(label='OpenSea🌊', style=discord.ButtonStyle.primary)
+        looksrare_button = Button(label='LooksRare👀', style=discord.ButtonStyle.success)
+        x2y2_button = Button(label='X2Y2🌀', style=discord.ButtonStyle.secondary)
+        return_button = Button(label='EXIT', style=discord.ButtonStyle.danger)
+        # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         load_dotenv()
         url = f'https://api.modulenft.xyz/api/v2/eth/nft/collection?slug={collection}'
         headers = {
@@ -45,12 +45,14 @@ class collection(commands.Cog):
         }
         r = requests.get(url, headers=headers).json()
         if r['error'] != None:
-            embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
+            embed = discord.Embed(title='[ERROR]',
+                                  description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv',
+                                  color=0xFFA46E)
             await ctx.respond(embed=embed, ephemeral=True)
             return
 
         collection_name = 'no data' if r['data']['name'] == None else r['data']['name']
-        collection_slug = 'no data'if r['data']['slug'] == None else r['data']['slug']
+        collection_slug = 'no data' if r['data']['slug'] == None else r['data']['slug']
         description = 'no data' if r['data']['description'] == None else r['data']['description']
         external_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' if r['data']['socials']['external_url'] == None else r['data']['socials']['external_url']
         discord_url = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' if r['data']['socials']['discord_url'] == None else r['data']['socials']['discord_url']
@@ -60,7 +62,7 @@ class collection(commands.Cog):
         collection_create_date = '757371600' if r['data']['createdDate'] == None else r['data']['createdDate']
         collection_create_date = datetime.datetime.fromisoformat(collection_create_date)
         collection_create_date = str(int(collection_create_date.timestamp()))
-        
+
         async def initial_embed():
             view = View(timeout=None)
             view.add_item(opensea_button)
@@ -71,10 +73,9 @@ class collection(commands.Cog):
             embed.set_image(url=banner_image_url)
             embed.add_field(name='Description', value=f'{description}...', inline=False)
             embed.add_field(name='Created', value=f'<t:{collection_create_date}:R>', inline=False)
-            embed.add_field(name='_ _',
-                            value=f'[Website]({external_url})║[Discord]({discord_url})║[Twitter](https://twitter.com/{twitter_username})',
-                            inline=False)
+            embed.add_field(name='_ _', value=f'[Website]({external_url})║[Discord]({discord_url})║[Twitter](https://twitter.com/{twitter_username})', inline=False)
             embed.set_author(name=f'{collection_name}', url=f'https://opensea.io/collection/{collection_slug}', icon_url=image_url)
+            embed.set_footer(text=f'{collection_name}', icon_url=image_url)
             embed.timestamp = datetime.datetime.now()
 
             return (embed, view)
@@ -82,8 +83,10 @@ class collection(commands.Cog):
         (embed, view) = await initial_embed()
         await ctx.defer()
         await ctx.respond(embed=embed, view=view)
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def marketplace_embed(marketplace_name):
+            global collection_link, footer_marketplace, footer_icon
             load_dotenv()
             url = f'https://api.modulenft.xyz/api/v2/eth/nft/stats?slug={collection}&marketplace={marketplace_name}'
             headers = {
@@ -92,13 +95,12 @@ class collection(commands.Cog):
             }
 
             r = requests.get(url, headers=headers).json()
-            print(r)
-            # if r['error'] != None:
-            #     embed = discord.Embed(title='[API ERROR]', description='Possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
-            #     await ctx.respond(embed=embed, ephemeral=True)
-            #     return
+            if r['error'] != None:
+                embed = discord.Embed(title='[API ERROR]', description='Possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
+                await ctx.respond(embed=embed, ephemeral=True)
+                return
             match marketplace_name:
-                case 'Opensea':# why tf requests result are all different? I'm very confused too.
+                case 'Opensea':  # why tf requests result are all different? I'm very confused too.
                     daily_volume = 0 if r['data']['dailyVolume'] == None else float(r['data']['dailyVolume'])
                     weekly_volume = 0 if r['data']['WeeklyVolume'] == None else float(r['data']['WeeklyVolume'])
                     monthly_volume = 0 if r['data']['monthlyVolume'] == None else float(r['data']['monthlyVolume'])
@@ -160,26 +162,36 @@ class collection(commands.Cog):
             view.add_item(return_button)
 
             return (embed, view)
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+
+        # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def return_button_callback(interaction):
             (embed, view) = await initial_embed()
             await interaction.response.edit_message(embed=embed, view=view)
+
         return_button.callback = return_button_callback
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+
+        # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def opensea_button_callback(interaction):
             (embed, view) = await marketplace_embed('Opensea')
             await interaction.response.edit_message(embed=embed, view=view)
+
         opensea_button.callback = opensea_button_callback
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+
+        # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def looksrare_button_callback(interaction):
             (embed, view) = await marketplace_embed('Looksrare')
             await interaction.response.edit_message(embed=embed, view=view)
+
         looksrare_button.callback = looksrare_button_callback
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+
+        # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def x2y2_button_callback(interaction):
             (embed, view) = await marketplace_embed('X2Y2')
             await interaction.response.edit_message(embed=embed, view=view)
+
         x2y2_button.callback = x2y2_button_callback
-        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
+        # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 def setup(bot):
     bot.add_cog(collection(bot))
