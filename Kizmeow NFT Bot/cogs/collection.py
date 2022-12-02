@@ -19,7 +19,7 @@ class collection(commands.Cog):
         with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
             collection_name_data = json.load(of)
         return collection_name_data.keys()
-        
+
     @slash_command(name='collection', description='Check collection information from Opensea, LooksRare and X2Y2')
     async def collection(
         self,
@@ -92,10 +92,11 @@ class collection(commands.Cog):
             }
 
             r = requests.get(url, headers=headers).json()
-            if r['error'] != None:
-                embed = discord.Embed(title='[API ERROR]', description='Possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
-                await ctx.respond(embed=embed, ephemeral=True)
-                return
+            print(r)
+            # if r['error'] != None:
+            #     embed = discord.Embed(title='[API ERROR]', description='Possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
+            #     await ctx.respond(embed=embed, ephemeral=True)
+            #     return
             match marketplace_name:
                 case 'Opensea':# why tf requests result are all different? I'm very confused too.
                     daily_volume = 0 if r['data']['dailyVolume'] == None else float(r['data']['dailyVolume'])
