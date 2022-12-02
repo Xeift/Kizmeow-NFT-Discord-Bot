@@ -26,6 +26,7 @@ class nft(commands.Cog):
         collection: Option(str, 'Specify the collection slug', autocomplete=collection_name_autocomplete),
         token_id: Option(str, 'Enter the token id')
     ):
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:
