@@ -12,6 +12,7 @@ py-cord = "^2.2.2"
 requests = "^2.28.1"
 python-dotenv = "^0.21.0"
 etherscan-python = "^2.1.0"
+slug = "^2.0"
 
 
 [build-system]
