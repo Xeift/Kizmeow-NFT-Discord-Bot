@@ -33,6 +33,10 @@ class collection(commands.Cog):
             'X-API-KEY': os.getenv('MODULE_API_KEY')
         }
         r = requests.get(url, headers=headers).json()
+        if r['error'] != None:
+            embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
+            await ctx.respond(embed=embed, ephemeral=True)
+            return
 
         collection_name = 'no data' if r['data']['name'] == None else r['data']['name']
         collection_slug = 'no data'if r['data']['slug'] == None else r['data']['slug']
@@ -65,6 +69,7 @@ class collection(commands.Cog):
             return (embed, view)
 
         (embed, view) = await initial_embed()
+        await ctx.defer()
         await ctx.respond(embed=embed, view=view)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def marketplace_embed(marketplace_name):
@@ -74,8 +79,12 @@ class collection(commands.Cog):
                 'accept': 'application/json',
                 'X-API-KEY': os.getenv('MODULE_API_KEY')
             }
+
             r = requests.get(url, headers=headers).json()
-            print(r)
+            if r['error'] != None:
+                embed = discord.Embed(title='[API ERROR]', description='Possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
+                await ctx.respond(embed=embed, ephemeral=True)
+                return
             match marketplace_name:
                 case 'Opensea':# why tf requests result are all different? I'm very confused too.
                     daily_volume = 0 if r['data']['dailyVolume'] == None else float(r['data']['dailyVolume'])
@@ -143,24 +152,22 @@ class collection(commands.Cog):
         async def return_button_callback(interaction):
             (embed, view) = await initial_embed()
             await interaction.response.edit_message(embed=embed, view=view)
-
         return_button.callback = return_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
         async def opensea_button_callback(interaction):
             (embed, view) = await marketplace_embed('Opensea')
             await interaction.response.edit_message(embed=embed, view=view)
-        
         opensea_button.callback = opensea_button_callback
-
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
         async def looksrare_button_callback(interaction):
             (embed, view) = await marketplace_embed('Looksrare')
             await interaction.response.edit_message(embed=embed, view=view)
         looksrare_button.callback = looksrare_button_callback
-
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
         async def x2y2_button_callback(interaction):
             (embed, view) = await marketplace_embed('X2Y2')
             await interaction.response.edit_message(embed=embed, view=view)
         x2y2_button.callback = x2y2_button_callback
-
+        #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
 def setup(bot):
     bot.add_cog(collection(bot))
