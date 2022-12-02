@@ -1,5 +1,6 @@
 import re
 import os
+import json
 import discord
 import datetime
 import requests
@@ -10,17 +11,25 @@ from discord.commands import Option, slash_command
 
 
 class nft(commands.Cog):
-
     def __init__(self, bot):
         self.bot = bot
-        
+
+    def collection_name_autocomplete(self: discord.AutocompleteContext):
+        with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
+            collection_name_data = json.load(of)
+        return collection_name_data.keys()
+
     @commands.slash_command(name='nft', description='View NFT information')
     async def nft(
-            self,
-            ctx: discord.ApplicationContext,
-            collection: Option(str, 'Specify the collection slug'),
-            token_id: Option(str, 'Enter the token number')
+        self,
+        ctx: discord.ApplicationContext,
+        collection: Option(str, 'Specify the collection slug', autocomplete=collection_name_autocomplete),
+        token_id: Option(str, 'Enter the token id')
     ):
+        with open('Kizmeow NFT Bot/collection_name_autocomplete.json','r') as of:
+            collection_name_data = json.load(of)
+        if collection in collection_name_data:
+            collection = collection_name_data[collection]
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         rarity_button = Button(label='Rarity💎', style=discord.ButtonStyle.blurple)
         lastSale_button = Button(label='Last Sale💳', style=discord.ButtonStyle.green)
@@ -34,7 +43,7 @@ class nft(commands.Cog):
             'X-API-KEY': os.getenv('MODULE_API_KEY')
         }
         r = requests.get(url=url, headers=headers).json()
-        # print(r)
+        print(r)
         if r['error'] != None:
             embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
             await ctx.respond(embed=embed, ephemeral=True)
@@ -49,10 +58,14 @@ class nft(commands.Cog):
         nft_IPFS_image = re.sub('ipfs://', 'https://ipfs.io/ipfs/', nft_IPFS_image)
         erc_type = 'no data' if r['data']['collection']['ercType'] == None else r['data']['collection']['ercType']
 
-        from_address = 'no data' if r['data']['lastSale']['from_address'] == None else r['data']['lastSale']['from_address']
-        to_address = 'no data' if r['data']['lastSale']['to_address'] == None else r['data']['lastSale']['to_address']
-        timestamp = 'no data' if r['data']['lastSale']['timestamp'] == None else r['data']['lastSale']['timestamp']
-        sale_price = 'no data' if r['data']['lastSale']['sale_price_in_eth'] == None else r['data']['lastSale']['sale_price_in_eth']
+        if r['data']['lastSale'] == {}:
+            last_sale_exist = False
+        else:
+            last_sale_exist = False
+            from_address =  r['data']['lastSale']['from_address']
+            to_address = r['data']['lastSale']['to_address']
+            timestamp = r['data']['lastSale']['timestamp']
+            sale_price = r['data']['lastSale']['sale_price_in_eth']
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         url = f'https://api.traitsniper.com/v1/collections/{collection_contract_address}/nfts?token_ids={token_id}'
         headers = {
@@ -116,14 +129,16 @@ class nft(commands.Cog):
         rarity_button.callback = rarity_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------   
         async def lastSale_button_callback(interaction):
-            embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
-            embed.set_image(url=nft_image)
-            embed.add_field(name='From', value=f'[{from_address[0:6]}](https://etherscan.io/address/{from_address})', inline=True)
-            embed.add_field(name='To', value=f'[{to_address[0:6]}](https://etherscan.io/address/{to_address})', inline=True)
-            embed.add_field(name='It was', value=f'<t:{timestamp}:R>', inline=True)
-            embed.add_field(name='Sales Price', value=f'{sale_price} ETH', inline=True)
-            embed.timestamp = datetime.datetime.now()
-
+            if last_sale_exist:
+                embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
+                embed.set_image(url=nft_image)
+                embed.add_field(name='From', value=f'[{from_address[0:6]}](https://etherscan.io/address/{from_address})', inline=True)
+                embed.add_field(name='To', value=f'[{to_address[0:6]}](https://etherscan.io/address/{to_address})', inline=True)
+                embed.add_field(name='It was', value=f'<t:{timestamp}:R>', inline=True)
+                embed.add_field(name='Sales Price', value=f'{sale_price} ETH', inline=True)
+                embed.timestamp = datetime.datetime.now()
+            else:
+                embed = discord.Embed(title=f'{collection_name}#{token_id} is never sold', color=0xFFA46E)
             view = View(timeout=None)
             view.add_item(return_button)
             await interaction.response.edit_message(embed=embed, view=view)
