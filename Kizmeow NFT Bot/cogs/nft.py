@@ -50,8 +50,8 @@ class nft(commands.Cog):
             await ctx.respond(embed=embed, ephemeral=True)
             return
 
-        collection_name = 'no dara' if r['data']['collection']['name'] == None else r['data']['collection']['name']
-        nft_image = 'no data' if r['data']['metadata']['image_cached'] == None else r['data']['metadata']['image_cached']
+        collection_name = 'no data' if r['data']['collection']['name'] == None else r['data']['collection']['name']
+        nft_image = 'no data' if r['data']['collection']['images']['image_url'] == None else r['data']['collection']['images']['image_url']
         nft_owner = 'no data' if r['data']['owner']['owner'] == None else r['data']['owner']['owner']
         collection_image = 'https://imgur.com/aSSH1jL' if r['data']['collection']['images']['image_url'] == None else r['data']['collection']['images']['image_url']
         collection_contract_address = 'no data' if r['data']['collection']['contractAddress'] == None else r['data']['collection']['contractAddress']
@@ -74,7 +74,7 @@ class nft(commands.Cog):
             'x-ts-api-key': os.getenv('TRAITSNIPER_API_KEY')
         }
         r = requests.get(url, headers=headers).json()
-
+        print(r)
         rarity_rank = 'no data' if r['nfts'][0]['rarity_rank'] == None else r['nfts'][0]['rarity_rank']
         rarity_score = 'no data' if r['nfts'][0]['rarity_score'] == None else r['nfts'][0]['rarity_score']
         nft_traits = 'no data' if r['nfts'][0]['traits'] == None else r['nfts'][0]['traits']
