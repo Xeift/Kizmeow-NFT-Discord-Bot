@@ -197,7 +197,6 @@ class collection(commands.Cog):
             await interaction.response.edit_message(embed=embed, view=view)
 
         looksrare_button.callback = looksrare_button_callback
-
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def x2y2_button_callback(interaction):
             (embed, view) = await marketplace_embed('X2Y2')
