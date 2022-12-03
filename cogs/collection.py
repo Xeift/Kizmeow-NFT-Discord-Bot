@@ -95,7 +95,6 @@ class collection(commands.Cog):
 
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def marketplace_embed(marketplace_name):
-            global collection_link, footer_marketplace, footer_icon
             load_dotenv()
             url = f'https://api.modulenft.xyz/api/v2/eth/nft/stats?slug={collection}&marketplace={marketplace_name}'
             headers = {
