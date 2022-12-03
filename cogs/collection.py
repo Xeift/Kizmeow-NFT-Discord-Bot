@@ -178,26 +178,30 @@ class collection(commands.Cog):
             return (embed, view)
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def return_button_callback(interaction):
-            (embed, view) = await initial_embed()
-            await interaction.response.edit_message(embed=embed, view=view)
+            if ctx.author == interaction.user:
+                (embed, view) = await initial_embed()
+                await interaction.response.edit_message(embed=embed, view=view)
 
         return_button.callback = return_button_callback
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def opensea_button_callback(interaction):
-            (embed, view) = await marketplace_embed('Opensea')
-            await interaction.response.edit_message(embed=embed, view=view)
+            if ctx.author == interaction.user:
+                (embed, view) = await marketplace_embed('Opensea')
+                await interaction.response.edit_message(embed=embed, view=view)
 
         opensea_button.callback = opensea_button_callback
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def looksrare_button_callback(interaction):
-            (embed, view) = await marketplace_embed('Looksrare')
-            await interaction.response.edit_message(embed=embed, view=view)
+            if ctx.author == interaction.user:
+                (embed, view) = await marketplace_embed('Looksrare')
+                await interaction.response.edit_message(embed=embed, view=view)
 
         looksrare_button.callback = looksrare_button_callback
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def x2y2_button_callback(interaction):
-            (embed, view) = await marketplace_embed('X2Y2')
-            await interaction.response.edit_message(embed=embed, view=view)
+            if ctx.author == interaction.user:
+                (embed, view) = await marketplace_embed('X2Y2')
+                await interaction.response.edit_message(embed=embed, view=view)
 
         x2y2_button.callback = x2y2_button_callback
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
