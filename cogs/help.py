@@ -21,12 +21,17 @@ class help(commands.Cog):
         invite_button = Button(label='Kizmeow Support Server', style=discord.ButtonStyle.link, emoji='<:kizmeow:1047912736224448562>')
         invite_button.url = 'https://discord.gg/PxNF9PaSKv'
         invite_button.custom_id = None
+        github_button = Button(label='GitHub', style=discord.ButtonStyle.link, emoji='<:github_icon:1048426748330639360>')
+        github_button.url = 'https://github.com/Xeift/Kizmeow-NFT-Discord-Bot'
+        github_button.custom_id = None
 
         view = View(timeout=None)
         view.add_item(gitbook_button)
         view.add_item(invite_button)
-        embed = discord.Embed(title='help', description='Click below button to join support server or read the doc UwU.', color=0xFFA46E)
-        await ctx.respond(embed=embed, view=view, ephemeral=True)
+        view.add_item(github_button)
+
+        embed = discord.Embed(title='help', description='Click below buttons to join support server, read the doc or visit the repository UwU.', color=0xFFA46E)
+        await ctx.respond(embed=embed, view=view)
 
 def setup(bot):
     bot.add_cog(help(bot))
