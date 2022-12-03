@@ -52,7 +52,7 @@ class nft(commands.Cog):
         r = requests.get(url=url, headers=headers).json()
 
         if r['error'] != None:
-            view = View(timeout=None)
+            view = View(timeout=None, )
             view.add_item(gitbook_button)
             view.add_item(invite_button)
             embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
@@ -119,56 +119,59 @@ class nft(commands.Cog):
         await ctx.respond(embed=embed, view=view)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def return_button_callback(interaction):
-            (embed, view) = await initial_embed()
-            await interaction.response.edit_message(embed=embed, view=view)
+            if ctx.author == interaction.user:
+                (embed, view) = await initial_embed()
+                await interaction.response.edit_message(embed=embed, view=view)
 
         return_button.callback = return_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def rarity_button_callback(interaction):
-            if traitsniper_available:
-                embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
-                embed.set_image(url=nft_image)
-                embed.add_field(name='Owner', value=f'[{nft_owner[0:6]}](https://etherscan.io/address/{nft_owner})', inline=False)
-                embed.add_field(name='Rank', value=rarity_rank, inline=True)
-                embed.add_field(name='Score', value=f'{rarity_score:.2f}', inline=True)
-                embed.add_field(name='═════════════Traits═════════════', value='_ _', inline=False)
+            if ctx.author == interaction.user:
+                if traitsniper_available:
+                    embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
+                    embed.set_image(url=nft_image)
+                    embed.add_field(name='Owner', value=f'[{nft_owner[0:6]}](https://etherscan.io/address/{nft_owner})', inline=False)
+                    embed.add_field(name='Rank', value=rarity_rank, inline=True)
+                    embed.add_field(name='Score', value=f'{rarity_score:.2f}', inline=True)
+                    embed.add_field(name='═════════════Traits═════════════', value='_ _', inline=False)
 
-                for t in nft_traits:
-                    trait_name = t['name']
-                    trait_value = t['value']
-                    trait_score = t['score']
-                    embed.add_field(name=trait_name, value=f'{trait_value}\n`{trait_score:.2f}`', inline=True)
-            else:
-                embed = discord.Embed(title=f'{collection_name} is not available on traitsniper.', color=0xFFA46E)
-                embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
-                embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
-                embed.timestamp = datetime.datetime.now()
+                    for t in nft_traits:
+                        trait_name = t['name']
+                        trait_value = t['value']
+                        trait_score = t['score']
+                        embed.add_field(name=trait_name, value=f'{trait_value}\n`{trait_score:.2f}`', inline=True)
+                else:
+                    embed = discord.Embed(title=f'{collection_name} is not available on traitsniper.', color=0xFFA46E)
+                    embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
+                    embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
+                    embed.timestamp = datetime.datetime.now()
 
-            view = View(timeout=None)
-            view.add_item(return_button)
-            await interaction.response.edit_message(embed=embed, view=view)
+                view = View(timeout=None)
+                view.add_item(return_button)
+                await interaction.response.edit_message(embed=embed, view=view)
 
         rarity_button.callback = rarity_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def lastSale_button_callback(interaction):
-            if last_sale_exist:
-                embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
-                embed.set_image(url=nft_image)
-                embed.add_field(name='From', value=f'[{from_address[0:6]}](https://etherscan.io/address/{from_address})', inline=True)
-                embed.add_field(name='To', value=f'[{to_address[0:6]}](https://etherscan.io/address/{to_address})', inline=True)
-                embed.add_field(name='It was', value=f'<t:{timestamp}:R>', inline=True)
-                embed.add_field(name='Sales Price', value=f'{sale_price} ETH', inline=True)
-                embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
-                embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.3ubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
-                embed.timestamp = datetime.datetime.now()
-            else:
-                embed = discord.Embed(title=f'{collection_name}#{token_id} is never sold', color=0xFFA46E)
-                embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
-                embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
-                embed.timestamp = datetime.datetime.now()
-            view = View(timeout=None)
-            view.add_item(return_button)
-            await interaction.response.edit_message(embed=embed, view=view)
+            if ctx.author == interaction.user:
+                if last_sale_exist:
+                    embed = discord.Embed(title=f'{collection_name}#{token_id}', color=0xFFA46E)
+                    embed.set_image(url=nft_image)
+                    embed.add_field(name='From', value=f'[{from_address[0:6]}](https://etherscan.io/address/{from_address})', inline=True)
+                    embed.add_field(name='To', value=f'[{to_address[0:6]}](https://etherscan.io/address/{to_address})', inline=True)
+                    embed.add_field(name='It was', value=f'<t:{timestamp}:R>', inline=True)
+                    embed.add_field(name='Sales Price', value=f'{sale_price} ETH', inline=True)
+                    embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
+                    embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.3ubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
+                    embed.timestamp = datetime.datetime.now()
+                else:
+                    embed = discord.Embed(title=f'{collection_name}#{token_id} is never sold', color=0xFFA46E)
+                    embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
+                    embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
+                    embed.timestamp = datetime.datetime.now()
+                view = View(timeout=None)
+                view.add_item(return_button)
+                await interaction.response.edit_message(embed=embed, view=view)
 
         lastSale_button.callback = lastSale_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
