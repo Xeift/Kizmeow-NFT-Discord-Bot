@@ -60,11 +60,12 @@ class nft(commands.Cog):
             return
 
         collection_name = 'no data' if r['data']['collection']['name'] == None else r['data']['collection']['name']
-        nft_image = 'no data' if r['data']['metadata']['image'] == None else r['data']['metadata']['image']
-        nft_owner = 'no data' if r['data']['owner']['owner'] == None else r['data']['owner']['owner']
+        nft_image = 'https://imgur.com/aSSH1jL' if r['data']['metadata'] == {} else r['data']['metadata']['image']
+        nft_image = re.sub('ipfs://', 'https://ipfs.io/ipfs/', nft_image)
+        nft_owner = '0x0000000000000000000000000000000000000000' if r['data']['owner'] == {} else r['data']['owner']['owner']
         collection_image = 'https://imgur.com/aSSH1jL' if r['data']['collection']['images']['image_url'] == None else r['data']['collection']['images']['image_url']
         collection_contract_address = 'no data' if r['data']['collection']['contractAddress'] == None else r['data']['collection']['contractAddress']
-        nft_IPFS_image = 'https://imgur.com/aSSH1jL' if r['data']['metadata']['image'] == None else r['data']['metadata']['image']
+        nft_IPFS_image = 'https://imgur.com/aSSH1jL' if r['data']['metadata'] == {} else r['data']['metadata']['image']
         nft_IPFS_image = re.sub('ipfs://', 'https://ipfs.io/ipfs/', nft_IPFS_image)
         erc_type = 'no data' if r['data']['collection']['ercType'] == None else r['data']['collection']['ercType']
 
@@ -84,8 +85,9 @@ class nft(commands.Cog):
         }
         r = requests.get(url, headers=headers).json()
 
-        if r['code'] == 'error':
-            traitsniper_available = False
+        if 'code' in r:
+            if r['code'] == 'error':
+                traitsniper_available = False
         else:
             traitsniper_available = True
 
