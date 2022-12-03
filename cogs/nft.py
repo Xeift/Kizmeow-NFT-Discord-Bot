@@ -71,7 +71,7 @@ class nft(commands.Cog):
         if r['data']['lastSale'] == {}:
             last_sale_exist = False
         else:
-            last_sale_exist = False
+            last_sale_exist = True
             from_address = r['data']['lastSale']['from_address']
             to_address = r['data']['lastSale']['to_address']
             timestamp = r['data']['lastSale']['timestamp']
@@ -83,7 +83,7 @@ class nft(commands.Cog):
             'x-ts-api-key': os.getenv('TRAITSNIPER_API_KEY')
         }
         r = requests.get(url, headers=headers).json()
-        print(r)
+
         rarity_rank = 'no data' if r['nfts'][0]['rarity_rank'] == None else r['nfts'][0]['rarity_rank']
         rarity_score = 'no data' if r['nfts'][0]['rarity_score'] == None else r['nfts'][0]['rarity_score']
         nft_traits = 'no data' if r['nfts'][0]['traits'] == None else r['nfts'][0]['traits']
@@ -107,6 +107,7 @@ class nft(commands.Cog):
             return (embed, view)
 
         (embed, view) = await initial_embed()
+
         await ctx.defer()
         await ctx.respond(embed=embed, view=view)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
