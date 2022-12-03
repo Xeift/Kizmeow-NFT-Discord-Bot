@@ -36,12 +36,12 @@ class nft(commands.Cog):
         lastSale_button = Button(label='Last Sale', style=discord.ButtonStyle.green, emoji='💳')
         ipfs_button = Button(label='IPFS', style=discord.ButtonStyle.link, emoji='🧊')
         return_button = Button(label='EXIT', style=discord.ButtonStyle.red)
-        git_book = Button(label='GitBook', style=discord.ButtonStyle.link, emoji='<:gitbook:1047912317427400704>')
-        git_book.url = "https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq"
-        git_book.custom_id = None
-        invite = Button(label='Kizmeow Support Server', style=discord.ButtonStyle.link, emoji='<:kizmeow:1047912736224448562>')
-        invite.url = "https://discord.gg/PxNF9PaSKv"
-        invite.custom_id = None
+        gitbook_button = Button(label='GitBook', style=discord.ButtonStyle.link, emoji='<:gitbook_button:1047912317427400704>')
+        gitbook_button.url = 'https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq'
+        gitbook_button.custom_id = None
+        invite_button = Button(label='Kizmeow Support Server', style=discord.ButtonStyle.link, emoji='<:kizmeow:1047912736224448562>')
+        invite_button.url = 'https://discord.gg/PxNF9PaSKv'
+        invite_button.custom_id = None
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         load_dotenv()
         url = f'https://api.modulenft.xyz/api/v2/eth/nft/token?slug={collection}&tokenId={token_id}'
@@ -53,8 +53,8 @@ class nft(commands.Cog):
 
         if r['error'] != None:
             view = View(timeout=None)
-            view.add_item(git_book)
-            view.add_item(invite)
+            view.add_item(gitbook_button)
+            view.add_item(invite_button)
             embed = discord.Embed(title='[ERROR]', description=f'`{r["error"]["message"]}`\n\nOther possible reasons:\nhttps://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq\nJoin support server to report the problem.\nhttps://discord.gg/PxNF9PaSKv', color=0xFFA46E)
             await ctx.respond(embed=embed, view=view, ephemeral=True)
             return

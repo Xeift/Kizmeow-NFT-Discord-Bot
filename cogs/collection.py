@@ -176,21 +176,18 @@ class collection(commands.Cog):
             view.add_item(return_button)
 
             return (embed, view)
-
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def return_button_callback(interaction):
             (embed, view) = await initial_embed()
             await interaction.response.edit_message(embed=embed, view=view)
 
         return_button.callback = return_button_callback
-
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def opensea_button_callback(interaction):
             (embed, view) = await marketplace_embed('Opensea')
             await interaction.response.edit_message(embed=embed, view=view)
 
         opensea_button.callback = opensea_button_callback
-
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def looksrare_button_callback(interaction):
             (embed, view) = await marketplace_embed('Looksrare')
