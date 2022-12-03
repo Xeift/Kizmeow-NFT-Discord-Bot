@@ -30,7 +30,9 @@ class help(commands.Cog):
         view.add_item(invite_button)
         view.add_item(github_button)
 
-        embed = discord.Embed(title='help', description='Click below buttons to join support server, read the doc or visit the repository UwU.', color=0xFFA46E)
+        embed = discord.Embed(title='Help', description='**Click below buttons to join support server, read the doc or visit the repository UwU.**', color=0xFFA46E)
+        embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
+        embed.timestamp = datetime.datetime.now()
         await ctx.respond(embed=embed, view=view)
 
 def setup(bot):
