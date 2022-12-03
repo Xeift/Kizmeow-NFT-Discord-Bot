@@ -122,7 +122,9 @@ class nft(commands.Cog):
             if ctx.author == interaction.user:
                 (embed, view) = await initial_embed()
                 await interaction.response.edit_message(embed=embed, view=view)
-
+            else:
+                embed = discord.Embed(title='Consider use `/nft` command by yourself.', color=0xFFA46E)
+                await interaction.response.send_message(embed=embed, ephemeral=True)
         return_button.callback = return_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def rarity_button_callback(interaction):
@@ -149,7 +151,9 @@ class nft(commands.Cog):
                 view = View(timeout=None)
                 view.add_item(return_button)
                 await interaction.response.edit_message(embed=embed, view=view)
-
+            else:
+                embed = discord.Embed(title='Consider use `/nft` command by yourself.', color=0xFFA46E)
+                await interaction.response.send_message(embed=embed, ephemeral=True)
         rarity_button.callback = rarity_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def lastSale_button_callback(interaction):
@@ -172,7 +176,9 @@ class nft(commands.Cog):
                 view = View(timeout=None)
                 view.add_item(return_button)
                 await interaction.response.edit_message(embed=embed, view=view)
-
+            else:
+                embed = discord.Embed(title='Consider use `/nft` command by yourself.', color=0xFFA46E)
+                await interaction.response.send_message(embed=embed, ephemeral=True)
         lastSale_button.callback = lastSale_button_callback
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
 def setup(bot):

@@ -40,7 +40,7 @@ class collection(commands.Cog):
         git_book.url = "https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq"
         git_book.custom_id = None
         invite = Button(label='Kizmeow Support Server', style=discord.ButtonStyle.link, emoji='<:kizmeow:1047912736224448562>')
-        invite.url = "https://discord.gg/PxNF9PaSKv"
+        invite.url = 'https://discord.gg/PxNF9PaSKv'
         invite.custom_id = None
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         load_dotenv()
@@ -180,28 +180,36 @@ class collection(commands.Cog):
             if ctx.author == interaction.user:
                 (embed, view) = await initial_embed()
                 await interaction.response.edit_message(embed=embed, view=view)
-
+            else:
+                embed = discord.Embed(title='Consider use `/collection` command by yourself.', color=0xFFA46E)
+                await interaction.response.send_message(embed=embed, ephemeral=True)
         return_button.callback = return_button_callback
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def opensea_button_callback(interaction):
             if ctx.author == interaction.user:
                 (embed, view) = await marketplace_embed('Opensea')
                 await interaction.response.edit_message(embed=embed, view=view)
-
+            else:
+                embed = discord.Embed(title='Consider use `/collection` command by yourself.', color=0xFFA46E)
+                await interaction.response.send_message(embed=embed, ephemeral=True)
         opensea_button.callback = opensea_button_callback
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def looksrare_button_callback(interaction):
             if ctx.author == interaction.user:
                 (embed, view) = await marketplace_embed('Looksrare')
                 await interaction.response.edit_message(embed=embed, view=view)
-
+            else:
+                embed = discord.Embed(title='Consider use `/collection` command by yourself.', color=0xFFA46E)
+                await interaction.response.send_message(embed=embed, ephemeral=True)
         looksrare_button.callback = looksrare_button_callback
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def x2y2_button_callback(interaction):
             if ctx.author == interaction.user:
                 (embed, view) = await marketplace_embed('X2Y2')
                 await interaction.response.edit_message(embed=embed, view=view)
-
+            else:
+                embed = discord.Embed(title='Consider use `/collection` command by yourself.', color=0xFFA46E)
+                await interaction.response.send_message(embed=embed, ephemeral=True)
         x2y2_button.callback = x2y2_button_callback
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
