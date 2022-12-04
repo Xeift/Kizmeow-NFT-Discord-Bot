@@ -135,6 +135,8 @@ class nft(commands.Cog):
                     embed.add_field(name='Owner', value=f'[{nft_owner[0:6]}](https://etherscan.io/address/{nft_owner})', inline=False)
                     embed.add_field(name='Rank', value=rarity_rank, inline=True)
                     embed.add_field(name='Score', value=f'{rarity_score:.2f}', inline=True)
+                    embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
+                    embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
                     embed.add_field(name='═════════════Traits═════════════', value='_ _', inline=False)
 
                     for t in nft_traits:
@@ -142,6 +144,7 @@ class nft(commands.Cog):
                         trait_value = t['value']
                         trait_score = t['score']
                         embed.add_field(name=trait_name, value=f'{trait_value}\n`{trait_score:.2f}`', inline=True)
+                        embed.timestamp = datetime.datetime.now()
                 else:
                     embed = discord.Embed(title=f'{collection_name} is not available on traitsniper.', color=0xFFA46E)
                     embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
