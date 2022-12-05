@@ -1,13 +1,25 @@
 import os
 import discord
+from discord.ext import tasks
 from dotenv import load_dotenv
 
 bot = discord.Bot(intents=discord.Intents.all(), )
 
 
+@tasks.loop()
+async def change_status():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name='/help'))
+
+
+@change_status.before_loop
+async def before():
+    await bot.wait_until_ready()
+
+
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
+    change_status.start()
 
 
 extensions = [  # load cogs
@@ -34,3 +46,4 @@ if __name__ == '__main__':  # import cogs from cogs folder
 
 load_dotenv()
 bot.run(os.getenv('TOKEN'))  # bot token
+
