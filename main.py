@@ -1,14 +1,19 @@
 import os
 import discord
+import asyncio
 from discord.ext import tasks
 from dotenv import load_dotenv
 
 bot = discord.Bot(intents=discord.Intents.all(), )
 
 
-@tasks.loop()
+@tasks.loop(seconds=30)
 async def change_status():
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name='/help'))
+    servers = str(len(bot.guilds))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f'{servers} servers'))
+    await asyncio.sleep(20)
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='/help'))
+
 
 
 @change_status.before_loop
