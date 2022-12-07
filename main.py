@@ -10,7 +10,7 @@ bot = discord.Bot(intents=discord.Intents.all(), )
 @tasks.loop(seconds=30)
 async def change_status():
     servers = str(len(bot.guilds))
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f'{servers} servers'))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f'{servers} servers\u2764'))
     await asyncio.sleep(20)
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='/help'))
 
