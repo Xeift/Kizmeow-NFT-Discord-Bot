@@ -14,15 +14,11 @@ class feedback(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    async def get_option(self: discord.AutocompleteContext):
-        OPTIONS = ["Report a bug", "Request a feature", "Leave a comment"]
-        return OPTIONS
-
     @slash_command(name='feedback', description='Leave feedback on Kizmeow NFT Bot')
     async def feedback(
             self,
             ctx: discord.ApplicationContext,
-            type: Option(str, 'Specify what type of feedback you want to leave', autocomplete=get_option)
+            type: Option(str, 'Specify what type of feedback you want to leave', choices=["Report a bug", "Request a feature", "Leave a comment"])
     ):
         global moda
         moda = type
