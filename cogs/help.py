@@ -10,7 +10,7 @@ class help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='help', description='display help message')
+    @slash_command(name='help', description='Display help message')
     async def help(
         self,
         ctx: discord.ApplicationContext
