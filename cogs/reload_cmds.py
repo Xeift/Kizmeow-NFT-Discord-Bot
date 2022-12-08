@@ -18,12 +18,13 @@ class reload_cmds(commands.Cog):
                 # --------------------system commands
                 'cogs.ping',
                 'cogs.help',
+                'cogs.feedback',
                 # --------------------system commands
 
-                # --------------------etherscan commands
+                # --------------------Web3 commands
                 'cogs.gas',
                 'cogs.eth',
-                # --------------------etherscan commands
+                # --------------------Web3 commands
 
                 # --------------------NFT commands
                 'cogs.collection',
