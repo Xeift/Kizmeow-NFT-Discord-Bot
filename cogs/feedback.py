@@ -72,9 +72,6 @@ class MyModal(discord.ui.Modal):
                 elif moda == "Leave a comment":
                     webhook = Webhook.from_url(os.getenv('LEAVE_A_COMMENT'), session=session)
                     await webhook.send(embeds=[embed_image_submit, embed_submit], username=f"**New {moda}**", avatar_url="https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png", content='||<@&1047816305060880454><@&1047819403657490513>||')
-                else:
-                    webhook = Webhook.from_url(os.getenv('MISCELLANEOUS'), session=session)
-                    await webhook.send(embeds=[embed_image_submit, embed_submit], username=f"**New {moda}**", avatar_url="https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png", content='||<@&1047816305060880454><@&1047819403657490513>||')
 
         await foo()
 
