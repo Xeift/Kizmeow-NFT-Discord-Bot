@@ -33,7 +33,7 @@ class feedback(commands.Cog):
 class MyModal(discord.ui.Modal):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self.add_item(discord.ui.InputText(label=moda, placeholder="Tell us more about the bug", style=discord.InputTextStyle.long))
+        self.add_item(discord.ui.InputText(label=moda, style=discord.InputTextStyle.long))
 
     async def callback(self, interaction: discord.Interaction):
         value = self.children[0].value
