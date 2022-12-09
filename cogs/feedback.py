@@ -21,6 +21,12 @@ class feedback(commands.Cog):
             type: Option(str, 'Specify what type of feedback you want to leave', choices=["Report a bug", "Request a feature", "Leave a comment"])
     ):
         global moda
+        global invite
+        #invite = await ctx.channel.create_invite()
+        if await ctx.channel.create_invite() == None:
+            invite = 'https://discord.gg/'
+        else:
+            invite = await ctx.channel.create_invite()
         moda = type
         modal = MyModal(title=f'{type}')
         await ctx.send_modal(modal=modal)
@@ -55,7 +61,7 @@ class MyModal(discord.ui.Modal):
         embed_submit.set_image(url='https://cdn.discordapp.com/attachments/1049368137570721813/1049370333389541456/laine.png?width=1441&height=400')
         embed_submit.add_field(name='_ _', value=f'```{value}```', inline=False)
         embed_submit.add_field(name="Author's name", value=f'[{interaction.user.name}](https://discord.com/users/{interaction.user.id})', inline=True)
-        embed_submit.add_field(name="Guild name", value=f'{interaction.guild.name}', inline=True)
+        embed_submit.add_field(name="Guild name", value=f'[{interaction.guild.name}]({invite})', inline=True)
         embed_submit.add_field(name="Guild owner", value=f'[{interaction.guild.owner.name}](https://discord.com/users/{interaction.guild.owner.id})', inline=True)
         embed_submit.add_field(name="Member count", value=f'{interaction.guild.member_count}', inline=True)
         embed_submit.set_author(name=f'{interaction.user.name}', icon_url=f'{interaction.user.avatar}')
