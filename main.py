@@ -4,7 +4,7 @@ import asyncio
 from discord.ext import tasks
 from dotenv import load_dotenv
 
-bot = discord.Bot(intents=discord.Intents.all(), )
+bot = discord.Bot(intents=discord.Intents.all())
 
 
 @tasks.loop(seconds=30)
