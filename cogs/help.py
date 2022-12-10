@@ -13,7 +13,7 @@ class help(commands.Cog):
     @slash_command(name='help', description='Display help message')
     async def help(
         self,
-        ctx: discord.ApplicationContext
+        ctx: discord.ApplicationContext,
     ):
         gitbook_button = Button(label='GitBook', style=discord.ButtonStyle.link, emoji='<:gitbook_button:1047912317427400704>')
         gitbook_button.url = 'https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/faq'
