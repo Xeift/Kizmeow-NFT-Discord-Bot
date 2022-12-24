@@ -22,7 +22,7 @@ class nft(commands.Cog):
     @slash_command(name='nft', description='View NFT information')
     async def nft(
         self,
-        ctx: discord.ApplicationContext,
+        ctx: discord.ApplicationContext.defer,
         collection: Option(str, 'Specify the collection slug', autocomplete=collection_name_autocomplete),
         token_id: Option(str, 'Enter the token id')
     ):
@@ -43,6 +43,7 @@ class nft(commands.Cog):
         invite_button.url = 'https://discord.gg/PxNF9PaSKv'
         invite_button.custom_id = None
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        await ctx.defer()
         load_dotenv()
         url = f'https://api.modulenft.xyz/api/v2/eth/nft/token?slug={collection}&tokenId={token_id}'
         headers = {
@@ -115,7 +116,6 @@ class nft(commands.Cog):
 
         (embed, view) = await initial_embed()
 
-        await ctx.defer()
         await ctx.respond(embed=embed, view=view)
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
         async def return_button_callback(interaction):

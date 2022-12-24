@@ -23,7 +23,7 @@ class collection(commands.Cog):
     @slash_command(name='collection', description='Check collection information from Opensea, LooksRare and X2Y2')
     async def collection(
         self,
-        ctx: discord.ApplicationContext,
+        ctx: discord.ApplicationContext.defer,
         collection: Option(str, 'Specify the collection slug', autocomplete=collection_name_autocomplete)
     ):
         #----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -43,6 +43,7 @@ class collection(commands.Cog):
         invite.url = 'https://discord.gg/PxNF9PaSKv'
         invite.custom_id = None
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        await ctx.defer()
         load_dotenv()
         url = f'https://api.modulenft.xyz/api/v2/eth/nft/collection?slug={collection}'
         headers = {
@@ -90,7 +91,6 @@ class collection(commands.Cog):
             return (embed, view)
 
         (embed, view) = await initial_embed()
-        await ctx.defer()
         await ctx.respond(embed=embed, view=view)
 
         # ----------------------------------------------------------------------------------------------------------------------------------------------------------------
