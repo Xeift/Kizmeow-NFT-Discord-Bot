@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "kizmeow_opensea_and_etherscan_discord_bot"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 py-cord = "^2.2.2"
 requests = "^2.28.1"
 python-dotenv = "^0.21.0"
