@@ -169,7 +169,7 @@ class nft(commands.Cog):
                     embed.add_field(name='It was', value=f'<t:{timestamp}:R>', inline=True)
                     embed.add_field(name='Sales Price', value=f'{sale_price} ETH', inline=True)
                     embed.set_author(name=collection_name, url=f'https://opensea.io/assets/{collection_contract_address}/{token_id}', icon_url=collection_image)
-                    embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.3ubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
+                    embed.set_footer(text='Data provided by Kizmeow NFT Bot', icon_url='https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png')
                     embed.timestamp = datetime.datetime.now()
                 else:
                     embed = discord.Embed(title=f'{collection_name}#{token_id} is never sold', color=0xFFA46E)
