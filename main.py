@@ -4,8 +4,9 @@ import asyncio
 from discord.ext import tasks
 from dotenv import load_dotenv
 
-bot = discord.Bot(intents=discord.Intents.all())
-
+intents=discord.Intents.default()
+intents.members=True
+bot = discord.Bot(intents=intents)
 
 @tasks.loop(seconds=30)
 async def change_status():
