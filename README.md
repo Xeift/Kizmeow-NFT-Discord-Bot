@@ -2,7 +2,6 @@
 
 <a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/"><img src="https://img.shields.io/badge/read-doc-green"></a>
 ![](https://img.shields.io/github/license/Xeift/Kizmeow-NFT-Discord-Bot)
-[![CodeFactor](https://www.codefactor.io/repository/github/xeift/kizmeow-nft-discord-bot/badge/main)](https://www.codefactor.io/repository/github/xeift/kizmeow-nft-discord-bot/overview/main)
 ![](https://tokei.ekzhang.com/b1/github/Xeift/Kizmeow-NFT-Discord-Bot)
 <a href="https://discord.gg/eC5EhJfmNd"><img src="https://img.shields.io/discord/1041165809013243924?color=blue&label=Kizmeow%20Support%20Server&logo=discord"></a>
 
