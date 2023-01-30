@@ -10,4 +10,4 @@
 
 ![貓娘頭像委託（浮水印版本）](https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png)
 <h2 align="center">Visitors Counts👀</h2>
-<a href="https://github.com/Xeift/Kizmeow-NFT-Discord-Bot"><img alt="Cute Count" src="https://count.getloli.com/get/@Kizmeow-NFT-Discord-Bot?theme=rule34" /></a>
+<a href="https://github.com/Xeift/Kizmeow-NFT-Discord-Bot"><img alt="Cute Count" src="https://count.getloli.com/get/@Kizmeow-NFT-Discord-Bot?theme=rule34" height="260em" width="100%""/></a>
