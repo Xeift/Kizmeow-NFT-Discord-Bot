@@ -1,4 +1,8 @@
 # Kizmeow-NFT-Discord-Bot
+# Note
+There's been over a year since I last pushed update to this repository. Last push time was 2023/5/4 and today is 2024/7/20. One reason is I’ve been busy with school project, the other is NFT market looks not really good recent months. Overall, I still love NFTs so I decided to completely rewrite this bot and make it support multi chain NFT. Will start working on this from now on.
+
+by Xeift at 2024.7.20
 
 <a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/"><img src="https://img.shields.io/badge/read-doc-green"></a>
 ![](https://img.shields.io/github/license/Xeift/Kizmeow-NFT-Discord-Bot)
