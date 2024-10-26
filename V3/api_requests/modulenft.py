@@ -1,9 +1,11 @@
-import os
-import requests
 import datetime
+import os
+
 import discord
+import requests
+from buttons.buttons import looksrare_button, opensea_button, x2y2_button
 from discord.ui import View
-from buttons.buttons import opensea_button, looksrare_button, x2y2_button
+
 
 async def modulenft_embed(collection):
 

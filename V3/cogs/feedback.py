@@ -1,13 +1,13 @@
-import os
-import discord
 import datetime
-import aiohttp
+import os
 
+import aiohttp
+import discord
 from discord import Webhook
-from dotenv import load_dotenv
+from discord.commands import Option, slash_command
 from discord.ext import commands
 from discord.ui import Button, View
-from discord.commands import slash_command, Option
+from dotenv import load_dotenv
 
 
 class feedback(commands.Cog):

@@ -1,14 +1,15 @@
 import json
+
 import discord
 import requests
-from dotenv import load_dotenv
-from discord.ext import commands
-from discord.ui import Button
-from discord.commands import Option, slash_command
+from api_requests.looksrare import looksrare_embed
 from api_requests.modulenft import modulenft_embed
 from api_requests.opensea import opensea_embed
-from api_requests.looksrare import looksrare_embed
-from buttons.buttons import opensea_button, looksrare_button, return_button
+from buttons.buttons import looksrare_button, opensea_button, return_button
+from discord.commands import Option, slash_command
+from discord.ext import commands
+from discord.ui import Button
+from dotenv import load_dotenv
 
 
 class collection(commands.Cog):

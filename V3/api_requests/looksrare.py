@@ -1,8 +1,12 @@
-import requests
 import datetime
+
 import discord
+import requests
+from buttons.buttons import (discord_button, etherscan_button, facebook_button,
+                             instagram_button, medium_button, return_button,
+                             site_button, telegram_button, twitter_button)
 from discord.ui import View
-from buttons.buttons import etherscan_button, twitter_button, discord_button, site_button, facebook_button, telegram_button, instagram_button, medium_button, return_button
+
 
 async def looksrare_embed(collection):
     url = f'https://api.opensea.io/api/v1/collection/{collection}'

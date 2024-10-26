@@ -1,6 +1,7 @@
-import os
-import discord
 import asyncio
+import os
+
+import discord
 from discord.ext import tasks
 from dotenv import load_dotenv
 

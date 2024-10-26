@@ -1,10 +1,11 @@
-import os
-import discord
 import datetime
+import os
+
+import discord
+from discord.commands import slash_command
+from discord.ext import commands
 from dotenv import load_dotenv
 from etherscan import Etherscan
-from discord.ext import commands
-from discord.commands import slash_command
 
 
 class gas(commands.Cog):

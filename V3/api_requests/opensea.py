@@ -1,8 +1,11 @@
-import requests
 import datetime
+
 import discord
+import requests
+from buttons.buttons import (discord_button, etherscan_button, return_button,
+                             site_button, twitter_button)
 from discord.ui import View
-from buttons.buttons import etherscan_button, twitter_button, discord_button, site_button, return_button
+
 
 async def opensea_embed(collection):
 
