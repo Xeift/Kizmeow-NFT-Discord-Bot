@@ -27,8 +27,8 @@ class ping(commands.Cog):
     ):
         latency = self.bot.latency
         embed = Embed(
-            title='Bot latency',
-            description=f'{latency * 1000:.2f} ms ({latency:.3f} s)',
+            title='Bot Latency',
+            description=f'{latency * 1000:.2f} ms ({latency:.2f} s)',
             color=0xFFA46E
         )
         await ctx.respond(embed=embed)
