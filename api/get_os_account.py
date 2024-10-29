@@ -10,9 +10,9 @@ OPENSEA_API_KEY = os.getenv('OPENSEA_API_KEY')
 
 def get_os_account(account_name_or_address):
     if account_name_or_address.endswith('.eth'):
-        account_name_or_address = ens_to_address(account_name_or_address)
-        if account_name_or_address == False:
-            return (False, 'This ENS does not exsist. Please check your input.')
+        (success, account_name_or_address) = ens_to_address(account_name_or_address)
+        if success == False:
+            return (False, account_name_or_address)
 
     url = f'https://api.opensea.io/api/v2/accounts/{account_name_or_address}'
     headers = {
@@ -23,8 +23,7 @@ def get_os_account(account_name_or_address):
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
         res = response.json()
-        print(res)
-        return (True, 'Some valid result')
+        return (True, res)
     elif response.status_code == 400:
         return (False, 'The account does not exist or can not be parsed.')
     else:
@@ -33,14 +32,14 @@ def get_os_account(account_name_or_address):
 
 # --------------------     TEST        --------------------
 
-# valid address
-print(get_os_account('0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'))
+# # valid address
+# print(get_os_account('0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'))
 
 # # invalid address
 # print(get_os_account('0xf8dA6BF26964aF9D7eEd9e03E53415D37aA96045'))
 
-# # valid os username
-# print(get_os_account('RTFKTCLONEXTM'))
+# valid os username
+# print(get_os_account('XeiftVault'))
 
 # # invalid os username
 # print(get_os_account('dasfre65_fsdh3r_64fsdfs'))

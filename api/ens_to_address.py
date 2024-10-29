@@ -12,6 +12,6 @@ def ens_to_address(ens):
     address = w3.ens.address(ens)
 
     if address:
-        return address
+        return (True, address)
     else:
-        return False
+        return (False, 'This ENS does not exsist. Please check your input.')
