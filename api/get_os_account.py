@@ -2,7 +2,8 @@ import os
 
 import requests
 from dotenv import load_dotenv
-from ens_to_address import ens_to_address
+
+from api.ens_to_address import ens_to_address
 
 load_dotenv()
 OPENSEA_API_KEY = os.getenv('OPENSEA_API_KEY')
