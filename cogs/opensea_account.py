@@ -29,9 +29,10 @@ class opensea_account(commands.Cog):
         ctx: ApplicationContext,
         address_or_username: Option(
             str, 'EVM address(ENS supported) or username on OpenSea'),
-        show_link_button: Option(bool, 'Show link button. Default: True', default=True),
+        enable_link_button: Option(bool, 'Enable link button. Disabled by default. Sharing personal X link may break rules in some servers.', default=False),
     ):
         await ctx.defer()
+        disable_link_button = not enable_link_button
         (success, account_data) = get_os_account(address_or_username)
         embed = Embed(color=0xFFA46E)
         view = View()
@@ -63,32 +64,37 @@ class opensea_account(commands.Cog):
             embed.add_field(name='Username', value=username, inline=True)
             embed.add_field(name='Bio', value=bio, inline=True)
             embed.add_field(name='Joined Date', value=joined_date, inline=True)
+            embed.add_field(
+                name='', value='Note: buttons are disabled by default. If you wish to enable the buttons, set `enable_link_button` parameter to `False`.', inline=False)
 
             opensea_button = Button(
                 label='OpenSea',
                 style=ButtonStyle.link,
                 url=opensea_url,
                 emoji=PartialEmoji(name='opensea_icon_transparent',
-                                   id=1300799256730538047)
+                                   id=1300799256730538047),
+                disabled=disable_link_button
             )
+            view.add_item(opensea_button)
+
             etherscan_button = Button(
                 label='Etherscan',
                 style=ButtonStyle.link,
                 url=etherscan_url,
                 emoji=PartialEmoji(name='etherscan_icon_transparent',
-                                   id=1300797214720917596)
+                                   id=1300797214720917596),
+                disabled=disable_link_button
             )
-            if show_link_button:
-                view.add_item(opensea_button)
-                view.add_item(etherscan_button)
+            view.add_item(etherscan_button)
 
             website_button = Button(
                 label='Website',
                 style=ButtonStyle.link,
                 url=website_url,
-                emoji='🔗'
+                emoji='🔗',
+                disabled=disable_link_button
             )
-            if website_url != '' and show_link_button:
+            if website_url != '':
                 view.add_item(website_button)
 
             for social_media_account in social_media_accounts:
@@ -101,18 +107,20 @@ class opensea_account(commands.Cog):
                         style=ButtonStyle.link,
                         url=f'https://x.com/{username}',
                         emoji=PartialEmoji(name='x_icon_transparent',
-                                           id=1300788826905772063)
+                                           id=1300788826905772063),
+                        disabled=disable_link_button
                     )
-                    if show_link_button:
-                        view.add_item(x_button)
+                    view.add_item(x_button)
                 elif platform == 'instagram':
                     instagram_button = Button(
                         label='Instagram',
                         style=ButtonStyle.link,
                         url=f'https://www.instagram.com/{username}',
-                        emoji=PartialEmoji(name='instagram_icon_transparent', id=1300788845842927708))
-                    if show_link_button:
-                        view.add_item(instagram_button)
+                        emoji=PartialEmoji(
+                            name='instagram_icon_transparent', id=1300788845842927708),
+                        disabled=disable_link_button
+                    )
+                    view.add_item(instagram_button)
 
         else:
             embed.title = '[Failed]'
