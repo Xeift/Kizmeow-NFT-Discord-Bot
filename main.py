@@ -15,6 +15,7 @@ if __name__ == '__main__':
     extensions = [
         'cogs.ping',
         'cogs.opensea_account',
+        'cogs.opensea_collection',
 
     ]
     for extension in extensions:
