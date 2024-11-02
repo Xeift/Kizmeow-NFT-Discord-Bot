@@ -60,7 +60,7 @@ class opensea_account(commands.Cog):
             )
 
             embed.add_field(
-                name='Address', value=address, inline=False)
+                name='Address', value=f'[{address}]({etherscan_url})', inline=False)
             embed.add_field(name='Username', value=username, inline=True)
             embed.add_field(name='Bio', value=bio, inline=True)
             embed.add_field(name='Joined Date', value=joined_date, inline=True)
