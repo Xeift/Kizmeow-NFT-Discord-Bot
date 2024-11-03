@@ -7,7 +7,7 @@ from discord import (ApplicationContext, AutocompleteContext, ButtonStyle,
 from discord.ext import commands
 from discord.ui import Button, View
 
-from api.get_os_account import get_os_account
+from api.get_os_collection import get_os_collection
 
 
 class opensea_collection(commands.Cog):

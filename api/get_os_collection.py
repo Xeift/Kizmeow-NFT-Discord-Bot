@@ -7,7 +7,7 @@ load_dotenv()
 OPENSEA_API_KEY = os.getenv('OPENSEA_API_KEY')
 
 
-def get_os_account(collection):
+def get_os_collection(collection):
     url = f'https://api.opensea.io/api/v2/collections/{collection}'
     headers = {
         'accept': 'application/json',
@@ -26,6 +26,8 @@ def get_os_account(collection):
 
 # --------------------     TEST        --------------------
 
-# valid collection slug
-res = get_os_account('azuki')
-print(res)
+# # valid collection slug
+# print(get_os_collection('azuki'))
+
+# # invalid collection slug
+# print(get_os_collection('azukite'))
