@@ -43,13 +43,19 @@ class opensea_collection(commands.Cog):
     ):
         await ctx.defer()
 
-        # TODO: get collection
-        (success, account_data) = get_os_account(collection)
+        with open('collection_name_autocomplete.json','r') as of:
+            collection_name_data = json.load(of)
+        if collection in collection_name_data:
+            collection = collection_name_data[collection]
+        
+        (success, account_data) = get_os_collection(collection)
+
+
         embed = Embed(color=0xFFA46E)
         view = View()
-        success = True
 
         if success:
+            print(account_data)
             await ctx.respond(collection)
 
         else:
