@@ -48,22 +48,40 @@ class opensea_collection(commands.Cog):
         if collection in collection_name_data:
             collection = collection_name_data[collection]
         
-        (success, account_data) = get_os_collection(collection)
+        (success, collection_data) = get_os_collection(collection)
 
 
         embed = Embed(color=0xFFA46E)
         view = View()
 
         if success:
-            print(account_data)
-            await ctx.respond(collection)
+            name = collection_data['name']
+            description = collection_data['description']
+            supply = collection_data['total_supply']
+            category = collection_data['category']
+            created_date = collection_data['created_date']
+            owner_address = collection_data['owner']
+            owner_address_short = collection_data['owner'][:7]
+            owner_etherscan_url = f'https://etherscan.io/address/{owner_address}'
+            owner_opensea_url = f'https://opensea.io/{owner_address}'
+            # fee = # TODO:
+            verify_state = collection_data['safelist_status']
+            pfp_img = collection_data['image_url']
+            banner_img = collection_data['banner_image_url']
+            
+
+
+
+            print(description)
 
         else:
             embed.title = '[Failed]'
             embed.description = f'Command execution failed. Reason:\n```{
-                account_data}```'
+                collection_data}```'
 
-            await ctx.respond(embed=embed, view=view)
+        # await ctx.respond(embed=embed, view=view)
+        embed.add_field(name='test', value='>>> asdf\ntest\nbaslsasa')
+        await ctx.respond(embed=embed)
 
 
 def setup(bot):
