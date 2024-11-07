@@ -8,6 +8,7 @@ from discord.ext import commands
 from discord.ui import Button, View
 
 from api.get_os_collection import get_os_collection
+from api.get_os_collection_statistics import get_os_collection_statistics
 
 
 class opensea_collection(commands.Cog):
@@ -96,6 +97,38 @@ class opensea_collection(commands.Cog):
             embed.add_field(name='Fees', value=fees_text, inline=True)
             embed.add_field(name='Verification', value=verify_state, inline=True)
 
+            (success, collection_statistic_data) = get_os_collection_statistics(collection)
+            if success:
+                num_holders = collection_statistic_data['total']['num_owners']
+                market_cap = round(collection_statistic_data['total']['market_cap'], 2)
+                floor_price = round(collection_statistic_data['total']['floor_price'], 2)
+                floor_price_symbol = collection_statistic_data['total']['floor_price_symbol']
+                
+
+                volume_all = round(collection_statistic_data['total']['volume'], 2)
+                volume_1d = round(collection_statistic_data['intervals'][0]['volume'], 2)
+                volume_1d_del = round(collection_statistic_data['intervals'][0]['volume_change'], 2)
+                volume_7d = round(collection_statistic_data['intervals'][1]['volume'], 2)
+                volume_7d_del = round(collection_statistic_data['intervals'][1]['volume_change'], 2)
+                volume_30d = round(collection_statistic_data['intervals'][2]['volume'], 2)
+                volume_30d_del = round(collection_statistic_data['intervals'][2]['volume_change'], 2)
+
+                sales_all = round(collection_statistic_data['total']['sales'], 2)
+                sales_1d = round(collection_statistic_data['intervals'][0]['sales'], 2)
+                sales_7d = round(collection_statistic_data['intervals'][1]['sales'], 2)
+                sales_30d = round(collection_statistic_data['intervals'][2]['sales'], 2)
+
+                average_price_all = round(collection_statistic_data['total']['average_price'], 2)
+                average_price_1d = round(collection_statistic_data['intervals'][0]['average_price'], 2)
+                average_price_7d = round(collection_statistic_data['intervals'][1]['average_price'], 2)
+                average_price_30d = round(collection_statistic_data['intervals'][2]['average_price'], 2)
+
+                embed.add_field(name='Unique Holders', value=num_holders, inline=True)
+                embed.add_field(name='Market Cap', value=f'{market_cap} {floor_price_symbol}', inline=True)
+                embed.add_field(name='Floor Price', value=f'{floor_price} {floor_price_symbol}', inline=True)
+                embed.add_field(name='Volume 1D/7D/30D/All', value=f'{volume_1d} `({volume_1d_del}%)`｜{volume_7d}`({volume_7d_del}%)`｜{volume_30d}`({volume_30d_del}%)`｜{volume_all}', inline=False)
+                embed.add_field(name='Sales 1D/7D/30D/All', value=f'{sales_1d}\n{sales_7d}\n{sales_30d}\n{sales_all}', inline=False)
+                embed.add_field(name='Average Price 1D/7D/30D/All', value=f'{average_price_1d}\n{average_price_7d}\n{average_price_30d}\n{average_price_all}', inline=False)
             # TODO: price volume sell
             # TODO: block exp converter
 
