@@ -103,7 +103,6 @@ class opensea_collection(commands.Cog):
                 market_cap = round(collection_statistic_data['total']['market_cap'], 2)
                 floor_price = round(collection_statistic_data['total']['floor_price'], 2)
                 floor_price_symbol = collection_statistic_data['total']['floor_price_symbol']
-                
 
                 volume_all = round(collection_statistic_data['total']['volume'], 2)
                 volume_1d = round(collection_statistic_data['intervals'][0]['volume'], 2)
@@ -126,10 +125,38 @@ class opensea_collection(commands.Cog):
                 embed.add_field(name='Unique Holders', value=num_holders, inline=True)
                 embed.add_field(name='Market Cap', value=f'{market_cap} {floor_price_symbol}', inline=True)
                 embed.add_field(name='Floor Price', value=f'{floor_price} {floor_price_symbol}', inline=True)
-                embed.add_field(name='Volume 1D/7D/30D/All', value=f'{volume_1d} `({volume_1d_del}%)`｜{volume_7d}`({volume_7d_del}%)`｜{volume_30d}`({volume_30d_del}%)`｜{volume_all}', inline=False)
-                embed.add_field(name='Sales 1D/7D/30D/All', value=f'{sales_1d}\n{sales_7d}\n{sales_30d}\n{sales_all}', inline=False)
-                embed.add_field(name='Average Price 1D/7D/30D/All', value=f'{average_price_1d}\n{average_price_7d}\n{average_price_30d}\n{average_price_all}', inline=False)
-            # TODO: price volume sell
+                embed.add_field(
+                    name='Volume',
+                    value=(
+                        f'```1D  {str(volume_1d).ljust(12)}{floor_price_symbol}({volume_1d_del}%)\n'
+                        f'7D  {str(volume_7d).ljust(12)}{floor_price_symbol}({volume_7d_del}%)\n'
+                        f'30D {str(volume_30d).ljust(12)}{floor_price_symbol}({volume_30d_del}%)\n'
+                        f'All {str(volume_all).ljust(12)}{floor_price_symbol}```'
+                    ),
+                    inline=False
+                )
+                embed.add_field(
+                    name='Average Price',
+                    value=(
+                        f'`1D  {str(average_price_1d).ljust(8)} {floor_price_symbol}`\n'
+                        f'`7D  {str(average_price_7d).ljust(8)} {floor_price_symbol}`\n'
+                        f'`30D {str(average_price_30d).ljust(8)} {floor_price_symbol}`\n'
+                        f'`All {str(average_price_all).ljust(8)} {floor_price_symbol}`'
+                    ),
+                    inline=True
+                )
+                embed.add_field(
+                    name='Sales',
+                    value=(
+                        f'`1D  {str(sales_1d).ljust(8)} {name}`\n'
+                        f'`7D  {str(sales_7d).ljust(8)} {name}`\n'
+                        f'`30D {str(sales_30d).ljust(8)} {name}`\n'
+                        f'`All {str(sales_all).ljust(8)} {name}`'
+                    ),
+                    inline=True
+                )
+
+
             # TODO: block exp converter
 
 
