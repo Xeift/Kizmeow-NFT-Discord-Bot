@@ -15,5 +15,7 @@ by Xeift at 2024.10.27
 
 # Contact info
 Discord @xeift
+
 Telegram @Xeift
+
 ![貓娘頭像委託（浮水印版本）](https://user-images.githubusercontent.com/80938768/204983971-d7cf0e40-f4ce-4737-ba07-85ed62112dab.png)
