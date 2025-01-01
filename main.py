@@ -16,7 +16,7 @@ if __name__ == '__main__':
         'cogs.ping',
         'cogs.opensea_account',
         'cogs.opensea_collection',
-
+	'cogs.opensea_nft',
     ]
     for extension in extensions:
         bot.load_extension(extension)
