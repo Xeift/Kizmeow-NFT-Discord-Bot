@@ -13,7 +13,7 @@ class opensea_nft(commands.Cog):
 
     @commands.slash_command(
         name='opensea_nft',
-        description='View account details of a specific OpenSea account',
+        description='View details of a specific NFT on OpenSea',
         integration_types=[
             IntegrationType.user_install,
             IntegrationType.guild_install,
