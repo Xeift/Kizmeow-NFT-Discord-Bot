@@ -2,4 +2,5 @@
 	"CryptoPunks": {"slug": "cryptopunks", "chain": "ethereum", "ca": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb"},
     "Azuki Elementals": {"slug": "azukielementals", "chain": "ethereum", "ca": "0xb6a37b5d14d502c3ab0ae6f3a0e058bc9517786e"},
 	"Mutant Ape Yacht Club": {"slug": "", "chain": "", "ca": ""},
+	"     ": {"slug": "     ", "chain": "     ", "ca": "     "},
 }
