@@ -16,8 +16,9 @@ class opensea_collection(commands.Cog):
         self.bot = bot
 
     def collection_name_autocomplete(self: AutocompleteContext):
-        with open('collection_name_autocomplete.json', 'r') as of:
+        with open('collection_data.json', 'r') as of:
             collection_name_data = json.load(of)
+        print(collection_name_data)
         return collection_name_data.keys()
 
     @commands.slash_command(
