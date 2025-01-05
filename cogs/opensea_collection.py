@@ -81,6 +81,8 @@ class opensea_collection(commands.Cog):
                 embed.set_image(url=banner_img)
 
             for ca in cas:
+                chain = ca['chain']
+                print(chain)
                 cas_text += f'[{ca['address'][:7]}](https://etherscan.io/address/{ca['address']}) ({ca['chain']})\n'
             embed.add_field(name='Contract Address', value=cas_text, inline=False)
             embed.add_field(name='Description', value=description, inline=False)
