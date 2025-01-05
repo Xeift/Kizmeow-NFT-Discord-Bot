@@ -20,6 +20,12 @@ class opensea_collection(commands.Cog):
         with open('collection_name_autocomplete.json', 'r') as of:
             collection_name_data = json.load(of)
         return collection_name_data.keys()
+        
+    def get_exp_of_chain(chain):
+        with open('chain_to_exp.json', 'r')
+            exp_data = json.load(of)
+        return exp_data[chain]
+
 
     @commands.slash_command(
         name='opensea_collection',
