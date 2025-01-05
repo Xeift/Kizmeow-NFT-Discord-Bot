@@ -21,8 +21,8 @@ class opensea_collection(commands.Cog):
             collection_name_data = json.load(of)
         return collection_name_data.keys()
         
-    def get_exp_of_chain(chain):
-        with open('chain_to_exp.json', 'r')
+    def get_exp_of_chain(self, chain):
+        with open('chain_to_exp.json', 'r') as of:
             exp_data = json.load(of)
         return exp_data[chain]
 
@@ -88,8 +88,9 @@ class opensea_collection(commands.Cog):
 
             for ca in cas:
                 chain = ca['chain']
-                print(chain)
-                cas_text += f'[{ca['address'][:7]}](https://etherscan.io/address/{ca['address']}) ({ca['chain']})\n'
+                exp = self.get_exp_of_chain(chain)
+                
+                cas_text += f'[{ca['address'][:7]}]({exp}{ca['address']}) ({ca['chain']})\n'
             embed.add_field(name='Contract Address', value=cas_text, inline=False)
             embed.add_field(name='Description', value=description, inline=False)
             embed.add_field(name='Total Supply', value=supply, inline=True)
