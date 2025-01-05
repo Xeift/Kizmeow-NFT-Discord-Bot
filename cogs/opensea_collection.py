@@ -6,6 +6,7 @@ from discord import (ApplicationContext, AutocompleteContext, ButtonStyle,
                      PartialEmoji)
 from discord.ext import commands
 from discord.ui import Button, View
+from discord.utils import basic_autocomplete
 
 from api.get_os_collection import get_os_collection
 from api.get_os_collection_statistics import get_os_collection_statistics
@@ -39,7 +40,7 @@ class opensea_collection(commands.Cog):
         collection: Option(
             str,
             'Specify the collection slug',
-            autocomplete=collection_name_autocomplete
+            autocomplete=basic_autocomplete(collection_name_autocomplete)
         )
     ):
         await ctx.defer()
