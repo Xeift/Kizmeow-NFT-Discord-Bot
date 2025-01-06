@@ -108,7 +108,10 @@ class opensea_collection(commands.Cog):
                 fees_text += f"{fee['required']} [{fee['fee']}%]({exp}{fee['recipient']})\n"
             embed.add_field(name='Fees', value=fees_text, inline=True)
             embed.add_field(name='Verification', value=verify_state, inline=True)
-
+            embed.set_footer(
+                text='Source: OpenSea API',
+                icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/opensea_logo.png'
+            )
             (success, collection_statistic_data) = get_os_collection_statistics(collection)
             if success:
                 num_holders = collection_statistic_data['total']['num_owners']

@@ -66,7 +66,10 @@ class opensea_nft(commands.Cog):
             embed.add_field(name='Joined Date', value=joined_date, inline=True)
             embed.add_field(
                 name='', value='Note: buttons are disabled by default. If you wish to enable the buttons, set `enable_link_button` parameter to `False`.', inline=False)
-
+            embed.set_footer(
+                text='Source: OpenSea API',
+                icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/opensea_logo.png'
+            )
             opensea_button = Button(
                 label='OpenSea',
                 style=ButtonStyle.link,
