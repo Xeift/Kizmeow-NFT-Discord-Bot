@@ -21,10 +21,10 @@ class opensea_collection(commands.Cog):
             collection_name_data = json.load(of)
         return collection_name_data.keys()
         
-    def get_exp_of_chain(self, chain):
+    def get_chain_detail(self, chain):
         with open('chain_to_exp.json', 'r') as of:
-            exp_data = json.load(of)
-        return exp_data[chain]
+            chain_info = json.load(of)[chain]
+        return (chain_info['name'], chain_info['exp'])
 
 
     @commands.slash_command(
@@ -74,7 +74,8 @@ class opensea_collection(commands.Cog):
             owner_address = collection_data['owner']
             owner_address_short = collection_data['owner'][:7]
             default_chain = cas[0]['chain']
-            owner_exp_url = f'{self.get_exp_of_chain(default_chain)}{owner_address}'
+            (name, exp) = self.get_chain_detail(default_chain)
+            owner_exp_url = f'{exp}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
             fees = collection_data['fees']
             fees_text = ''
@@ -89,15 +90,15 @@ class opensea_collection(commands.Cog):
 
             for ca in cas:
                 chain = ca['chain']
-                exp = self.get_exp_of_chain(chain)
+                (name, exp) = self.get_chain_detail(chain)
                 
-                cas_text += f'[{ca['address'][:7]}]({exp}{ca['address']}) ({ca['chain']})\n'
+                cas_text += f'[{ca['address'][:7]}]({exp}{ca['address']}) ({name})\n'
             embed.add_field(name='Contract Address', value=cas_text, inline=False)
             embed.add_field(name='Description', value=description, inline=False)
             embed.add_field(name='Total Supply', value=supply, inline=True)
             embed.add_field(name='Category', value=category, inline=True)
             embed.add_field(name='Created Date', value=created_date, inline=True)
-            embed.add_field(name='Owner', value=f'{owner_address_short}\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
+            embed.add_field(name='Owner', value=f'{owner_address_short} ({name})\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
             for fee in fees:
                 if fee['required'] == True:
                     fee['required'] = 'Required'
