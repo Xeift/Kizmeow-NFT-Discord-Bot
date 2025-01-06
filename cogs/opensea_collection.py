@@ -105,7 +105,7 @@ class opensea_collection(commands.Cog):
                 else:
                     fee['required'] = 'Optional'
 
-                fees_text += f"{fee['required']} [{fee['fee']}%](https://etherscan.io/address/{fee['recipient']})\n"
+                fees_text += f"{fee['required']} [{fee['fee']}%]({exp}{fee['recipient']})\n"
             embed.add_field(name='Fees', value=fees_text, inline=True)
             embed.add_field(name='Verification', value=verify_state, inline=True)
 
