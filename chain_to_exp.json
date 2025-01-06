@@ -1,4 +1,4 @@
 {
-	"ethereum": "https://etherscan.io/address/",
-	"arbitrum": "https://arbiscan.io/address/"
+	"ethereum": {"name": "Ethereum", "exp": "https://etherscan.io/address/"},
+	"arbitrum": {"name": "Arbitrum", "exp": "https://arbiscan.io/address/"}
 }
