@@ -22,7 +22,7 @@ class opensea_collection(commands.Cog):
         return collection_name_data.keys()
         
     def get_chain_detail(self, chain):
-        with open('chain_to_exp.json', 'r') as of:
+        with open('chain_detail.json', 'r') as of:
             chain_info = json.load(of)[chain]
         return (chain_info['name'], chain_info['exp'])
 
