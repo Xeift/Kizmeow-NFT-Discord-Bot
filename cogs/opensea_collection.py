@@ -73,7 +73,8 @@ class opensea_collection(commands.Cog):
             created_date = collection_data['created_date']
             owner_address = collection_data['owner']
             owner_address_short = collection_data['owner'][:7]
-            owner_exp_url = f'https://etherscan.io/address/{owner_address}'
+            default_chain = cas[0]['chain']
+            owner_exp_url = f'{self.get_exp_of_chain(default_chain)}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
             fees = collection_data['fees']
             fees_text = ''
