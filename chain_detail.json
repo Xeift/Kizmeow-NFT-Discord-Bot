@@ -1,18 +1,22 @@
 {
 	"ethereum": {
 		"name": "Ethereum",
-		 "exp": "https://etherscan.io/address/"
+		 "exp": "https://etherscan.io/address/",
+		 "ticker": "ETH"
 	},
 	"arbitrum": {
 		"name": "Arbitrum",
-		"exp": "https://arbiscan.io/address/"
+		"exp": "https://arbiscan.io/address/",
+		"ticker": "ETH"
 	},
 	"amoy": {
 		"name": "Amoy Testnet",
-		"exp": "https://amoy.polygonscan.com/address/"
+		"exp": "https://amoy.polygonscan.com/address/",
+		"ticker": "POL"
 	},
 	"solana": {
 		"name": "Solana",
-		"exp": "https://solscan.io/account/"
+		"exp": "https://solscan.io/account/",
+		"ticker": "SOL"
 	}
 }
