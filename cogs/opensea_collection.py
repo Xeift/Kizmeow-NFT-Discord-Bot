@@ -73,7 +73,8 @@ class opensea_collection(commands.Cog):
             created_date = collection_data['created_date']
             owner_address = collection_data['owner']
             owner_address_short = collection_data['owner'][:7]
-            default_chain = cas[0]['chain']
+            collection_data['payment_tokens'][0]['chain']
+            default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [] else cas[0]['chain']
             (name, exp) = self.get_chain_detail(default_chain)
             owner_exp_url = f'{exp}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
@@ -88,17 +89,21 @@ class opensea_collection(commands.Cog):
             if banner_img != '':
                 embed.set_image(url=banner_img)
 
-            for ca in cas:
-                chain = ca['chain']
-                (name, exp) = self.get_chain_detail(chain)
+            if cas != []:
+                for ca in cas:
+                    chain = ca['chain']
+                    (name, exp) = self.get_chain_detail(chain)
                 
-                cas_text += f'[{ca['address'][:7]}]({exp}{ca['address']}) ({name})\n'
-            embed.add_field(name='Contract Address', value=cas_text, inline=False)
+                    cas_text += f'[{ca['address'][:7]}]({exp}{ca['address']}) ({name})\n'
+
+            if cas_text != []:
+                embed.add_field(name='Contract Address', value=cas_text, inline=False)
             embed.add_field(name='Description', value=description, inline=False)
             embed.add_field(name='Total Supply', value=supply, inline=True)
             embed.add_field(name='Category', value=category, inline=True)
             embed.add_field(name='Created Date', value=created_date, inline=True)
-            embed.add_field(name='Owner', value=f'{owner_address_short} ({name})\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
+            if cas != []:
+                embed.add_field(name='Owner', value=f'{owner_address_short} ({name})\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
             for fee in fees:
                 if fee['required'] == True:
                     fee['required'] = 'Required'
