@@ -1,4 +1,5 @@
 {
 	"ethereum": {"name": "Ethereum", "exp": "https://etherscan.io/address/"},
-	"arbitrum": {"name": "Arbitrum", "exp": "https://arbiscan.io/address/"}
+	"arbitrum": {"name": "Arbitrum", "exp": "https://arbiscan.io/address/"},
+	"amoy": {"name": "Amoy Testnet", "exp": "https://amoy.polygonscan.com/address/"}
 }
