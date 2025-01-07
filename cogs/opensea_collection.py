@@ -73,7 +73,6 @@ class opensea_collection(commands.Cog):
             created_date = collection_data['created_date']
             owner_address = collection_data['owner']
             owner_address_short = collection_data['owner'][:7]
-            # collection_data['payment_tokens'][0]['chain']
             default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [] else cas[0]['chain']
             (name, exp, ticker) = self.get_chain_detail(default_chain)
             owner_exp_url = f'{exp}{owner_address}'
