@@ -177,8 +177,6 @@ class opensea_collection(commands.Cog):
                 )
 
 
-            # TODO: block exp converter
-
 
         else:
             embed.title = '[Failed]'
