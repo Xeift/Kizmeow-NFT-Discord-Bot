@@ -122,7 +122,6 @@ class opensea_collection(commands.Cog):
                 num_holders = collection_statistic_data['total']['num_owners']
                 market_cap = round(collection_statistic_data['total']['market_cap'], 2)
                 floor_price = round(collection_statistic_data['total']['floor_price'], 2)
-                floor_price_symbol = collection_statistic_data['total']['floor_price_symbol']
 
                 volume_all = round(collection_statistic_data['total']['volume'], 2)
                 volume_1d = round(collection_statistic_data['intervals'][0]['volume'], 2)
@@ -143,25 +142,25 @@ class opensea_collection(commands.Cog):
                 average_price_30d = round(collection_statistic_data['intervals'][2]['average_price'], 2)
 
                 embed.add_field(name='Unique Holders', value=num_holders, inline=True)
-                embed.add_field(name='Market Cap', value=f'{market_cap} {floor_price_symbol}', inline=True)
+                embed.add_field(name='Market Cap', value=f'{market_cap} {ticker}', inline=True)
                 embed.add_field(name='Floor Price', value=f'{floor_price} {ticker}', inline=True)
                 embed.add_field(
                     name='Volume',
                     value=(
-                        f'```1D  {str(volume_1d).ljust(12)}{floor_price_symbol}({volume_1d_del}%)\n'
-                        f'7D  {str(volume_7d).ljust(12)}{floor_price_symbol}({volume_7d_del}%)\n'
-                        f'30D {str(volume_30d).ljust(12)}{floor_price_symbol}({volume_30d_del}%)\n'
-                        f'All {str(volume_all).ljust(12)}{floor_price_symbol}```'
+                        f'```1D  {str(volume_1d).ljust(12)}{ticker}({volume_1d_del}%)\n'
+                        f'7D  {str(volume_7d).ljust(12)}{ticker}({volume_7d_del}%)\n'
+                        f'30D {str(volume_30d).ljust(12)}{ticker}({volume_30d_del}%)\n'
+                        f'All {str(volume_all).ljust(12)}{ticker}```'
                     ),
                     inline=False
                 )
                 embed.add_field(
                     name='Average Price',
                     value=(
-                        f'`1D  {str(average_price_1d).ljust(8)} {floor_price_symbol}`\n'
-                        f'`7D  {str(average_price_7d).ljust(8)} {floor_price_symbol}`\n'
-                        f'`30D {str(average_price_30d).ljust(8)} {floor_price_symbol}`\n'
-                        f'`All {str(average_price_all).ljust(8)} {floor_price_symbol}`'
+                        f'`1D  {str(average_price_1d).ljust(8)} {ticker}`\n'
+                        f'`7D  {str(average_price_7d).ljust(8)} {ticker}`\n'
+                        f'`30D {str(average_price_30d).ljust(8)} {ticker}`\n'
+                        f'`All {str(average_price_all).ljust(8)} {ticker}`'
                     ),
                     inline=True
                 )
