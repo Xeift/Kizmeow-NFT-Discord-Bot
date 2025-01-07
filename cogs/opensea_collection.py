@@ -167,10 +167,10 @@ class opensea_collection(commands.Cog):
                 embed.add_field(
                     name='Sales',
                     value=(
-                        f'`1D  {str(sales_1d).ljust(8)} {name}`\n'
-                        f'`7D  {str(sales_7d).ljust(8)} {name}`\n'
-                        f'`30D {str(sales_30d).ljust(8)} {name}`\n'
-                        f'`All {str(sales_all).ljust(8)} {name}`'
+                        f'`1D  {str(sales_1d).ljust(8)} NFT`\n'
+                        f'`7D  {str(sales_7d).ljust(8)} NFT`\n'
+                        f'`30D {str(sales_30d).ljust(8)} NFT`\n'
+                        f'`All {str(sales_all).ljust(8)} NFT`'
                     ),
                     inline=True
                 )
