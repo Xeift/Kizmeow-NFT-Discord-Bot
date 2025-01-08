@@ -95,7 +95,7 @@ class opensea_collection(commands.Cog):
                 
                     cas_text += f'[{ca['address'][:7]}]({exp}{ca['address']}) ({name})\n'
 
-            if cas_text != []:
+            if cas_text != '':
                 embed.add_field(name='Contract Address', value=cas_text, inline=False)
             embed.add_field(name='Description', value=description, inline=False)
             embed.add_field(name='Total Supply', value=supply, inline=True)
