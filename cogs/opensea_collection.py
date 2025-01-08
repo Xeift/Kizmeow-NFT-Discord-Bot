@@ -63,7 +63,7 @@ class opensea_collection(commands.Cog):
         view = View()
 
         if success:
-            name = collection_data['name']
+            collection_name = collection_data['name']
             cas = collection_data['contracts']
             cas_text = ''
             description = collection_data['description']
@@ -83,7 +83,7 @@ class opensea_collection(commands.Cog):
             pfp_img = collection_data['image_url']
             banner_img = collection_data['banner_image_url']
             
-            embed.title = f'OpenSea Collection Info of {name}'
+            embed.title = f'OpenSea Collection Info of {collection_name}'
             embed.set_thumbnail(url=pfp_img) 
             if banner_img != '':
                 embed.set_image(url=banner_img)
