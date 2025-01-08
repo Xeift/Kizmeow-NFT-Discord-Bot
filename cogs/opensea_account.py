@@ -72,7 +72,7 @@ class opensea_account(commands.Cog):
                 style=ButtonStyle.link,
                 url=opensea_url,
                 emoji=PartialEmoji(name='opensea_icon_transparent',
-                                   id=1300799256730538047),
+                                   id=1326452492644515963),
                 disabled=disable_link_button
             )
             view.add_item(opensea_button)
@@ -82,7 +82,7 @@ class opensea_account(commands.Cog):
                 style=ButtonStyle.link,
                 url=etherscan_url,
                 emoji=PartialEmoji(name='etherscan_icon_transparent',
-                                   id=1300797214720917596),
+                                   id=1326452528920920125),
                 disabled=disable_link_button
             )
             view.add_item(etherscan_button)
@@ -107,7 +107,7 @@ class opensea_account(commands.Cog):
                         style=ButtonStyle.link,
                         url=f'https://x.com/{username}',
                         emoji=PartialEmoji(name='x_icon_transparent',
-                                           id=1300788826905772063),
+                                           id=1326452546742648862),
                         disabled=disable_link_button
                     )
                     view.add_item(x_button)
@@ -117,7 +117,7 @@ class opensea_account(commands.Cog):
                         style=ButtonStyle.link,
                         url=f'https://www.instagram.com/{username}',
                         emoji=PartialEmoji(
-                            name='instagram_icon_transparent', id=1300788845842927708),
+                            name='instagram_icon_transparent', id=1326452562186211379),
                         disabled=disable_link_button
                     )
                     view.add_item(instagram_button)
