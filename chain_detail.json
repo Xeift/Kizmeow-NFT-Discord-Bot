@@ -9,10 +9,10 @@
 		"exp": "https://arbiscan.io/address/",
 		"ticker": "ETH"
 	},
-	"amoy": {
-		"name": "Amoy Testnet",
-		"exp": "https://amoy.polygonscan.com/address/",
-		"ticker": "POL"
+	"avalanche": {
+		"name": "Avalanche",
+		"exp": "https://snowtrace.io/address/",
+		"ticker": "AVAX"
 	},
 	"solana": {
 		"name": "Solana",
