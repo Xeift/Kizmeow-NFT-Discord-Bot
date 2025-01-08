@@ -91,7 +91,7 @@ class opensea_collection(commands.Cog):
             if cas != []:
                 for ca in cas:
                     chain = ca['chain']
-                    (name, exp) = self.get_chain_detail(chain)
+                    (name, exp, _) = self.get_chain_detail(chain)
                 
                     cas_text += f'[{ca['address'][:7]}]({exp}{ca['address']}) ({name})\n'
 
