@@ -83,8 +83,14 @@ class opensea_collection(commands.Cog):
             pfp_img = collection_data['image_url']
             banner_img = collection_data['banner_image_url']
             opensea_url = collection_data['opensea_url']
-            
-            
+            project_url = collection_data['project_url']
+            wiki_url = collection_data['wiki_url']            
+            discord_url = collection_data['discord_url']   
+            telegram_url = collection_data['telegram_url']
+            x_url = f'https://x.com/{collection_data["twitter_username"]}'
+            instagram_url = f'https://www.instagram.com/{collection_data["instagram_username"]'
+               
+
             embed.title = f'OpenSea Collection Info of {collection_name}'
             embed.set_thumbnail(url=pfp_img) 
             if banner_img != '':
