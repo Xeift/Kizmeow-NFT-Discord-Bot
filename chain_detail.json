@@ -14,13 +14,17 @@
 		"ticker": "ETH"
 	},
 	"avalanche": {
-		"name": "Avalanche",
-		"exp": "https://snowtrace.io/address/",
+		"chain_name": "Avalanche",
+		"exp_name": "Snowtrace",
+		"exp_url": "https://snowtrace.io/address/",
+		"exp_emoji": 1326757724410871818,
 		"ticker": "AVAX"
 	},
 	"solana": {
-		"name": "Solana",
-		"exp": "https://solscan.io/account/",
+		"chain_name": "Solana",
+		"exp_name": "Solscan",
+		"exp_url": "https://solscan.io/account/",
+		"exp_emoji":,
 		"ticker": "SOL"
 	}
 }
