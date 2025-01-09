@@ -82,6 +82,8 @@ class opensea_collection(commands.Cog):
             verify_state = collection_data['safelist_status']
             pfp_img = collection_data['image_url']
             banner_img = collection_data['banner_image_url']
+            opensea_url = collection_data['opensea_url']
+            
             
             embed.title = f'OpenSea Collection Info of {collection_name}'
             embed.set_thumbnail(url=pfp_img) 
@@ -173,7 +175,15 @@ class opensea_collection(commands.Cog):
                     ),
                     inline=True
                 )
-
+                opensea_button = Button(
+                    label='OpenSea',
+                    style=ButtonStyle.link,
+                    url=opensea_url,
+                    emoji=PartialEmoji(name='opensea_icon_transparent',
+                                   id=1326452492644515963),
+                    disabled=False
+                )
+                view.add_item(opensea_button)
 
 
         else:
