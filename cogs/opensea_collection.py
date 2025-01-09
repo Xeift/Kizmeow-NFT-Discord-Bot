@@ -24,7 +24,7 @@ class opensea_collection(commands.Cog):
     def get_chain_detail(self, chain):
         with open('chain_detail.json', 'r') as of:
             chain_info = json.load(of)[chain]
-        return (chain_info['name'], chain_info['exp'], chain_info['ticker'])
+        return (chain_info['name'], chain_info['exp_name'], chain_info['exp_url'], chain_info['ticker'])
 
 
     @commands.slash_command(
@@ -74,8 +74,8 @@ class opensea_collection(commands.Cog):
             owner_address = collection_data['owner']
             owner_address_short = collection_data['owner'][:7]
             default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [] else cas[0]['chain']
-            (name, exp, ticker) = self.get_chain_detail(default_chain)
-            owner_exp_url = f'{exp}{owner_address}'
+            (name,exp_name, exp_url, ticker) = self.get_chain_detail(default_chain)
+            owner_exp_url = f'{exp_url}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
             fees = collection_data['fees']
             fees_text = ''
@@ -91,9 +91,9 @@ class opensea_collection(commands.Cog):
             if cas != []:
                 for ca in cas:
                     chain = ca['chain']
-                    (name, exp, _) = self.get_chain_detail(chain)
+                    (name, exp_name, exp_url, ticker) = self.get_chain_detail(chain)
                 
-                    cas_text += f'[{ca['address'][:7]}]({exp}{ca['address']}) ({name})\n'
+                    cas_text += f'[{ca['address'][:7]}]({exp_url}{ca['address']}) ({name})\n'
 
             if cas_text != '':
                 embed.add_field(name='Contract Address', value=cas_text, inline=False)
@@ -109,7 +109,7 @@ class opensea_collection(commands.Cog):
                 else:
                     fee['required'] = 'Optional'
 
-                fees_text += f"{fee['required']} [{fee['fee']}%]({exp}{fee['recipient']})\n"
+                fees_text += f"{fee['required']} [{fee['fee']}%]({exp_url}{fee['recipient']})\n"
             embed.add_field(name='Fees', value=fees_text, inline=True)
             embed.add_field(name='Verification', value=verify_state, inline=True)
             embed.set_footer(
