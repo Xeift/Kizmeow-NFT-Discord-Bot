@@ -1,14 +1,16 @@
 {
 	"ethereum": {
 		"name": "Ethereum",
-		 "exp": "https://etherscan.io/address/",
-		 "exp_emoji": 1326452528920920125,
-		 "ticker": "ETH"
+		"exp_name": "Etherscan",
+		"exp_url": "https://etherscan.io/address/",
+		"exp_emoji": 1326452528920920125,
+		"ticker": "ETH"
 	},
 	"arbitrum": {
 		"name": "Arbitrum",
-		"exp": "https://arbiscan.io/address/",
-		"exp_wmoji": 1326518222756773898,
+		"exp_name": "Arbiscan",
+		"exp_url": "https://arbiscan.io/address/",
+		"exp_emoji": 1326518222756773898,
 		"ticker": "ETH"
 	},
 	"avalanche": {
