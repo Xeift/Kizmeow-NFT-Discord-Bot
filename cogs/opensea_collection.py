@@ -102,7 +102,7 @@ class opensea_collection(commands.Cog):
             embed.add_field(name='Category', value=category, inline=True)
             embed.add_field(name='Created Date', value=created_date, inline=True)
             if cas != []:
-                embed.add_field(name='Owner', value=f'{owner_address_short} ({name})\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
+                embed.add_field(name='Owner', value=f'{owner_address_short} ({chain_name})\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
             for fee in fees:
                 if fee['required'] == True:
                     fee['required'] = 'Required'
