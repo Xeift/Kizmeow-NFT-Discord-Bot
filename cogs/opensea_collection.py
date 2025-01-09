@@ -74,7 +74,7 @@ class opensea_collection(commands.Cog):
             owner_address = collection_data['owner']
             owner_address_short = collection_data['owner'][:7]
             default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [] else cas[0]['chain']
-            (name,exp_name, exp_url, ticker) = self.get_chain_detail(default_chain)
+            (name, exp_name, exp_url, ticker) = self.get_chain_detail(default_chain)
             owner_exp_url = f'{exp_url}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
             fees = collection_data['fees']
