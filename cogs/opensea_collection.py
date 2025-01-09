@@ -24,7 +24,7 @@ class opensea_collection(commands.Cog):
     def get_chain_detail(self, chain):
         with open('chain_detail.json', 'r') as of:
             chain_info = json.load(of)[chain]
-        return (chain_info['name'], chain_info['exp_name'], chain_info['exp_url'], chain_info['ticker'])
+        return (chain_info['chain_name'], chain_info['exp_name'], chain_info['exp_url'], chain_info['ticker'])
 
 
     @commands.slash_command(

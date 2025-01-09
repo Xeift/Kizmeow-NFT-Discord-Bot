@@ -1,13 +1,13 @@
 {
 	"ethereum": {
-		"name": "Ethereum",
+		"chain_name": "Ethereum",
 		"exp_name": "Etherscan",
 		"exp_url": "https://etherscan.io/address/",
 		"exp_emoji": 1326452528920920125,
 		"ticker": "ETH"
 	},
 	"arbitrum": {
-		"name": "Arbitrum",
+		"chain_name": "Arbitrum",
 		"exp_name": "Arbiscan",
 		"exp_url": "https://arbiscan.io/address/",
 		"exp_emoji": 1326518222756773898,
