@@ -91,9 +91,9 @@ class opensea_collection(commands.Cog):
             if cas != []:
                 for ca in cas:
                     chain = ca['chain']
-                    (name, exp_name, exp_url, ticker) = self.get_chain_detail(chain)
+                    (chain_name, exp_name, exp_url, ticker) = self.get_chain_detail(chain)
                 
-                    cas_text += f'[{ca['address'][:7]}]({exp_url}{ca['address']}) ({name})\n'
+                    cas_text += f'[{ca['address'][:7]}]({exp_url}{ca['address']}) ({chain_name})\n'
 
             if cas_text != '':
                 embed.add_field(name='Contract Address', value=cas_text, inline=False)
