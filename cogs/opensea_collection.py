@@ -1,4 +1,4 @@
-
+import re
 import json
 
 from discord import (ApplicationContext, AutocompleteContext, ButtonStyle,
@@ -82,14 +82,15 @@ class opensea_collection(commands.Cog):
             verify_state = collection_data['safelist_status']
             pfp_img = collection_data['image_url']
             banner_img = collection_data['banner_image_url']
+
+            # social media url
             opensea_url = collection_data['opensea_url']
             project_url = collection_data['project_url']
             wiki_url = collection_data['wiki_url']            
             discord_url = collection_data['discord_url']   
             telegram_url = collection_data['telegram_url']
             x_url = f'https://x.com/{collection_data["twitter_username"]}'
-            instagram_url = f'https://www.instagram.com/{collection_data["instagram_username"]'
-               
+            instagram_url = f'https://www.instagram.com/{collection_data["instagram_username"]}'
 
             embed.title = f'OpenSea Collection Info of {collection_name}'
             embed.set_thumbnail(url=pfp_img) 
@@ -100,11 +101,23 @@ class opensea_collection(commands.Cog):
                 for ca in cas:
                     chain = ca['chain']
                     (chain_name, exp_name, exp_url, ticker) = self.get_chain_detail(chain)
-                
+                    exp_url = re.sub('address', 'token', exp_url)                
+                    opensea_button = Button(
+                        label=exp_name,
+                        style=ButtonStyle.link,
+                        url=exp_url,
+                        emoji=PartialEmoji(name='opensea_icon_transparent',
+                                       id=1326452492644515963),
+                        disabled=False
+                    )
+                    view.add_item(opensea_button)
+
+
+
                     cas_text += f'[{ca['address'][:7]}]({exp_url}{ca['address']}) ({chain_name})\n'
 
-            if cas_text != '':
-                embed.add_field(name='Contract Address', value=cas_text, inline=False)
+            # if cas_text != '':
+                # embed.add_field(name='Contract Address', value=cas_text, inline=False)
             embed.add_field(name='Description', value=description, inline=False)
             embed.add_field(name='Total Supply', value=supply, inline=True)
             embed.add_field(name='Category', value=category, inline=True)
