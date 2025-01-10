@@ -153,8 +153,18 @@ class opensea_collection(commands.Cog):
                 )
                 view.add_item(x_button)
 
-
-            instagram_url = f'https://www.instagram.com/{collection_data["instagram_username"]}'
+            instagram_username = collection_data['instagram_username']
+            if instagram_username != '':
+                instagram_url = f'https://www.instagram.com/{instagram_username}'
+                instagram_button = Button(
+                    label='Instagram',
+                    style=ButtonStyle.link,
+                    url=x_url,
+                    emoji=PartialEmoji(name='instagram_logo',
+                                   id=1326452562186211379),
+                    disabled=False
+                )
+                view.add_item(instagram_button)
 
             embed.title = f'OpenSea Collection Info of {collection_name}'
             embed.set_thumbnail(url=pfp_img) 
@@ -175,13 +185,10 @@ class opensea_collection(commands.Cog):
                         disabled=False
                     )
                     view.add_item(exp_button)
-
-
-
                     cas_text += f'[{ca['address'][:7]}]({exp_url}{ca['address']}) ({chain_name})\n'
 
-            # if cas_text != '':
-                # embed.add_field(name='Contract Address', value=cas_text, inline=False)
+            if cas_text != '':
+                embed.add_field(name='Contract Address', value=cas_text, inline=False)
             embed.add_field(name='Description', value=description, inline=False)
             embed.add_field(name='Total Supply', value=supply, inline=True)
             embed.add_field(name='Category', value=category, inline=True)
