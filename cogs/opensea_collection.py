@@ -85,7 +85,27 @@ class opensea_collection(commands.Cog):
 
             # social media url
             opensea_url = collection_data['opensea_url']
-            project_url = collection_data['project_url']
+            opensea_button = Button(
+                label='OpenSea',
+                style=ButtonStyle.link,
+                url=opensea_url,
+                emoji=PartialEmoji(name='opensea_icon_transparent',
+                               id=1326452492644515963),
+                disabled=False
+            )
+            view.add_item(opensea_button)
+
+            website_url = collection_data['project_url']
+            website_button = Button(
+                label='Website',
+                style=ButtonStyle.link,
+                url=website_url,
+                emoji='🔗',
+                disabled=False
+            )
+            view.add_item(website_button)
+
+
             wiki_url = collection_data['wiki_url']            
             discord_url = collection_data['discord_url']   
             telegram_url = collection_data['telegram_url']
@@ -102,7 +122,7 @@ class opensea_collection(commands.Cog):
                     chain = ca['chain']     
                     (chain_name, exp_name, exp_url, exp_emoji, ticker) = self.get_chain_detail(chain)
                     exp_url = re.sub('address', 'token', exp_url)                
-                    opensea_button = Button(
+                    exp_button = Button(
                         label=exp_name,
                         style=ButtonStyle.link,
                         url=exp_url,
@@ -110,7 +130,7 @@ class opensea_collection(commands.Cog):
                                        id=exp_emoji),
                         disabled=False
                     )
-                    view.add_item(opensea_button)
+                    view.add_item(exp_button)
 
 
 
@@ -194,15 +214,7 @@ class opensea_collection(commands.Cog):
                     ),
                     inline=True
                 )
-                opensea_button = Button(
-                    label='OpenSea',
-                    style=ButtonStyle.link,
-                    url=opensea_url,
-                    emoji=PartialEmoji(name='opensea_icon_transparent',
-                                   id=1326452492644515963),
-                    disabled=False
-                )
-                view.add_item(opensea_button)
+
 
 
         else:
