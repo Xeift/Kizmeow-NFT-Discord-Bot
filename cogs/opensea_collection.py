@@ -130,6 +130,16 @@ class opensea_collection(commands.Cog):
 
             
             telegram_url = collection_data['telegram_url']
+            telegram_button = Button(
+                label='Telegram',
+                style=ButtonStyle.link,
+                url=discord_url,
+                emoji=PartialEmoji(name='telegram_logo',
+                               id=1326452582117281843),
+                disabled=False
+            )
+            if telegram_url != '': view.add_item(telegram_button)
+            
             x_url = f'https://x.com/{collection_data["twitter_username"]}'
             instagram_url = f'https://www.instagram.com/{collection_data["instagram_username"]}'
 
