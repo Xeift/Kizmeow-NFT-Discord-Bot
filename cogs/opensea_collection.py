@@ -161,15 +161,15 @@ class opensea_collection(commands.Cog):
             if banner_img != '':
                 embed.set_image(url=banner_img)
 
-            if cas != []:
                 for ca in cas:
-                    chain = ca['chain']     
+                    chain = ca['chain']
+                    address = ca['address']     
                     (chain_name, exp_name, exp_url, exp_emoji, ticker) = self.get_chain_detail(chain)
                     exp_url = re.sub('address', 'token', exp_url)                
                     exp_button = Button(
                         label=exp_name,
                         style=ButtonStyle.link,
-                        url=exp_url,
+                        url=f'{exp_url}{address}',
                         emoji=PartialEmoji(name='opensea_icon_transparent',
                                        id=exp_emoji),
                         disabled=False
