@@ -106,7 +106,17 @@ class opensea_collection(commands.Cog):
             view.add_item(website_button)
 
 
-            wiki_url = collection_data['wiki_url']            
+            wiki_url = collection_data['wiki_url']
+            wiki_button = Button(
+                label='Wiki',
+                style=ButtonStyle.link,
+                url=wiki_url,
+                emoji='📖',
+                disabled=False
+            )
+            if wiki_url != '': view.add_item(wiki_button)
+
+                        
             discord_url = collection_data['discord_url']   
             telegram_url = collection_data['telegram_url']
             x_url = f'https://x.com/{collection_data["twitter_username"]}'
