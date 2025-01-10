@@ -89,7 +89,7 @@ class opensea_collection(commands.Cog):
                 label='OpenSea',
                 style=ButtonStyle.link,
                 url=opensea_url,
-                emoji=PartialEmoji(name='opensea_icon_transparent',
+                emoji=PartialEmoji(name='opensea_icon',
                                id=1326452492644515963),
                 disabled=False
             )
@@ -140,7 +140,7 @@ class opensea_collection(commands.Cog):
             )
             if telegram_url != '': view.add_item(telegram_button)
 
-            x_username = collection_data["twitter_username"]
+            x_username = collection_data['twitter_username']
             if x_username != '':
                 x_url = f'https://x.com/{x_username}'
                 x_button = Button(
