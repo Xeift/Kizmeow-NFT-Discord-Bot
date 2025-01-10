@@ -139,8 +139,21 @@ class opensea_collection(commands.Cog):
                 disabled=False
             )
             if telegram_url != '': view.add_item(telegram_button)
-            
-            x_url = f'https://x.com/{collection_data["twitter_username"]}'
+
+            x_username = collection_data["twitter_username"]
+            if x_username != '':
+                x_url = f'https://x.com/{x_username}'
+                x_button = Button(
+                    label='X',
+                    style=ButtonStyle.link,
+                    url=x_url,
+                    emoji=PartialEmoji(name='x_logo',
+                                   id=1326452546742648862),
+                    disabled=False
+                )
+                view.add_item(x_button)
+
+
             instagram_url = f'https://www.instagram.com/{collection_data["instagram_username"]}'
 
             embed.title = f'OpenSea Collection Info of {collection_name}'
