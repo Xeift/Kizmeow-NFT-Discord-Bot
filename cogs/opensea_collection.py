@@ -180,7 +180,7 @@ class opensea_collection(commands.Cog):
                         label=exp_name,
                         style=ButtonStyle.link,
                         url=f'{exp_url}{address}',
-                        emoji=PartialEmoji(name='opensea_icon_transparent',
+                        emoji=PartialEmoji(name=f'{exp_url.lower()}_logo',
                                        id=exp_emoji),
                         disabled=False
                     )
