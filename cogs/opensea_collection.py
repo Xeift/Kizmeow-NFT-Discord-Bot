@@ -24,7 +24,7 @@ class opensea_collection(commands.Cog):
     def get_chain_detail(self, chain):
         with open('chain_detail.json', 'r') as of:
             chain_info = json.load(of)[chain]
-        return (chain_info['chain_name'], chain_info['exp_name'], chain_info['exp_url'], chain_info['ticker'])
+        return (chain_info['chain_name'], chain_info['exp_name'], chain_info['exp_url'], chain_info['exp_emoji'], chain_info['ticker'])
 
 
     @commands.slash_command(
@@ -74,7 +74,7 @@ class opensea_collection(commands.Cog):
             owner_address = collection_data['owner']
             owner_address_short = collection_data['owner'][:7]
             default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [] else cas[0]['chain']
-            (chain_name, exp_name, exp_url, ticker) = self.get_chain_detail(default_chain)
+            (chain_name, exp_name, exp_url,chain_info, ticker) = self.get_chain_detail(default_chain)
             owner_exp_url = f'{exp_url}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
             fees = collection_data['fees']
@@ -99,15 +99,15 @@ class opensea_collection(commands.Cog):
 
             if cas != []:
                 for ca in cas:
-                    chain = ca['chain']
-                    (chain_name, exp_name, exp_url, ticker) = self.get_chain_detail(chain)
+                    chain = ca['chain']     
+                    (chain_name, exp_name, exp_url, exp_emoji, ticker) = self.get_chain_detail(chain)
                     exp_url = re.sub('address', 'token', exp_url)                
                     opensea_button = Button(
                         label=exp_name,
                         style=ButtonStyle.link,
                         url=exp_url,
                         emoji=PartialEmoji(name='opensea_icon_transparent',
-                                       id=1326452492644515963),
+                                       id=exp_emoji),
                         disabled=False
                     )
                     view.add_item(opensea_button)
