@@ -117,7 +117,18 @@ class opensea_collection(commands.Cog):
             if wiki_url != '': view.add_item(wiki_button)
 
                         
-            discord_url = collection_data['discord_url']   
+            discord_url = collection_data['discord_url']
+            discord_button = Button(
+                label='Discord',
+                style=ButtonStyle.link,
+                url=discord_url,
+                emoji=PartialEmoji(name='discord_logo',
+                               id=1326452569882759200),
+                disabled=False
+            )
+            if opensea_url != '': view.add_item(discord_button)
+
+            
             telegram_url = collection_data['telegram_url']
             x_url = f'https://x.com/{collection_data["twitter_username"]}'
             instagram_url = f'https://www.instagram.com/{collection_data["instagram_username"]}'
