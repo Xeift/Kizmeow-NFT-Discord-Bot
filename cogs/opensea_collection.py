@@ -126,7 +126,7 @@ class opensea_collection(commands.Cog):
                                id=1326452569882759200),
                 disabled=False
             )
-            if opensea_url != '': view.add_item(discord_button)
+            if discord_url != '': view.add_item(discord_button)
 
             
             telegram_url = collection_data['telegram_url']
