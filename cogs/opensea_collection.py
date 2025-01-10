@@ -93,7 +93,7 @@ class opensea_collection(commands.Cog):
                                id=1326452492644515963),
                 disabled=False
             )
-            view.add_item(opensea_button)
+            if opensea_url != '': view.add_item(opensea_button)
 
             website_url = collection_data['project_url']
             website_button = Button(
@@ -103,7 +103,7 @@ class opensea_collection(commands.Cog):
                 emoji='🔗',
                 disabled=False
             )
-            view.add_item(website_button)
+            if website_url != '': view.add_item(website_button)
 
 
             wiki_url = collection_data['wiki_url']
