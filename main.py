@@ -14,9 +14,10 @@ async def on_ready():
 if __name__ == '__main__':
     extensions = [
         'cogs.ping',
+        'cogs.setting',
         'cogs.opensea_account',
         'cogs.opensea_collection',
-	'cogs.opensea_nft',
+    	'cogs.opensea_nft',
     ]
     for extension in extensions:
         bot.load_extension(extension)
