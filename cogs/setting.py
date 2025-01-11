@@ -21,7 +21,6 @@ class SettingPanel(commands.Cog):
         if user_setting_data:
             user_button = user_setting_data.get('button', True)
             user_language = user_setting_data.get('language', 'en')
-        print(user_button, user_language)
         user_button_select = Select(
             placeholder='enable/disable button',
             options = [
@@ -41,10 +40,11 @@ class SettingPanel(commands.Cog):
         )
 
         async def user_button_select_callback(interaction: discord.Interaction):
+            
             await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral = True)
         user_button_select.callback = user_button_select_callback
                             
-        embed = discord.Embed(title='User setting', description='Open user setting pannel', color=0xffa46e)
+        embed = discord.Embed(title='User setting', description='Click the dropdown menu below to set the bot.', color=0xffa46e)
         view = View()
         view.add_item(user_button_select)
 
