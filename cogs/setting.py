@@ -28,11 +28,13 @@ class SettingPanel(commands.Cog):
                 discord.SelectOption(
                     label = 'Enable button',
                     description = 'Makes buttons clickable.',
+                    emoji = '✅',
                     default = True
                 ),
                 discord.SelectOption(
                     label = 'Disable button', 
                     description = 'Makes button not clickable.',
+                    emoji='❌',
                     default = False
                 )
             ]
