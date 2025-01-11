@@ -1,6 +1,10 @@
 {
 	"493716749342998541": {
-		"button": true,
+		"button": false,
+		"language": "zh-TW"
+	},
+	"874806243208871977": {
+		"button": false,
 		"language": "zh-TW"
 	}
 }
