@@ -21,7 +21,7 @@ class SettingPanel(commands.Cog):
         if user_setting_data:
             user_button = user_setting_data.get('button', True)
             user_language = user_setting_data.get('language', 'en')
-
+        print(user_button, user_language)
         user_button_select = Select(
             placeholder='enable/disable button',
             options = [
@@ -29,13 +29,13 @@ class SettingPanel(commands.Cog):
                     label = 'Enable button',
                     description = 'Makes buttons clickable.',
                     emoji = '✅',
-                    default = True
+                    default = user_button
                 ),
                 discord.SelectOption(
                     label = 'Disable button', 
                     description = 'Makes button not clickable.',
                     emoji='❌',
-                    default = False
+                    default = not user_button
                 )
             ]
         )
