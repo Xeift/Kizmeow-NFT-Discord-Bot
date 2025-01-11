@@ -1,4 +1,4 @@
-{
+7{
 	"ethereum": {
 		"chain_name": "Ethereum",
 		"exp_name": "Etherscan",
@@ -26,5 +26,12 @@
 		"exp_url": "https://solscan.io/account/",
 		"exp_emoji": 1326760754724081684,
 		"ticker": "SOL"
+	},
+	"base": {
+		"chain_name": "Base",
+		"exp_name": "Basescan",
+		"exp_url": "https://basescan.org/address/",
+		"exp_emoji": "1327779148705431593",
+		"ticker": "ETH"
 	}
 }
