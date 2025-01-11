@@ -23,10 +23,18 @@ class SettingPanel(commands.Cog):
             user_language = user_setting_data.get('language', 'en')
 
         user_button_select = Select(
-            placeholder='test',
+            placeholder='enable/disable button',
             options = [
-                discord.SelectOption(label = 'menu 1 A opt', description = 'description of menu 1 a opt'),
-                discord.SelectOption(label = 'menu 1 B opt', description = 'description of menu 1 b opt')
+                discord.SelectOption(
+                    label = 'Enable button',
+                    description = 'Makes buttons clickable.',
+                    default = True
+                ),
+                discord.SelectOption(
+                    label = 'Disable button', 
+                    description = 'Makes button not clickable.',
+                    default = False
+                )
             ]
         )
 
