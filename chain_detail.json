@@ -31,7 +31,7 @@
 		"chain_name": "Base",
 		"exp_name": "Basescan",
 		"exp_url": "https://basescan.org/address/",
-		"exp_emoji": "1327779148705431593",
+		"exp_emoji": 1327779148705431593,
 		"ticker": "ETH"
 	}
 }
