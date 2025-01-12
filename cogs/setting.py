@@ -40,7 +40,15 @@ class SettingPanel(commands.Cog):
         )
 
         async def user_button_select_callback(interaction: discord.Interaction):
-            
+            selected_opt = user_button_select.values[0]
+            button_status = False
+            if selected_opt == 'Button: Clickable':
+                button_status = True
+                
+            with open('setting.json', 'w', encoding='utf-8') as file:
+                setting_data[str(mid)]['button'] = True
+                json.dump(setting_data, file, ensure_ascii=False, indent=4)
+
             await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral = True)
         user_button_select.callback = user_button_select_callback
                             
@@ -48,7 +56,7 @@ class SettingPanel(commands.Cog):
         view = View()
         view.add_item(user_button_select)
 
-
+        # TODO: command visibility, language
 
         await ctx.respond(embed=embed, view=view, ephemeral=True)
 
