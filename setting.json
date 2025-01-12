@@ -1,7 +1,8 @@
 {
     "493716749342998541": {
         "button": false,
-        "language": "zh-TW"
+        "language": "zh-TW",
+        "visibility": false
     },
     "874806243208871977": {
         "button": true

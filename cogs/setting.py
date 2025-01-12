@@ -18,9 +18,13 @@ class SettingPanel(commands.Cog):
 
         user_button = True
         user_language = 'en'
+        user_visibility = True
+        
         if user_setting_data:
             user_button = user_setting_data.get('button', True)
             user_language = user_setting_data.get('language', 'en')
+            user_visibility = user_setting_data.get('visibility', true)
+
         user_button_select = Select(
             placeholder='enable/disable button',
             options = [
@@ -47,13 +51,17 @@ class SettingPanel(commands.Cog):
                 
             with open('setting.json', 'w', encoding='utf-8') as file:
                 setting_data.setdefault(str(mid), {})['button'] = True
-                # setting_data[str(mid)]['button'] = True
                 json.dump(setting_data, file, ensure_ascii=False, indent=4)
 
             await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral = True)
         user_button_select.callback = user_button_select_callback
-                            
-        embed = discord.Embed(title='User setting', description='Click the dropdown menu below to set the bot.', color=0xffa46e)
+
+
+        embed = discord.Embed(
+            title='User setting',
+            description=f'Click the dropdown menu below to set the bot.',
+            color=0xffa46e
+        )
         view = View()
         view.add_item(user_button_select)
 
