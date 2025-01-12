@@ -46,7 +46,8 @@ class SettingPanel(commands.Cog):
                 button_status = True
                 
             with open('setting.json', 'w', encoding='utf-8') as file:
-                setting_data[str(mid)]['button'] = True
+                setting_data.setdefault(str(mid), {})['button'] = True
+                # setting_data[str(mid)]['button'] = True
                 json.dump(setting_data, file, ensure_ascii=False, indent=4)
 
             await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral = True)
