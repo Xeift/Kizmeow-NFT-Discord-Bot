@@ -5,6 +5,7 @@ from discord.ext import commands
 from discord.ui import Button, View
 
 from api.get_os_account import get_os_account
+from utils.load_config import load_config_from_json
 
 
 class opensea_account(commands.Cog):
@@ -28,10 +29,12 @@ class opensea_account(commands.Cog):
         self,
         ctx: ApplicationContext,
         address_or_username: Option(
-            str, 'EVM address(ENS supported) or username on OpenSea'),
-        enable_link_button: Option(bool, 'Enable link button. Disabled by default. Sharing personal X link may break rules in some servers.', default=False),
+            str, 'EVM address(ENS supported) or username on OpenSea')
+        # enable_link_button: Option(bool, 'Enable link button. Disabled by default. Sharing personal X link may break rules in some servers.', default=False),
     ):
         await ctx.defer()
+        mid = str(ctx.author.id)
+        (enable_link_button, _, _) = load_config_from_json(mid)
         disable_link_button = not enable_link_button
         (success, account_data) = get_os_account(address_or_username)
         embed = Embed(color=0xFFA46E)

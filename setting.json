@@ -5,6 +5,8 @@
         "visibility": false
     },
     "874806243208871977": {
-        "button": true
+        "button": true,
+        "language": "zh-TW",
+        "visibility": false
     }
 }
