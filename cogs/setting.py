@@ -21,7 +21,7 @@ class SettingPanel(commands.Cog):
         user_button = True
         user_language = 'en'
         user_visibility = True
-        
+
         if user_setting_data:
             user_button = user_setting_data.get('button', True)
             user_language = user_setting_data.get('language', 'en')
@@ -29,32 +29,33 @@ class SettingPanel(commands.Cog):
 
         user_button_select = Select(
             placeholder='enable/disable button',
-            options = [
+            options=[
                 discord.SelectOption(
-                    label = 'Button: Clickable',
-                    description = 'Makes buttons clickable.',
-                    emoji = '✅',
-                    default = user_button
+                    label='Button: Clickable',
+                    description='Makes buttons clickable.',
+                    emoji='✅',
+                    default=user_button
                 ),
                 discord.SelectOption(
-                    label = 'Button: Non clickable', 
-                    description = 'Makes button not clickable.',
+                    label='Button: Non clickable',
+                    description='Makes button not clickable.',
                     emoji='❌',
-                    default = not user_button
+                    default=not user_button
                 )
             ]
         )
+
         async def user_button_select_callback(interaction: discord.Interaction):
             selected_opt = user_button_select.values[0]
             button_status = False
             if selected_opt == 'Button: Clickable':
                 button_status = True
-                
+
             with open('setting.json', 'w', encoding='utf-8') as file:
-                setting_data.setdefault(str(mid), {})['button'] = True
+                setting_data.setdefault(str(mid), {})['button'] = button_status
                 json.dump(setting_data, file, ensure_ascii=False, indent=4)
 
-            await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral = True)
+            await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral=True)
         user_button_select.callback = user_button_select_callback
 
         # TODO: command visibility, language
@@ -67,8 +68,8 @@ class SettingPanel(commands.Cog):
         view = View()
         view.add_item(user_button_select)
 
-
         await ctx.respond(embed=embed, view=view, ephemeral=True)
+
 
 def setup(bot):
     bot.add_cog(SettingPanel(bot))
