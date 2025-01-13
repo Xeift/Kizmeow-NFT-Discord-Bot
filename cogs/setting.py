@@ -1,7 +1,9 @@
 import json
+
 import discord
 from discord.ext import commands
 from discord.ui import Button, Select, View
+
 
 class SettingPanel(commands.Cog):
     def __init__(self, bot):
@@ -23,7 +25,7 @@ class SettingPanel(commands.Cog):
         if user_setting_data:
             user_button = user_setting_data.get('button', True)
             user_language = user_setting_data.get('language', 'en')
-            user_visibility = user_setting_data.get('visibility', true)
+            user_visibility = user_setting_data.get('visibility', True)
 
         user_button_select = Select(
             placeholder='enable/disable button',
