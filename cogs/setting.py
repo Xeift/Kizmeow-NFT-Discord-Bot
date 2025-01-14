@@ -2,7 +2,7 @@ import json
 
 import discord
 from discord.ext import commands
-from discord.ui import Button, Select, View
+from discord.ui import Select, View
 
 
 class SettingPanel(commands.Cog):
