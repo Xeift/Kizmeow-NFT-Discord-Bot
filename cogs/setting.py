@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 from discord.ui import Select, View
 
-from utils.load_config import load_config_from_json
+from utils.load_config import load_config_from_json, update_config_to_json
 
 
 class SettingPanel(commands.Cog):
@@ -13,22 +13,9 @@ class SettingPanel(commands.Cog):
 
     @commands.slash_command(name='setting', description='Show user setting pannel')
     async def panel(self, ctx: discord.ApplicationContext):
-        # (user_button, user_language, user_visibility) = load_config_from_json()
-        with open('setting.json', 'r', encoding='utf-8') as file:
-            setting_data = json.load(file)
 
         mid = ctx.author.id
-        user_setting_data = setting_data.get(str(mid))
-        print(user_setting_data)
-
-        user_button = True
-        user_language = 'en'
-        user_visibility = True
-
-        if user_setting_data:
-            user_button = user_setting_data.get('button', True)
-            user_language = user_setting_data.get('language', 'en')
-            user_visibility = user_setting_data.get('visibility', True)
+        (user_button, user_language, user_visibility) = load_config_from_json(str(mid))
 
         user_button_select = Select(
             placeholder='enable/disable button',
@@ -54,9 +41,7 @@ class SettingPanel(commands.Cog):
             if selected_opt == 'Button: Clickable':
                 button_status = True
 
-            with open('setting.json', 'w', encoding='utf-8') as file:
-                setting_data.setdefault(str(mid), {})['button'] = button_status
-                json.dump(setting_data, file, ensure_ascii=False, indent=4)
+            update_config_to_json(str(mid), button=button_status)
 
             await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral=True)
         user_button_select.callback = user_button_select_callback

@@ -36,13 +36,12 @@ def update_config_to_json(
                 'visibility': False
             }
         )
-        print(setting_data)
-        if button:
-            setting_data[uid]['button'] = button
-        if language:
-            setting_data[uid]['language'] = language
-        if visibility:
-            setting_data[uid]['visibility'] = visibility
+    if button != None:
+        setting_data[uid]['button'] = button
+    if language != None:
+        setting_data[uid]['language'] = language
+    if visibility != None:
+        setting_data[uid]['visibility'] = visibility
 
     with open('setting.json', 'w', encoding='utf-8') as file:
         json.dump(setting_data, file, ensure_ascii=False, indent=4)
