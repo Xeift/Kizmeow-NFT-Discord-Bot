@@ -4,6 +4,8 @@ import discord
 from discord.ext import commands
 from discord.ui import Select, View
 
+from utils.load_config import load_config_from_json
+
 
 class SettingPanel(commands.Cog):
     def __init__(self, bot):
@@ -11,6 +13,7 @@ class SettingPanel(commands.Cog):
 
     @commands.slash_command(name='setting', description='Show user setting pannel')
     async def panel(self, ctx: discord.ApplicationContext):
+        # (user_button, user_language, user_visibility) = load_config_from_json()
         with open('setting.json', 'r', encoding='utf-8') as file:
             setting_data = json.load(file)
 
