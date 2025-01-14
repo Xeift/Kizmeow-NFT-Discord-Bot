@@ -30,7 +30,6 @@ class opensea_account(commands.Cog):
         ctx: ApplicationContext,
         address_or_username: Option(
             str, 'EVM address(ENS supported) or username on OpenSea')
-        # enable_link_button: Option(bool, 'Enable link button. Disabled by default. Sharing personal X link may break rules in some servers.', default=False),
     ):
         await ctx.defer()
         mid = str(ctx.author.id)
@@ -67,8 +66,6 @@ class opensea_account(commands.Cog):
             embed.add_field(name='Username', value=username, inline=True)
             embed.add_field(name='Bio', value=bio, inline=True)
             embed.add_field(name='Joined Date', value=joined_date, inline=True)
-            embed.add_field(
-                name='', value='Note: buttons are disabled by default. If you wish to enable the buttons, set `enable_link_button` parameter to `False`.', inline=False)
 
             opensea_button = Button(
                 label='OpenSea',
