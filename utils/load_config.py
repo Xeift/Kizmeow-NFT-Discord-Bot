@@ -9,7 +9,7 @@ def load_config_from_json(uid):
             {
                 'button': False,
                 'language': 'en-US',
-                'visibility': False
+                'visibility': True
             }
         )
 
@@ -33,7 +33,7 @@ def update_config_to_json(
             {
                 'button': False,
                 'language': 'en-US',
-                'visibility': False
+                'visibility': True
             }
         )
     if button != None:

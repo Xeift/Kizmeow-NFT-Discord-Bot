@@ -17,6 +17,7 @@ class SettingPanel(commands.Cog):
         mid = ctx.author.id
         (user_button, user_language, user_visibility) = load_config_from_json(str(mid))
 
+        # ---------- user_button_select  ----------
         user_button_select = Select(
             placeholder='enable/disable button',
             options=[
@@ -45,8 +46,40 @@ class SettingPanel(commands.Cog):
 
             await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral=True)
         user_button_select.callback = user_button_select_callback
+        # ---------- user_button_select  ----------
 
-        # TODO: command visibility, language
+        # ---------- user_visibility_select  ----------
+        user_visibility_select = Select(
+            placeholder='toggle command visibility',
+            options=[
+                discord.SelectOption(
+                    label='Visibility: Only you',
+                    description='Only you can see the command response.',
+                    emoji='🔒',
+                    default=user_button
+                ),
+                discord.SelectOption(
+                    label='Visibility: All',
+                    description='Everyone can see the command response.',
+                    emoji='🌐',
+                    default=not user_button
+                )
+            ]
+        )
+
+        async def user_visibility_select_callback(interaction: discord.Interaction):
+            selected_opt = user_visibility_select.values[0]
+            visibility_status = True
+            if selected_opt == 'Visibility: Only you':
+                visibility_status = False
+
+            update_config_to_json(str(mid), visibility=visibility_status)
+
+            await interaction.response.send_message(f'you selected {user_visibility_select.values[0]}', ephemeral=True)
+        user_visibility_select.callback = user_visibility_select_callback
+        # ---------- user_visibility_select  ----------
+
+        # TODO: language
 
         embed = discord.Embed(
             title='User setting',
@@ -55,6 +88,7 @@ class SettingPanel(commands.Cog):
         )
         view = View()
         view.add_item(user_button_select)
+        view.add_item(user_visibility_select)
 
         await ctx.respond(embed=embed, view=view, ephemeral=True)
 
