@@ -53,13 +53,13 @@ class SettingPanel(commands.Cog):
             placeholder='toggle command visibility',
             options=[
                 discord.SelectOption(
-                    label='Visibility: Only you',
+                    label='Command visibility: Only you',
                     description='Only you can see the command response.',
                     emoji='🔒',
                     default=user_button
                 ),
                 discord.SelectOption(
-                    label='Visibility: All',
+                    label='Command visibility: All',
                     description='Everyone can see the command response.',
                     emoji='🌐',
                     default=not user_button
@@ -70,7 +70,7 @@ class SettingPanel(commands.Cog):
         async def user_visibility_select_callback(interaction: discord.Interaction):
             selected_opt = user_visibility_select.values[0]
             visibility_status = True
-            if selected_opt == 'Visibility: Only you':
+            if selected_opt == 'Command visibility: Only you':
                 visibility_status = False
 
             update_config_to_json(str(mid), visibility=visibility_status)
