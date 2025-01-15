@@ -31,9 +31,8 @@ class opensea_account(commands.Cog):
         address_or_username: Option(
             str, 'EVM address(ENS supported) or username on OpenSea')
     ):
-        await ctx.defer()
         mid = str(ctx.author.id)
-        (enable_link_button, _, _) = load_config_from_json(mid)
+        (enable_link_button, _, visibility) = load_config_from_json(mid)
         disable_link_button = not enable_link_button
         (success, account_data) = get_os_account(address_or_username)
         embed = Embed(color=0xFFA46E)
@@ -127,7 +126,7 @@ class opensea_account(commands.Cog):
             embed.description = f'Command execution failed. Reason:\n```{
                 account_data}```'
 
-        await ctx.respond(embed=embed, view=view)
+        await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
 
 
 def setup(bot):
