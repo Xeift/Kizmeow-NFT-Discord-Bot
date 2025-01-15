@@ -1,6 +1,7 @@
 import json
 
 import discord
+from discord import Embed
 from discord.ext import commands
 from discord.ui import Select, View
 
@@ -43,8 +44,12 @@ class SettingPanel(commands.Cog):
                 button_status = True
 
             update_config_to_json(str(mid), button=button_status)
-
-            await interaction.response.send_message(f'you selected {user_button_select.values[0]}', ephemeral=True)
+            embed = Embed(
+                title='[Success]',
+                description=f'The setting `{selected_opt}` has been applied',
+                color=0xffa46e
+            )
+            await interaction.response.send_message(embed=embed, ephemeral=True)
         user_button_select.callback = user_button_select_callback
         # ---------- user_button_select  ----------
 
@@ -74,14 +79,18 @@ class SettingPanel(commands.Cog):
                 visibility_status = False
 
             update_config_to_json(str(mid), visibility=visibility_status)
-
-            await interaction.response.send_message(f'you selected {user_visibility_select.values[0]}', ephemeral=True)
+            embed = Embed(
+                title='[Success]',
+                description=f'The setting `{selected_opt}` has been applied',
+                color=0xffa46e
+            )
+            await interaction.response.send_message(embed=embed, ephemeral=True)
         user_visibility_select.callback = user_visibility_select_callback
         # ---------- user_visibility_select  ----------
 
         # TODO: language
 
-        embed = discord.Embed(
+        embed = Embed(
             title='User setting',
             description=f'Click the dropdown menu below to set the bot.',
             color=0xffa46e
