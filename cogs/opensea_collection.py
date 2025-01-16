@@ -309,7 +309,6 @@ class opensea_collection(commands.Cog):
             embed.title = '[Failed]'
             embed.description = f'Command execution failed. Reason:\n```{
                 collection_data}```'
-        print(visibility)
         await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
 
 

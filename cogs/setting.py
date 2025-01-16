@@ -61,13 +61,13 @@ class SettingPanel(commands.Cog):
                     label='Command visibility: Only you',
                     description='Only you can see the command response.',
                     emoji='🔒',
-                    default=user_button
+                    default=not user_visibility
                 ),
                 discord.SelectOption(
                     label='Command visibility: All',
                     description='Everyone can see the command response.',
                     emoji='🌐',
-                    default=not user_button
+                    default=user_visibility
                 )
             ]
         )
