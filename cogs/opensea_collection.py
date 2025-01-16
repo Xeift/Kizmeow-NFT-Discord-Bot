@@ -10,6 +10,7 @@ from discord.utils import basic_autocomplete
 
 from api.get_os_collection import get_os_collection
 from api.get_os_collection_statistics import get_os_collection_statistics
+from utils.load_config import load_config_from_json
 
 
 class opensea_collection(commands.Cog):
@@ -55,6 +56,9 @@ class opensea_collection(commands.Cog):
         if collection in collection_name_data:
             collection = collection_name_data[collection]
 
+        mid = str(ctx.author.id)
+        (enable_link_button, _, visibility) = load_config_from_json(mid)
+        disable_link_button = not enable_link_button
         (success, collection_data) = get_os_collection(collection)
 
         embed = Embed(color=0xFFA46E)
@@ -92,7 +96,7 @@ class opensea_collection(commands.Cog):
                 url=opensea_url,
                 emoji=PartialEmoji(name='opensea_icon',
                                    id=1326452492644515963),
-                disabled=False
+                disabled=disable_link_button
             )
             if opensea_url != '':
                 view.add_item(opensea_button)
@@ -103,7 +107,7 @@ class opensea_collection(commands.Cog):
                 style=ButtonStyle.link,
                 url=website_url,
                 emoji='🔗',
-                disabled=False
+                disabled=disable_link_button
             )
             if website_url != '':
                 view.add_item(website_button)
@@ -114,7 +118,7 @@ class opensea_collection(commands.Cog):
                 style=ButtonStyle.link,
                 url=wiki_url,
                 emoji='📖',
-                disabled=False
+                disabled=disable_link_button
             )
             if wiki_url != '':
                 view.add_item(wiki_button)
@@ -126,7 +130,7 @@ class opensea_collection(commands.Cog):
                 url=discord_url,
                 emoji=PartialEmoji(name='discord_logo',
                                    id=1326452569882759200),
-                disabled=False
+                disabled=disable_link_button
             )
             if discord_url != '':
                 view.add_item(discord_button)
@@ -138,7 +142,7 @@ class opensea_collection(commands.Cog):
                 url=discord_url,
                 emoji=PartialEmoji(name='telegram_logo',
                                    id=1326452582117281843),
-                disabled=False
+                disabled=disable_link_button
             )
             if telegram_url != '':
                 view.add_item(telegram_button)
@@ -152,7 +156,7 @@ class opensea_collection(commands.Cog):
                     url=x_url,
                     emoji=PartialEmoji(name='x_logo',
                                        id=1326452546742648862),
-                    disabled=False
+                    disabled=disable_link_button
                 )
                 view.add_item(x_button)
 
@@ -166,7 +170,7 @@ class opensea_collection(commands.Cog):
                     url=instagram_url,
                     emoji=PartialEmoji(name='instagram_logo',
                                        id=1326452562186211379),
-                    disabled=False
+                    disabled=disable_link_button
                 )
                 view.add_item(instagram_button)
 
@@ -187,7 +191,7 @@ class opensea_collection(commands.Cog):
                         url=f'{exp_url}{address}',
                         emoji=PartialEmoji(name=f'{exp_url.lower()}_logo',
                                            id=exp_emoji),
-                        disabled=False
+                        disabled=disable_link_button
                     )
                     view.add_item(exp_button)
                     cas_text += f'[{ca['address'][:7]
