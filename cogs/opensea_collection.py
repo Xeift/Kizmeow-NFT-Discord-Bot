@@ -20,12 +20,11 @@ class opensea_collection(commands.Cog):
         with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
         return collection_name_data.keys()
-        
+
     def get_chain_detail(self, chain):
         with open('chain_detail.json', 'r') as of:
             chain_info = json.load(of)[chain]
         return (chain_info['chain_name'], chain_info['exp_name'], chain_info['exp_url'], chain_info['exp_emoji'], chain_info['ticker'])
-
 
     @commands.slash_command(
         name='opensea_collection',
@@ -51,13 +50,12 @@ class opensea_collection(commands.Cog):
     ):
         await ctx.defer()
 
-        with open('collection_name_autocomplete.json','r') as of:
+        with open('collection_name_autocomplete.json', 'r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:
             collection = collection_name_data[collection]
 
         (success, collection_data) = get_os_collection(collection)
-
 
         embed = Embed(color=0xFFA46E)
         view = View()
@@ -67,14 +65,17 @@ class opensea_collection(commands.Cog):
             cas = collection_data['contracts']
             cas_text = ''
             description = collection_data['description']
-            if description != '': description = f'>>> {description}'
+            if description != '':
+                description = f'>>> {description}'
             supply = collection_data['total_supply']
             category = collection_data['category']
             created_date = collection_data['created_date']
             owner_address = collection_data['owner']
             owner_address_short = collection_data['owner'][:7]
-            default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [] else cas[0]['chain']
-            (chain_name, exp_name, exp_url,chain_info, ticker) = self.get_chain_detail(default_chain)
+            default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [
+            ] else cas[0]['chain']
+            (chain_name, exp_name, exp_url, chain_info,
+             ticker) = self.get_chain_detail(default_chain)
             owner_exp_url = f'{exp_url}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
             fees = collection_data['fees']
@@ -90,10 +91,11 @@ class opensea_collection(commands.Cog):
                 style=ButtonStyle.link,
                 url=opensea_url,
                 emoji=PartialEmoji(name='opensea_icon',
-                               id=1326452492644515963),
+                                   id=1326452492644515963),
                 disabled=False
             )
-            if opensea_url != '': view.add_item(opensea_button)
+            if opensea_url != '':
+                view.add_item(opensea_button)
 
             website_url = collection_data['project_url']
             website_button = Button(
@@ -103,8 +105,8 @@ class opensea_collection(commands.Cog):
                 emoji='🔗',
                 disabled=False
             )
-            if website_url != '': view.add_item(website_button)
-
+            if website_url != '':
+                view.add_item(website_button)
 
             wiki_url = collection_data['wiki_url']
             wiki_button = Button(
@@ -114,31 +116,32 @@ class opensea_collection(commands.Cog):
                 emoji='📖',
                 disabled=False
             )
-            if wiki_url != '': view.add_item(wiki_button)
+            if wiki_url != '':
+                view.add_item(wiki_button)
 
-                        
             discord_url = collection_data['discord_url']
             discord_button = Button(
                 label='Discord',
                 style=ButtonStyle.link,
                 url=discord_url,
                 emoji=PartialEmoji(name='discord_logo',
-                               id=1326452569882759200),
+                                   id=1326452569882759200),
                 disabled=False
             )
-            if discord_url != '': view.add_item(discord_button)
+            if discord_url != '':
+                view.add_item(discord_button)
 
-            
             telegram_url = collection_data['telegram_url']
             telegram_button = Button(
                 label='Telegram',
                 style=ButtonStyle.link,
                 url=discord_url,
                 emoji=PartialEmoji(name='telegram_logo',
-                               id=1326452582117281843),
+                                   id=1326452582117281843),
                 disabled=False
             )
-            if telegram_url != '': view.add_item(telegram_button)
+            if telegram_url != '':
+                view.add_item(telegram_button)
 
             x_username = collection_data['twitter_username']
             if x_username != '':
@@ -148,62 +151,71 @@ class opensea_collection(commands.Cog):
                     style=ButtonStyle.link,
                     url=x_url,
                     emoji=PartialEmoji(name='x_logo',
-                                   id=1326452546742648862),
+                                       id=1326452546742648862),
                     disabled=False
                 )
                 view.add_item(x_button)
 
             instagram_username = collection_data['instagram_username']
             if instagram_username != '':
-                instagram_url = f'https://www.instagram.com/{instagram_username}'
+                instagram_url = f'https://www.instagram.com/{
+                    instagram_username}'
                 instagram_button = Button(
                     label='Instagram',
                     style=ButtonStyle.link,
-                    url=x_url,
+                    url=instagram_url,
                     emoji=PartialEmoji(name='instagram_logo',
-                                   id=1326452562186211379),
+                                       id=1326452562186211379),
                     disabled=False
                 )
                 view.add_item(instagram_button)
 
             embed.title = f'OpenSea Collection Info of {collection_name}'
-            embed.set_thumbnail(url=pfp_img) 
+            embed.set_thumbnail(url=pfp_img)
             if banner_img != '':
                 embed.set_image(url=banner_img)
 
                 for ca in cas:
                     chain = ca['chain']
-                    address = ca['address']     
-                    (chain_name, exp_name, exp_url, exp_emoji, ticker) = self.get_chain_detail(chain)
-                    exp_url = re.sub('address', 'token', exp_url)                
+                    address = ca['address']
+                    (chain_name, exp_name, exp_url, exp_emoji,
+                     ticker) = self.get_chain_detail(chain)
+                    exp_url = re.sub('address', 'token', exp_url)
                     exp_button = Button(
                         label=exp_name,
                         style=ButtonStyle.link,
                         url=f'{exp_url}{address}',
                         emoji=PartialEmoji(name=f'{exp_url.lower()}_logo',
-                                       id=exp_emoji),
+                                           id=exp_emoji),
                         disabled=False
                     )
                     view.add_item(exp_button)
-                    cas_text += f'[{ca['address'][:7]}]({exp_url}{ca['address']}) ({chain_name})\n'
+                    cas_text += f'[{ca['address'][:7]
+                                    }]({exp_url}{ca['address']}) ({chain_name})\n'
 
             if cas_text != '':
-                embed.add_field(name='Contract Address', value=cas_text, inline=False)
-            embed.add_field(name='Description', value=description, inline=False)
+                embed.add_field(name='Contract Address',
+                                value=cas_text, inline=False)
+            embed.add_field(name='Description',
+                            value=description, inline=False)
             embed.add_field(name='Total Supply', value=supply, inline=True)
             embed.add_field(name='Category', value=category, inline=True)
-            embed.add_field(name='Created Date', value=created_date, inline=True)
+            embed.add_field(name='Created Date',
+                            value=created_date, inline=True)
             if cas != []:
-                embed.add_field(name='Owner', value=f'{owner_address_short} ({chain_name})\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
+                embed.add_field(name='Owner', value=f'{owner_address_short} ({chain_name})\n[Exp]({
+                                owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
             for fee in fees:
                 if fee['required'] == True:
                     fee['required'] = 'Required'
                 else:
                     fee['required'] = 'Optional'
 
-                fees_text += f"{fee['required']} [{fee['fee']}%]({exp_url}{fee['recipient']})\n"
+                fees_text += f"{fee['required']} [{fee['fee']
+                                                   }%]({exp_url}{fee['recipient']})\n"
             embed.add_field(name='Fees', value=fees_text, inline=True)
-            embed.add_field(name='Verification', value=verify_state, inline=True)
+            embed.add_field(name='Verification',
+                            value=verify_state, inline=True)
             embed.set_footer(
                 text='Source: OpenSea API',
                 icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/opensea_logo.png'
@@ -211,36 +223,59 @@ class opensea_collection(commands.Cog):
             (success, collection_statistic_data) = get_os_collection_statistics(collection)
             if success:
                 num_holders = collection_statistic_data['total']['num_owners']
-                market_cap = round(collection_statistic_data['total']['market_cap'], 2)
-                floor_price = round(collection_statistic_data['total']['floor_price'], 2)
+                market_cap = round(
+                    collection_statistic_data['total']['market_cap'], 2)
+                floor_price = round(
+                    collection_statistic_data['total']['floor_price'], 2)
 
-                volume_all = round(collection_statistic_data['total']['volume'], 2)
-                volume_1d = round(collection_statistic_data['intervals'][0]['volume'], 2)
-                volume_1d_del = round(collection_statistic_data['intervals'][0]['volume_change'], 2)
-                volume_7d = round(collection_statistic_data['intervals'][1]['volume'], 2)
-                volume_7d_del = round(collection_statistic_data['intervals'][1]['volume_change'], 2)
-                volume_30d = round(collection_statistic_data['intervals'][2]['volume'], 2)
-                volume_30d_del = round(collection_statistic_data['intervals'][2]['volume_change'], 2)
+                volume_all = round(
+                    collection_statistic_data['total']['volume'], 2)
+                volume_1d = round(
+                    collection_statistic_data['intervals'][0]['volume'], 2)
+                volume_1d_del = round(
+                    collection_statistic_data['intervals'][0]['volume_change'], 2)
+                volume_7d = round(
+                    collection_statistic_data['intervals'][1]['volume'], 2)
+                volume_7d_del = round(
+                    collection_statistic_data['intervals'][1]['volume_change'], 2)
+                volume_30d = round(
+                    collection_statistic_data['intervals'][2]['volume'], 2)
+                volume_30d_del = round(
+                    collection_statistic_data['intervals'][2]['volume_change'], 2)
 
-                sales_all = round(collection_statistic_data['total']['sales'], 2)
-                sales_1d = round(collection_statistic_data['intervals'][0]['sales'], 2)
-                sales_7d = round(collection_statistic_data['intervals'][1]['sales'], 2)
-                sales_30d = round(collection_statistic_data['intervals'][2]['sales'], 2)
+                sales_all = round(
+                    collection_statistic_data['total']['sales'], 2)
+                sales_1d = round(
+                    collection_statistic_data['intervals'][0]['sales'], 2)
+                sales_7d = round(
+                    collection_statistic_data['intervals'][1]['sales'], 2)
+                sales_30d = round(
+                    collection_statistic_data['intervals'][2]['sales'], 2)
 
-                average_price_all = round(collection_statistic_data['total']['average_price'], 2)
-                average_price_1d = round(collection_statistic_data['intervals'][0]['average_price'], 2)
-                average_price_7d = round(collection_statistic_data['intervals'][1]['average_price'], 2)
-                average_price_30d = round(collection_statistic_data['intervals'][2]['average_price'], 2)
+                average_price_all = round(
+                    collection_statistic_data['total']['average_price'], 2)
+                average_price_1d = round(
+                    collection_statistic_data['intervals'][0]['average_price'], 2)
+                average_price_7d = round(
+                    collection_statistic_data['intervals'][1]['average_price'], 2)
+                average_price_30d = round(
+                    collection_statistic_data['intervals'][2]['average_price'], 2)
 
-                embed.add_field(name='Unique Holders', value=num_holders, inline=True)
-                embed.add_field(name='Market Cap', value=f'{market_cap} {ticker}', inline=True)
-                embed.add_field(name='Floor Price', value=f'{floor_price} {ticker}', inline=True)
+                embed.add_field(name='Unique Holders',
+                                value=num_holders, inline=True)
+                embed.add_field(name='Market Cap', value=f'{
+                                market_cap} {ticker}', inline=True)
+                embed.add_field(name='Floor Price', value=f'{
+                                floor_price} {ticker}', inline=True)
                 embed.add_field(
                     name='Volume',
                     value=(
-                        f'```1D  {str(volume_1d).ljust(12)}{ticker}({volume_1d_del}%)\n'
-                        f'7D  {str(volume_7d).ljust(12)}{ticker}({volume_7d_del}%)\n'
-                        f'30D {str(volume_30d).ljust(12)}{ticker}({volume_30d_del}%)\n'
+                        f'```1D  {str(volume_1d).ljust(12)}{
+                            ticker}({volume_1d_del}%)\n'
+                        f'7D  {str(volume_7d).ljust(12)}{
+                            ticker}({volume_7d_del}%)\n'
+                        f'30D {str(volume_30d).ljust(12)}{
+                            ticker}({volume_30d_del}%)\n'
                         f'All {str(volume_all).ljust(12)}{ticker}```'
                     ),
                     inline=False
@@ -265,8 +300,6 @@ class opensea_collection(commands.Cog):
                     ),
                     inline=True
                 )
-
-
 
         else:
             embed.title = '[Failed]'
