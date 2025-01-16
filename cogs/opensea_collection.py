@@ -49,7 +49,7 @@ class opensea_collection(commands.Cog):
             autocomplete=basic_autocomplete(collection_name_autocomplete)
         )
     ):
-        await ctx.defer()
+        # await ctx.defer()
 
         with open('collection_name_autocomplete.json', 'r') as of:
             collection_name_data = json.load(of)
@@ -309,8 +309,8 @@ class opensea_collection(commands.Cog):
             embed.title = '[Failed]'
             embed.description = f'Command execution failed. Reason:\n```{
                 collection_data}```'
-
-        await ctx.respond(embed=embed, view=view)
+        print(visibility)
+        await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
 
 
 def setup(bot):
