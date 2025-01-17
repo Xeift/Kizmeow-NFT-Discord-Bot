@@ -4,7 +4,7 @@ from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
 from discord.ext import commands
 from discord.ui import Button, View
 
-from api.get_os_account import get_os_account
+from api.get_os_nft import get_os_nft
 
 
 class opensea_nft(commands.Cog):
@@ -27,13 +27,12 @@ class opensea_nft(commands.Cog):
     async def opensea_nft(
         self,
         ctx: ApplicationContext,
-        address_or_username: Option(
-            str, 'EVM address(ENS supported) or username on OpenSea'),
-        enable_link_button: Option(bool, 'Enable link button. Disabled by default. Sharing personal X link may break rules in some servers.', default=False),
+        quick_select: Option(
+            str, 'Select the collection. [Quick Select]'),
     ):
         await ctx.defer()
         disable_link_button = not enable_link_button
-        (success, account_data) = get_os_account(address_or_username)
+        (success, nft_data) = get_os_nft(chain, address, token_id)
         embed = Embed(color=0xFFA46E)
         view = View()
 
