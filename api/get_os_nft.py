@@ -7,7 +7,7 @@ load_dotenv()
 OPENSEA_API_KEY = os.getenv('OPENSEA_API_KEY')
 
 
-def get_os_nft(address, chain, token_id):
+def get_os_nft(chain, address, token_id):
     url = f'https://api.opensea.io/api/v2/chain/{chain}/contract/{address}/nfts/{token_id}'
     headers = {
         'accept': 'application/json',
@@ -28,29 +28,29 @@ def get_os_nft(address, chain, token_id):
 # --------------------     TEST        --------------------
 
 # valid info
-print(get_os_nft(
-    '0xbd3531da5cf5857e7cfaa92426877b022e612cf8',
-    'ethereum',
-    '5712'
-))
+# print(get_os_nft(
+#     'ethereum',
+#     '0xbd3531da5cf5857e7cfaa92426877b022e612cf8',
+#     '5712'
+# ))
 
 # # invalid contract address
 # print(get_os_nft(
-#     '0xbd3531da5cf5857e7cfaa92426877b022e612cfg',
 #     'ethereum',
+#     '0xbd3531da5cf5857e7cfaa92426877b022e612cfg',
 #     '5712'
 # ))
 
 # invalid chain
 # print(get_os_nft(
-#     '0xbd3531da5cf5857e7cfaa92426877b022e612cf8',
 #     'ethereu',
+#     '0xbd3531da5cf5857e7cfaa92426877b022e612cf8',
 #     '5712'
 # ))
 
 # invalid token id
 # print(get_os_nft(
-#     '0xbd3531da5cf5857e7cfaa92426877b022e612cf8',
 #     'ethereum',
+#     '0xbd3531da5cf5857e7cfaa92426877b022e612cf8',
 #     '57129999'
 # ))
