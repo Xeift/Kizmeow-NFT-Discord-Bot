@@ -19,8 +19,8 @@ def get_os_nft(address, chain, token_id):
         res = response.json()
         return (True, res)
     elif response.status_code == 400:
-        print(response.text)
-        return (False, 'The collection does not exist or can not be parsed.')
+        err = response.json()['errors'][0]
+        return (False, err)
     else:
         return (False, 'OpenSea API is currently down. Please try again later.')
 
@@ -34,5 +34,23 @@ print(get_os_nft(
     '5712'
 ))
 
-# # invalid collection slug
-# print(get_os_nft('azukite'))
+# # invalid contract address
+# print(get_os_nft(
+#     '0xbd3531da5cf5857e7cfaa92426877b022e612cfg',
+#     'ethereum',
+#     '5712'
+# ))
+
+# invalid chain
+# print(get_os_nft(
+#     '0xbd3531da5cf5857e7cfaa92426877b022e612cf8',
+#     'ethereu',
+#     '5712'
+# ))
+
+# invalid token id
+# print(get_os_nft(
+#     '0xbd3531da5cf5857e7cfaa92426877b022e612cf8',
+#     'ethereum',
+#     '57129999'
+# ))
