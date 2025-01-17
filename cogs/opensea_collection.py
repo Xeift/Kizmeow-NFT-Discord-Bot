@@ -54,7 +54,7 @@ class opensea_collection(commands.Cog):
         with open('collection_name_autocomplete.json', 'r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:
-            collection = collection_name_data[collection]
+            collection = collection_name_data[collection]['slug']
 
         mid = str(ctx.author.id)
         (enable_link_button, _, visibility) = load_config_from_json(mid)
