@@ -6,6 +6,7 @@ from discord.ui import Button, View
 from discord.utils import basic_autocomplete
 
 from api.get_os_nft import get_os_nft
+from utils.load_config import load_config_from_json
 
 
 class opensea_nft(commands.Cog):
@@ -15,7 +16,7 @@ class opensea_nft(commands.Cog):
     def collection_name_autocomplete(self: AutocompleteContext):
         with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
-        return collection_name_data.keys()
+        return ['[Manually enter contract address]'] + list(collection_name_data.keys())
         
     @commands.slash_command(
         name='opensea_nft',
@@ -37,6 +38,16 @@ class opensea_nft(commands.Cog):
             str,
             'Select the collection. [Quick Select]',
             autocomplete=basic_autocomplete(collection_name_autocomplete)
+        ),
+        chain: Option(
+            str,
+            'The chain of the NFT',
+            required=False
+        ),
+        address: Option(
+            str,
+            'The address of the NFT',
+            required=False
         ),
     ):
         await ctx.defer()
