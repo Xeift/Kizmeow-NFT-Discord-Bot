@@ -57,11 +57,15 @@ class opensea_nft(commands.Cog):
             
         if quick_select == '[Manually enter contract address]':
             print('edit and add select menu + input modal')
-        elif collection in collection_name_data:
-            collection = collection_name_data[collection]['slug']
+        elif quick_select in collection_name_data:
+            quick_select = collection_name_data[quick_select]['slug']
             print('call func to get embed')
         else:
             print('collection not found')
+            embed.title = '[Failed]'
+            embed.description = f'Command execution failed. Reason:\n```{
+                account_data}```'
+
             
         def makeNftEmbed(chain, address, token_id):
             (success, nft_data) = get_os_nft(chain, address, token_id)
@@ -156,10 +160,6 @@ class opensea_nft(commands.Cog):
                         )
                         view.add_item(instagram_button)
 
-        else:
-            embed.title = '[Failed]'
-            embed.description = f'Command execution failed. Reason:\n```{
-                account_data}```'
 
         await ctx.respond(embed=embed, view=view)
 
