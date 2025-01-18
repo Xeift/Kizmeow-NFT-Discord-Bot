@@ -1,8 +1,9 @@
-
-from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
+import json
+from discord import (ApplicationContext, AutocompleteContext, ButtonStyle, Embed, IntegrationType,
                      InteractionContextType, Option, PartialEmoji)
 from discord.ext import commands
 from discord.ui import Button, View
+from discord.utils import basic_autocomplete
 
 from api.get_os_nft import get_os_nft
 
@@ -11,6 +12,11 @@ class opensea_nft(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def collection_name_autocomplete(self: AutocompleteContext):
+        with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
+            collection_name_data = json.load(of)
+        return collection_name_data.keys()
+        
     @commands.slash_command(
         name='opensea_nft',
         description='View details of a specific NFT on OpenSea',
@@ -28,7 +34,10 @@ class opensea_nft(commands.Cog):
         self,
         ctx: ApplicationContext,
         quick_select: Option(
-            str, 'Select the collection. [Quick Select]'),
+            str,
+            'Select the collection. [Quick Select]',
+            autocomplete=basic_autocomplete(collection_name_autocomplete)
+        ),
     ):
         await ctx.defer()
         disable_link_button = not enable_link_button
