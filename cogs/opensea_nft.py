@@ -13,6 +13,12 @@ class opensea_nft(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def get_chain_code_from_name(chain_name):
+        with open('chain_detail.json', 'r') as file:
+            data = json.load(file)
+        for k, v in data.items():
+            if v['chain_name'] == chain_name: return k
+
     def collection_name_autocomplete(self: AutocompleteContext):
         with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
@@ -23,7 +29,7 @@ class opensea_nft(commands.Cog):
         if quick_select == '[Manually enter contract address]':
             with open('chain_detail.json', 'r') as file:
                 data = json.load(file)
-            return data.keys()
+            return [v['chain_name'] for v in data.values()]
         else:
             return ["(empty) This field is not required since you've selected the collection name"]
 
