@@ -19,8 +19,13 @@ class opensea_nft(commands.Cog):
         return ['[Manually enter contract address]'] + list(collection_name_data.keys())
 
     def chain_autocomplete(ctx):
-        print(ctx.options.get('quick_select'))
-        return ['example chain data']
+        quick_select = ctx.options.get('quick_select')
+        if quick_select == '[Manually enter contract address]':
+            with open('chain_detail.json', 'r') as file:
+                data = json.load(file)
+            return data.keys()
+        else:
+            return ["(empty) This field is not required since you've selected the collection name"]
 
     def other_autocomplete(ctx):
         print(ctx.options.get('quick_select'))
@@ -75,7 +80,7 @@ class opensea_nft(commands.Cog):
             embed = Embed(color=0xFFA46E)
             embed.title = 'Select '
             await ctx.respond('edit and add select menu + input modal')
-        elif quick_select.startwith('[❤️]'):
+        elif quick_select.startswith('[❤️]'):
             await ctx.respond('read slug in setting')
         elif quick_select in collection_name_data:
             quick_select = collection_name_data[quick_select]['slug']
