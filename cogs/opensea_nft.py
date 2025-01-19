@@ -56,7 +56,11 @@ class opensea_nft(commands.Cog):
             collection_name_data = json.load(of)
             
         if quick_select == '[Manually enter contract address]':
-            print('edit and add select menu + input modal')
+            embed = Embed(color=0xFFA46E)
+            embed.title = 'Select '
+            await ctx.respond('edit and add select menu + input modal')
+        elif quick_select.startwith('[❤️]'):
+            await ctx.respond('read slug in setting')
         elif quick_select in collection_name_data:
             quick_select = collection_name_data[quick_select]['slug']
             print('call func to get embed')
@@ -160,6 +164,7 @@ class opensea_nft(commands.Cog):
                         )
                         view.add_item(instagram_button)
 
+                returm (embed. view)
 
         await ctx.respond(embed=embed, view=view)
 
