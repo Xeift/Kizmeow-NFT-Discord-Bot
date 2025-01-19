@@ -17,6 +17,14 @@ class opensea_nft(commands.Cog):
         with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
         return ['[Manually enter contract address]'] + list(collection_name_data.keys())
+
+    def chain_autocomplete(ctx):
+        print(ctx.options.get('quick_select'))
+        return ['example chain data']
+
+    def other_autocomplete(ctx):
+        print(ctx.options.get('quick_select'))
+        return ['example other data']
         
     @commands.slash_command(
         name='opensea_nft',
@@ -39,16 +47,24 @@ class opensea_nft(commands.Cog):
             'Select the collection. [Quick Select]',
             autocomplete=basic_autocomplete(collection_name_autocomplete)
         ),
-        # chain: Option(
-        #     str,
-        #     'The chain of the NFT',
-        #     required=False
-        # ),
-        # address: Option(
-        #     str,
-        #     'The address of the NFT',
-        #     required=False
-        # ),
+        chain: Option(
+            str,
+            'The chain of the NFT',
+            required=False,
+            autocomplete=basic_autocomplete(chain_autocomplete)
+        ),
+        address: Option(
+            str,
+            'The address of the NFT',
+            required=False,
+            autocomplete=basic_autocomplete(other_autocomplete)
+        ),
+        token_id: Option(
+            str,
+            'The token id of the NFT',
+            required=False,
+            autocomplete=basic_autocomplete(other_autocomplete)
+        )        
     ):
         await ctx.defer()
 
