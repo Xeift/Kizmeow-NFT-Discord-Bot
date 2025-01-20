@@ -85,11 +85,16 @@ class opensea_nft(commands.Cog):
     ):
         def makeNftEmbed(chain, address, token_id):
             (success, nft_data) = get_os_nft(chain, address, token_id)
-            print(nft_data)
             embed = Embed(color=0xFFA46E)
             view = View()
 
             if success:
+                nft_data = nft_data['nft']
+                print(nft_data)
+
+
+
+                
                 address = account_data['address']
                 username = account_data['username']
                 bio = account_data['bio']
