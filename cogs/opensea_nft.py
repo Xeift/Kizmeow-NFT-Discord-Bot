@@ -33,12 +33,15 @@ class opensea_nft(commands.Cog):
         else:
             return ["(empty) This field is not required since you've selected the collection name"]
 
-    def other_autocomplete(ctx):
+    def address_autocomplete(ctx):
         quick_select = ctx.options.get('quick_select')
         if quick_select == '[Manually enter contract address]':
             return []
         else:
             return ["(empty) This field is not required since you've selected the collection name"]
+
+    def token_id_autocomplete(ctx):
+        return []
         
     @commands.slash_command(
         name='opensea_nft',
@@ -71,34 +74,37 @@ class opensea_nft(commands.Cog):
             str,
             'The address of the NFT',
             required=False,
-            autocomplete=basic_autocomplete(other_autocomplete)
+            autocomplete=basic_autocomplete(address_autocomplete)
         ),
         token_id: Option(
             str,
             'The token id of the NFT',
             required=False,
-            autocomplete=basic_autocomplete(other_autocomplete)
+            autocomplete=basic_autocomplete(token_id_autocomplete)
         )        
     ):
         await ctx.defer()
 
         with open('collection_name_autocomplete.json', 'r') as of:
             collection_name_data = json.load(of)
-            
-        if quick_select == '[Manually enter contract address]':
-            embed = Embed(color=0xFFA46E)
-            embed.title = 'Select '
-            await ctx.respond('edit and add select menu + input modal')
-        elif quick_select.startswith('[❤️]'):
-            await ctx.respond('read slug in setting')
-        elif quick_select in collection_name_data:
-            quick_select = collection_name_data[quick_select]['slug']
-            print('call func to get embed')
-        else:
-            print('collection not found')
-            embed.title = '[Failed]'
-            embed.description = f'Command execution failed. Reason:\n```{
-                account_data}```'
+
+        if quick_select in collection_name_data:
+            chain = collection_name_data[quick_select]['chain']
+            address = collection_name_data[quick_select]['address']
+            # token_id = token_id
+            print(chain, address, token_id)
+        #     embed.title = 'Select '
+        #     await ctx.respond('edit and add select menu + input modal')
+        # elif quick_select.startswith('[❤️]'):
+        #     await ctx.respond('read slug in setting')
+        # elif quick_select in collection_name_data:
+        #     quick_select = collection_name_data[quick_select]['slug']
+        #     print('call func to get embed')
+        # else:
+        #     print('collection not found')
+        #     embed.title = '[Failed]'
+        #     embed.description = f'Command execution failed. Reason:\n```{
+        #         account_data}```'
 
             
         def makeNftEmbed(chain, address, token_id):
