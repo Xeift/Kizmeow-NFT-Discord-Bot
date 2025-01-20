@@ -34,8 +34,11 @@ class opensea_nft(commands.Cog):
             return ["(empty) This field is not required since you've selected the collection name"]
 
     def other_autocomplete(ctx):
-        print(ctx.options.get('quick_select'))
-        return ['example other data']
+        quick_select = ctx.options.get('quick_select')
+        if quick_select == '[Manually enter contract address]':
+            return []
+        else:
+            return ["(empty) This field is not required since you've selected the collection name"]
         
     @commands.slash_command(
         name='opensea_nft',
