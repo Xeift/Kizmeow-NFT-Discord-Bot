@@ -89,12 +89,24 @@ class opensea_nft(commands.Cog):
             view = View()
 
             if success:
+                with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
+                    collection_name_data = json.load(of)
                 nft_data = nft_data['nft']
-                print(nft_data)
+                contract = nft_data['contract']
+                token_standard = nft_data['token_standard']
+                collection = nft_data['collection']
+                for c in collection_name_data:
+                    print(f'collection is: {collection}')
+                    if collection_name_data[c]['slug'] == collection:
+                        collection = c
+                        break
+                identifier = nft_data['identifier']
+
+                name = f'{collection}#{identifier}'
 
 
+                print(f'name is {name}')
 
-                
                 address = account_data['address']
                 username = account_data['username']
                 bio = account_data['bio']
