@@ -108,9 +108,12 @@ class opensea_nft(commands.Cog):
                 opensea_url = nft_data['opensea_url']
                 last_update_time = str_datetime_to_timestamp(nft_data['updated_at'])
 
+                is_disabled = nft_data['is_disabled']
+                is_nsfw = nft_data['is_nsfw']
+                is_suspicious = nft_data['is_suspicious']
+
                 print(f'display img:')
-                print(last_update_time)
-                print(type(last_update_time))
+                print(is_disabled, is_nsfw, is_suspicious)
                 print(f'display img:')
                 
 
