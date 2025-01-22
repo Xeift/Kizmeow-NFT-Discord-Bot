@@ -103,11 +103,13 @@ class opensea_nft(commands.Cog):
                 name = f'{collection}#{identifier}'
                 display_img_url = nft_data['display_image_url']
                 original_img_url = nft_data['image_url']
+                metadata_url = nft_data['metadata_url']
+                opensea_url = nft_data['opensea_url']
 
 
                 print(f'display img:')
-                print(display_img_url)
-                print(original_img_url)
+                print(metadata_url)
+                print(opensea_url)
                 print(f'display img:')
                 
 
