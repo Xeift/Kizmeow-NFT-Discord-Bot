@@ -96,16 +96,20 @@ class opensea_nft(commands.Cog):
                 token_standard = nft_data['token_standard']
                 collection = nft_data['collection']
                 for c in collection_name_data:
-                    print(f'collection is: {collection}')
                     if collection_name_data[c]['slug'] == collection:
                         collection = c
                         break
                 identifier = nft_data['identifier']
-
                 name = f'{collection}#{identifier}'
+                display_img_url = nft_data['display_image_url']
+                original_img_url = nft_data['image_url']
 
 
-                print(f'name is {name}')
+                print(f'display img:')
+                print(display_img_url)
+                print(original_img_url)
+                print(f'display img:')
+                
 
                 address = account_data['address']
                 username = account_data['username']
