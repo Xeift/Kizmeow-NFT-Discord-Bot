@@ -112,8 +112,10 @@ class opensea_nft(commands.Cog):
                 is_nsfw = nft_data['is_nsfw']
                 is_suspicious = nft_data['is_suspicious']
 
+                creator_address = nft_data['creator']
+                creator_os_url = f'https://www.opensea.io/{creator_address}'
                 print(f'display img:')
-                print(is_disabled, is_nsfw, is_suspicious)
+                print(creator_os_url)
                 print(f'display img:')
                 
 
