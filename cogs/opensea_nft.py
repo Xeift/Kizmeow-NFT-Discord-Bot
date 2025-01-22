@@ -7,6 +7,7 @@ from discord.utils import basic_autocomplete
 
 from api.get_os_nft import get_os_nft
 from utils.load_config import load_config_from_json
+from utils.str_datetime_to_timestamp import str_datetime_to_timestamp
 
 
 class opensea_nft(commands.Cog):
@@ -105,11 +106,11 @@ class opensea_nft(commands.Cog):
                 original_img_url = nft_data['image_url']
                 metadata_url = nft_data['metadata_url']
                 opensea_url = nft_data['opensea_url']
-
+                last_update_time = str_datetime_to_timestamp(nft_data['updated_at'])
 
                 print(f'display img:')
-                print(metadata_url)
-                print(opensea_url)
+                print(last_update_time)
+                print(type(last_update_time))
                 print(f'display img:')
                 
 
