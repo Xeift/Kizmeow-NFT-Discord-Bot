@@ -95,24 +95,8 @@ class opensea_nft(commands.Cog):
             chain = collection_name_data[quick_select]['chain']
             address = collection_name_data[quick_select]['address']
 
-        #     embed.title = 'Select '
-        #     await ctx.respond('edit and add select menu + input modal')
-        # elif quick_select.startswith('[❤️]'):
-        #     await ctx.respond('read slug in setting')
-        # elif quick_select in collection_name_data:
-        #     quick_select = collection_name_data[quick_select]['slug']
-        #     print('call func to get embed')
-        # else:
-        #     print('collection not found')
-        #     embed.title = '[Failed]'
-        #     embed.description = f'Command execution failed. Reason:\n```{
-        #         account_data}```'
-
-            
-
-
-        # await ctx.respond(embed=embed, view=view)
-
+        elif quick_select.startswith('[❤️]'):
+            print('read chain, address, token_id in setting')            
 
         (success, nft_data) = get_os_nft(chain, address, token_id)
         embed = Embed(color=0xFFA46E)
