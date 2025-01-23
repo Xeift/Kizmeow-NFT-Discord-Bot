@@ -8,7 +8,7 @@ from discord.utils import basic_autocomplete
 from api.get_os_nft import get_os_nft
 from utils.load_config import load_config_from_json
 from utils.str_datetime_to_timestamp import str_datetime_to_timestamp
-from utils.chain import get_name_by_code
+from utils.chain import get_info_by_code
 
 class opensea_nft(commands.Cog):
     def __init__(self, bot):
@@ -112,16 +112,18 @@ class opensea_nft(commands.Cog):
                 is_nsfw = nft_data['is_nsfw']
                 is_suspicious = nft_data['is_suspicious']
 
-                chain_name = get_name_by_code(chain)
+                (chain_name, _, exp_url, _, _) = get_info_by_code(chain)
+
                 creator_address = nft_data['creator']
                 creator_os_url = f'https://www.opensea.io/{creator_address}'
                 owners = nft_data['owners']
                 owner_text = ''
                 if len(owners) == 1:
-                    pass
-                    # owner_exp_url = 
-                    # owner_text = f'[[exp]({})｜'
-
+                    owner = owners[0]
+                    owner_address = owner['address']
+                    owner_exp_url = f'{exp_url}{owner_address}'
+                    owner_text = f'[exp]({owner_exp_url})｜'
+                    print(owner_text)
                 print(f'display img:')
                 print(chain_name)
                 print(f'display img:')
