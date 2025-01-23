@@ -125,8 +125,10 @@ class opensea_nft(commands.Cog):
                     owner_os_url = f'https://www.opensea.io/{owner_address}'
                     owner_text = f'[exp]({owner_exp_url})｜[os]({owner_os_url})'
                     print(owner_text)
+
+                rarity_rk = nft_data['rarity']['rank']
                 print(f'display img:')
-                print(chain_name)
+                print(rarity_rk)
                 print(f'display img:')
                 
 
