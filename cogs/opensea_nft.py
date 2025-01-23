@@ -122,7 +122,8 @@ class opensea_nft(commands.Cog):
                     owner = owners[0]
                     owner_address = owner['address']
                     owner_exp_url = f'{exp_url}{owner_address}'
-                    owner_text = f'[exp]({owner_exp_url})｜'
+                    owner_os_url = f'https://www.opensea.io/{owner_address}'
+                    owner_text = f'[exp]({owner_exp_url})｜[os]({owner_os_url})'
                     print(owner_text)
                 print(f'display img:')
                 print(chain_name)
