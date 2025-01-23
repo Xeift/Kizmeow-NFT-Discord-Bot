@@ -101,7 +101,7 @@ class opensea_nft(commands.Cog):
                         collection = c
                         break
                 identifier = nft_data['identifier']
-                name = f'{collection}#{identifier}'
+                nft_name = f'{collection}#{identifier}'
                 display_img_url = nft_data['display_image_url']
                 original_img_url = nft_data['image_url']
                 metadata_url = nft_data['metadata_url']
@@ -132,19 +132,7 @@ class opensea_nft(commands.Cog):
                 print(f'display img:')
                 
 
-                address = account_data['address']
-                username = account_data['username']
-                bio = account_data['bio']
-                joined_date = account_data['joined_date']
-                short_address = account_data['address'][:7]
-                pfp_img = account_data['profile_image_url']
-                banner_img = account_data['banner_image_url']
-                opensea_url = f'https://opensea.io/{address}'
-                etherscan_url = f'https://etherscan.io/address/{address}'
-                website_url = account_data['website']
-                social_media_accounts = account_data['social_media_accounts']
-
-                embed.title = f'OpenSea Account Info of {short_address}'
+                embed.title = f'OpenSea NFT Info of {nft_name}'
                 embed.set_thumbnail(url=pfp_img)
                 if banner_img != '':
                     embed.set_image(url=banner_img)
