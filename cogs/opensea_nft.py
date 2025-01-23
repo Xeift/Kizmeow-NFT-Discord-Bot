@@ -84,61 +84,90 @@ class opensea_nft(commands.Cog):
             autocomplete=basic_autocomplete(token_id_autocomplete)
         )        
     ):
-        async def makeNftEmbed(chain, address, token_id):
-            (success, nft_data) = get_os_nft(chain, address, token_id)
-            embed = Embed(color=0xFFA46E)
-            view = View()
 
-            if success:
-                with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
-                    collection_name_data = json.load(of)
-                nft_data = nft_data['nft']
-                contract = nft_data['contract']
-                token_standard = nft_data['token_standard']
-                collection = nft_data['collection']
-                for c in collection_name_data:
-                    if collection_name_data[c]['slug'] == collection:
-                        collection = c
-                        break
-                identifier = nft_data['identifier']
-                nft_name = f'{collection}#{identifier}'
-                display_img_url = nft_data['display_image_url']
-                original_img_url = nft_data['image_url']
-                metadata_url = nft_data['metadata_url']
-                opensea_url = nft_data['opensea_url']
-                last_update_time = str_datetime_to_timestamp(nft_data['updated_at'])
 
-                is_disabled = nft_data['is_disabled']
-                is_nsfw = nft_data['is_nsfw']
-                is_suspicious = nft_data['is_suspicious']
+        await ctx.defer()
 
-                (chain_name, _, exp_url, _, _) = get_info_by_code(chain)
+        with open('collection_name_autocomplete.json', 'r') as of:
+            collection_name_data = json.load(of)
 
-                creator_address = nft_data['creator']
-                creator_os_url = f'https://www.opensea.io/{creator_address}'
-                owners = nft_data['owners']
-                owner_text = ''
-                if len(owners) == 1:
-                    owner = owners[0]
-                    owner_address = owner['address']
-                    owner_exp_url = f'{exp_url}{owner_address}'
-                    owner_os_url = f'https://www.opensea.io/{owner_address}'
-                    owner_text = f'[exp]({owner_exp_url})｜[os]({owner_os_url})'
-                    print(owner_text)
+        if quick_select in collection_name_data:
+            chain = collection_name_data[quick_select]['chain']
+            address = collection_name_data[quick_select]['address']
 
-                rarity_rk = nft_data['rarity']['rank']
-                
+        #     embed.title = 'Select '
+        #     await ctx.respond('edit and add select menu + input modal')
+        # elif quick_select.startswith('[❤️]'):
+        #     await ctx.respond('read slug in setting')
+        # elif quick_select in collection_name_data:
+        #     quick_select = collection_name_data[quick_select]['slug']
+        #     print('call func to get embed')
+        # else:
+        #     print('collection not found')
+        #     embed.title = '[Failed]'
+        #     embed.description = f'Command execution failed. Reason:\n```{
+        #         account_data}```'
 
-                embed.title = f'OpenSea NFT Info of {nft_name}'
-                # embed.set_thumbnail(url=pfp_img)
-                # if banner_img != '':
-                #     embed.set_image(url=display_img_url)
-                embed.set_footer(
-                    text='Source: OpenSea API',
-                    icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/opensea_logo.png'
-                )
+            
 
-                await ctx.respond(embed=embed)
+
+        # await ctx.respond(embed=embed, view=view)
+
+
+        (success, nft_data) = get_os_nft(chain, address, token_id)
+        embed = Embed(color=0xFFA46E)
+        view = View()
+
+        if success:
+            with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
+                collection_name_data = json.load(of)
+            nft_data = nft_data['nft']
+            contract = nft_data['contract']
+            token_standard = nft_data['token_standard']
+            collection = nft_data['collection']
+            for c in collection_name_data:
+                if collection_name_data[c]['slug'] == collection:
+                    collection = c
+                    break
+            identifier = nft_data['identifier']
+            nft_name = f'{collection}#{identifier}'
+            display_img_url = nft_data['display_image_url']
+            original_img_url = nft_data['image_url']
+            metadata_url = nft_data['metadata_url']
+            opensea_url = nft_data['opensea_url']
+            last_update_time = str_datetime_to_timestamp(nft_data['updated_at'])
+
+            is_disabled = nft_data['is_disabled']
+            is_nsfw = nft_data['is_nsfw']
+            is_suspicious = nft_data['is_suspicious']
+
+            (chain_name, _, exp_url, _, _) = get_info_by_code(chain)
+
+            creator_address = nft_data['creator']
+            creator_os_url = f'https://www.opensea.io/{creator_address}'
+            owners = nft_data['owners']
+            owner_text = ''
+            if len(owners) == 1:
+                owner = owners[0]
+                owner_address = owner['address']
+                owner_exp_url = f'{exp_url}{owner_address}'
+                owner_os_url = f'https://www.opensea.io/{owner_address}'
+                owner_text = f'[exp]({owner_exp_url})｜[os]({owner_os_url})'
+                print(owner_text)
+
+            rarity_rk = nft_data['rarity']['rank']
+            
+
+            embed.title = f'OpenSea NFT Info of {nft_name}'
+            # embed.set_thumbnail(url=pfp_img)
+            # if banner_img != '':
+            #     embed.set_image(url=display_img_url)
+            embed.set_footer(
+                text='Source: OpenSea API',
+                icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/opensea_logo.png'
+            )
+
+            await ctx.respond(embed=embed)
 #                 embed.add_field(
 #                     name='Address', value=f'[{address}]({etherscan_url})', inline=False)
 #                 embed.add_field(name='Username', value=username, inline=True)
@@ -206,35 +235,6 @@ class opensea_nft(commands.Cog):
 #                         view.add_item(instagram_button)
 # 
 #                 returm (embed. view)
-
-        await ctx.defer()
-
-        with open('collection_name_autocomplete.json', 'r') as of:
-            collection_name_data = json.load(of)
-
-        if quick_select in collection_name_data:
-            chain = collection_name_data[quick_select]['chain']
-            address = collection_name_data[quick_select]['address']
-            await makeNftEmbed(chain, address, token_id)
-
-        #     embed.title = 'Select '
-        #     await ctx.respond('edit and add select menu + input modal')
-        # elif quick_select.startswith('[❤️]'):
-        #     await ctx.respond('read slug in setting')
-        # elif quick_select in collection_name_data:
-        #     quick_select = collection_name_data[quick_select]['slug']
-        #     print('call func to get embed')
-        # else:
-        #     print('collection not found')
-        #     embed.title = '[Failed]'
-        #     embed.description = f'Command execution failed. Reason:\n```{
-        #         account_data}```'
-
-            
-
-
-        # await ctx.respond(embed=embed, view=view)
-
 
 def setup(bot):
     bot.add_cog(opensea_nft(bot))
