@@ -143,9 +143,7 @@ class opensea_nft(commands.Cog):
             
 
             embed.title = f'OpenSea NFT Info of {nft_name}'
-            # embed.set_thumbnail(url=pfp_img)
-            # if banner_img != '':
-            #     embed.set_image(url=display_img_url)
+            embed.set_image(url=display_img_url)
             embed.set_footer(
                 text='Source: OpenSea API',
                 icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/opensea_logo.png'
@@ -218,7 +216,6 @@ class opensea_nft(commands.Cog):
 #                         )
 #                         view.add_item(instagram_button)
 # 
-#                 returm (embed. view)
 
 def setup(bot):
     bot.add_cog(opensea_nft(bot))
