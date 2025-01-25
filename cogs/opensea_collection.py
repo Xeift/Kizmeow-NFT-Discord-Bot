@@ -17,8 +17,8 @@ class opensea_collection(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    def collection_name_autocomplete(self: AutocompleteContext):
-        with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
+    def collection_name_data(self: AutocompleteContext):
+        with open('collection_name_data.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
         return collection_name_data.keys()
 
@@ -46,12 +46,12 @@ class opensea_collection(commands.Cog):
         collection: Option(
             str,
             'Specify the collection slug',
-            autocomplete=basic_autocomplete(collection_name_autocomplete)
+            autocomplete=basic_autocomplete(collection_name_data)
         )
     ):
         # await ctx.defer()
 
-        with open('collection_name_autocomplete.json', 'r') as of:
+        with open('collection_name_data.json', 'r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:
             collection = collection_name_data[collection]['slug']

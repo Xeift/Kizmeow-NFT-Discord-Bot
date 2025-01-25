@@ -14,17 +14,14 @@ from dotenv import load_dotenv
 
 class collection(commands.Cog):
 
-    
     def __init__(self, bot):
         self.bot = bot
 
-    
-    def collection_name_autocomplete(self: discord.AutocompleteContext):
-        with open('collection_name_autocomplete.json','r') as of:
+    def collection_name_data(self: discord.AutocompleteContext):
+        with open('collection_name_data.json', 'r') as of:
             collection_name_data = json.load(of)
         return collection_name_data.keys()
 
-    
     @slash_command(name='collection', description='Check collection information from Opensea, LooksRare and X2Y2')
     async def collection(
         self,
@@ -32,45 +29,43 @@ class collection(commands.Cog):
         collection: Option(
             str,
             'Specify the collection slug',
-            autocomplete=collection_name_autocomplete
+            autocomplete=collection_name_data
         )
     ):
 
         await ctx.defer()
-        
+
         '''            handle autocomplete            '''
-        with open('collection_name_autocomplete.json','r') as of:
+        with open('collection_name_data.json', 'r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:
             collection = collection_name_data[collection]
 
-        
         '''            initial embed            '''
         (embed, view) = await modulenft_embed(collection)
         await ctx.respond(embed=embed, view=view)
 
-        
         '''            return embed            '''
         async def return_button_callback(interaction):
             if ctx.author == interaction.user:
                 (embed, view) = await modulenft_embed(collection)
                 await interaction.response.edit_message(embed=embed, view=view)
             else:
-                embed = discord.Embed(title='Consider use `/collection` command by yourself.', color=0xFFA46E)
+                embed = discord.Embed(
+                    title='Consider use `/collection` command by yourself.', color=0xFFA46E)
                 await interaction.response.send_message(embed=embed, ephemeral=True)
         return_button.callback = return_button_callback
 
-        
         '''            opensea embed            '''
         async def opensea_button_callback(interaction):
             if ctx.author == interaction.user:
                 (embed, view) = await opensea_embed(collection)
                 await interaction.response.edit_message(embed=embed, view=view)
             else:
-                embed = discord.Embed(title='Consider use `/collection` command by yourself.', color=0xFFA46E)
+                embed = discord.Embed(
+                    title='Consider use `/collection` command by yourself.', color=0xFFA46E)
                 await interaction.response.send_message(embed=embed, ephemeral=True)
         opensea_button.callback = opensea_button_callback
-
 
         '''            looksrare embed            '''
         async def looksrare_button_callback(interaction):
@@ -78,10 +73,11 @@ class collection(commands.Cog):
                 (embed, view) = await looksrare_embed(collection)
                 await interaction.response.edit_message(embed=embed, view=view)
             else:
-                embed = discord.Embed(title='Consider use `/collection` command by yourself.', color=0xFFA46E)
+                embed = discord.Embed(
+                    title='Consider use `/collection` command by yourself.', color=0xFFA46E)
                 await interaction.response.send_message(embed=embed, ephemeral=True)
         looksrare_button.callback = looksrare_button_callback
-        
+
 
 def setup(bot):
     bot.add_cog(collection(bot))

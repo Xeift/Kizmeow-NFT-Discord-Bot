@@ -24,8 +24,8 @@ class opensea_nft(commands.Cog):
             if v['chain_name'] == chain_name:
                 return k
 
-    def collection_name_autocomplete(self: AutocompleteContext):
-        with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
+    def collection_name_data(self: AutocompleteContext):
+        with open('collection_name_data.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
         return ['[Manually enter contract address]'] + list(collection_name_data.keys())
 
@@ -67,7 +67,7 @@ class opensea_nft(commands.Cog):
         quick_select: Option(
             str,
             'Select the collection. [Quick Select]',
-            autocomplete=basic_autocomplete(collection_name_autocomplete)
+            autocomplete=basic_autocomplete(collection_name_data)
         ),
         chain: Option(
             str,
@@ -91,7 +91,7 @@ class opensea_nft(commands.Cog):
 
         await ctx.defer()
 
-        with open('collection_name_autocomplete.json', 'r') as of:
+        with open('collection_name_data.json', 'r') as of:
             collection_name_data = json.load(of)
 
         if quick_select in collection_name_data:
@@ -107,7 +107,7 @@ class opensea_nft(commands.Cog):
         view = View()
 
         if success:
-            with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
+            with open('collection_name_data.json', 'r', encoding='utf-8') as of:
                 collection_name_data = json.load(of)
             nft_data = nft_data['nft']
             contract = nft_data['contract']
