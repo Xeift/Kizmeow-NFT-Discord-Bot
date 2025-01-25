@@ -1,14 +1,17 @@
 import json
-from discord import (ApplicationContext, AutocompleteContext, ButtonStyle, Embed, IntegrationType,
-                     InteractionContextType, Option, PartialEmoji)
+
+from discord import (ApplicationContext, AutocompleteContext, ButtonStyle,
+                     Embed, IntegrationType, InteractionContextType, Option,
+                     PartialEmoji)
 from discord.ext import commands
 from discord.ui import Button, View
 from discord.utils import basic_autocomplete
 
 from api.get_os_nft import get_os_nft
+from utils.chain import get_info_by_code
 from utils.load_config import load_config_from_json
 from utils.str_datetime_to_timestamp import str_datetime_to_timestamp
-from utils.chain import get_info_by_code
+
 
 class opensea_nft(commands.Cog):
     def __init__(self, bot):
@@ -18,7 +21,8 @@ class opensea_nft(commands.Cog):
         with open('chain_detail.json', 'r') as file:
             data = json.load(file)
         for k, v in data.items():
-            if v['chain_name'] == chain_name: return k
+            if v['chain_name'] == chain_name:
+                return k
 
     def collection_name_autocomplete(self: AutocompleteContext):
         with open('collection_name_autocomplete.json', 'r', encoding='utf-8') as of:
@@ -43,7 +47,7 @@ class opensea_nft(commands.Cog):
 
     def token_id_autocomplete(ctx):
         return []
-        
+
     @commands.slash_command(
         name='opensea_nft',
         description='View details of a specific NFT on OpenSea',
@@ -82,9 +86,8 @@ class opensea_nft(commands.Cog):
             'The token id of the NFT',
             required=False,
             autocomplete=basic_autocomplete(token_id_autocomplete)
-        )        
+        )
     ):
-
 
         await ctx.defer()
 
@@ -96,7 +99,7 @@ class opensea_nft(commands.Cog):
             address = collection_name_data[quick_select]['address']
 
         elif quick_select.startswith('[❤️]'):
-            print('read chain, address, token_id in setting')            
+            print('read chain, address, token_id in setting')
 
         (success, nft_data) = get_os_nft(chain, address, token_id)
         embed = Embed(color=0xFFA46E)
@@ -119,7 +122,8 @@ class opensea_nft(commands.Cog):
             original_img_url = nft_data['image_url']
             metadata_url = nft_data['metadata_url']
             opensea_url = nft_data['opensea_url']
-            last_update_time = str_datetime_to_timestamp(nft_data['updated_at'])
+            last_update_time = str_datetime_to_timestamp(
+                nft_data['updated_at'])
 
             is_disabled = nft_data['is_disabled']
             is_nsfw = nft_data['is_nsfw']
@@ -139,8 +143,7 @@ class opensea_nft(commands.Cog):
                 owner_text = f'[exp]({owner_exp_url})｜[os]({owner_os_url})'
                 print(owner_text)
 
-            rarity_rk = nft_data['rarity']['rank']
-            
+            rarity_rk = nft_data['rarity']['rank']  # TODO: deal with null
 
             embed.title = f'OpenSea NFT Info of {nft_name}'
             embed.set_image(url=display_img_url)
@@ -150,6 +153,7 @@ class opensea_nft(commands.Cog):
             )
 
             await ctx.respond(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(opensea_nft(bot))
