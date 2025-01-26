@@ -1,5 +1,4 @@
 import json
-import re
 
 from discord import (ApplicationContext, AutocompleteContext, ButtonStyle,
                      Embed, IntegrationType, InteractionContextType, Option,
