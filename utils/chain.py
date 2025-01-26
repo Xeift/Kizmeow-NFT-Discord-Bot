@@ -16,7 +16,8 @@ def get_info_by_code(chain_code):
         single_chain_data['exp_address_url'],
         single_chain_data['exp_token_url'],
         single_chain_data['exp_emoji'],
-        single_chain_data['ticker']
+        single_chain_data['ticker'],
+        single_chain_data['token_standards'],
     )
 
 # --------------------     TEST        --------------------

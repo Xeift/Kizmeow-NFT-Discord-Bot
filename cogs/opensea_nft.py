@@ -108,7 +108,7 @@ class opensea_nft(commands.Cog):
 
         if success:
             (chain_name, _, exp_address_url,
-             exp_token_url, _, _) = get_info_by_code(chain)
+             exp_token_url, _, _, token_standards) = get_info_by_code(chain)
 
             with open('collection_name_data.json', 'r', encoding='utf-8') as of:
                 collection_name_data = json.load(of)
@@ -117,6 +117,11 @@ class opensea_nft(commands.Cog):
             contract_address_short = contract[:7]
             contract_exp_url = f'{exp_token_url}{contract}'
             token_standard = nft_data['token_standard']
+            for ts in token_standards:
+                if token_standard == ts:
+                    token_standard = token_standards[ts]
+                    break
+
             collection = nft_data['collection']
             for c in collection_name_data:
                 if collection_name_data[c]['slug'] == collection:

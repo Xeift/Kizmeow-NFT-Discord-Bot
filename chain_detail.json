@@ -5,7 +5,11 @@
 		"exp_address_url": "https://etherscan.io/address/",
 		"exp_token_url": "https://etherscan.io/token/",
 		"exp_emoji": 1326452528920920125,
-		"ticker": "ETH"
+		"ticker": "ETH",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	},
 	"arbitrum": {
 		"chain_name": "Arbitrum",
@@ -13,7 +17,8 @@
 		"exp_address_url": "https://arbiscan.io/address/",
 		"exp_token_url": "https://arbiscan.io/token/",
 		"exp_emoji": 1326518222756773898,
-		"ticker": "ETH"
+		"ticker": "ETH",
+		"token_standards": {}
 	},
 	"avalanche": {
 		"chain_name": "Avalanche",
@@ -21,7 +26,8 @@
 		"exp_address_url": "https://snowtrace.io/address/",
 		"exp_token_url": "https://snowtrace.io/token/",
 		"exp_emoji": 1326757724410871818,
-		"ticker": "AVAX"
+		"ticker": "AVAX",
+		"token_standards": {}
 	},
 	"solana": {
 		"chain_name": "Solana",
@@ -29,7 +35,8 @@
 		"exp_address_url": "https://solscan.io/account/",
 		"exp_token_url": "https://solscan.io/account/",
 		"exp_emoji": 1326760754724081684,
-		"ticker": "SOL"
+		"ticker": "SOL",
+		"token_standards": {}
 	},
 	"base": {
 		"chain_name": "Base",
@@ -37,6 +44,7 @@
 		"exp_address_url": "https://basescan.org/address/",
 		"exp_token_url": "https://basescan.org/token/",
 		"exp_emoji": 1327779148705431593,
-		"ticker": "ETH"
+		"ticker": "ETH",
+		"token_standards": {}
 	}
 }
