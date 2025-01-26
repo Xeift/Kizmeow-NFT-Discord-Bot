@@ -157,7 +157,8 @@ class opensea_nft(commands.Cog):
             )
             embed.add_field(
                 name='Contract Address',
-                value=f'[{contract_address_short}]({contract_exp_url})'
+                value=f'[{contract_address_short}]({contract_exp_url})\n({
+                    chain_name}, {token_standard})'
             )
 
             await ctx.respond(embed=embed)
