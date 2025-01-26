@@ -10,6 +10,7 @@ from discord.utils import basic_autocomplete
 
 from api.get_os_collection import get_os_collection
 from api.get_os_collection_statistics import get_os_collection_statistics
+from utils.chain import get_info_by_code
 from utils.load_config import load_config_from_json
 
 
@@ -21,11 +22,6 @@ class opensea_collection(commands.Cog):
         with open('collection_name_data.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
         return collection_name_data.keys()
-
-    def get_chain_detail(self, chain):
-        with open('chain_detail.json', 'r') as of:
-            chain_info = json.load(of)[chain]
-        return (chain_info['chain_name'], chain_info['exp_name'], chain_info['exp_url'], chain_info['exp_emoji'], chain_info['ticker'])
 
     @commands.slash_command(
         name='opensea_collection',
@@ -79,7 +75,7 @@ class opensea_collection(commands.Cog):
             default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [
             ] else cas[0]['chain']
             (chain_name, exp_name, exp_url, chain_info,
-             ticker) = self.get_chain_detail(default_chain)
+             ticker) = get_info_by_code(default_chain)
             owner_exp_url = f'{exp_url}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
             fees = collection_data['fees']
@@ -183,7 +179,7 @@ class opensea_collection(commands.Cog):
                     chain = ca['chain']
                     address = ca['address']
                     (chain_name, exp_name, exp_url, exp_emoji,
-                     ticker) = self.get_chain_detail(chain)
+                     ticker) = get_info_by_code(chain)
                     exp_url = re.sub('address', 'token', exp_url)
                     exp_button = Button(
                         label=exp_name,

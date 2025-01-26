@@ -1,0 +1,87 @@
+{
+    "nft": {
+        "identifier": "1234",
+        "collection": "azuki",
+        "contract": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+        "token_standard": "erc721",
+        "name": "Azuki #1234",
+        "description": null,
+        "image_url": "https://ipfs.io/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/1234.png",
+        "display_image_url": "https://i.seadn.io/s/raw/files/553c09ea0a2b304aeb1bae3cd38ce0d8.png?w=500&auto=format",
+        "display_animation_url": null,
+        "metadata_url": "https://ipfs.io/ipfs/QmZcH4YvBVVRJtdn4RdbaqgspFU8gH6P9vomDpBVpAL3u4/1234",
+        "opensea_url": "https://opensea.io/assets/ethereum/0xed5af388653567af2f388e6224dc7c4b3241c544/1234",
+        "updated_at": "2025-01-23T02:39:38.230807",
+        "is_disabled": false,
+        "is_nsfw": false,
+        "animation_url": null,
+        "is_suspicious": false,
+        "creator": "0x2ae6b0630ebb4d155c6e04fcb16840ffa77760aa",
+        "traits": [
+            {
+                "trait_type": "Type",
+                "display_type": null,
+                "max_value": null,
+                "value": "Human"
+            },
+            {
+                "trait_type": "Background",
+                "display_type": null,
+                "max_value": null,
+                "value": "Red"
+            },
+            {
+                "trait_type": "Mouth",
+                "display_type": null,
+                "max_value": null,
+                "value": "Relaxed"
+            },
+            {
+                "trait_type": "Eyes",
+                "display_type": null,
+                "max_value": null,
+                "value": "Relaxed"
+            },
+            {
+                "trait_type": "Clothing",
+                "display_type": null,
+                "max_value": null,
+                "value": "Hoodie"
+            },
+            {
+                "trait_type": "Neck",
+                "display_type": null,
+                "max_value": null,
+                "value": "Choker"
+            },
+            {
+                "trait_type": "Offhand",
+                "display_type": null,
+                "max_value": null,
+                "value": "Floorsweeper"
+            },
+            {
+                "trait_type": "Hair",
+                "display_type": null,
+                "max_value": null,
+                "value": "Maroon Bob"
+            }
+        ],
+        "owners": [
+            {
+                "address": "0x43a314183c0033528827be7cf426523bac412780",
+                "quantity": 1
+            }
+        ],
+        "rarity": {
+            "strategy_id": null,
+            "strategy_version": null,
+            "rank": 5593,
+            "score": null,
+            "calculated_at": "",
+            "max_rank": null,
+            "tokens_scored": 0,
+            "ranking_features": null
+        }
+    }
+}
