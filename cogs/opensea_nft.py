@@ -107,12 +107,15 @@ class opensea_nft(commands.Cog):
         view = View()
 
         if success:
-            (chain_name, _, exp_url, _, _) = get_info_by_code(chain)
+            (chain_name, _, exp_address_url,
+             exp_token_url, _, _) = get_info_by_code(chain)
 
             with open('collection_name_data.json', 'r', encoding='utf-8') as of:
                 collection_name_data = json.load(of)
             nft_data = nft_data['nft']
             contract = nft_data['contract']
+            contract_address_short = contract[:7]
+            contract_exp_url = f'{exp_token_url}{contract}'
             token_standard = nft_data['token_standard']
             collection = nft_data['collection']
             for c in collection_name_data:
@@ -139,7 +142,7 @@ class opensea_nft(commands.Cog):
             if len(owners) == 1:
                 owner = owners[0]
                 owner_address = owner['address']
-                owner_exp_url = f'{exp_url}{owner_address}'
+                owner_exp_url = f'{exp_address_url}{owner_address}'
                 owner_os_url = f'https://www.opensea.io/{owner_address}'
                 owner_text = f'[exp]({owner_exp_url})｜[os]({owner_os_url})'
                 print(owner_text)
@@ -154,7 +157,7 @@ class opensea_nft(commands.Cog):
             )
             embed.add_field(
                 name='Contract Address',
-                value=f''
+                value=f'[{contract_address_short}]({contract_exp_url})'
             )
 
             await ctx.respond(embed=embed)
