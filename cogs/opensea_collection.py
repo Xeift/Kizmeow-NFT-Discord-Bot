@@ -74,9 +74,9 @@ class opensea_collection(commands.Cog):
             owner_address_short = collection_data['owner'][:7]
             default_chain = collection_data['payment_tokens'][0]['chain'] if cas == [
             ] else cas[0]['chain']
-            (chain_name, exp_name, exp_url, chain_info,
+            (chain_name, exp_name, exp_address_url, exp_token_url, chain_info,
              ticker) = get_info_by_code(default_chain)
-            owner_exp_url = f'{exp_url}{owner_address}'
+            owner_exp_url = f'{exp_address_url}{owner_address}'
             owner_os_url = f'https://opensea.io/{owner_address}'
             fees = collection_data['fees']
             fees_text = ''
@@ -178,20 +178,20 @@ class opensea_collection(commands.Cog):
                 for ca in cas:
                     chain = ca['chain']
                     address = ca['address']
-                    (chain_name, exp_name, exp_url, exp_emoji,
+                    (chain_name, exp_name, exp_address_url, exp_token_url, exp_emoji,
                      ticker) = get_info_by_code(chain)
-                    exp_url = re.sub('address', 'token', exp_url)
+
                     exp_button = Button(
                         label=exp_name,
                         style=ButtonStyle.link,
-                        url=f'{exp_url}{address}',
-                        emoji=PartialEmoji(name=f'{exp_url.lower()}_logo',
+                        url=f'{exp_token_url}{address}',
+                        emoji=PartialEmoji(name=f'{exp_token_url.lower()}_logo',
                                            id=exp_emoji),
                         disabled=disable_link_button
                     )
                     view.add_item(exp_button)
                     cas_text += f'[{ca['address'][:7]
-                                    }]({exp_url}{ca['address']}) ({chain_name})\n'
+                                    }]({exp_token_url}{ca['address']}) ({chain_name})\n'
 
             if cas_text != '':
                 embed.add_field(name='Contract Address',
@@ -212,7 +212,7 @@ class opensea_collection(commands.Cog):
                     fee['required'] = 'Optional'
 
                 fees_text += f"{fee['required']} [{fee['fee']
-                                                   }%]({exp_url}{fee['recipient']})\n"
+                                                   }%]({exp_address_url}{fee['recipient']})\n"
             embed.add_field(name='Fees', value=fees_text, inline=True)
             embed.add_field(name='Verification',
                             value=verify_state, inline=True)

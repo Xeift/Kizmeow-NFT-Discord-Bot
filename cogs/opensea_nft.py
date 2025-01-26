@@ -107,6 +107,8 @@ class opensea_nft(commands.Cog):
         view = View()
 
         if success:
+            (chain_name, _, exp_url, _, _) = get_info_by_code(chain)
+
             with open('collection_name_data.json', 'r', encoding='utf-8') as of:
                 collection_name_data = json.load(of)
             nft_data = nft_data['nft']
@@ -130,8 +132,6 @@ class opensea_nft(commands.Cog):
             is_nsfw = nft_data['is_nsfw']
             is_suspicious = nft_data['is_suspicious']
 
-            (chain_name, _, exp_url, _, _) = get_info_by_code(chain)
-
             creator_address = nft_data['creator']
             creator_os_url = f'https://www.opensea.io/{creator_address}'
             owners = nft_data['owners']
@@ -152,10 +152,10 @@ class opensea_nft(commands.Cog):
                 text='Source: OpenSea API',
                 icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/opensea_logo.png'
             )
-            # embed.add_field(
-            #     name='Contract Address',
-            #     value=f''
-            # )
+            embed.add_field(
+                name='Contract Address',
+                value=f''
+            )
 
             await ctx.respond(embed=embed)
 
