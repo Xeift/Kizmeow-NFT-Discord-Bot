@@ -20,5 +20,13 @@ def get_info_by_code(chain_code):
         single_chain_data['token_standards'],
     )
 
+
+def get_code_by_name(chain_name):
+    with open('chain_detail.json', 'r') as file:
+        data = json.load(file)
+    for k, v in data.items():
+        if v['chain_name'] == chain_name:
+            return k
+
 # --------------------     TEST        --------------------
 # print(get_name_by_code('ethereum'))

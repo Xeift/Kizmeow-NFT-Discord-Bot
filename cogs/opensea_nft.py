@@ -8,7 +8,7 @@ from discord.ui import Button, View
 from discord.utils import basic_autocomplete
 
 from api.get_os_nft import get_os_nft
-from utils.chain import get_info_by_code
+from utils.chain import get_code_by_name, get_info_by_code
 from utils.datetime_to_timestamp import datetime_to_timestamp
 from utils.load_config import load_config_from_json
 
@@ -16,13 +16,6 @@ from utils.load_config import load_config_from_json
 class opensea_nft(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    def get_chain_code_from_name(chain_name):
-        with open('chain_detail.json', 'r') as file:
-            data = json.load(file)
-        for k, v in data.items():
-            if v['chain_name'] == chain_name:
-                return k
 
     def collection_name_data(self: AutocompleteContext):
         with open('collection_name_data.json', 'r', encoding='utf-8') as of:
@@ -101,6 +94,8 @@ class opensea_nft(commands.Cog):
         elif quick_select.startswith('[❤️]'):
             # TODO: add favorite NFT, favorite token
             print('read chain, address, token_id in setting')
+        else:
+            chain = get_code_by_name(chain)
 
         (success, nft_data) = get_os_nft(chain, address, token_id)
         embed = Embed(color=0xFFA46E)
@@ -144,7 +139,9 @@ class opensea_nft(commands.Cog):
             creator_os_url = f'https://www.opensea.io/{creator_address}'
             owners = nft_data['owners']
             owner_text = ''
-            if len(owners) == 1:
+            if owners == None:
+                pass
+            elif len(owners) == 1:
                 owner = owners[0]
                 owner_address = owner['address']
                 owner_address_short = owner['address'][:7]
@@ -153,10 +150,12 @@ class opensea_nft(commands.Cog):
                 owner_text = f'{owner_address_short}\n[exp]({owner_exp_url})｜[os]({
                     owner_os_url})'
             else:
-                pass
+                owner_text = 'multi owner'
                 # TODO: deal with multi owner
 
-            rarity_rk = nft_data['rarity']['rank']  # TODO: deal with null
+            rarity_rk = 0
+            if nft_data['rarity'] != None:
+                rarity_rk = nft_data['rarity']['rank']  # TODO: deal with null
 
             embed.title = f'OpenSea NFT Info of {nft_name}'
             embed.set_image(url=display_img_url)
@@ -169,10 +168,11 @@ class opensea_nft(commands.Cog):
                 value=f'[{contract_address_short}]({contract_exp_url})\n({
                     chain_name}, {token_standard})'
             )
-            embed.add_field(
-                name='Owner',
-                value=owner_text
-            )
+            if owner_text != '':
+                embed.add_field(
+                    name='Owner',
+                    value=owner_text
+                )
 
             await ctx.respond(embed=embed)
 
