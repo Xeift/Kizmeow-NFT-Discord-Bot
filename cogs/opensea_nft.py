@@ -123,6 +123,8 @@ class opensea_nft(commands.Cog):
                     collection = c
                     break
             identifier = nft_data['identifier']
+            if len(identifier) > 7:
+                identifier = identifier[:7]
             nft_name = f'{collection}#{identifier}'
             display_img_url = nft_data['display_image_url']
 
@@ -199,9 +201,9 @@ class opensea_nft(commands.Cog):
 
             rarity_rk = 0
             if nft_data['rarity'] != None:
-                rarity_rk = nft_data['rarity']['rank']  # TODO: deal with null
+                rarity_rk = nft_data['rarity']['rank']
 
-            embed.title = f'OpenSea NFT Info of {nft_name}'
+            embed.title = nft_name
             embed.set_image(url=display_img_url)
             embed.set_footer(
                 text='Source: OpenSea API',
