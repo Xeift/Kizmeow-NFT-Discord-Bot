@@ -147,10 +147,14 @@ class opensea_nft(commands.Cog):
             if len(owners) == 1:
                 owner = owners[0]
                 owner_address = owner['address']
+                owner_address_short = owner['address'][:7]
                 owner_exp_url = f'{exp_address_url}{owner_address}'
                 owner_os_url = f'https://www.opensea.io/{owner_address}'
-                owner_text = f'[exp]({owner_exp_url})｜[os]({owner_os_url})'
-                print(owner_text)
+                owner_text = f'{owner_address_short}\n[exp]({owner_exp_url})｜[os]({
+                    owner_os_url})'
+            else:
+                pass
+                # TODO: deal with multi owner
 
             rarity_rk = nft_data['rarity']['rank']  # TODO: deal with null
 
@@ -164,6 +168,10 @@ class opensea_nft(commands.Cog):
                 name='Contract Address',
                 value=f'[{contract_address_short}]({contract_exp_url})\n({
                     chain_name}, {token_standard})'
+            )
+            embed.add_field(
+                name='Owner',
+                value=owner_text
             )
 
             await ctx.respond(embed=embed)
