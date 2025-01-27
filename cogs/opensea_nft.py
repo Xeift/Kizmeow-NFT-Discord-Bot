@@ -209,8 +209,7 @@ class opensea_nft(commands.Cog):
             )
             embed.add_field(
                 name='Contract Address',
-                value=f'[{contract_address_short}]({contract_exp_url})\n({
-                    chain_name}, {token_standard})'
+                value=f'[{contract_address_short}]({contract_exp_url})'
             )
             embed.add_field(
                 name='Owner',
@@ -220,6 +219,14 @@ class opensea_nft(commands.Cog):
                 name='Creator',
                 value=f'{creator_address_short}\n[Exp]({exp_address_url}{
                     creator_address})｜[OpenSea]({creator_os_url})'
+            )
+            embed.add_field(
+                name='Chain',
+                value=chain_name
+            )
+            embed.add_field(
+                name='Token Standard',
+                value=token_standard
             )
             if rarity_rk != 0:
                 embed.add_field(
