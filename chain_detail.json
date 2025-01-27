@@ -18,7 +18,10 @@
 		"exp_token_url": "https://arbiscan.io/token/",
 		"exp_emoji": 1326518222756773898,
 		"ticker": "ETH",
-		"token_standards": {}
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	},
 	"avalanche": {
 		"chain_name": "Avalanche",
@@ -39,7 +42,9 @@
 		"exp_token_url": "https://solscan.io/account/",
 		"exp_emoji": 1326760754724081684,
 		"ticker": "SOL",
-		"token_standards": {}
+		"token_standards": {
+			"metaplex": "Metaplex"
+		}
 	},
 	"base": {
 		"chain_name": "Base",
@@ -48,6 +53,9 @@
 		"exp_token_url": "https://basescan.org/token/",
 		"exp_emoji": 1327779148705431593,
 		"ticker": "ETH",
-		"token_standards": {}
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	}
 }
