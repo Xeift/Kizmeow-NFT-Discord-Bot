@@ -140,7 +140,7 @@ class opensea_nft(commands.Cog):
             owners = nft_data['owners']
             owner_text = ''
             if owners == None:
-                pass
+                owner_text = '(Too much owners!)'
             elif len(owners) == 1:
                 owner = owners[0]
                 owner_address = owner['address']
@@ -149,9 +149,16 @@ class opensea_nft(commands.Cog):
                 owner_os_url = f'https://www.opensea.io/{owner_address}'
                 owner_text = f'{owner_address_short}\n[exp]({owner_exp_url})｜[os]({
                     owner_os_url})'
+            elif len(owners) <= 5:
+                for owner in owners:
+                    owner_address = owner['address']
+                    owner_address_short = owner['address'][:7]
+                    owner_exp_url = f'{exp_address_url}{owner_address}'
+                    owner_os_url = f'https://www.opensea.io/{owner_address}'
+                    owner_text += f'{owner_address_short} [exp]({owner_exp_url})｜[os]({
+                        owner_os_url})\n'
             else:
-                owner_text = 'multi owner'
-                # TODO: deal with multi owner
+                owner_text = f'({len(owners)} owners)'
 
             rarity_rk = 0
             if nft_data['rarity'] != None:
@@ -168,11 +175,10 @@ class opensea_nft(commands.Cog):
                 value=f'[{contract_address_short}]({contract_exp_url})\n({
                     chain_name}, {token_standard})'
             )
-            if owner_text != '':
-                embed.add_field(
-                    name='Owner',
-                    value=owner_text
-                )
+            embed.add_field(
+                name='Owner',
+                value=owner_text
+            )
 
             await ctx.respond(embed=embed)
 
