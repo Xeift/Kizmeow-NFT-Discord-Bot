@@ -136,7 +136,9 @@ class opensea_nft(commands.Cog):
             is_suspicious = nft_data['is_suspicious']
 
             creator_address = nft_data['creator']
+            creator_address_short = creator_address[:7]
             creator_os_url = f'https://www.opensea.io/{creator_address}'
+
             owners = nft_data['owners']
             owner_text = ''
             if owners == None:
@@ -147,7 +149,7 @@ class opensea_nft(commands.Cog):
                 owner_address_short = owner['address'][:7]
                 owner_exp_url = f'{exp_address_url}{owner_address}'
                 owner_os_url = f'https://www.opensea.io/{owner_address}'
-                owner_text = f'{owner_address_short}\n[exp]({owner_exp_url})｜[os]({
+                owner_text = f'{owner_address_short}\n[Exp]({owner_exp_url})｜[OpenSea]({
                     owner_os_url})'
             elif len(owners) <= 5:
                 for owner in owners:
@@ -155,7 +157,7 @@ class opensea_nft(commands.Cog):
                     owner_address_short = owner['address'][:7]
                     owner_exp_url = f'{exp_address_url}{owner_address}'
                     owner_os_url = f'https://www.opensea.io/{owner_address}'
-                    owner_text += f'{owner_address_short} [exp]({owner_exp_url})｜[os]({
+                    owner_text += f'{owner_address_short} [Exp]({owner_exp_url})｜[OpenSea]({
                         owner_os_url})\n'
             else:
                 owner_text = f'({len(owners)} owners)'
@@ -178,6 +180,11 @@ class opensea_nft(commands.Cog):
             embed.add_field(
                 name='Owner',
                 value=owner_text
+            )
+            embed.add_field(
+                name='Creator',
+                value=f'{creator_address_short}\n[Exp]({exp_address_url}{
+                    creator_address})｜[OpenSea]({creator_os_url})'
             )
 
             await ctx.respond(embed=embed)
