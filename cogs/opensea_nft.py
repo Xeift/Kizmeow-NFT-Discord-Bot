@@ -186,7 +186,16 @@ class opensea_nft(commands.Cog):
                 value=f'{creator_address_short}\n[Exp]({exp_address_url}{
                     creator_address})｜[OpenSea]({creator_os_url})'
             )
+            if rarity_rk != 0:
+                embed.add_field(
+                    name='Rarity Rank',
+                    value=rarity_rk
+                )
 
+            embed.add_field(
+                name='Last Update Time',
+                value=f'<t:{last_update_time}:D>'
+            )
             await ctx.respond(embed=embed)
 
 
