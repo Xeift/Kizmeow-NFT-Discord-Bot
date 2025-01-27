@@ -24,10 +24,11 @@
 		"chain_name": "Avalanche",
 		"exp_name": "Snowtrace",
 		"exp_address_url": "https://snowtrace.io/address/",
-		"exp_token_url": "https://snowtrace.io/address/",
+		"exp_token_url": "https://snowtrace.io/token/",
 		"exp_emoji": 1326757724410871818,
 		"ticker": "AVAX",
 		"token_standards": {
+			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		}
 	},
