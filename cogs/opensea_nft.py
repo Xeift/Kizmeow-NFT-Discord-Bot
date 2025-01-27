@@ -125,7 +125,11 @@ class opensea_nft(commands.Cog):
             identifier = nft_data['identifier']
             if len(identifier) > 7:
                 identifier = identifier[:7]
-            nft_name = f'{collection}#{identifier}'
+
+            nft_name = nft_data['name']
+            if nft_name == None:
+                nft_name = f'{collection}#{identifier}'
+
             display_img_url = nft_data['display_image_url']
 
             opensea_url = nft_data['opensea_url']
