@@ -102,8 +102,8 @@ class opensea_nft(commands.Cog):
         view = View()
 
         if success:
-            (chain_name, _, exp_address_url,
-             exp_token_url, _, _, token_standards) = get_info_by_code(chain)
+            (chain_name, exp_name, exp_address_url,
+             exp_token_url, exp_emoji, _, token_standards) = get_info_by_code(chain)
 
             with open('collection_name_data.json', 'r', encoding='utf-8') as of:
                 collection_name_data = json.load(of)
@@ -125,15 +125,50 @@ class opensea_nft(commands.Cog):
             identifier = nft_data['identifier']
             nft_name = f'{collection}#{identifier}'
             display_img_url = nft_data['display_image_url']
-            original_img_url = nft_data['image_url']
-            metadata_url = nft_data['metadata_url']
+
             opensea_url = nft_data['opensea_url']
+            opensea_button = Button(
+                label='OpenSea',
+                style=ButtonStyle.link,
+                url=opensea_url,
+                emoji=PartialEmoji(name='opensea_icon',
+                                   id=1326452492644515963)
+            )
+            view.add_item(opensea_button)
+
+            exp_button = Button(
+                label=exp_name,
+                style=ButtonStyle.link,
+                url=f'{exp_token_url}{address}',
+                emoji=PartialEmoji(name=f'{exp_token_url.lower()}_logo',
+                                   id=exp_emoji),
+            )
+            view.add_item(exp_button)
+
+            original_img_url = nft_data['image_url']
+            download_img_button = Button(
+                label='Download Full Resolution Image',
+                style=ButtonStyle.link,
+                url=original_img_url,
+                emoji='🖼️'
+            )
+            view.add_item(download_img_button)
+
+            metadata_url = nft_data['metadata_url']
+            metadata_button = Button(
+                label='View NFT Metadata',
+                style=ButtonStyle.link,
+                url=metadata_url,
+                emoji='💾'
+            )
+            view.add_item(metadata_button)
+
             last_update_time = datetime_to_timestamp(
                 nft_data['updated_at'])
 
-            is_disabled = nft_data['is_disabled']
-            is_nsfw = nft_data['is_nsfw']
-            is_suspicious = nft_data['is_suspicious']
+            # is_disabled = nft_data['is_disabled']
+            # is_nsfw = nft_data['is_nsfw']
+            # is_suspicious = nft_data['is_suspicious']
 
             creator_address = nft_data['creator']
             creator_address_short = creator_address[:7]
@@ -196,7 +231,7 @@ class opensea_nft(commands.Cog):
                 name='Last Update Time',
                 value=f'<t:{last_update_time}:D>'
             )
-            await ctx.respond(embed=embed)
+            await ctx.respond(embed=embed, view=view)
 
 
 def setup(bot):
