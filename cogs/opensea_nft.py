@@ -62,6 +62,12 @@ class opensea_nft(commands.Cog):
             'Select the collection. [Quick Select]',
             autocomplete=basic_autocomplete(collection_name_data)
         ),
+        token_id: Option(
+            str,
+            'The token id of the NFT',
+            required=False,
+            autocomplete=basic_autocomplete(token_id_autocomplete)
+        ),
         chain: Option(
             str,
             'The chain of the NFT',
@@ -74,12 +80,7 @@ class opensea_nft(commands.Cog):
             required=False,
             autocomplete=basic_autocomplete(address_autocomplete)
         ),
-        token_id: Option(
-            str,
-            'The token id of the NFT',
-            required=False,
-            autocomplete=basic_autocomplete(token_id_autocomplete)
-        )
+
     ):
 
         await ctx.defer()
