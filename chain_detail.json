@@ -57,5 +57,17 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		}
+	},
+	"blast": {
+		"chain_name": "Blast",
+		"exp_name": "Blastscan",
+		"exp_address_url": "https://blastscan.io/address/",
+		"exp_token_url": "https://blastscan.io/token/",
+		"exp_emoji": 1333825810536206347,
+		"ticker": "ETH",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	}
 }

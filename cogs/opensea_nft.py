@@ -111,6 +111,7 @@ class opensea_nft(commands.Cog):
             contract = nft_data['contract']
             contract_address_short = contract[:7]
             contract_exp_url = f'{exp_token_url}{contract}'
+
             token_standard = nft_data['token_standard']
             for ts in token_standards:
                 if token_standard == ts:
