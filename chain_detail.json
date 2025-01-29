@@ -93,5 +93,17 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		}
+	},
+	"sei": {
+		"chain_name": "Sei",
+		"exp_name": "Seitrace",
+		"exp_address_url": "https://seitrace.com/address/",
+		"exp_token_url": "https://seitrace.com/token/",
+		"exp_emoji": 1334072628771553310,
+		"ticker": "SEI",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	}
 }
