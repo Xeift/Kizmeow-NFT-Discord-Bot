@@ -253,7 +253,7 @@ class opensea_nft(commands.Cog):
             embed.title = '[Failed]'
             embed.description = f'Command execution failed. Reason:\n```{
                 nft_data}```'
-        await ctx.respond(embed=embed, view=view)
+            await ctx.respond(embed=embed, view=view)
 
 
 def setup(bot):

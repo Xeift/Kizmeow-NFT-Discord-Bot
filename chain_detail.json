@@ -105,5 +105,17 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		}
+	},
+	"zora": {
+		"chain_name": "Zora",
+		"exp_name": "zora.energy",
+		"exp_address_url": "https://explorer.zora.energy/address/",
+		"exp_token_url": "https://explorer.zora.energy/token/",
+		"exp_emoji": 1334081148669657108,
+		"ticker": "ETH",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	}
 }
