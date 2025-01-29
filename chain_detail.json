@@ -81,5 +81,17 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		}
+	},
+	"matic": {
+		"chain_name": "Polygon",
+		"exp_name": "Polygonscan",
+		"exp_address_url": "https://polygonscan.com/address/",
+		"exp_token_url": "https://polygonscan.com/token/",
+		"exp_emoji": 1334068455837532212,
+		"ticker": "ETH",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	}
 }
