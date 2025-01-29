@@ -248,6 +248,22 @@ class opensea_nft(commands.Cog):
                 name='Last Update Time',
                 value=f'<t:{last_update_time}:D>'
             )
+
+            embed.add_field(
+                name='════════════    Traits    ════════════',
+                value='',
+                inline=False
+            )
+            traits = nft_data['traits']
+            if traits != None:
+                for trait in traits:
+                    type = trait['trait_type']
+                    value = trait['value']
+
+                    embed.add_field(
+                        name=type,
+                        value=value if value != None else ''
+                    )
         else:
             embed.title = '[Failed]'
             embed.description = f'Command execution failed. Reason:\n```{
