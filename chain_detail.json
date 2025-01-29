@@ -69,5 +69,17 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		}
+	},
+	"klaytn": {
+		"chain_name": "Klaytn",
+		"exp_name": "Kaiascope",
+		"exp_address_url": "https://kaiascope.com/account/",
+		"exp_token_url": "https://kaiascope.com/nft/",
+		"exp_emoji": 1334016589439307836,
+		"ticker": "KLAY",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	}
 }

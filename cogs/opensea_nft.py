@@ -179,8 +179,9 @@ class opensea_nft(commands.Cog):
             # is_suspicious = nft_data['is_suspicious']
 
             creator_address = nft_data['creator']
-            creator_address_short = creator_address[:7]
-            creator_os_url = f'https://www.opensea.io/{creator_address}'
+            if creator_address != None:
+                creator_address_short = creator_address[:7]
+                creator_os_url = f'https://www.opensea.io/{creator_address}'
 
             owners = nft_data['owners']
             owner_text = ''
@@ -217,17 +218,18 @@ class opensea_nft(commands.Cog):
             )
             embed.add_field(
                 name='Contract Address',
-                value=f'[{contract_address_short}]({contract_exp_url})'
+                value=f'[{contract_address_short}]({contract_exp_url})',
             )
             embed.add_field(
                 name='Owner',
                 value=owner_text
             )
-            embed.add_field(
-                name='Creator',
-                value=f'{creator_address_short}\n[Exp]({exp_address_url}{
-                    creator_address})｜[OpenSea]({creator_os_url})'
-            )
+            if creator_address != None:
+                embed.add_field(
+                    name='Creator',
+                    value=f'{creator_address_short}\n[Exp]({exp_address_url}{
+                        creator_address})｜[OpenSea]({creator_os_url})'
+                )
             embed.add_field(
                 name='Chain',
                 value=chain_name
