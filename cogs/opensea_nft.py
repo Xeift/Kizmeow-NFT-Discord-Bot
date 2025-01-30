@@ -83,7 +83,11 @@ class opensea_nft(commands.Cog):
 
     ):
 
-        await ctx.defer()
+        # await ctx.defer()
+
+        mid = str(ctx.author.id)
+        (enable_link_button, _, visibility) = load_config_from_json(mid)
+        disable_link_button = not enable_link_button
 
         with open('collection_name_data.json', 'r') as of:
             collection_name_data = json.load(of)
@@ -140,7 +144,8 @@ class opensea_nft(commands.Cog):
                 style=ButtonStyle.link,
                 url=opensea_url,
                 emoji=PartialEmoji(name='opensea_icon',
-                                   id=1326452492644515963)
+                                   id=1326452492644515963),
+                disabled=disable_link_button
             )
             view.add_item(opensea_button)
 
@@ -150,6 +155,7 @@ class opensea_nft(commands.Cog):
                 url=f'{exp_token_url}{address}',
                 emoji=PartialEmoji(name=f'{exp_token_url.lower()}_logo',
                                    id=exp_emoji),
+                disabled=disable_link_button
             )
             view.add_item(exp_button)
 
@@ -158,7 +164,8 @@ class opensea_nft(commands.Cog):
                 label='Download Full Resolution Image',
                 style=ButtonStyle.link,
                 url=original_img_url,
-                emoji='🖼️'
+                emoji='🖼️',
+                disabled=disable_link_button
             )
             view.add_item(download_img_button)
 
@@ -167,7 +174,8 @@ class opensea_nft(commands.Cog):
                 label='View NFT Metadata',
                 style=ButtonStyle.link,
                 url=metadata_url,
-                emoji='💾'
+                emoji='💾',
+                disabled=disable_link_button
             )
             view.add_item(metadata_button)
 
@@ -269,7 +277,7 @@ class opensea_nft(commands.Cog):
             embed.description = f'Command execution failed. Reason:\n```{
                 nft_data}```'
 
-        await ctx.respond(embed=embed, view=view)
+        await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
 
 
 def setup(bot):
