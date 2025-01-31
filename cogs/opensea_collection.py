@@ -10,7 +10,7 @@ from discord.utils import basic_autocomplete
 from api.get_os_collection import get_os_collection
 from api.get_os_collection_statistics import get_os_collection_statistics
 from utils.chain import get_info_by_code
-from utils.load_config import load_config_from_json
+from utils.load_config import load_config_from_json, update_config_to_json
 
 
 class opensea_collection(commands.Cog):
@@ -50,7 +50,13 @@ class opensea_collection(commands.Cog):
             collection = collection_name_data[collection]['slug']
 
         mid = str(ctx.author.id)
-        (enable_link_button, _, visibility, _, _) = load_config_from_json(mid)
+        (
+            enable_link_button,
+            _,
+            visibility,
+            favorite_collections,
+            _
+        ) = load_config_from_json(mid)
         disable_link_button = not enable_link_button
         (success, collection_data) = get_os_collection(collection)
 
@@ -297,6 +303,48 @@ class opensea_collection(commands.Cog):
                     ),
                     inline=True
                 )
+
+                fav_collection_button = Button(
+                    style=ButtonStyle.primary,
+                )
+                if collection_name in favorite_collections:
+                    fav_collection_button.label = 'Remove from favorite'
+                    fav_collection_button.emoji = '🖤'
+                    add_to_favorite = False
+                else:
+                    fav_collection_button.label = 'Add to favorite'
+                    fav_collection_button.emoji = '❤️'
+                    add_to_favorite = True
+
+                async def fav_collection_button_callback(interaction):
+                    if ctx.author != interaction.user:
+                        return
+
+                    embed = Embed(color=0xFFA46E)
+                    if add_to_favorite:
+                        favorite_collections[collection_name] = {
+                            'slug': collection
+                        }
+                        update_config_to_json(
+                            uid=str(interaction.user.id),
+                            favorite_collections=favorite_collections
+                        )
+                        embed.title = 'Collection added'
+                        embed.description = f'The collection `{
+                            collection_name}` has added to your favorite collection.'
+                    else:
+                        del favorite_collections[collection_name]
+                        update_config_to_json(
+                            uid=str(interaction.user.id),
+                            favorite_collections=favorite_collections
+                        )
+                        embed.title = 'Collection removed'
+                        embed.description = f'The collection `{
+                            collection_name}` has removed from your favorite collection.'
+                    await interaction.response.send_message(embed=embed, ephemeral=not visibility)
+
+                fav_collection_button.callback = fav_collection_button_callback
+                view.add_item(fav_collection_button)
 
         else:
             embed.title = '[Failed]'

@@ -21,8 +21,20 @@
         "language": "en-US",
         "visibility": true,
         "favorite_collections": {
-            "CryptoPunks": {
-                "slug": "cryptopunks"
+            "Bored Ape Yacht Club": {
+                "slug": "boredapeyachtclub"
+            },
+            "Art Blocks": {
+                "slug": "artblocks"
+            },
+            "World of Women": {
+                "slug": "worldofwomen"
+            },
+            "Doodles": {
+                "slug": "doodles"
+            },
+            "Axie Infinity": {
+                "slug": "axieinfinity"
             }
         },
         "favorite_nfts": {
