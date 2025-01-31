@@ -35,6 +35,54 @@
             },
             "Axie Infinity": {
                 "slug": "axieinfinity"
+            },
+            "CryptoPunks": {
+                "slug": "cryptopunks"
+            },
+            "Cool Cats": {
+                "slug": "coolcats"
+            },
+            "Mutant Ape Yacht Club": {
+                "slug": "mutantapeyachtclub"
+            },
+            "VeeFriends": {
+                "slug": "veefriends"
+            },
+            "Clone X": {
+                "slug": "clonex"
+            },
+            "Pudgy Penguins": {
+                "slug": "pudgypenguins"
+            },
+            "Meebits": {
+                "slug": "meebits"
+            },
+            "Azuki": {
+                "slug": "azuki"
+            },
+            "Moonbirds": {
+                "slug": "moonbirds"
+            },
+            "Invisible Friends": {
+                "slug": "invisiblefriends"
+            },
+            "Goblintown": {
+                "slug": "goblintown"
+            },
+            "Hashmasks": {
+                "slug": "hashmasks"
+            },
+            "Loot (for Adventurers)": {
+                "slug": "loot"
+            },
+            "Deadfellaz": {
+                "slug": "deadfellaz"
+            },
+            "ON1 Force": {
+                "slug": "on1force"
+            },
+            "The Sandbox": {
+                "slug": "thesandbox"
             }
         },
         "favorite_nfts": {

@@ -12,6 +12,7 @@ from api.get_os_collection import get_os_collection
 from api.get_os_collection_statistics import get_os_collection_statistics
 from utils.chain import get_info_by_code
 from utils.load_config import load_config_from_json, update_config_to_json
+from utils.err_embed import general_err_embed
 
 
 class opensea_collection(commands.Cog):
@@ -343,16 +344,20 @@ class opensea_collection(commands.Cog):
 
                     embed = Embed(color=0xFFA46E)
                     if add_to_favorite:
-                        favorite_collections[collection_name] = {
-                            'slug': collection
-                        }
-                        update_config_to_json(
-                            uid=str(interaction.user.id),
-                            favorite_collections=favorite_collections
-                        )
-                        embed.title = 'Collection added'
-                        embed.description = f'The collection `{
-                            collection_name}` has added to your favorite collection.'
+                        if len(favorite_collections) >= 20:
+                            embed = general_err_embed(
+                                'You can only have 20 favorite collection slots.')
+                        else:
+                            favorite_collections[collection_name] = {
+                                'slug': collection
+                            }
+                            update_config_to_json(
+                                uid=str(interaction.user.id),
+                                favorite_collections=favorite_collections
+                            )
+                            embed.title = 'Collection added'
+                            embed.description = f'The collection `{
+                                collection_name}` has added to your favorite collection.'
                     else:
                         del favorite_collections[collection_name]
                         update_config_to_json(
