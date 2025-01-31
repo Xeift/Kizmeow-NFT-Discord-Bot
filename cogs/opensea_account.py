@@ -32,7 +32,7 @@ class opensea_account(commands.Cog):
             str, 'EVM address(ENS supported) or username on OpenSea')
     ):
         mid = str(ctx.author.id)
-        (enable_link_button, _, visibility) = load_config_from_json(mid)
+        (enable_link_button, _, visibility, _, _) = load_config_from_json(mid)
         disable_link_button = not enable_link_button
         (success, account_data) = get_os_account(address_or_username)
         embed = Embed(color=0xFFA46E)

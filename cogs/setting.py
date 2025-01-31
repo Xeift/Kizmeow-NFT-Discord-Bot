@@ -16,7 +16,13 @@ class SettingPanel(commands.Cog):
     async def panel(self, ctx: discord.ApplicationContext):
 
         mid = ctx.author.id
-        (user_button, user_language, user_visibility) = load_config_from_json(str(mid))
+        (
+            user_button,
+            user_language,
+            user_visibility,
+            favorite_collections,
+            favorite_nfts
+        ) = load_config_from_json(str(mid))
 
         # ---------- user_button_select  ----------
         user_button_select = Select(

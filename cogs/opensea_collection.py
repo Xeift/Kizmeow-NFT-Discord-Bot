@@ -50,7 +50,7 @@ class opensea_collection(commands.Cog):
             collection = collection_name_data[collection]['slug']
 
         mid = str(ctx.author.id)
-        (enable_link_button, _, visibility) = load_config_from_json(mid)
+        (enable_link_button, _, visibility, _, _) = load_config_from_json(mid)
         disable_link_button = not enable_link_button
         (success, collection_data) = get_os_collection(collection)
 
@@ -176,7 +176,7 @@ class opensea_collection(commands.Cog):
                     chain = ca['chain']
                     address = ca['address']
                     (chain_name, exp_name, exp_address_url, exp_token_url, exp_emoji,
-                     ticker) = get_info_by_code(chain)
+                     ticker, _) = get_info_by_code(chain)
 
                     exp_button = Button(
                         label=exp_name,
