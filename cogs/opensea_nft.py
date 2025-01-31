@@ -98,7 +98,7 @@ class opensea_nft(commands.Cog):
             chain = collection_name_data[quick_select]['chain']
             address = collection_name_data[quick_select]['address']
 
-        elif quick_select.startswith('[❤️]'):  # (None)
+        elif quick_select.startswith('[💗] '):  # (None)
             # TODO: add favorite NFT, favorite token
             print('read chain, address, token_id in setting')
 

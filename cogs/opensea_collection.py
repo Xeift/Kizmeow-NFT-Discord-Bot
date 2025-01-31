@@ -1,3 +1,4 @@
+import re
 import json
 
 from discord import (ApplicationContext, AutocompleteContext, ButtonStyle,
@@ -57,11 +58,6 @@ class opensea_collection(commands.Cog):
             autocomplete=basic_autocomplete(collection_name_data)
         )
     ):
-        with open('collection_name_data.json', 'r') as of:
-            collection_name_data = json.load(of)
-        if collection in collection_name_data:
-            collection = collection_name_data[collection]['slug']
-
         mid = str(ctx.author.id)
         (
             enable_link_button,
@@ -70,6 +66,18 @@ class opensea_collection(commands.Cog):
             favorite_collections,
             _
         ) = load_config_from_json(mid)
+        with open('collection_name_data.json', 'r') as of:
+            collection_name_data = json.load(of)
+        if collection in collection_name_data:
+            collection = collection_name_data[collection]['slug']
+        elif collection.startswith('[💗] '):
+            collection = re.sub(
+                r'^\[💗\] ',
+                '',
+                collection
+            )
+            collection = favorite_collections[collection]['slug']
+
         disable_link_button = not enable_link_button
         (success, collection_data) = get_os_collection(collection)
 
