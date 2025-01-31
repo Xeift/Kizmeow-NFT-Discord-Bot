@@ -17,10 +17,23 @@ class opensea_collection(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    def collection_name_data(self: AutocompleteContext):
+    def collection_name_data(ctx):
+        (
+            _,
+            _,
+            _,
+            favorite_collections,
+            _
+        ) = load_config_from_json(str(ctx.interaction.user.id))
+        favorite_collections_prefix = []
+        for favorite_collection in favorite_collections:
+            favorite_collections_prefix.append(f'[💗] {favorite_collection}')
         with open('collection_name_data.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
-        return collection_name_data.keys()
+
+        final_collection_name_data = favorite_collections_prefix + \
+            list(collection_name_data.keys())
+        return final_collection_name_data
 
     @commands.slash_command(
         name='opensea_collection',
