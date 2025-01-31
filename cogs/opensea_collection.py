@@ -357,7 +357,7 @@ class opensea_collection(commands.Cog):
                             )
                             embed.title = 'Collection added'
                             embed.description = f'The collection `{
-                                collection_name}` has added to your favorite collection.'
+                                collection_name}` has added to your favorite collections.'
                     else:
                         del favorite_collections[collection_name]
                         update_config_to_json(
@@ -366,7 +366,7 @@ class opensea_collection(commands.Cog):
                         )
                         embed.title = 'Collection removed'
                         embed.description = f'The collection `{
-                            collection_name}` has removed from your favorite collection.'
+                            collection_name}` has removed from your favorite collections.'
                     await interaction.response.send_message(embed=embed, ephemeral=not visibility)
 
                 fav_collection_button.callback = fav_collection_button_callback
