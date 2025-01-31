@@ -10,6 +10,7 @@ from discord.utils import basic_autocomplete
 from api.get_os_nft import get_os_nft
 from utils.chain import get_code_by_name, get_info_by_code
 from utils.datetime_to_timestamp import datetime_to_timestamp
+from utils.err_embed import general_err_embed, missing_param_embed
 from utils.load_config import load_config_from_json
 
 
@@ -92,15 +93,37 @@ class opensea_nft(commands.Cog):
         with open('collection_name_data.json', 'r') as of:
             collection_name_data = json.load(of)
 
-        if quick_select in collection_name_data:
+        if quick_select in collection_name_data:  # token_id
+            if token_id == None:
+                await ctx.respond(embed=missing_param_embed('token_id'), ephemeral=not visibility)
+                return
+
             chain = collection_name_data[quick_select]['chain']
             address = collection_name_data[quick_select]['address']
 
-        elif quick_select.startswith('[❤️]'):
+        elif quick_select.startswith('[❤️]'):  # (None)
             # TODO: add favorite NFT, favorite token
             print('read chain, address, token_id in setting')
-        else:
+
+        # token_id, chain, address
+        elif quick_select == '[Manually enter contract address]':
+            if token_id == None:
+                await ctx.respond(embed=missing_param_embed('token_id'), ephemeral=not visibility)
+                return
+            elif chain == None:
+                await ctx.respond(embed=missing_param_embed('chain'), ephemeral=not visibility)
+                return
+            if address == None:
+                await ctx.respond(embed=missing_param_embed('address'), ephemeral=not visibility)
+                return
+
             chain = get_code_by_name(chain)
+            print('Manually enter contract address')
+
+        else:  # ignore
+            reason = 'Wrong input. Please check the input of <quick_select>. If you wish to enter the collection info manually, select [Manually enter contract address]'
+            await ctx.respond(embed=general_err_embed(reason), ephemeral=not visibility)
+            return
 
         (success, nft_data) = get_os_nft(chain, address, token_id)
         embed = Embed(color=0xFFA46E)

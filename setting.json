@@ -5,8 +5,8 @@
         "visibility": false
     },
     "874806243208871977": {
-        "button": false,
+        "button": true,
         "language": "en-US",
-        "visibility": false
+        "visibility": true
     }
 }
