@@ -44,8 +44,6 @@ class opensea_collection(commands.Cog):
             autocomplete=basic_autocomplete(collection_name_data)
         )
     ):
-        # await ctx.defer()
-
         with open('collection_name_data.json', 'r') as of:
             collection_name_data = json.load(of)
         if collection in collection_name_data:

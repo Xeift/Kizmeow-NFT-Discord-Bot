@@ -83,9 +83,6 @@ class opensea_nft(commands.Cog):
         ),
 
     ):
-
-        # await ctx.defer()
-
         mid = str(ctx.author.id)
         (enable_link_button, _, visibility) = load_config_from_json(mid)
         disable_link_button = not enable_link_button
