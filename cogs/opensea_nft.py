@@ -1,4 +1,5 @@
 import json
+import re
 
 from discord import (ApplicationContext, AutocompleteContext, ButtonStyle,
                      Embed, IntegrationType, InteractionContextType, Option,
@@ -95,7 +96,13 @@ class opensea_nft(commands.Cog):
 
     ):
         mid = str(ctx.author.id)
-        (enable_link_button, _, visibility, _, _) = load_config_from_json(mid)
+        (
+            enable_link_button,
+            _,
+            visibility,
+            _,
+            favorite_nfts
+        ) = load_config_from_json(mid)
         disable_link_button = not enable_link_button
 
         with open('collection_name_data.json', 'r') as of:
@@ -110,8 +117,15 @@ class opensea_nft(commands.Cog):
             address = collection_name_data[quick_select]['address']
 
         elif quick_select.startswith('[💗] '):  # (None)
-            # TODO: add favorite NFT, favorite token
-            print('read chain, address, token_id in setting')
+            quick_select = re.sub(
+                r'^\[💗\] ',
+                '',
+                quick_select
+            )
+            chain = favorite_nfts[quick_select]['chain']
+            address = favorite_nfts[quick_select]['address']
+            token_id = favorite_nfts[quick_select]['token_id']
+            
 
         # token_id, chain, address
         elif quick_select == '[Manually enter contract address]':
