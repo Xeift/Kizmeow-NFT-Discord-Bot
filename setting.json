@@ -75,18 +75,23 @@
             "ON1 Force": {
                 "slug": "on1force"
             },
-            "The Sandbox": {
-                "slug": "thesandbox"
-            },
             "Demi-Human NFT": {
                 "slug": "demihuman"
+            },
+            "MEGAMI_NFT": {
+                "slug": "megaminft"
             }
         },
         "favorite_nfts": {
-            "Azuki#1234": {
+            "Azuki #1234": {
                 "chain": "ethereum",
                 "address": "0xed5af388653567af2f388e6224dc7c4b3241c544",
                 "token_id": 1234
+            },
+            "Megami #09853": {
+                "chain": "ethereum",
+                "address": "0xce6e3a14b5f8ce2b05af0f117dc922769779aa3b",
+                "token_id": "9853"
             }
         }
     }
