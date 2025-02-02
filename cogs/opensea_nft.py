@@ -18,10 +18,21 @@ class opensea_nft(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    def collection_name_data(self: AutocompleteContext):
+    def collection_name_data(ctx):
+        (
+            _,
+            _,
+            _,
+            _,
+            favorite_nfts
+        ) = load_config_from_json(str(ctx.interaction.user.id))
+        favorite_nfts_prefix = []
+        for favorite_nft in favorite_nfts:
+            favorite_nfts_prefix.append(f'[💗] {favorite_nft}')
+
         with open('collection_name_data.json', 'r', encoding='utf-8') as of:
             collection_name_data = json.load(of)
-        return ['[Manually enter contract address]'] + list(collection_name_data.keys())
+        return favorite_nfts_prefix + ['[Manually enter contract address]'] + list(collection_name_data.keys())
 
     def chain_autocomplete(ctx):
         quick_select = ctx.options.get('quick_select')
