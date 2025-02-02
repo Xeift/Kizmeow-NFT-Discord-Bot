@@ -21,60 +21,6 @@
         "language": "en-US",
         "visibility": true,
         "favorite_collections": {
-            "Art Blocks": {
-                "slug": "artblocks"
-            },
-            "World of Women": {
-                "slug": "worldofwomen"
-            },
-            "Doodles": {
-                "slug": "doodles"
-            },
-            "Axie Infinity": {
-                "slug": "axieinfinity"
-            },
-            "CryptoPunks": {
-                "slug": "cryptopunks"
-            },
-            "Cool Cats": {
-                "slug": "coolcats"
-            },
-            "Mutant Ape Yacht Club": {
-                "slug": "mutantapeyachtclub"
-            },
-            "VeeFriends": {
-                "slug": "veefriends"
-            },
-            "Clone X": {
-                "slug": "clonex"
-            },
-            "Meebits": {
-                "slug": "meebits"
-            },
-            "Azuki": {
-                "slug": "azuki"
-            },
-            "Moonbirds": {
-                "slug": "moonbirds"
-            },
-            "Invisible Friends": {
-                "slug": "invisiblefriends"
-            },
-            "Goblintown": {
-                "slug": "goblintown"
-            },
-            "Hashmasks": {
-                "slug": "hashmasks"
-            },
-            "Loot (for Adventurers)": {
-                "slug": "loot"
-            },
-            "Deadfellaz": {
-                "slug": "deadfellaz"
-            },
-            "ON1 Force": {
-                "slug": "on1force"
-            },
             "Demi-Human NFT": {
                 "slug": "demihuman"
             },
