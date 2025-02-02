@@ -26,6 +26,9 @@
             },
             "MEGAMI_NFT": {
                 "slug": "megaminft"
+            },
+            "IROIRO": {
+                "slug": "iroiro"
             }
         },
         "favorite_nfts": {

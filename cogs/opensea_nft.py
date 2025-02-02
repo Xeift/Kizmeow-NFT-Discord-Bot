@@ -139,7 +139,6 @@ class opensea_nft(commands.Cog):
                 return
 
             chain = get_code_by_name(chain)
-            print('Manually enter contract address')
 
         else:  # ignore
             reason = 'Wrong input. Please check the input of <quick_select>. If you wish to enter the collection info manually, select [Manually enter contract address]'
