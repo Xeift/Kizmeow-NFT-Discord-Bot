@@ -24,6 +24,11 @@
     	"chain": "ethereum",
     	"address": "0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258"
     },
+    "Pudgy Penguins": {
+    	"slug": "pudgypenguins",
+    	"chain": "ethereum",
+    	"address": "0xbd3531da5cf5857e7cfaa92426877b022e612cf8"
+    },
     "CLONE X - X TAKASHI MURAKAMI": {
     	"slug": "clonex",
     	"chain": "ethereum",
