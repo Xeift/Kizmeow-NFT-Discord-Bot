@@ -18,6 +18,7 @@ if __name__ == '__main__':
         'cogs.opensea_account',
         'cogs.opensea_collection',
     	'cogs.opensea_nft',
+    	'cogs.gas'
     ]
     for extension in extensions:
         bot.load_extension(extension)

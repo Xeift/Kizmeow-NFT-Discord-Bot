@@ -4,13 +4,13 @@ from discord import (ApplicationContext, Embed, IntegrationType,
 from discord.ext import commands
 
 
-class ping(commands.Cog):
+class gas(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.slash_command(
-        name='ping',
-        description='Check bot latency',
+        name='gas',
+        description='Check current gas price',
         integration_types=[
             IntegrationType.user_install,
             IntegrationType.guild_install,
@@ -21,7 +21,7 @@ class ping(commands.Cog):
             InteractionContextType.private_channel,
         ],
     )
-    async def ping(
+    async def gas(
         self,
         ctx: ApplicationContext
     ):
@@ -35,4 +35,4 @@ class ping(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(ping(bot))
+    bot.add_cog(gas(bot))
