@@ -95,6 +95,8 @@ class SettingPanel(commands.Cog):
         # ---------- user_visibility_select  ----------
 
         # TODO: language
+        # TODO: custom IPFS gsteway(select)
+        # TODO: custom block exp(select)
 
         embed = Embed(
             title='User setting',
