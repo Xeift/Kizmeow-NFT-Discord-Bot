@@ -38,5 +38,10 @@
     	"slug": "proof-moonbirds",
     	"chain": "ethereum",
     	"address": "0x23581767a106ae21c074b2276d25e5c3e136a68b"
+    },
+    "Wrapped Cryptopunks": {
+    	"slug": "wrapped-cryptopunks",
+    	"chain": "ethereum",
+    	"address": "0xb7f7f6c52f2e2fdb1963eab30438024864c313f6"
     }
 }
