@@ -33,5 +33,10 @@
     	"slug": "clonex",
     	"chain": "ethereum",
     	"address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b"
+    },
+    "Moonbirds": {
+    	"slug": "proof-moonbirds",
+    	"chain": "ethereum",
+    	"address": "0x23581767a106ae21c074b2276d25e5c3e136a68b"
     }
 }
