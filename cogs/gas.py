@@ -1,6 +1,6 @@
 
 from discord import (ApplicationContext, Embed, IntegrationType,
-                     InteractionContextType)
+                     InteractionContextType, Option, OptionChoice)
 from discord.ext import commands
 
 
@@ -23,7 +23,15 @@ class gas(commands.Cog):
     )
     async def gas(
         self,
-        ctx: ApplicationContext
+        ctx: ApplicationContext,
+        choices: Option(
+            'str',
+            'Select source',
+            choices=[
+                OptionChoice(name='test', value='v')
+            ]
+        )
+        
     ):
         latency = self.bot.latency
         embed = Embed(
