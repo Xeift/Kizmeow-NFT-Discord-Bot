@@ -43,5 +43,10 @@
     	"slug": "wrapped-cryptopunks",
     	"chain": "ethereum",
     	"address": "0xb7f7f6c52f2e2fdb1963eab30438024864c313f6"
+    },
+    "Doodles": {
+    	"slug": "doodles-official",
+    	"chain": "ethereum",
+    	"address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e"
     }
 }
