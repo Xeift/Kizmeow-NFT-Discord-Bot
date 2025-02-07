@@ -24,19 +24,20 @@ class gas(commands.Cog):
     async def gas(
         self,
         ctx: ApplicationContext,
-        choices: Option(
-            'str',
-            'Select source',
+        source: Option(
+            input_type='str',
+            description='Select source',
             choices=[
-                OptionChoice(name='test', value='v')
+                'Ethereum - Etherscan API',
+                'Ethereum - Blocknative API'
             ]
         )
         
     ):
         latency = self.bot.latency
         embed = Embed(
-            title='Bot Latency',
-            description=f'{latency * 1000:.2f} ms ({latency:.2f} s)',
+            title='source',
+            description=f'source is: {source}',
             color=0xFFA46E
         )
         await ctx.respond(embed=embed)
