@@ -26,7 +26,7 @@ class gas(commands.Cog):
         ctx: ApplicationContext,
         source: Option(
             input_type='str',
-            description='Select source',
+            description='Select chain and source',
             choices=[
                 'Ethereum - Etherscan API',
                 'Ethereum - Blocknative API'
@@ -34,7 +34,7 @@ class gas(commands.Cog):
         )
         
     ):
-        latency = self.bot.latency
+        
         embed = Embed(
             title='source',
             description=f'source is: {source}',
