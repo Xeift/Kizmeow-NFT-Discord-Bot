@@ -2,7 +2,7 @@
 from discord import (ApplicationContext, Embed, IntegrationType,
                      InteractionContextType, Option, OptionChoice)
 from discord.ext import commands
-
+from api.get_gas_etherscan import get_gas_etherscan
 
 class gas(commands.Cog):
     def __init__(self, bot):
@@ -34,12 +34,16 @@ class gas(commands.Cog):
         )
         
     ):
-        
-        embed = Embed(
-            title='source',
-            description=f'source is: {source}',
-            color=0xFFA46E
-        )
+        (success, gas_data) = get_gas_etherscan()
+
+        embed = Embed(color=0xFFA46E)
+        if success:
+            embed.title = f'Source is {source}'
+            embed.description = f'{gas_data}'
+        else:
+            embed.title = 'err'
+            embed.description = 'test2'
+            
         await ctx.respond(embed=embed)
 
 

@@ -33,4 +33,4 @@ def get_gas_etherscan():
 # --------------------     TEST        --------------------
 
 # valid requests
-print(get_gas_etherscan())
+# print(get_gas_etherscan())
