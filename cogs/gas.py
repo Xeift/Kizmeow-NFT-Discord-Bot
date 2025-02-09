@@ -48,7 +48,7 @@ class gas(commands.Cog):
             gasUsedRatio = gas_data['gasUsedRatio'].split(',')
             gasUsedRatioText = ''
             for gas in gasUsedRatio:
-                gasUsedRatioText += f'{float(gas):.2f} '
+                gasUsedRatioText += f'{float(gas) * 100:.2f}% '
   
 
             embed.title = f'{source}'
