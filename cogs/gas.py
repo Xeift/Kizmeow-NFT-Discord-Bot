@@ -45,10 +45,15 @@ class gas(commands.Cog):
             low = float(gas_data['SafeGasPrice'])
             medium = float(gas_data['ProposeGasPrice'])
             high = float(gas_data['FastGasPrice'])
-            gasUsedRatio = gas_data['gasUsedRatio']
+            gasUsedRatio = gas_data['gasUsedRatio'].split(',')
+            gasUsedRatioText = ''
+            for gas in gasUsedRatio:
+                gasUsedRatioText += f'{float(gas):.2f} '
+  
 
-            embed.title = f'{source} '
+            embed.title = f'{source}'
             embed.description = f'🚶{low:.2f}｜🚗{medium:.2f}｜🚀{high:.2f}'
+            embed.add_field(name='Last 5 block gas use ratio', value=gasUsedRatioText)
         else:
             embed=general_err_embed('Etherscan API is currently down. Please try again later.')
             
