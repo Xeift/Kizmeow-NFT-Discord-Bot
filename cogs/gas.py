@@ -1,8 +1,11 @@
 
 from discord import (ApplicationContext, Embed, IntegrationType,
-                     InteractionContextType, Option, OptionChoice)
+                     InteractionContextType, Option)
 from discord.ext import commands
+
 from api.get_gas_etherscan import get_gas_etherscan
+from utils.err_embed import general_err_embed
+
 
 class gas(commands.Cog):
     def __init__(self, bot):
@@ -29,7 +32,7 @@ class gas(commands.Cog):
             description='Select chain and source',
             choices=[
                 'Ethereum - Etherscan API',
-                'Ethereum - Blocknative API'
+                # 'Ethereum - Blocknative API'
             ]
         )
         
@@ -38,11 +41,16 @@ class gas(commands.Cog):
 
         embed = Embed(color=0xFFA46E)
         if success:
-            embed.title = f'Source is {source}'
-            embed.description = f'{gas_data}'
+            gas_data = gas_data['result']
+            low = float(gas_data['SafeGasPrice'])
+            medium = float(gas_data['ProposeGasPrice'])
+            high = float(gas_data['FastGasPrice'])
+            gasUsedRatio = gas_data['gasUsedRatio']
+
+            embed.title = f'{source} '
+            embed.description = f'🚶{low:.2f}｜🚗{medium:.2f}｜🚀{high:.2f}'
         else:
-            embed.title = 'err'
-            embed.description = 'test2'
+            embed=general_err_embed('Etherscan API is currently down. Please try again later.')
             
         await ctx.respond(embed=embed)
 
