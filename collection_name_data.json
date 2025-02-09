@@ -48,5 +48,10 @@
     	"slug": "doodles-official",
     	"chain": "ethereum",
     	"address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e"
+    },
+    "Bored Ape Kennel Club": {
+    	"slug": "bored-ape-kennel-club",
+    	"chain": "ethereum",
+    	"address": "0xba30e5f9bb24caa003e9f2f0497ad287fdf95623"
     }
 }
