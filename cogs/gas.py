@@ -2,10 +2,12 @@
 from discord import (ApplicationContext, Embed, IntegrationType,
                      InteractionContextType, Option)
 from discord.ext import commands
+from discord.ui import View
 
 from api.get_gas_etherscan import get_gas_etherscan
 from utils.err_embed import general_err_embed
 from utils.gas_tracker_embed import gas_etherscan_embed
+from view.gas_tracker_view import gas_etherscan_view
 
 
 class gas(commands.Cog):
@@ -40,15 +42,17 @@ class gas(commands.Cog):
     ):
         embed = Embed()
         file = None
+        view = View()
         
         if source == 'Ethereum - Etherscan API':
             (success, gas_data) = get_gas_etherscan()
             if success:
                 (embed, file) = gas_etherscan_embed(gas_data)
+                view = gas_etherscan_view()
             else:
                 embed=general_err_embed('Etherscan API is currently down. Please try again later.')
         
-        await ctx.respond(embed=embed, file=file)
+        await ctx.respond(embed=embed, view=view, file=file)
 
 
 def setup(bot):

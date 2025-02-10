@@ -28,4 +28,5 @@ def gas_etherscan_embed(gas_data):
     file = File('tmp/gas_etherscan_plot.png', filename='gas_etherscan_plot.png')
     embed.set_image(url='attachment://gas_etherscan_plot.png')
 
+
     return (embed, file)
