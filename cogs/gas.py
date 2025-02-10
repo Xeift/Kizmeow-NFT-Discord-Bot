@@ -48,7 +48,7 @@ class gas(commands.Cog):
             (success, gas_data) = get_gas_etherscan()
             if success:
                 (embed, file) = gas_etherscan_embed(gas_data)
-                view = gas_etherscan_view()
+                view = gas_etherscan_view(view)
                 # TODO: add favorite btn
             else:
                 embed=general_err_embed('Etherscan API is currently down. Please try again later.')

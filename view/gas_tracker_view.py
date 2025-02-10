@@ -1,9 +1,8 @@
 from discord import ButtonStyle, PartialEmoji
-from discord.ui import Button, View
+from discord.ui import Button
 
 
-def gas_etherscan_view():
-    view = View()
+def gas_etherscan_view(view):
     etherscan_button = Button(
         label='Etherscan Gas Tracker',
         style=ButtonStyle.link,
