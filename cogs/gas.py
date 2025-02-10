@@ -56,6 +56,8 @@ class gas(commands.Cog):
             embed.add_field(name='🚗', value=f'{medium:.2f} gwei')
             embed.add_field(name='🚀', value=f'{high:.2f} gwei')
             embed.add_field(name='Last 5 block gas use ratio', value=gasUsedRatioText)
+            
+        # TODO: add gas source footer
         else:
             embed=general_err_embed('Etherscan API is currently down. Please try again later.')
             

@@ -115,8 +115,7 @@ class opensea_collection(commands.Cog):
                 label='OpenSea',
                 style=ButtonStyle.link,
                 url=opensea_url,
-                emoji=PartialEmoji(name='opensea_icon',
-                                   id=1326452492644515963),
+                emoji=PartialEmoji(name='opensea_icon',id=1326452492644515963),
                 disabled=disable_link_button
             )
             if opensea_url != '':
