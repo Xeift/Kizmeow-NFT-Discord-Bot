@@ -8,18 +8,19 @@ def gas_etherscan_embed(gas_data):
     low = float(gas_data['SafeGasPrice'])
     medium = float(gas_data['ProposeGasPrice'])
     high = float(gas_data['FastGasPrice'])
+    suggested = float(gas_data['suggestBaseFee'])
     last_block = int(gas_data['LastBlock'])
     last_five_blocks = [last_block - i for i in range(4, -1, -1)]
 
     gas_used_ratio = gas_data['gasUsedRatio'].split(',')
-    gas_used_ratio = [round(float(gur), 2) for gur in gas_used_ratio]
+    gas_used_ratio = [round(float(gur) * 100, 2) for gur in gas_used_ratio]
 
     embed = Embed(color=0xFFA46E)
     embed.title = f'Gas Tracker'
     embed.add_field(name='🐢', value=f'{low:.2f} gwei')
     embed.add_field(name='🚗', value=f'{medium:.2f} gwei')
     embed.add_field(name='🚀', value=f'{high:.2f} gwei')
-    embed.add_field(name='Last 5 block gas use ratio', value=gas_used_ratio)
+    embed.add_field(name='Suggested base fee', value=f'{suggested:.2f} gwei')
 
     # TODO: add gas source footer
 

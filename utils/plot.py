@@ -7,7 +7,7 @@ def gas_etherscan_plot(block_numbers, gas_usage_rates):
     line_color = '#FFA46E'
     points = np.array([list(range(len(gas_usage_rates))), gas_usage_rates]).T.reshape(-1, 1, 2)
     segments = np.concatenate([points[:-1], points[1:]], axis=1)
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(5, 3))
     fig.patch.set_facecolor('#2E2E2E')
     ax.set_facecolor('#2E2E2E')
 
