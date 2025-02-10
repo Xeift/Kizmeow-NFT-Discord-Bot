@@ -38,15 +38,17 @@ class gas(commands.Cog):
         )
         
     ):
+        embed = Embed()
+        file = None
+        
         if source == 'Ethereum - Etherscan API':
             (success, gas_data) = get_gas_etherscan()
-            embed = Embed() # A
             if success:
-                embed = gas_etherscan_embed(gas_data) # B
+                (embed, file) = gas_etherscan_embed(gas_data)
             else:
-                embed=general_err_embed('Etherscan API is currently down. Please try again later.') # C
-            
-        await ctx.respond(embed=embed)
+                embed=general_err_embed('Etherscan API is currently down. Please try again later.')
+        
+        await ctx.respond(embed=embed, file=file)
 
 
 def setup(bot):
