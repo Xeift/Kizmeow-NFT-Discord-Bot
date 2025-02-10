@@ -22,7 +22,10 @@ def gas_etherscan_embed(gas_data):
     embed.add_field(name='🚀', value=f'{high:.2f} gwei')
     embed.add_field(name='Suggested base fee', value=f'{suggested:.2f} gwei')
 
-    # TODO: add gas source footer
+    embed.set_footer(
+        text='Source: Etherscan API',
+        icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/etherscan_logo.png'
+    )
 
     gas_etherscan_plot(last_five_blocks, gas_used_ratio)
     file = File('tmp/gas_etherscan_plot.png', filename='gas_etherscan_plot.png')
