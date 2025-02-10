@@ -51,8 +51,10 @@ class gas(commands.Cog):
                 gasUsedRatioText += f'{float(gas) * 100:.2f}% '
   
 
-            embed.title = f'{source}'
-            embed.description = f'🚶{low:.2f}｜🚗{medium:.2f}｜🚀{high:.2f}'
+            embed.title = f'Gas Tracker'
+            embed.add_field(name='🐢', value=f'{low:.2f} gwei')
+            embed.add_field(name='🚗', value=f'{medium:.2f} gwei')
+            embed.add_field(name='🚀', value=f'{high:.2f} gwei')
             embed.add_field(name='Last 5 block gas use ratio', value=gasUsedRatioText)
         else:
             embed=general_err_embed('Etherscan API is currently down. Please try again later.')
