@@ -1,57 +1,257 @@
 {
-    "Bored Ape Yacht Club": {
-    	"slug": "boredapeyachtclub",
-    	"chain": "ethereum",
-    	"address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
-    },
-    "CryptoPunks": {
-    	"slug": "cryptopunks",
-    	"chain": "ethereum",
-    	"address" : "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb"
-    },
-    "Mutant Ape Yacht Club": {
-    	"slug": "mutant-ape-yacht-club",
-    	"chain": "ethereum",
-    	"address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6"
-    },
-    "Azuki": {
-    	"slug": "azuki",
-    	"chain": "ethereum",
-    	"address": "0xed5af388653567af2f388e6224dc7c4b3241c544"
-    },
-    "Otherdeed for Otherside": {
-    	"slug": "otherdeed",
-    	"chain": "ethereum",
-    	"address": "0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258"
-    },
-    "Pudgy Penguins": {
-    	"slug": "pudgypenguins",
-    	"chain": "ethereum",
-    	"address": "0xbd3531da5cf5857e7cfaa92426877b022e612cf8"
-    },
-    "CLONE X - X TAKASHI MURAKAMI": {
-    	"slug": "clonex",
-    	"chain": "ethereum",
-    	"address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b"
-    },
-    "Moonbirds": {
-    	"slug": "proof-moonbirds",
-    	"chain": "ethereum",
-    	"address": "0x23581767a106ae21c074b2276d25e5c3e136a68b"
-    },
-    "Wrapped Cryptopunks": {
-    	"slug": "wrapped-cryptopunks",
-    	"chain": "ethereum",
-    	"address": "0xb7f7f6c52f2e2fdb1963eab30438024864c313f6"
-    },
-    "Doodles": {
-    	"slug": "doodles-official",
-    	"chain": "ethereum",
-    	"address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e"
-    },
-    "Bored Ape Kennel Club": {
-    	"slug": "bored-ape-kennel-club",
-    	"chain": "ethereum",
-    	"address": "0xba30e5f9bb24caa003e9f2f0497ad287fdf95623"
-    }
+	"Bored Ape Yacht Club": {
+		"slug": "boredapeyachtclub",
+		"chain": "ethereum",
+		"address": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
+	},
+	"CryptoPunks": {
+		"slug": "cryptopunks",
+		"chain": "ethereum",
+		"address": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb"
+	},
+	"Mutant Ape Yacht Club": {
+		"slug": "mutant-ape-yacht-club",
+		"chain": "ethereum",
+		"address": "0x60e4d786628fea6478f785a6d7e704777c86a7c6"
+	},
+	"Azuki": {
+		"slug": "azuki",
+		"chain": "ethereum",
+		"address": "0xed5af388653567af2f388e6224dc7c4b3241c544"
+	},
+	"Otherdeed for Otherside": {
+		"slug": "otherdeed",
+		"chain": "ethereum",
+		"address": "0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258"
+	},
+	"Pudgy Penguins": {
+		"slug": "pudgypenguins",
+		"chain": "ethereum",
+		"address": "0xbd3531da5cf5857e7cfaa92426877b022e612cf8"
+	},
+	"CLONE X - X TAKASHI MURAKAMI": {
+		"slug": "clonex",
+		"chain": "ethereum",
+		"address": "0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b"
+	},
+	"Moonbirds": {
+		"slug": "proof-moonbirds",
+		"chain": "ethereum",
+		"address": "0x23581767a106ae21c074b2276d25e5c3e136a68b"
+	},
+	"Wrapped Cryptopunks": {
+		"slug": "wrapped-cryptopunks",
+		"chain": "ethereum",
+		"address": "0xb7f7f6c52f2e2fdb1963eab30438024864c313f6"
+	},
+	"Doodles": {
+		"slug": "doodles-official",
+		"chain": "ethereum",
+		"address": "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e"
+	},
+	"Bored Ape Kennel Club": {
+		"slug": "bored-ape-kennel-club",
+		"chain": "ethereum",
+		"address": "0xba30e5f9bb24caa003e9f2f0497ad287fdf95623"
+	},
+	"DeGods(Ethereum)": {
+		"slug": "degods-eth",
+		"chain": "ethereum",
+		"address": "0x8821bee2ba0df28761afff119d66390d594cd280"
+	},
+	"BEANZ Official": {
+		"slug": "beanzofficial",
+		"chain": "ethereum",
+		"address": "0x306b1ea3ecdf94ab739f1910bbda052ed4a9f949"
+	},
+	"Meebits": {
+		"slug": "meebits",
+		"chain": "ethereum",
+		"address": "0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7"
+	},
+	"Milady Maker": {
+		"slug": "milady",
+		"chain": "ethereum",
+		"address": "0x5af0d9827e0c53e4799bb226655a1de152a425a5"
+	},
+	"Cool Cats": {
+		"slug": "cool-cats-nft",
+		"chain": "ethereum",
+		"address": "0x1a92f7381b9f03921564a437210bb9396471050c"
+	},
+	"The Sandbox LANDs": {
+		"slug": "sandbox",
+		"chain": "ethereum",
+		"address": "0x5cc5b05a8a13e3fbdb0bb9fccd98d38e50f90c38"
+	},
+	"Lil Pudgys": {
+		"slug": "lilpudgys",
+		"chain": "ethereum",
+		"address": "0x524cab2ec69124574082676e6f654a18df49a048"
+	},
+	"Memeland Captainz": {
+		"slug": "memelandcaptainz",
+		"chain": "ethereum",
+		"address": "0x769272677fab02575e84945f03eca517acc544cc"
+	},
+	"ENS: Ethereum Name Service": {
+		"slug": "ens",
+		"chain": "ethereum",
+		"address": "0xd4416b13d2b3a9abae7acd5d6c2bbdbe25686401"
+	},
+	"0N1 Force": {
+		"slug": "0n1-force",
+		"chain": "ethereum",
+		"address": "0x3bf2922f4520a8ba0c2efc3d2a1539678dad5e9d"
+	},
+	"World of Women": {
+		"slug": "world-of-women-nft",
+		"chain": "ethereum",
+		"address": "0xe785e82358879f061bc3dcac6f0444462d4b5330"
+	},
+	"Opepen Edition": {
+		"slug": "opepen-edition",
+		"chain": "ethereum",
+		"address": "0x6339e5e072086621540d0362c4e3cea0d643e114"
+	},
+	"Parallel Alpha(0x76be3)": {
+		"slug": "parallelalpha",
+		"chain": "ethereum",
+		"address": "0x76be3b62873462d2142405439777e971754e8e77"
+	},
+	"Parallel Alpha(0xfd43af)": {
+		"slug": "parallelalpha",
+		"chain": "ethereum",
+		"address": "0xfd43af6d3fe1b916c026f6ac35b3ede068d1ca01"
+	},
+	"CrypToadz by GREMPLIN": {
+		"slug": "cryptoadz-by-gremplin",
+		"chain": "ethereum",
+		"address": "0x1cb1a5e65610aeff2551a50f76a87a7d3fb649c6"
+	},
+	"Chromie Squiggle by Snowfro": {
+		"slug": "chromie-squiggle-by-snowfro",
+		"chain": "ethereum",
+		"address": "0x059edd72cd353df5106d2b9cc5ab83a52287ac3a"
+	},
+	"Loot (for Adventurers)": {
+		"slug": "lootproject",
+		"chain": "ethereum",
+		"address": "0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7"
+	},
+	"mfers": {
+		"slug": "mfers",
+		"chain": "ethereum",
+		"address": "0x79fcdef22feed20eddacbb2587640e45491b757f"
+	},
+	"SuperRare": {
+		"slug": "superrare",
+		"chain": "ethereum",
+		"address": "0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0"
+	},
+	"VeeFriends": {
+		"slug": "veefriends",
+		"chain": "ethereum",
+		"address": "0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb"
+	},
+	"Fidenza by Tyler Hobbs": {
+		"slug": "fidenza-by-tyler-hobbs",
+		"chain": "ethereum",
+		"address": "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270"
+	},
+	"Azuki Elementals": {
+		"slug": "azukielementals",
+		"chain": "ethereum",
+		"address": "0xb6a37b5d14d502c3ab0ae6f3a0e058bc9517786e"
+	},
+	"goblintown.wtf": {
+		"slug": "goblintownwtf",
+		"chain": "ethereum",
+		"address": "0x8c6def540b83471664edc6d5cf75883986932674"
+	},
+	"HYTOPIA Worlds": {
+		"slug": "topia-worlds",
+		"chain": "ethereum",
+		"address": "0x8d9710f0e193d3f95c0723eaaf1a81030dc9116d"
+	},
+	"Checks - VV Edition": {
+		"slug": "vv-checks",
+		"chain": "ethereum",
+		"address": "0x34eebee6942d8def3c125458d1a86e0a897fd6f9"
+	},
+	"Bored Ape Chemistry Club": {
+		"slug": "bored-ape-chemistry-club",
+		"chain": "ethereum",
+		"address": "0x22c36bfdcef207f9c0cc941936eff94d4246d14a"
+	},
+	"HAPE PRIME": {
+		"slug": "hapeprime",
+		"chain": "ethereum",
+		"address": "0x4db1f25d3d98600140dfc18deb7515be5bd293af"
+	},
+	"Memeland Potatoz": {
+		"slug": "memelandpotatoz",
+		"chain": "ethereum",
+		"address": "0x39ee2c7b3cb80254225884ca001f57118c8f21b6"
+	},
+	"RTFKT - MNLTH": {
+		"slug": "rtfkt-mnlth",
+		"chain": "ethereum",
+		"address": "0x86825dfca7a6224cfbd2da48e85df2fc3aa7c4b1"
+	},
+	"Sewer Pass": {
+		"slug": "sewerpass",
+		"chain": "ethereum",
+		"address": "0x764aeebcf425d56800ef2c84f2578689415a2daa"
+	},
+	"Invisible Friends": {
+		"slug": "invisiblefriends",
+		"chain": "ethereum",
+		"address": "0x59468516a8259058bad1ca5f8f4bff190d30e066"
+	},
+	"Creepz by OVERLORD": {
+		"slug": "genesis-creepz",
+		"chain": "ethereum",
+		"address": "0x5946aeaab44e65eb370ffaa6a7ef2218cff9b47d"
+	},
+	"RENGA": {
+		"slug": "renga",
+		"chain": "ethereum",
+		"address": "0x394e3d3044fc89fcdd966d3cb35ac0b32b0cda91"
+	},
+	"Sorare": {
+		"slug": "sorare",
+		"chain": "ethereum",
+		"address": "0x629a673a8242c2ac4b7b8c5d8735fbeac21a6205"
+	},
+	"MekaVerse": {
+		"slug": "mekaverse",
+		"chain": "ethereum",
+		"address": "0x9a534628b4062e123ce7ee2222ec20b86e16ca8f"
+	},
+	"Art Gobblers": {
+		"slug": "artgobblers",
+		"chain": "ethereum",
+		"address": "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769"
+	},
+	"adidas Originals Into the Metaverse": {
+		"slug": "adidasoriginals",
+		"chain": "ethereum",
+		"address": "0x28472a58a490c5e09a238847f66a68a47cc76f0f"
+	},
+	"Murakami.Flowers Seed": {
+		"slug": "murakami-flowers-seed",
+		"chain": "ethereum",
+		"address": "0x341a1c534248966c4b6afad165b98daed4b964ef"
+	},
+	"FLUF World": {
+		"slug": "fluf",
+		"chain": "ethereum",
+		"address": "0xccc441ac31f02cd96c153db6fd5fe0a2f4e6a68d"
+	},
+	"Redacted Remilio Babies": {
+		"slug": "remilio-babies",
+		"chain": "ethereum",
+		"address": "0xd3d9ddd0cf0a5f0bfb8f7fceae075df687eaebab"
+	}
 }
