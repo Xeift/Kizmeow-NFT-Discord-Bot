@@ -123,8 +123,7 @@ class opensea_account(commands.Cog):
 
         else:
             embed.title = '[Failed]'
-            embed.description = f'Command execution failed. Reason:\n```{
-                account_data}```'
+            embed.description = f'Command execution failed. Reason:\n```{account_data}```'
 
         await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
 

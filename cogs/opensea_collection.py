@@ -185,8 +185,7 @@ class opensea_collection(commands.Cog):
 
             instagram_username = collection_data['instagram_username']
             if instagram_username != '':
-                instagram_url = f'https://www.instagram.com/{
-                    instagram_username}'
+                instagram_url = f'https://www.instagram.com/{instagram_username}'
                 instagram_button = Button(
                     label='Instagram',
                     style=ButtonStyle.link,
@@ -217,8 +216,7 @@ class opensea_collection(commands.Cog):
                         disabled=disable_link_button
                     )
                     view.add_item(exp_button)
-                    cas_text += f'[{ca['address'][:7]
-                                    }]({exp_token_url}{ca['address']}) ({chain_name})\n'
+                    cas_text += f"[{ca['address'][:7]}]({exp_token_url}{ca['address']}) ({chain_name})\n"
 
             if cas_text != '':
                 embed.add_field(name='Contract Address',
@@ -230,16 +228,18 @@ class opensea_collection(commands.Cog):
             embed.add_field(name='Created Date',
                             value=created_date, inline=True)
             if cas != []:
-                embed.add_field(name='Owner', value=f'{owner_address_short} ({chain_name})\n[Exp]({
-                                owner_exp_url})｜[OpenSea]({owner_os_url})', inline=True)
+                embed.add_field(
+                    name='Owner',
+                    value=f'{owner_address_short} ({chain_name})\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})',
+                    inline=True
+                )
             for fee in fees:
                 if fee['required'] == True:
                     fee['required'] = 'Required'
                 else:
                     fee['required'] = 'Optional'
 
-                fees_text += f"{fee['required']} [{fee['fee']
-                                                   }%]({exp_address_url}{fee['recipient']})\n"
+                fees_text += f"{fee['required']} [{fee['fee']}%]({exp_address_url}{fee['recipient']})\n"
             embed.add_field(name='Fees', value=fees_text, inline=True)
             embed.add_field(name='Verification',
                             value=verify_state, inline=True)
@@ -288,21 +288,27 @@ class opensea_collection(commands.Cog):
                 average_price_30d = round(
                     collection_statistic_data['intervals'][2]['average_price'], 2)
 
-                embed.add_field(name='Unique Holders',
-                                value=num_holders, inline=True)
-                embed.add_field(name='Market Cap', value=f'{
-                                market_cap} {ticker}', inline=True)
-                embed.add_field(name='Floor Price', value=f'{
-                                floor_price} {ticker}', inline=True)
+                embed.add_field(
+                    name='Unique Holders',
+                    value=num_holders,
+                    inline=True
+                )
+                embed.add_field(
+                    name='Market Cap',
+                    value=f'{market_cap} {ticker}',
+                    inline=True
+                )
+                embed.add_field(
+                    name='Floor Price',
+                    value=f'{floor_price} {ticker}',
+                    inline=True
+                )
                 embed.add_field(
                     name='Volume',
                     value=(
-                        f'```1D  {str(volume_1d).ljust(12)}{
-                            ticker}({volume_1d_del}%)\n'
-                        f'7D  {str(volume_7d).ljust(12)}{
-                            ticker}({volume_7d_del}%)\n'
-                        f'30D {str(volume_30d).ljust(12)}{
-                            ticker}({volume_30d_del}%)\n'
+                        f'```1D  {str(volume_1d).ljust(12)}{ticker}({volume_1d_del}%)\n'
+                        f'7D  {str(volume_7d).ljust(12)}{ticker}({volume_7d_del}%)\n'
+                        f'30D {str(volume_30d).ljust(12)}{ticker}({volume_30d_del}%)\n'
                         f'All {str(volume_all).ljust(12)}{ticker}```'
                     ),
                     inline=False
@@ -358,8 +364,7 @@ class opensea_collection(commands.Cog):
                                 favorite_collections=favorite_collections
                             )
                             embed.title = 'Collection added'
-                            embed.description = f'The collection `{
-                                collection_name}` has added to your favorite collections.'
+                            embed.description = f'The collection `{collection_name}` has added to your favorite collections.'
                     else:
                         del favorite_collections[collection_name]
                         update_config_to_json(
@@ -367,8 +372,7 @@ class opensea_collection(commands.Cog):
                             favorite_collections=favorite_collections
                         )
                         embed.title = 'Collection removed'
-                        embed.description = f'The collection `{
-                            collection_name}` has removed from your favorite collections.'
+                        embed.description = f'The collection `{collection_name}` has removed from your favorite collections.'
                     await interaction.response.send_message(embed=embed, ephemeral=not visibility)
 
                 fav_collection_button.callback = fav_collection_button_callback
@@ -376,8 +380,7 @@ class opensea_collection(commands.Cog):
 
         else:
             embed.title = '[Failed]'
-            embed.description = f'Command execution failed. Reason:\n```{
-                collection_data}```'
+            embed.description = f'Command execution failed. Reason:\n```{collection_data}```'
         await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
 
 

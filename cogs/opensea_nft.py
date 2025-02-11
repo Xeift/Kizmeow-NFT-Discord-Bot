@@ -244,16 +244,14 @@ class opensea_nft(commands.Cog):
                 owner_address_short = owner['address'][:7]
                 owner_exp_url = f'{exp_address_url}{owner_address}'
                 owner_os_url = f'https://www.opensea.io/{owner_address}'
-                owner_text = f'{owner_address_short}\n[Exp]({owner_exp_url})｜[OpenSea]({
-                    owner_os_url})'
+                owner_text = f'{owner_address_short}\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})'
             elif len(owners) <= 5:
                 for owner in owners:
                     owner_address = owner['address']
                     owner_address_short = owner['address'][:7]
                     owner_exp_url = f'{exp_address_url}{owner_address}'
                     owner_os_url = f'https://www.opensea.io/{owner_address}'
-                    owner_text += f'{owner_address_short} [Exp]({owner_exp_url})｜[OpenSea]({
-                        owner_os_url})\n'
+                    owner_text += f'{owner_address_short} [Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})\n'
             else:
                 owner_text = f'({len(owners)} owners)'
 
@@ -278,8 +276,7 @@ class opensea_nft(commands.Cog):
             if creator_address != None:
                 embed.add_field(
                     name='Creator',
-                    value=f'{creator_address_short}\n[Exp]({exp_address_url}{
-                        creator_address})｜[OpenSea]({creator_os_url})'
+                    value=f'{creator_address_short}\n[Exp]({exp_address_url}{creator_address})｜[OpenSea]({creator_os_url})'
                 )
             embed.add_field(
                 name='Chain',
@@ -335,8 +332,7 @@ class opensea_nft(commands.Cog):
                 embed = Embed(color=0xFFA46E)
                 if add_to_favorite:
                     if len(favorite_nfts) >= 20:
-                        embed = general_err_embed(
-                            'You can only have 20 favorite NFT slots.')
+                        embed = general_err_embed('You can only have 20 favorite NFT slots.')
                     else:
                         favorite_nfts[nft_name] = {
                             'chain': chain,
@@ -348,8 +344,7 @@ class opensea_nft(commands.Cog):
                             favorite_nfts=favorite_nfts
                         )
                         embed.title = 'NFT added'
-                        embed.description = f'The NFT `{
-                            nft_name}` has added to your favorite NFTs.'
+                        embed.description = f'The NFT `{nft_name}` has added to your favorite NFTs.'
                 else:
                     del favorite_nfts[nft_name]
                     update_config_to_json(
@@ -357,16 +352,14 @@ class opensea_nft(commands.Cog):
                         favorite_nfts=favorite_nfts
                     )
                     embed.title = 'NFT removed'
-                    embed.description = f'The NFT `{
-                        nft_name}` has removed from your favorite NFTs.'
+                    embed.description = f'The NFT `{nft_name}` has removed from your favorite NFTs.'
                 await interaction.response.send_message(embed=embed, ephemeral=not visibility)
 
             fav_nft_button.callback = fav_nft_button_callback
             view.add_item(fav_nft_button)            
         else:
             embed.title = '[Failed]'
-            embed.description = f'Command execution failed. Reason:\n```{
-                nft_data}```'
+            embed.description = f'Command execution failed. Reason:\n```{nft_data}```'
 
         await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
 
