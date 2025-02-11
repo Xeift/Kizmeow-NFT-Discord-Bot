@@ -129,4 +129,6 @@ dmypy.json
 .pyre/
 .git/
 
+# ----- custom -----
 tmp
+setting.json
