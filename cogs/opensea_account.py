@@ -29,7 +29,7 @@ class opensea_account(commands.Cog):
         self,
         ctx: ApplicationContext,
         address_or_username: Option(
-            str, 'VM address (ENS supported) or OpenSea username.')
+            str, 'EVM address (ENS supported) or OpenSea username.')
     ):
         mid = str(ctx.author.id)
         (enable_link_button, _, visibility, _, _) = load_config_from_json(mid)
