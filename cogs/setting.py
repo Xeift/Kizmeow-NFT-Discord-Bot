@@ -12,7 +12,7 @@ class SettingPanel(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='setting', description='Show user setting pannel')
+    @commands.slash_command(name='setting', description='Show preference setting panel.')
     async def panel(self, ctx: discord.ApplicationContext):
 
         mid = ctx.author.id

@@ -14,7 +14,7 @@ class opensea_account(commands.Cog):
 
     @commands.slash_command(
         name='opensea_account',
-        description='View account details of a specific OpenSea account',
+        description='View the details of a specific OpenSea account.',
         integration_types=[
             IntegrationType.user_install,
             IntegrationType.guild_install,
@@ -29,7 +29,7 @@ class opensea_account(commands.Cog):
         self,
         ctx: ApplicationContext,
         address_or_username: Option(
-            str, 'EVM address(ENS supported) or username on OpenSea')
+            str, 'VM address (ENS supported) or OpenSea username.')
     ):
         mid = str(ctx.author.id)
         (enable_link_button, _, visibility, _, _) = load_config_from_json(mid)

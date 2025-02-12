@@ -10,7 +10,7 @@ class ping(commands.Cog):
 
     @commands.slash_command(
         name='ping',
-        description='Check bot latency',
+        description='Check latency of the bot.',
         integration_types=[
             IntegrationType.user_install,
             IntegrationType.guild_install,

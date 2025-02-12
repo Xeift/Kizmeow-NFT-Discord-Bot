@@ -72,24 +72,24 @@ class opensea_nft(commands.Cog):
         ctx: ApplicationContext,
         quick_select: Option(
             str,
-            'Select the collection. [Quick Select]',
+            "Select a collection from the list below or select [Manually enter contract address]",
             autocomplete=basic_autocomplete(collection_name_data)
         ),
         token_id: Option(
             str,
-            'The token id of the NFT',
+            'The token id of the NFT.',
             required=False,
             autocomplete=basic_autocomplete(token_id_autocomplete)
         ),
         chain: Option(
             str,
-            'The chain of the NFT',
+            'The blockchain of the NFT.',
             required=False,
             autocomplete=basic_autocomplete(chain_autocomplete)
         ),
         address: Option(
             str,
-            'The address of the NFT',
+            'The contract address of the NFT.',
             required=False,
             autocomplete=basic_autocomplete(address_autocomplete)
         ),

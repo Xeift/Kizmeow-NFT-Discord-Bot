@@ -55,7 +55,7 @@ class opensea_collection(commands.Cog):
         ctx: ApplicationContext,
         collection: Option(
             str,
-            'Specify the collection slug',
+            "Select a collection from the list below or enter the collection slug manually.",
             autocomplete=basic_autocomplete(collection_name_data)
         )
     ):

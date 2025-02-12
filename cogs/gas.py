@@ -16,7 +16,7 @@ class gas(commands.Cog):
 
     @commands.slash_command(
         name='gas',
-        description='Check current gas price',
+        description='Check realtime gas price of multiple chain.',
         integration_types=[
             IntegrationType.user_install,
             IntegrationType.guild_install,
@@ -32,7 +32,7 @@ class gas(commands.Cog):
         ctx: ApplicationContext,
         source: Option(
             input_type='str',
-            description='Select chain and source',
+            description='The chain and source for checking the gas price.',
             choices=[
                 'Ethereum - Etherscan API',
                 # 'Ethereum - Blocknative API'
