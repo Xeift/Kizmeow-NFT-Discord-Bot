@@ -1,7 +1,7 @@
 import json
 
 import discord
-from discord import Embed
+from discord import Embed, IntegrationType, InteractionContextType
 from discord.ext import commands
 from discord.ui import Select, View
 
@@ -12,7 +12,19 @@ class SettingPanel(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name='setting', description='Show preference setting panel.')
+    @commands.slash_command(
+        name='setting',
+        description='Show preference setting panel.',
+        integration_types=[
+            IntegrationType.user_install,
+            IntegrationType.guild_install,
+        ],
+        contexts=[
+            InteractionContextType.guild,
+            InteractionContextType.bot_dm,
+            InteractionContextType.private_channel,
+        ],
+    )
     async def panel(self, ctx: discord.ApplicationContext):
 
         mid = ctx.author.id
