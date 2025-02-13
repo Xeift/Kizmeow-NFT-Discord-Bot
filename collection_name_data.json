@@ -253,5 +253,60 @@
 		"slug": "remilio-babies",
 		"chain": "ethereum",
 		"address": "0xd3d9ddd0cf0a5f0bfb8f7fceae075df687eaebab"
-	}
+	},
+	"Nakamigos": {
+		"slug": "nakamigos",
+		"chain": "ethereum",
+		"address": "0xd774557b647330c91bf44cfeab205095f7e6c367"
+	},
+	"Sappy Seals": {
+		"slug": "sappy-seals",
+		"chain": "ethereum",
+		"address": "0x364c828ee171616a39897688a831c2499ad972ec"
+	},
+	"PXN: Ghost Division": {
+		"slug": "pxnghostdivision",
+		"chain": "ethereum",
+		"address": "0x160c404b2b49cbc3240055ceaee026df1e8497a0"
+	},
+	"Karafuru": {
+		"slug": "karafuru",
+		"chain": "ethereum",
+		"address": "0xd2f668a8461d6761115daf8aeb3cdf5f40c532c6"
+	},
+	"Pixelmon - Generation 1": {
+		"slug": "pixelmongen1",
+		"chain": "ethereum",
+		"address": "0x32973908faee0bf825a343000fe412ebe56f802a"
+	},
+	"Hashmasks": {
+		"slug": "hashmasks",
+		"chain": "ethereum",
+		"address": "0xc2c747e0f7004f9e8817db2ca4997657a7746928"
+	},
+	"CryptoPunks V1 (wrapped)": {
+		"slug": "official-v1-punks",
+		"chain": "ethereum",
+		"address": "0x282bdd42f4eb70e7a9d9f40c8fea0825b7f68c5d"
+	},
+	"Moonbirds Oddities": {
+		"slug": "moonbirds-oddities",
+		"chain": "ethereum",
+		"address": "0x1792a96e5668ad7c167ab804a100ce42395ce54d"
+	},
+	"My Curio Cards (0x73da7)": {
+		"slug": "curiocardswrapper",
+		"chain": "ethereum",
+		"address": "0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313"
+	},
+	"My Curio Cards (0x04afa)": {
+		"slug": "curiocardswrapper",
+		"chain": "ethereum",
+		"address": "0x04afa589e2b933f9463c5639f412b183ec062505"
+	},
+	"CyberBrokers": {
+		"slug": "cyberbrokers",
+		"chain": "ethereum",
+		"address": "0x892848074ddea461a15f337250da3ce55580ca85"
+	},
 }
