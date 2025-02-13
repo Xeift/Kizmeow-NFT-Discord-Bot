@@ -1,9 +1,8 @@
 import json
 import re
 
-from discord import (ApplicationContext, AutocompleteContext, ButtonStyle,
-                     Embed, IntegrationType, InteractionContextType, Option,
-                     PartialEmoji)
+from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
+                     InteractionContextType, Option, PartialEmoji)
 from discord.ext import commands
 from discord.ui import Button, View
 from discord.utils import basic_autocomplete

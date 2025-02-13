@@ -1,7 +1,6 @@
-import json
-
 import discord
-from discord import Embed, IntegrationType, InteractionContextType
+from discord import (ApplicationContext, Embed, IntegrationType,
+                     InteractionContextType)
 from discord.ext import commands
 from discord.ui import Select, View
 
@@ -25,7 +24,7 @@ class SettingPanel(commands.Cog):
             InteractionContextType.private_channel,
         ],
     )
-    async def panel(self, ctx: discord.ApplicationContext):
+    async def panel(self, ctx: ApplicationContext):
 
         mid = ctx.author.id
         (
