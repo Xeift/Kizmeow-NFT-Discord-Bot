@@ -309,4 +309,79 @@
 		"chain": "ethereum",
 		"address": "0x892848074ddea461a15f337250da3ce55580ca85"
 	},
+	"rektguy": {
+		"slug": "rektguy",
+		"chain": "ethereum",
+		"address": "0xb852c6b5892256c264cc2c888ea462189154d8d7"
+	},
+	"RTFKT - CloneX Mintvial": {
+		"slug": "clonex-mintvial",
+		"chain": "ethereum",
+		"address": "0x348fc118bcc65a92dc033a951af153d14d945312"
+	},
+	"HV-MTL": {
+		"slug": "hv-mtl",
+		"chain": "ethereum",
+		"address": "0x4b15a9c28034dc83db40cd810001427d3bd7163d"
+	},
+	"CyberKongz": {
+		"slug": "cyberkongz-babies",
+		"chain": "ethereum",
+		"address": "0x57a204aa1042f6e66dd7730813f4024114d74f37"
+	},
+	"Creatures": {
+		"slug": "creatures",
+		"chain": "ethereum",
+		"address": "0xc92ceddfb8dd984a89fb494c376f9a48b999aafc"
+	},
+	"3Landers": {
+		"slug": "3landers",
+		"chain": "ethereum",
+		"address": "0x3248e8ba90facc4fdd3814518c14f8cc4d980e4b"
+	},
+	"CyberKongz VX": {
+		"slug": "cyberkongz-vx",
+		"chain": "ethereum",
+		"address": "0x7ea3cca10668b8346aec0bf1844a49e995527c8b"
+	},
+	"PhantaBear": {
+		"slug": "phantabear",
+		"chain": "ethereum",
+		"address": "0x67d9417c9c3c250f61a83c7e8658dac487b56b09"
+	},
+	"Kaiju Kingz": {
+		"slug": "kaiju-kingz",
+		"chain": "ethereum",
+		"address": "0x0c2e57efddba8c768147d1fdf9176a0a6ebd5d83"
+	},
+	"Kanpai Pandas": {
+		"slug": "kanpai-pandas",
+		"chain": "ethereum",
+		"address": "0xacf63e56fd08970b43401492a02f6f38b6635c91"
+	},
+	"PROOF Collective": {
+		"slug": "proof-collective",
+		"chain": "ethereum",
+		"address": "0x08d7c0242953446436f34b4c78fe9da38c73668d"
+	},
+	"VeeFriends Series 2": {
+		"slug": "veefriends-series-2",
+		"chain": "ethereum",
+		"address": "0x9378368ba6b85c1fba5b131b530f5f5bedf21a18"
+	},
+	"Deadfellaz": {
+		"slug": "deadfellaz",
+		"chain": "ethereum",
+		"address": "0x2acab3dea77832c09420663b0e1cb386031ba17b"
+	},
+	"Decentraland": {
+		"slug": "decentraland",
+		"chain": "ethereum",
+		"address": "0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d"
+	},
+	"Lazy Lions": {
+		"slug": "lazy-lions",
+		"chain": "ethereum",
+		"address": "0x8943c7bac1914c9a7aba750bf2b6b09fd21037e0"
+	}
 }
