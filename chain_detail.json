@@ -117,5 +117,41 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		}
+	},
+	"bera_chain": {
+		"chain_name": "Berachain",
+		"exp_name": "Berascan",
+		"exp_address_url": "https://berascan.com/address/",
+		"exp_token_url": "https://berascan.com/token/",
+		"exp_emoji": 1339541347681697822,
+		"ticker": "BERA",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
+	},
+	"flow": {
+		"chain_name": "Flow",
+		"exp_name": "Flowscan",
+		"exp_address_url": "https://evm.flowscan.io/address/",
+		"exp_token_url": "https://evm.flowscan.io/token/",
+		"exp_emoji": 1339587047865847849,
+		"ticker": "FLOW",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
+	},
+	"ape_chain": {
+		"chain_name": "ApeChain",
+		"exp_name": "Apescan",
+		"exp_address_url": "https://apescan.io/address/",
+		"exp_token_url": "https://apescan.io/token/",
+		"exp_emoji": 1339589979654979656,
+		"ticker": "APE",
+		"token_standards": {
+			"erc721": "ERC-721",
+			"erc1155": "ERC-1155"
+		}
 	}
 }
