@@ -324,7 +324,7 @@
 		"chain": "ethereum",
 		"address": "0x4b15a9c28034dc83db40cd810001427d3bd7163d"
 	},
-	"CyberKongz": {
+	"CyberKongz Babies": {
 		"slug": "cyberkongz-babies",
 		"chain": "ethereum",
 		"address": "0x57a204aa1042f6e66dd7730813f4024114d74f37"
@@ -383,5 +383,140 @@
 		"slug": "lazy-lions",
 		"chain": "ethereum",
 		"address": "0x8943c7bac1914c9a7aba750bf2b6b09fd21037e0"
+	},
+	"Terraforms by Mathcastles": {
+		"slug": "terraforms",
+		"chain": "ethereum",
+		"address": "0x4e1f41613c9084fdb9e34e11fae9412427480e56"
+	},
+	"Ringers by Dmitri Cherniak": {
+		"slug": "ringers-by-dmitri-cherniak",
+		"chain": "ethereum",
+		"address": "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270"
+	},
+	"Wolf Game": {
+		"slug": "wolf-game",
+		"chain": "ethereum",
+		"address": "0x7f36182dee28c45de6072a34d29855bae76dbe2f"
+	},
+	"DigiDaigaku Genesis": {
+		"slug": "digidaigaku",
+		"chain": "ethereum",
+		"address": "0xd1258db6ac08eb0e625b75b371c023da478e94a9"
+	},
+	"World of Women Galaxy": {
+		"slug": "world-of-women-galaxy",
+		"chain": "ethereum",
+		"address": "0xf61f24c2d93bf2de187546b14425bf631f28d6dc"
+	},
+	"Cool Pets NFT": {
+		"slug": "coolpetsnft",
+		"chain": "ethereum",
+		"address": "0x86c10d10eca1fca9daf87a279abccabe0063f247"
+	},
+	"alien frens": {
+		"slug": "alienfrensnft",
+		"chain": "ethereum",
+		"address": "0x123b30e25973fecd8354dd5f41cc45a3065ef88c"
+	},
+	"MetaHero: MintPass (0x797a4)": {
+		"slug": "metahero-mintpass",
+		"chain": "ethereum",
+		"address": "0x797a48c46be32aafcedcfd3d8992493d8a1f256b"
+	},
+	"MetaHero: MintPass (0x33cfa)": {
+		"slug": "metahero-mintpass",
+		"chain": "ethereum",
+		"address": "0x33cfae13a9486c29cd3b11391cc7eca53822e8c7"
+	},
+	"LOSTPOETS (0xa7206)": {
+		"slug": "lostpoets",
+		"chain": "ethereum",
+		"address": "0xa7206d878c5c3871826dfdb42191c49b1d11f466"
+	},
+	"LOSTPOETS (0x4b340)": {
+		"slug": "lostpoets",
+		"chain": "ethereum",
+		"address": "0x4b3406a41399c7fd2ba65cbc93697ad9e7ea61e5"
+	},
+	"The Doge Pound": {
+		"slug": "the-doge-pound",
+		"chain": "ethereum",
+		"address": "0xf4ee95274741437636e748ddac70818b4ed7d043"
+	},
+	"CyberKongz": {
+		"slug": "cyberkongz",
+		"chain": "ethereum",
+		"address": "0x57a204aa1042f6e66dd7730813f4024114d74f37"
+	},
+	"Mocaverse": {
+		"slug": "mocaverse",
+		"chain": "ethereum",
+		"address": "0x59325733eb952a92e069c87f0a6168b29e80627f"
+	},
+	"Psychedelics Anonymous Genesis": {
+		"slug": "psychedelics-anonymous-genesis",
+		"chain": "ethereum",
+		"address": "0x75e95ba5997eb235f40ecf8347cdb11f18ff640b"
+	},
+	"Gutter Cat Gang": {
+		"slug": "guttercatgang",
+		"chain": "ethereum",
+		"address": "0xedb61f74b0d09b2558f1eeb79b247c1f363ae452"
+	},
+	"Worldwide Webb Land": {
+		"slug": "worldwidewebbland",
+		"chain": "ethereum",
+		"address": "0xa1d4657e0e6507d5a94d06da93e94dc7c8c44b51"
+	},
+	"SuperNormal": {
+		"slug": "supernormalbyzipcy",
+		"chain": "ethereum",
+		"address": "0xd532b88607b1877fe20c181cba2550e3bbd6b31c"
+	},
+	"Murakami.Flowers Official": {
+		"slug": "murakami-flowers-2022-official",
+		"chain": "ethereum",
+		"address": "0x7d8820fa92eb1584636f4f5b8515b5476b75171a"
+	},
+	"Azuki Elemental Beans": {
+		"slug": "azukielementalbeans",
+		"chain": "ethereum",
+		"address": "0x3af2a97414d1101e2107a70e7f33955da1346305"
+	},
+	"Axie Infinity": {
+		"slug": "axie",
+		"chain": "ethereum",
+		"address": "0xf5b0a3efb8e8e4c201e2a935f110eaaf3ffecb8d"
+	},
+	"Valhalla": {
+		"slug": "valhalla",
+		"chain": "ethereum",
+		"address": "0x231d3559aa848bf10366fb9868590f01d34bf240"
+	},
+	"My Pet Hooligan": {
+		"slug": "mypethooligan",
+		"chain": "ethereum",
+		"address": "0x09233d553058c2f42ba751c87816a8e9fae7ef10"
+	},
+	"Coolman's Universe": {
+		"slug": "coolmans-universe",
+		"chain": "ethereum",
+		"address": "0xa5c0bd78d1667c13bfb403e2a3336871396713c5"
+	},
+	"KILLABEARS": {
+		"slug": "killabears",
+		"chain": "ethereum",
+		"address": "0xc99c679c50033bbc5321eb88752e89a93e9e83c5"
+	},
+	"Checks - VV Originals": {
+		"slug": "vv-checks-originals",
+		"chain": "ethereum",
+		"address": "0x036721e5a769cc48b3189efbb9cce4471e8a48b1"
+	},
+	"Damien Hirst - The Currency": {
+		"slug": "thecurrency",
+		"chain": "ethereum",
+		"address": "0xaadc2d4261199ce24a4b0a57370c4fcf43bb60aa"
 	}
 }
