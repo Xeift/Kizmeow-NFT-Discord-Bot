@@ -8,85 +8,30 @@
 
 
 # Links
-<style type="text/css">
-.maxbutton {
-  position: relative;
-  text-decoration: none;
-  display: inline-block;
-  vertical-align: middle;
-  width: 160px;
-  height: 50px;
-  border: 2px solid #ffa46e;
-  border-radius: 4px 4px 4px 4px;
-  background-color: rgba(80, 90, 199, 0);
-  box-shadow: 0px 0px 2px 0px #333333;
-}
-.maxbutton:hover {
-  border-color: #ffa46e;
-  background-color: white;
-  box-shadow: 0px 0px 2px 0px #333333;
-}
-.maxbutton .mb-text {
-  color: #ffa46e;
-  font-family: Verdana;
-  font-size: 15px;
-  text-align: center;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1em;
-  box-sizing: border-box;
-  display: block;
-  background-color: unset;
-  position: relative;
-  padding: 18px 0px 0px 0px;
-  text-shadow: 0px 0px 0px #505ac7;
-}
-.maxbutton:hover .mb-text {
-  color: #ffa46e;
-  text-shadow: 0px 0px 0px #333333;
-}
-</style>
-<a class="maxbutton" href="https://discord.com/discovery/applications/923512417907015693" data-maxbuttoncounter="{&quot;button_id&quot;:542804,&quot;url&quot;:&quot;https:\/\/discord.com\/discovery\/applications\/923512417907015693&quot;,&quot;check&quot;:&quot;K8DdkLpo&quot;}" data-maxbuttonpage="{&quot;id&quot;:false,&quot;type&quot;:false}"><span class='mb-text' >Invite Kizmeow</span></a>
+<a href="https://discord.com/discovery/applications/923512417907015693" 
+   style="position: relative; text-decoration: none; display: inline-block; vertical-align: middle; width: 160px; height: 50px; border: 2px solid #ffa46e; border-radius: 4px; background-color: rgba(80, 90, 199, 0); box-shadow: 0px 0px 2px 0px #333333;"
+   onmouseover="this.style.borderColor='#ffa46e'; this.style.backgroundColor='white'; this.style.boxShadow='0px 0px 2px 0px #333333';"
+   onmouseout="this.style.borderColor='#ffa46e'; this.style.backgroundColor='rgba(80, 90, 199, 0)'; this.style.boxShadow='0px 0px 2px 0px #333333';">
+   <span style="color: #ffa46e; font-family: Verdana; font-size: 15px; text-align: center; font-style: normal; font-weight: normal; line-height: 1em; box-sizing: border-box; display: block; background-color: unset; position: relative; padding: 18px 0px 0px 0px; text-shadow: 0px 0px 0px #505ac7;"
+         onmouseover="this.style.color='#ffa46e'; this.style.textShadow='0px 0px 0px #333333';"
+         onmouseout="this.style.color='#ffa46e'; this.style.textShadow='0px 0px 0px #505ac7';">
+      Invite Kizmeow
+   </span>
+</a>
 
-<style type="text/css">
-.maxbutton {
-  position: relative;
-  text-decoration: none;
-  display: inline-block;
-  vertical-align: middle;
-  width: 160px;
-  height: 50px;
-  border: 2px solid #ffa46e;
-  border-radius: 4px 4px 4px 4px;
-  background-color: rgba(80, 90, 199, 0);
-  box-shadow: 0px 0px 2px 0px #333333;
-}
-.maxbutton:hover {
-  border-color: #ffa46e;
-  background-color: white;
-  box-shadow: 0px 0px 2px 0px #333333;
-}
-.maxbutton .mb-text {
-  color: #ffa46e;
-  font-family: Verdana;
-  font-size: 15px;
-  text-align: center;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1em;
-  box-sizing: border-box;
-  display: block;
-  background-color: unset;
-  position: relative;
-  padding: 18px 0px 0px 0px;
-  text-shadow: 0px 0px 0px #505ac7;
-}
-.maxbutton:hover .mb-text {
-  color: #ffa46e;
-  text-shadow: 0px 0px 0px #333333;
-}
-</style>
-<a class="maxbutton" href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/introduction" data-maxbuttoncounter="{&quot;button_id&quot;:195529,&quot;url&quot;:&quot;https:\/\/kizmeow.gitbook.io\/kizmeow-nft-discord-bot\/information\/introduction&quot;,&quot;check&quot;:&quot;y4tFn26r&quot;}" data-maxbuttonpage="{&quot;id&quot;:false,&quot;type&quot;:false}"><span class='mb-text' >Documentation</span></a>
+
+<a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/information/introduction" 
+   style="position: relative; text-decoration: none; display: inline-block; vertical-align: middle; width: 160px; height: 50px; border: 2px solid #ffa46e; border-radius: 4px; background-color: rgba(80, 90, 199, 0); box-shadow: 0px 0px 2px 0px #333333;"
+   onmouseover="this.style.borderColor='#ffa46e'; this.style.backgroundColor='white'; this.style.boxShadow='0px 0px 2px 0px #333333';"
+   onmouseout="this.style.borderColor='#ffa46e'; this.style.backgroundColor='rgba(80, 90, 199, 0)'; this.style.boxShadow='0px 0px 2px 0px #333333';">
+   <span style="color: #ffa46e; font-family: Verdana; font-size: 15px; text-align: center; font-style: normal; font-weight: normal; line-height: 1em; box-sizing: border-box; display: block; background-color: unset; position: relative; padding: 18px 0px 0px 0px; text-shadow: 0px 0px 0px #505ac7;"
+         onmouseover="this.style.color='#ffa46e'; this.style.textShadow='0px 0px 0px #333333';"
+         onmouseout="this.style.color='#ffa46e'; this.style.textShadow='0px 0px 0px #505ac7';">
+      Documentation
+   </span>
+</a>
+
+
 
 # Contact Info
 | Platform  | Username |
