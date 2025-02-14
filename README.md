@@ -8,6 +8,8 @@
 
 
 # Links
+[![Docs](https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/asset/doc_btn.png)](https://kizmeow.gitbook.io/kizmeow-nft-discord-bot) [![Invite](https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/asset/invite_btn.png)](https://discord.com/discovery/applications/923512417907015693)
+
 
 
 
