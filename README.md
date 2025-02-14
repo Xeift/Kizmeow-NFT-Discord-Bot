@@ -9,6 +9,8 @@ Kizmeow is an open-source NFT Discord bot developed with Python. Kizmeow can:
 - Download full-resolution images of NFTs
 - Display information about OpenSea profiles, collections, and specific NFTs
 
+![5](https://github.com/user-attachments/assets/6032be83-4a00-46f6-a167-18ba7294b45c)
+
 
 # Links
 <p>
