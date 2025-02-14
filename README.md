@@ -1,15 +1,13 @@
 # Kizmeow-NFT-Discord-Bot
+<a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/"><img src="https://img.shields.io/badge/read-doc-green"></a>
+![](https://img.shields.io/github/license/Xeift/Kizmeow-NFT-Discord-Bot)
+![](https://tokei.ekzhang.com/b1/github/Xeift/Kizmeow-NFT-Discord-Bot)
+<a href="https://discord.gg/eC5EhJfmNd"><img src="https://img.shields.io/discord/1041165809013243924?color=blue&label=Kizmeow%20Support%20Server&logo=discord"></a>
 
 Kizmeow is an open-source NFT Discord bot developed with Python. Kizmeow can:
 - Display real-time gas fees
 - Download full-resolution images of NFTs
 - Display information about OpenSea profiles, collections, and specific NFTs
-
-
-<a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot/"><img src="https://img.shields.io/badge/read-doc-green"></a>
-![](https://img.shields.io/github/license/Xeift/Kizmeow-NFT-Discord-Bot)
-![](https://tokei.ekzhang.com/b1/github/Xeift/Kizmeow-NFT-Discord-Bot)
-<a href="https://discord.gg/eC5EhJfmNd"><img src="https://img.shields.io/discord/1041165809013243924?color=blue&label=Kizmeow%20Support%20Server&logo=discord"></a>
 
 
 # Links
