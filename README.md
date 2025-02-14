@@ -8,9 +8,14 @@
 
 
 # Links
-[![Docs](https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/asset/doc_btn.png)](https://kizmeow.gitbook.io/kizmeow-nft-discord-bot) [![Invite](https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/asset/invite_btn.png)](https://discord.com/discovery/applications/923512417907015693)
-
-
+<p>
+  <a href="https://kizmeow.gitbook.io/kizmeow-nft-discord-bot" target="_blank">
+    <img src="https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/asset/doc_btn.png" width="150">
+  </a>
+  <a href="https://discord.com/discovery/applications/923512417907015693" target="_blank">
+    <img src="https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/asset/invite_btn.png" width="150">
+  </a>
+</p>
 
 
 # Contact Info
