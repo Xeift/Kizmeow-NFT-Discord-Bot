@@ -518,5 +518,10 @@
 		"slug": "thecurrency",
 		"chain": "ethereum",
 		"address": "0xaadc2d4261199ce24a4b0a57370c4fcf43bb60aa"
+	},
+	"DenDekaDen Spirit Key Avatars": {
+		"slug": "dendekaden-spirit-key-avatar",
+		"chain": "ethereum",
+		"address": "0xd79e4cc964e5a2c1e400fe5a8488c71d9fd9847e"
 	}
 }
