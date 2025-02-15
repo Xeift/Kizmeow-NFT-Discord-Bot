@@ -5,17 +5,16 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-ETHERSCAN_API_KEY = os.getenv('ETHERSCAN_API_KEY')
+BLOCKNATIVE_API_KEY = os.getenv('BLOCKNATIVE_API_KEY')
 
-def get_gas_etherscan():
-    url = f'https://api.etherscan.io/api'
+def get_gas_blocknative():
+    url = f'https://api.blocknative.com/gasprices/blockprices'
     headers = {
-        'accept': 'application/json'
+        'accept': 'application/json',
+        'Authorization': BLOCKNATIVE_API_KEY
     }
     params = {
-        'module': 'gastracker',
-        'action': 'gasoracle',
-        'apikey': ETHERSCAN_API_KEY
+        'chain_id': '137'
     }
 
     response = requests.get(
@@ -27,10 +26,10 @@ def get_gas_etherscan():
         res = response.json()
         return (True, res)
     else:
-        return (False, 'Etherscan API is currently down. Please try again later.')
+        return (False, 'Blocknative API is currently down. Please try again later.')
 
 
 # --------------------     TEST        --------------------
 
 # valid requests
-# print(get_gas_etherscan())
+# print(get_gas_blocknative())
