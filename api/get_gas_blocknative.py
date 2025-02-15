@@ -14,7 +14,7 @@ def get_gas_blocknative():
         'Authorization': BLOCKNATIVE_API_KEY
     }
     params = {
-        'chain_id': '137'
+        'chain_id': '1'
     }
 
     response = requests.get(
