@@ -9,6 +9,9 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
+		},
+		"gas_source": {
+			"Etheracan API": null
 		}
 	},
 	"arbitrum": {
@@ -21,8 +24,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
+		},
+        "gas_source": {
+            "Etheracan API": null
 		}
-	},
 	"avalanche": {
 		"chain_name": "Avalanche",
 		"exp_name": "Snowtrace",
@@ -33,8 +38,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
+		},
+        "gas_source": {
+            "Etheracan API": null
+		},
 	"solana": {
 		"chain_name": "Solana",
 		"exp_name": "Solscan",
@@ -44,8 +51,10 @@
 		"ticker": "SOL",
 		"token_standards": {
 			"metaplex": "Metaplex"
-		}
-	},
+		},
+         "gas_source": {
+            "Etheracan API": null
+		},
 	"base": {
 		"chain_name": "Base",
 		"exp_name": "Basescan",
@@ -56,8 +65,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
+		},
+        "gas_source": {
+            "Etheracan API": null
+		},
 	"blast": {
 		"chain_name": "Blast",
 		"exp_name": "Blastscan",
@@ -68,8 +79,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
+		},
+        "gas_source": {
+            "Etheracan API": null
+		},
 	"klaytn": {
 		"chain_name": "Klaytn",
 		"exp_name": "Kaiascope",
@@ -80,8 +93,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
+		},
+         "gas_source": {
+            "Etheracan API": null
+		},
 	"matic": {
 		"chain_name": "Polygon",
 		"exp_name": "Polygonscan",
@@ -92,8 +107,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
+		},
+        "gas_source": {
+            "Etheracan API": null
+		},
 	"sei": {
 		"chain_name": "Sei",
 		"exp_name": "Seitrace",
@@ -104,9 +121,11 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
-	"zora": {
+		},
+        "gas_source": {
+            "Etheracan API": null
+		7},
+	"zora7": {
 		"chain_name": "Zora",
 		"exp_name": "zora.energy",
 		"exp_address_url": "https://explorer.zora.energy/address/",
@@ -116,8 +135,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
+		},
+        "gas_source": {
+            "Etheracan API": null
+		},
 	"bera_chain": {
 		"chain_name": "Berachain",
 		"exp_name": "Berascan",
@@ -128,8 +149,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
+		},
+        "gas_source": {
+            "Etheracan API": null
+		},
 	"flow": {
 		"chain_name": "Flow",
 		"exp_name": "Flowscan",
@@ -140,8 +163,10 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
-		}
-	},
+		},
+        "gas_source": {
+            "Etheracan API": null
+		},
 	"ape_chain": {
 		"chain_name": "ApeChain",
 		"exp_name": "Apescan",
@@ -152,6 +177,8 @@
 		"token_standards": {
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
+		},
+        "gas_source": {
+            "Etheracan API": null
 		}
-	}
 }
