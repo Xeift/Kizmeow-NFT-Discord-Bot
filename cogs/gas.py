@@ -9,7 +9,7 @@ from api.get_gas_blocknative import get_gas_blocknative
 from utils.err_embed import general_err_embed
 from utils.gas_tracker_embed import gas_etherscan_embed
 from view.gas_tracker_view import gas_etherscan_view
-
+from utils.chain import get_available_chains
 
 class gas(commands.Cog):
     def __init__(self, bot):
@@ -34,10 +34,7 @@ class gas(commands.Cog):
         chain: Option(
             input_type='str',
             description='The chain for checking the gas price.',
-            choices=[
-                'Ethereum',
-                'Solana'
-            ]
+            choices=get_available_chains()
         ),
         source: Option(
             input_type='str',

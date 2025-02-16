@@ -28,6 +28,7 @@
         "gas_source": {
             "Etheracan API": null
 		}
+	},
 	"avalanche": {
 		"chain_name": "Avalanche",
 		"exp_name": "Snowtrace",
@@ -41,7 +42,8 @@
 		},
         "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"solana": {
 		"chain_name": "Solana",
 		"exp_name": "Solscan",
@@ -54,7 +56,8 @@
 		},
          "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"base": {
 		"chain_name": "Base",
 		"exp_name": "Basescan",
@@ -68,7 +71,8 @@
 		},
         "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"blast": {
 		"chain_name": "Blast",
 		"exp_name": "Blastscan",
@@ -82,7 +86,8 @@
 		},
         "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"klaytn": {
 		"chain_name": "Klaytn",
 		"exp_name": "Kaiascope",
@@ -96,7 +101,8 @@
 		},
          "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"matic": {
 		"chain_name": "Polygon",
 		"exp_name": "Polygonscan",
@@ -110,7 +116,8 @@
 		},
         "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"sei": {
 		"chain_name": "Sei",
 		"exp_name": "Seitrace",
@@ -124,8 +131,9 @@
 		},
         "gas_source": {
             "Etheracan API": null
-		7},
-	"zora7": {
+		}
+	},
+	"zora": {
 		"chain_name": "Zora",
 		"exp_name": "zora.energy",
 		"exp_address_url": "https://explorer.zora.energy/address/",
@@ -138,7 +146,8 @@
 		},
         "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"bera_chain": {
 		"chain_name": "Berachain",
 		"exp_name": "Berascan",
@@ -152,7 +161,8 @@
 		},
         "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"flow": {
 		"chain_name": "Flow",
 		"exp_name": "Flowscan",
@@ -166,7 +176,8 @@
 		},
         "gas_source": {
             "Etheracan API": null
-		},
+		}
+	},
 	"ape_chain": {
 		"chain_name": "ApeChain",
 		"exp_name": "Apescan",
@@ -181,4 +192,5 @@
         "gas_source": {
             "Etheracan API": null
 		}
+	}
 }
