@@ -31,12 +31,20 @@ class gas(commands.Cog):
     async def gas(
         self,
         ctx: ApplicationContext,
+        chain: Option(
+            input_type='str',
+            description='The chain for checking the gas price.',
+            choices=[
+                'Ethereum',
+                'Solana'
+            ]
+        ),
         source: Option(
             input_type='str',
-            description='The chain and source for checking the gas price.',
+            description='Select a source.',
             choices=[
-                'Ethereum - Etherscan API',
-                'Ethereum - Blocknative API'
+                'Etherscan API',
+                'Blocknative API'
             ]
         )
         
