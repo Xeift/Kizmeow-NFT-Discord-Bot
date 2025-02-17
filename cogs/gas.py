@@ -19,7 +19,6 @@ class gas(commands.Cog):
     def source_autocomplete(ctx):
         chain_name = ctx.options.get('chain')
         gas_source = get_gas_source_by_name(chain_name)
-        print(gas_source)
         return gas_source.keys()
         
     @commands.slash_command(
