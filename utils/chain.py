@@ -28,5 +28,10 @@ def get_gas_source_by_name(chain_name):
     chain_code = get_code_by_name(chain_name)
     return chain_data[chain_code]['gas_source']
 
+def get_gas_source_detail(chain_name, gas_source):
+    chain_code = get_code_by_name(chain_name)
+    print(chain_data[chain_code]['gas_source'])
+    print('-----------')
+    return chain_data[chain_code]['gas_source'][gas_source]
 # --------------------     TEST        --------------------
 # print(get_name_by_code('ethereum'))

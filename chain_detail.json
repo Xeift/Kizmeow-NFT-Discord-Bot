@@ -12,7 +12,7 @@
 		},
 		"gas_source": {
 			"Etheracan API": null,
-			"Blocknative API": null
+			"Blocknative API": "1"
 		}
 	},
 	"arbitrum": {

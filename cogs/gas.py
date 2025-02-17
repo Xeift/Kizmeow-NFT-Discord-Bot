@@ -10,7 +10,7 @@ from api.get_gas_blocknative import get_gas_blocknative
 from utils.err_embed import general_err_embed
 from utils.gas_tracker_embed import gas_etherscan_embed
 from view.gas_tracker_view import gas_etherscan_view
-from utils.chain import get_available_chains, get_gas_source_by_name
+from utils.chain import get_available_chains, get_gas_source_by_name, get_gas_source_detail
 
 class gas(commands.Cog):
     def __init__(self, bot):
@@ -52,7 +52,9 @@ class gas(commands.Cog):
         embed = Embed()
         file = None
         view = View()
-        
+
+        gas_source_detail = get_gas_source_detail(chain, source)
+        print(gas_source_detail)
         if source == 'Ethereum - Etherscan API':
             (success, gas_data) = get_gas_etherscan()
             if success:
