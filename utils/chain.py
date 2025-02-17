@@ -24,5 +24,9 @@ def get_code_by_name(chain_name):
 def get_available_chains():
     return [v['chain_name'] for v in chain_data.values()]
 
+def get_gas_source_by_name(chain_name):
+    chain_code = get_code_by_name(chain_name)
+    return chain_data[chain_code]['gas_source']
+
 # --------------------     TEST        --------------------
 # print(get_name_by_code('ethereum'))

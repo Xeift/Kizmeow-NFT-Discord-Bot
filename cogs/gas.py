@@ -3,18 +3,25 @@ from discord import (ApplicationContext, Embed, IntegrationType,
                      InteractionContextType, Option)
 from discord.ext import commands
 from discord.ui import View
+from discord.utils import basic_autocomplete
 
 from api.get_gas_etherscan import get_gas_etherscan
 from api.get_gas_blocknative import get_gas_blocknative
 from utils.err_embed import general_err_embed
 from utils.gas_tracker_embed import gas_etherscan_embed
 from view.gas_tracker_view import gas_etherscan_view
-from utils.chain import get_available_chains
+from utils.chain import get_available_chains, get_gas_source_by_name
 
 class gas(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def source_autocomplete(ctx):
+        chain_name = ctx.options.get('chain')
+        gas_source = get_gas_source_by_name(chain_name)
+        print(gas_source)
+        return gas_source.keys()
+        
     @commands.slash_command(
         name='gas',
         description='Check realtime gas price of multiple chain.',
@@ -39,10 +46,7 @@ class gas(commands.Cog):
         source: Option(
             input_type='str',
             description='Select a source.',
-            choices=[
-                'Etherscan API',
-                'Blocknative API'
-            ]
+            autocomplete=basic_autocomplete(source_autocomplete)
         )
         
     ):
