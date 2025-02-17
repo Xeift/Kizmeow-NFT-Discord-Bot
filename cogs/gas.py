@@ -54,7 +54,10 @@ class gas(commands.Cog):
         view = View()
 
         gas_source_detail = get_gas_source_detail(chain, source)
+
+        print(source)
         print(gas_source_detail)
+
         if source == 'Ethereum - Etherscan API':
             (success, gas_data) = get_gas_etherscan()
             if success:
