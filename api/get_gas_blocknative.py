@@ -7,14 +7,14 @@ from dotenv import load_dotenv
 load_dotenv()
 BLOCKNATIVE_API_KEY = os.getenv('BLOCKNATIVE_API_KEY')
 
-def get_gas_blocknative():
+def get_gas_blocknative(chain_id):
     url = f'https://api.blocknative.com/gasprices/blockprices'
     headers = {
         'accept': 'application/json',
         'Authorization': BLOCKNATIVE_API_KEY
     }
     params = {
-        'chain_id': '1'
+        'chain_id': chain_id
     }
 
     response = requests.get(
@@ -32,4 +32,4 @@ def get_gas_blocknative():
 # --------------------     TEST        --------------------
 
 # valid requests
-# print(get_gas_blocknative())
+# print(get_gas_blocknative(42161))

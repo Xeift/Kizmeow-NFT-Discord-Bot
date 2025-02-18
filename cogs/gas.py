@@ -67,7 +67,7 @@ class gas(commands.Cog):
                 embed=general_err_embed('Etherscan API is currently down. Please try again later.')
 
         elif source == 'Blocknative API':
-            (success, gas_data) = get_gas_blocknative()
+            (success, gas_data) = get_gas_blocknative(gas_source_detail)
             if success:
                 print(gas_data)
                 (embed, file) = gas_blocknative_embed(gas_data)
