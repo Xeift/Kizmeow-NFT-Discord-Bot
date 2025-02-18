@@ -8,7 +8,7 @@ from discord.utils import basic_autocomplete
 from api.get_gas_etherscan import get_gas_etherscan
 from api.get_gas_blocknative import get_gas_blocknative
 from utils.err_embed import general_err_embed
-from utils.gas_tracker_embed import gas_etherscan_embed
+from utils.gas_tracker_embed import gas_etherscan_embed, gas_blocknative_embed
 from view.gas_tracker_view import gas_etherscan_view
 from utils.chain import get_available_chains, get_gas_source_by_name, get_gas_source_detail
 

@@ -33,3 +33,12 @@ def gas_etherscan_embed(gas_data):
 
 
     return (embed, file)
+
+def gas_blocknative_embed(gas_data):
+    unit = gas_data['unit']
+    max_price = gas_data['maxPrice']
+
+    print(unit, max_price)
+
+    embed = Embed()
+    return (embed, None)
