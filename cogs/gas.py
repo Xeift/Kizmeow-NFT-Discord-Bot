@@ -69,7 +69,6 @@ class gas(commands.Cog):
         elif source == 'Blocknative API':
             (success, gas_data) = get_gas_blocknative(gas_source_detail)
             if success:
-                print(gas_data)
                 (embed, file) = gas_blocknative_embed(gas_data)
                 view = gas_blocknative_view(view)
             else:

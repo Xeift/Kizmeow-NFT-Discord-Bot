@@ -35,10 +35,17 @@ def gas_etherscan_embed(gas_data):
     return (embed, file)
 
 def gas_blocknative_embed(gas_data):
+    block_prices = gas_data['blockPrices'][0]
     unit = gas_data['unit']
     max_price = gas_data['maxPrice']
+    current_block = gas_data['currentBlockNumber']
+    pending_block = block_prices['blockNumber']
 
-    print(unit, max_price)
+    txn_count = block_prices['estimatedTransactionCount']
+    base_fee = block_prices['baseFeePerGas']
+    blob_fee = block_prices['blobBaseFeePerGas']
 
+    estimated_prices = block_prices['estimatedPrices']
+    print(estimated_prices)
     embed = Embed()
     return (embed, None)
