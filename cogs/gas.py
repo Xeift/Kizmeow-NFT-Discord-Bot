@@ -58,16 +58,15 @@ class gas(commands.Cog):
         print(source)
         print(gas_source_detail)
 
-        if source == 'Ethereum - Etherscan API':
+        if source == 'Etherscan API':
             (success, gas_data) = get_gas_etherscan()
             if success:
                 (embed, file) = gas_etherscan_embed(gas_data)
                 view = gas_etherscan_view(view)
-                # TODO: add favorite btn
             else:
                 embed=general_err_embed('Etherscan API is currently down. Please try again later.')
 
-        elif source == 'Ethereum - Blocknative API':
+        elif source == 'Blocknative API':
             (success, gas_data) = get_gas_blocknative()
             if success:
                 print(gas_data)

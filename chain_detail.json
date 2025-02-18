@@ -11,7 +11,7 @@
 			"erc1155": "ERC-1155"
 		},
 		"gas_source": {
-			"Etheracan API": null,
+			"Etherscan API": null,
 			"Blocknative API": "1"
 		}
 	},
