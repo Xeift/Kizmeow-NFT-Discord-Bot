@@ -3,6 +3,9 @@ from discord import Embed, File
 from utils.plot import gas_etherscan_plot
 
 
+embed = Embed(color=0xFFA46E)
+embed.title = f'Gas Tracker'
+
 def gas_etherscan_embed(gas_data):
     gas_data = gas_data['result']
     low = float(gas_data['SafeGasPrice'])
@@ -15,8 +18,6 @@ def gas_etherscan_embed(gas_data):
     gas_used_ratio = gas_data['gasUsedRatio'].split(',')
     gas_used_ratio = [round(float(gur) * 100, 2) for gur in gas_used_ratio]
 
-    embed = Embed(color=0xFFA46E)
-    embed.title = f'Gas Tracker'
     embed.add_field(name='🐢', value=f'{low:.2f} gwei')
     embed.add_field(name='🚗', value=f'{medium:.2f} gwei')
     embed.add_field(name='🚀', value=f'{high:.2f} gwei')
@@ -47,5 +48,6 @@ def gas_blocknative_embed(gas_data):
 
     estimated_prices = block_prices['estimatedPrices']
     print(estimated_prices)
-    embed = Embed()
+
+    
     return (embed, None)
