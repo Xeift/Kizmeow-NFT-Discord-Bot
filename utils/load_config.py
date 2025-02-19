@@ -10,7 +10,7 @@ default_data = {
 
 
 def load_config_from_json(uid):
-    with open('setting.json', 'r', encoding='utf-8') as file:
+    with open('settings.json', 'r', encoding='utf-8') as file:
         setting_data = json.load(file)
         setting_data = setting_data.setdefault(
             uid, default_data
@@ -33,7 +33,7 @@ def update_config_to_json(
     favorite_collections=None,
     favorite_nfts=None
 ):
-    with open('setting.json', 'r', encoding='utf-8') as file:
+    with open('settings.json', 'r', encoding='utf-8') as file:
         setting_data = json.load(file)
         setting_data[uid] = setting_data.setdefault(
             uid,
@@ -50,7 +50,7 @@ def update_config_to_json(
     if favorite_nfts != None:
         setting_data[uid]['favorite_nfts'] = favorite_nfts
 
-    with open('setting.json', 'w', encoding='utf-8') as file:
+    with open('settings.json', 'w', encoding='utf-8') as file:
         json.dump(setting_data, file, ensure_ascii=False, indent=4)
 
 
