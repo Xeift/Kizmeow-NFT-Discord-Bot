@@ -1,10 +1,9 @@
+import time
+
 from discord import Embed, File
 
 from utils.plot import gas_etherscan_plot
 
-
-embed = Embed(color=0xFFA46E)
-embed.title = f'Gas Tracker'
 
 def gas_etherscan_embed(gas_data):
     gas_data = gas_data['result']
@@ -18,6 +17,7 @@ def gas_etherscan_embed(gas_data):
     gas_used_ratio = gas_data['gasUsedRatio'].split(',')
     gas_used_ratio = [round(float(gur) * 100, 2) for gur in gas_used_ratio]
 
+    embed = Embed(color=0xFFA46E, title='Gas Tracker')
     embed.add_field(name='🐢', value=f'{low:.2f} gwei')
     embed.add_field(name='🚗', value=f'{medium:.2f} gwei')
     embed.add_field(name='🚀', value=f'{high:.2f} gwei')
@@ -36,18 +36,30 @@ def gas_etherscan_embed(gas_data):
     return (embed, file)
 
 def gas_blocknative_embed(gas_data):
-    block_prices = gas_data['blockPrices'][0]
+    block_price = gas_data['blockPrices'][0]
     unit = gas_data['unit']
     max_price = gas_data['maxPrice']
+    last_update = int(time.time() - (gas_data['msSinceLastBlock'] / 1000))
     current_block = gas_data['currentBlockNumber']
-    pending_block = block_prices['blockNumber']
+    pending_block = block_price['blockNumber']
+    
 
-    txn_count = block_prices['estimatedTransactionCount']
-    base_fee = block_prices['baseFeePerGas']
-    blob_fee = block_prices['blobBaseFeePerGas']
+    txn_count = block_price['estimatedTransactionCount']
+    base_fee = block_price['baseFeePerGas']
+    blob_fee = block_price['blobBaseFeePerGas']
 
-    estimated_prices = block_prices['estimatedPrices']
-    print(estimated_prices)
+    estimated_prices = block_price['estimatedPrices'][0]
+
+    embed = Embed(color=0xFFA46E, title='Gas Tracker')
+
+    embed.add_field(name='Base Fee', value=f'{base_fee:.2f} {unit}')
+    embed.add_field(name='Blob Fee', value=f'{blob_fee:.5f} {unit}')
+    embed.add_field(name='Last Update', value=f'<t:{last_update}:R>')
+
+    
+    embed.add_field(name='Current Block → Pending Block', value=f'{current_block} → {pending_block}')
+    embed.add_field(name='Max Price In Pending Block', value=f'{max_price} {unit}')
+    embed.add_field(name='Transaction In Pending Block', value=f'{txn_count}')
 
     
     return (embed, None)
