@@ -49,17 +49,20 @@ def gas_blocknative_embed(gas_data):
     blob_fee = block_price['blobBaseFeePerGas']
 
     estimated_prices = block_price['estimatedPrices'][0]
+    priority_fee = estimated_prices['maxPriorityFeePerGas']
+    max_fee = estimated_prices['maxFeePerGas']
 
     embed = Embed(color=0xFFA46E, title='Gas Tracker')
 
     embed.add_field(name='Base Fee', value=f'{base_fee:.2f} {unit}')
+    embed.add_field(name='Priority Fee', value=f'{priority_fee:.2f} {unit}')
+    embed.add_field(name='Max Fee', value=f'{max_fee:.2f} {unit}')
+
     embed.add_field(name='Blob Fee', value=f'{blob_fee:.5f} {unit}')
     embed.add_field(name='Last Update', value=f'<t:{last_update}:R>')
-
-    
     embed.add_field(name='Current Block → Pending Block', value=f'{current_block} → {pending_block}')
+    
     embed.add_field(name='Max Price In Pending Block', value=f'{max_price} {unit}')
     embed.add_field(name='Transaction In Pending Block', value=f'{txn_count}')
-
     
     return (embed, None)
