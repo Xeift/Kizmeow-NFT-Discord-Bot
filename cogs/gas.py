@@ -57,8 +57,6 @@ class gas(commands.Cog):
 
         gas_source_detail = get_gas_source_detail(chain, source)
 
-        print(source)
-        print(gas_source_detail)
 
         if source == 'Etherscan API':
             (success, gas_data) = get_gas_etherscan()

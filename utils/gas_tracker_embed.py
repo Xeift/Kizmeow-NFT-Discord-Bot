@@ -2,7 +2,7 @@ import time
 
 from discord import Embed, File
 
-from utils.plot import gas_etherscan_plot
+from utils.plot import gas_blocknative_plot, gas_etherscan_plot
 
 
 def gas_etherscan_embed(gas_data):
@@ -48,9 +48,9 @@ def gas_blocknative_embed(gas_data):
     base_fee = block_price['baseFeePerGas']
     blob_fee = block_price['blobBaseFeePerGas']
 
-    estimated_prices = block_price['estimatedPrices'][0]
-    priority_fee = estimated_prices['maxPriorityFeePerGas']
-    max_fee = estimated_prices['maxFeePerGas']
+    estimated_prices = block_price['estimatedPrices']
+    priority_fee = estimated_prices[0]['maxPriorityFeePerGas']
+    max_fee = estimated_prices[0]['maxFeePerGas']
 
     embed = Embed(color=0xFFA46E, title='Gas Tracker')
 
@@ -65,4 +65,13 @@ def gas_blocknative_embed(gas_data):
     embed.add_field(name='Max Price In Pending Block', value=f'{max_price} {unit}')
     embed.add_field(name='Transaction In Pending Block', value=f'{txn_count}')
     
-    return (embed, None)
+    embed.set_footer(
+        text='Source: Blocknative API',
+        icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/blocknative_logo.png'
+    )
+
+    gas_blocknative_plot(estimated_prices)
+    file = File('tmp/gas_blocknative_plot.png', filename='gas_blocknative_plot.png')
+    embed.set_image(url='attachment://gas_blocknative_plot.png')
+
+    return (embed, file)
