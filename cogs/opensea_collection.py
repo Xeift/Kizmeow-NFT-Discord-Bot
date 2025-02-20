@@ -9,8 +9,8 @@ from discord.utils import basic_autocomplete
 
 from api.get_os_collection import get_os_collection
 from api.get_os_collection_statistics import get_os_collection_statistics
+from embed.err_embed import general_err_embed
 from utils.chain import get_info_by_code
-from utils.err_embed import general_err_embed
 from utils.load_config import load_config_from_json, update_config_to_json
 
 
