@@ -1,4 +1,3 @@
-
 from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
                      InteractionContextType, Option, PartialEmoji)
 from discord.ext import commands
@@ -29,7 +28,9 @@ class opensea_account(commands.Cog):
         self,
         ctx: ApplicationContext,
         address_or_username: Option(
-            str, 'EVM address (ENS supported) or OpenSea username.')
+            str,
+            'EVM address (ENS supported) or OpenSea username.'
+        )
     ):
         await ctx.defer()
         
