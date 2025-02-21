@@ -7,10 +7,10 @@ from discord.utils import basic_autocomplete
 from api.get_gas_blocknative import get_gas_blocknative
 from api.get_gas_etherscan import get_gas_etherscan
 from embed.err_embed import general_err_embed
-from embed.gas_tracker_embed import gas_blocknative_embed, gas_etherscan_embed
+from embed.gas_embed import gas_blocknative_embed, gas_etherscan_embed
 from utils.chain import (get_available_chains, get_gas_source_by_name,
                          get_gas_source_detail)
-from view.gas_tracker_view import gas_blocknative_view, gas_etherscan_view
+from view.gas_view import gas_blocknative_view, gas_etherscan_view
 
 
 class gas(commands.Cog):
