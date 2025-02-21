@@ -66,3 +66,5 @@ def opensea_account_view(account_data, view, disable_link_button):
                 disabled=disable_link_button
             )
             view.add_item(instagram_button)
+    
+    return view

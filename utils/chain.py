@@ -11,9 +11,11 @@ def get_info_by_code(chain_code):
     return (
         single_chain_data['chain_name'],
         single_chain_data['exp_name'],
-        single_chain_data['exp_url'],
+        single_chain_data['exp_address_url'],
+        single_chain_data['exp_token_url'],
         single_chain_data['exp_emoji'],        
-        single_chain_data['ticker']
+        single_chain_data['ticker'],
+        single_chain_data['token_standards']
     )
 
 def get_code_by_name(chain_name):
