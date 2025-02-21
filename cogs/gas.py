@@ -76,7 +76,11 @@ class gas(commands.Cog):
                 embed=general_err_embed('Blocknative API is currently down. Please try again later.')
             
 
-        await ctx.respond(embed=embed, view=view, file=file)
+        await ctx.respond(
+            embed=embed,
+            view=view,
+            file=file
+        )
 
 
 def setup(bot):

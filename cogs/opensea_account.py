@@ -1,4 +1,4 @@
-from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
+from discord import (ApplicationContext, Embed, IntegrationType,
                      InteractionContextType, Option)
 from discord.ext import commands
 from discord.ui import View
