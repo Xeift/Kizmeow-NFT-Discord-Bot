@@ -212,6 +212,7 @@ class opensea_nft(commands.Cog):
             view.add_item(download_img_button)
 
             metadata_url = nft_data['metadata_url']
+
             metadata_button = Button(
                 label='View NFT Metadata',
                 style=ButtonStyle.link,
@@ -219,7 +220,8 @@ class opensea_nft(commands.Cog):
                 emoji='💾',
                 disabled=disable_link_button
             )
-            view.add_item(metadata_button)
+            if len(metadata_url) < 128:
+                view.add_item(metadata_button)
 
             last_update_time = datetime_to_timestamp(
                 nft_data['updated_at'])
