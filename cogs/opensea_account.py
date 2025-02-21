@@ -118,7 +118,9 @@ class opensea_account(commands.Cog):
                         style=ButtonStyle.link,
                         url=f'https://www.instagram.com/{username}',
                         emoji=PartialEmoji(
-                            name='instagram_icon_transparent', id=1326452562186211379),
+                            name='instagram_icon_transparent',
+                            id=1326452562186211379
+                        ),
                         disabled=disable_link_button
                     )
                     view.add_item(instagram_button)

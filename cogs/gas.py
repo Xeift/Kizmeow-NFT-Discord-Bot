@@ -57,7 +57,9 @@ class gas(commands.Cog):
 
         gas_source_detail = get_gas_source_detail(chain, source)
 
-
+        if not gas_source_detail:
+            embed=general_err_embed('The source does not exist. Please select a source from the list.')
+        
         if source == 'Etherscan API':
             (success, gas_data) = get_gas_etherscan()
             if success:
@@ -75,6 +77,8 @@ class gas(commands.Cog):
                 embed=general_err_embed('Blocknative API is currently down. Please try again later.')
             
             
+
+
         await ctx.respond(embed=embed, view=view, file=file)
 
 
