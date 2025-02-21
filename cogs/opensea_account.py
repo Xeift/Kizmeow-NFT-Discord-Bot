@@ -1,7 +1,7 @@
 from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
-                     InteractionContextType, Option, PartialEmoji)
+                     InteractionContextType, Option)
 from discord.ext import commands
-from discord.ui import Button, View
+from discord.ui import View
 
 from api.get_os_account import get_os_account
 from embed.err_embed import general_err_embed
@@ -38,7 +38,13 @@ class opensea_account(commands.Cog):
         await ctx.defer()
         
         mid = str(ctx.author.id)
-        (enable_link_button, _, visibility, _, _) = load_config_from_json(mid)
+        (
+            enable_link_button,
+            _,
+            visibility,
+            _,
+            _
+        ) = load_config_from_json(mid)
         disable_link_button = not enable_link_button
         (success, account_data) = get_os_account(address_or_username)
         embed = Embed()
@@ -51,7 +57,11 @@ class opensea_account(commands.Cog):
         else:
             embed = general_err_embed(account_data)
 
-        await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
+        await ctx.respond(
+            embed=embed,
+            view=view,
+            ephemeral=not visibility
+        )
 
 
 def setup(bot):
