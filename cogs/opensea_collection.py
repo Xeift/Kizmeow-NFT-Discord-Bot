@@ -195,7 +195,7 @@ class opensea_collection(commands.Cog):
                 )
                 view.add_item(instagram_button)
 
-            embed.title = f'OpenSea Collection Info of {collection_name}'
+            embed.title = f'{collection_name}'
             embed.set_thumbnail(url=pfp_img)
             if banner_img != '':
                 embed.set_image(url=banner_img)
