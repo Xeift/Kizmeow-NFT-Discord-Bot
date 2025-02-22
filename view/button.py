@@ -105,3 +105,11 @@ def exp_button(exp_name, url, exp_emoji):
             id=exp_emoji
         )
     )
+
+def favorite_collection_button(text, emoji):
+    return Button(
+        label=text,
+        style=ButtonStyle.primary,
+        emoji=emoji,
+        custom_id=emoji
+    )

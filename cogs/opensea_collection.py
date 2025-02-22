@@ -12,7 +12,8 @@ from api.get_os_collection_statistics import get_os_collection_statistics
 from embed.err_embed import general_err_embed
 from utils.chain import get_info_by_code
 from utils.load_config import load_config_from_json, update_config_to_json
-from view.button import (discord_button, exp_button, instagram_button,
+from view.button import (discord_button, exp_button,
+                         favorite_collection_button, instagram_button,
                          opensea_button, telegram_button, website_button,
                          wiki_button, x_button)
 
@@ -271,24 +272,24 @@ class opensea_collection(commands.Cog):
                     inline=True
                 )
 
-                fav_collection_button = Button(
-                    style=ButtonStyle.primary,
-                )
+                fav_collection_button = Button()
                 if collection_name in favorite_collections:
-                    fav_collection_button.label = 'Remove from favorite'
-                    fav_collection_button.emoji = '🖤'
-                    add_to_favorite = False
+                    fav_collection_button = favorite_collection_button(
+                        'Remove from favorite',
+                        '🖤'
+                    )
                 else:
-                    fav_collection_button.label = 'Add to favorite'
-                    fav_collection_button.emoji = '❤️'
-                    add_to_favorite = True
+                    fav_collection_button = favorite_collection_button(
+                        'Add to favorite',
+                        '❤️'
+                    )
 
                 async def fav_collection_button_callback(interaction):
                     if ctx.author != interaction.user:
                         return
 
                     embed = Embed(color=0xFFA46E)
-                    if add_to_favorite:
+                    if interaction.data['custom_id'] == '❤️':
                         if len(favorite_collections) >= 20:
                             embed = general_err_embed(
                                 'You can only have 20 favorite collection slots.')
