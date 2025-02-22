@@ -12,6 +12,7 @@ from api.get_os_collection_statistics import get_os_collection_statistics
 from embed.err_embed import general_err_embed
 from utils.chain import get_info_by_code
 from utils.load_config import load_config_from_json, update_config_to_json
+from view.opensea_collection_view import opensea_button
 
 
 class opensea_collection(commands.Cog):
@@ -110,18 +111,8 @@ class opensea_collection(commands.Cog):
 
             # social media url
             opensea_url = collection_data['opensea_url']
-            opensea_button = Button(
-                label='OpenSea',
-                style=ButtonStyle.link,
-                url=opensea_url,
-                emoji=PartialEmoji(
-                    name='opensea_icon',
-                    id=1326452492644515963
-                ),
-                disabled=disable_link_button
-            )
             if opensea_url != '':
-                view.add_item(opensea_button)
+                view.add_item(opensea_button(opensea_url, disable_link_button))
 
             website_url = collection_data['project_url']
             website_button = Button(
