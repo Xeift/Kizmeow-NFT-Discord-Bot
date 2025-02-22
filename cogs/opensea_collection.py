@@ -12,7 +12,9 @@ from api.get_os_collection_statistics import get_os_collection_statistics
 from embed.err_embed import general_err_embed
 from utils.chain import get_info_by_code
 from utils.load_config import load_config_from_json, update_config_to_json
-from view.opensea_collection_view import opensea_button
+from view.button import (discord_button, instagram_button, opensea_button,
+                         telegram_button, website_button, wiki_button,
+                         x_button)
 
 
 class opensea_collection(commands.Cog):
@@ -109,82 +111,23 @@ class opensea_collection(commands.Cog):
             pfp_img = collection_data['image_url']
             banner_img = collection_data['banner_image_url']
 
-            # social media url
             opensea_url = collection_data['opensea_url']
-            if opensea_url != '':
-                view.add_item(opensea_button(opensea_url, disable_link_button))
-
             website_url = collection_data['project_url']
-            website_button = Button(
-                label='Website',
-                style=ButtonStyle.link,
-                url=website_url,
-                emoji='🔗',
-                disabled=disable_link_button
-            )
-            if website_url != '':
-                view.add_item(website_button)
-
             wiki_url = collection_data['wiki_url']
-            wiki_button = Button(
-                label='Wiki',
-                style=ButtonStyle.link,
-                url=wiki_url,
-                emoji='📖',
-                disabled=disable_link_button
-            )
-            if wiki_url != '':
-                view.add_item(wiki_button)
-
             discord_url = collection_data['discord_url']
-            discord_button = Button(
-                label='Discord',
-                style=ButtonStyle.link,
-                url=discord_url,
-                emoji=PartialEmoji(name='discord_logo',
-                                   id=1326452569882759200),
-                disabled=disable_link_button
-            )
-            if discord_url != '':
-                view.add_item(discord_button)
-
             telegram_url = collection_data['telegram_url']
-            telegram_button = Button(
-                label='Telegram',
-                style=ButtonStyle.link,
-                url=discord_url,
-                emoji=PartialEmoji(name='telegram_logo',
-                                   id=1326452582117281843),
-                disabled=disable_link_button
-            )
-            if telegram_url != '':
-                view.add_item(telegram_button)
-
             x_username = collection_data['twitter_username']
-            if x_username != '':
-                x_url = f'https://x.com/{x_username}'
-                x_button = Button(
-                    label='X',
-                    style=ButtonStyle.link,
-                    url=x_url,
-                    emoji=PartialEmoji(name='x_logo',
-                                       id=1326452546742648862),
-                    disabled=disable_link_button
-                )
-                view.add_item(x_button)
-
+            x_url = f'https://x.com/{x_username}'
             instagram_username = collection_data['instagram_username']
-            if instagram_username != '':
-                instagram_url = f'https://www.instagram.com/{instagram_username}'
-                instagram_button = Button(
-                    label='Instagram',
-                    style=ButtonStyle.link,
-                    url=instagram_url,
-                    emoji=PartialEmoji(name='instagram_logo',
-                                       id=1326452562186211379),
-                    disabled=disable_link_button
-                )
-                view.add_item(instagram_button)
+            instagram_url = f'https://www.instagram.com/{instagram_username}'
+
+            if opensea_url: view.add_item(opensea_button(opensea_url))
+            if website_url: view.add_item(website_button(website_url))
+            if wiki_url: view.add_item(wiki_button(wiki_url))
+            if discord_url: view.add_item(discord_button(discord_url))
+            if telegram_url: view.add_item(telegram_button(telegram_url))
+            if x_username: view.add_item(x_button(x_url))
+            if instagram_username: view.add_item(instagram_button(instagram_url))
 
             embed.title = f'{collection_name}'
             embed.set_thumbnail(url=pfp_img)
