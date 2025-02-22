@@ -10,7 +10,7 @@ from embed.err_embed import general_err_embed
 from embed.gas_embed import gas_blocknative_embed, gas_etherscan_embed
 from utils.chain import (get_available_chains, get_gas_source_by_name,
                          get_gas_source_detail)
-from view.gas_view import gas_blocknative_view, gas_etherscan_view
+from view.button import blocknative_button, etherscan_button
 
 
 class gas(commands.Cog):
@@ -63,7 +63,10 @@ class gas(commands.Cog):
             (success, gas_data) = get_gas_etherscan()
             if success:
                 (embed, file) = gas_etherscan_embed(gas_data)
-                view = gas_etherscan_view(view)
+                view.add_item(etherscan_button(
+                    'https://etherscan.io/gastracker',
+                    'Gas Tracker'
+                ))
             else:
                 embed=general_err_embed('Etherscan API is currently down. Please try again later.')
 
@@ -71,7 +74,10 @@ class gas(commands.Cog):
             (success, gas_data) = get_gas_blocknative(gas_source_detail)
             if success:
                 (embed, file) = gas_blocknative_embed(gas_data)
-                view = gas_blocknative_view(view)
+                view.add_item(blocknative_button(
+                    'https://www.blocknative.com/gas-estimator',
+                    'Gas Estimator'
+                ))
             else:
                 embed=general_err_embed('Blocknative API is currently down. Please try again later.')
             

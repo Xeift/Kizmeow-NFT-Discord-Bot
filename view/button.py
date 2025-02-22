@@ -53,3 +53,14 @@ def instagram_button(url, text=None):
             id=1326452562186211379
         )
     )
+
+def blocknative_button(url, text=None):
+    return Button(
+        label='Blocknative' if not text else text,
+        style=ButtonStyle.link,
+        url=url,
+        emoji=PartialEmoji(
+            name='blocknative_icon',
+            id=1341781218827698247
+        )
+    )
