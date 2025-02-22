@@ -57,7 +57,7 @@ class opensea_collection(commands.Cog):
         ctx: ApplicationContext,
         collection: Option(
             str,
-            "Select a collection from the list below or enter the collection slug manually.",
+            'Select a collection from the list below or enter the collection slug manually.',
             autocomplete=basic_autocomplete(collection_name_data)
         )
     ):
@@ -137,8 +137,15 @@ class opensea_collection(commands.Cog):
                 for ca in cas:
                     chain = ca['chain']
                     address = ca['address']
-                    (chain_name, exp_name, exp_address_url, exp_token_url, exp_emoji,
-                     ticker, _) = get_info_by_code(chain)
+                    (
+                        chain_name,
+                        exp_name,
+                        exp_address_url,
+                        exp_token_url,
+                        exp_emoji,
+                        ticker,
+                        _
+                    ) = get_info_by_code(chain)
 
                     exp_button = Button(
                         label=exp_name,
