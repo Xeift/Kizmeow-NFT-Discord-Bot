@@ -12,9 +12,9 @@ from api.get_os_collection_statistics import get_os_collection_statistics
 from embed.err_embed import general_err_embed
 from utils.chain import get_info_by_code
 from utils.load_config import load_config_from_json, update_config_to_json
-from view.button import (discord_button, instagram_button, opensea_button,
-                         telegram_button, website_button, wiki_button,
-                         x_button)
+from view.button import (discord_button, exp_button, instagram_button,
+                         opensea_button, telegram_button, website_button,
+                         wiki_button, x_button)
 
 
 class opensea_collection(commands.Cog):
@@ -147,15 +147,12 @@ class opensea_collection(commands.Cog):
                         _
                     ) = get_info_by_code(chain)
 
-                    exp_button = Button(
-                        label=exp_name,
-                        style=ButtonStyle.link,
-                        url=f'{exp_token_url}{address}',
-                        emoji=PartialEmoji(name=f'{exp_token_url.lower()}_logo',
-                                           id=exp_emoji),
-                        disabled=disable_link_button
-                    )
-                    view.add_item(exp_button)
+
+                    view.add_item(exp_button(
+                        exp_name,
+                        f'{exp_token_url}{address}',
+                        exp_emoji
+                    ))
                     cas_text += f"[{ca['address'][:7]}]({exp_token_url}{ca['address']}) ({chain_name})\n"
 
             if cas_text != '':

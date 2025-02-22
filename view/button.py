@@ -94,3 +94,14 @@ def telegram_button(url, text = None):
             id=1326452582117281843
         )
     )
+
+def exp_button(exp_name, url, exp_emoji):
+    return Button(
+        label=exp_name,
+        style=ButtonStyle.link,
+        url=url,
+        emoji=PartialEmoji(
+            name=f'{exp_name.lower()}_logo',
+            id=exp_emoji
+        )
+    )
