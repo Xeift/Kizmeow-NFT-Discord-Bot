@@ -36,16 +36,6 @@ def opensea_collection_embed(collection_data, collection, view):
     pfp_img = collection_data['image_url']
     banner_img = collection_data['banner_image_url']
 
-    opensea_url = collection_data['opensea_url']
-    website_url = collection_data['project_url']
-    wiki_url = collection_data['wiki_url']
-    discord_url = collection_data['discord_url']
-    telegram_url = collection_data['telegram_url']
-    x_username = collection_data['twitter_username']
-    x_url = f'https://x.com/{x_username}'
-    instagram_username = collection_data['instagram_username']
-    instagram_url = f'https://www.instagram.com/{instagram_username}'
-
     embed.title = f'{collection_name}'
     embed.set_thumbnail(url=pfp_img)
     if banner_img != '':
