@@ -1,5 +1,4 @@
-from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
-                     InteractionContextType, Option, PartialEmoji)
+from discord import Embed
 
 from embed.err_embed import general_err_embed
 from utils.load_config import load_config_from_json, update_config_to_json

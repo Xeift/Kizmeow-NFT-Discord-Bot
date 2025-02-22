@@ -1,8 +1,8 @@
 import json
 import re
 
-from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
-                     InteractionContextType, Option, PartialEmoji)
+from discord import (ApplicationContext, Embed, IntegrationType,
+                     InteractionContextType, Option)
 from discord.ext import commands
 from discord.ui import Button, View
 from discord.utils import basic_autocomplete
@@ -13,7 +13,7 @@ from callback.fav_collection_button_callback import \
     fav_collection_button_callback
 from embed.err_embed import general_err_embed
 from utils.chain import get_info_by_code
-from utils.load_config import load_config_from_json, update_config_to_json
+from utils.load_config import load_config_from_json
 from view.button import (discord_button, exp_button,
                          favorite_collection_button, instagram_button,
                          opensea_button, telegram_button, website_button,
@@ -296,8 +296,8 @@ class opensea_collection(commands.Cog):
                 view.add_item(fav_collection_button)
 
         else:
-            embed.title = '[Failed]'
-            embed.description = f'Command execution failed. Reason:\n```{collection_data}```'
+            embed = general_err_embed(collection_data)
+
         await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
 
 
