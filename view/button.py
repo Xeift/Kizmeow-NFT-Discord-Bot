@@ -8,7 +8,7 @@ def opensea_button(url, text=None):
         style=ButtonStyle.link,
         url=url,
         emoji=PartialEmoji(
-            name='opensea_icon_transparent',
+            name='opensea_logo',
             id=1326452492644515963
         )
     )
@@ -19,7 +19,7 @@ def etherscan_button(url, text=None):
         style=ButtonStyle.link,
         url=url,
         emoji=PartialEmoji(
-            name='etherscan_icon_transparent',
+            name='etherscan_logo',
             id=1326452528920920125
         )
     )
@@ -38,7 +38,7 @@ def x_button(url, text=None):
         style=ButtonStyle.link,
         url=url,
         emoji=PartialEmoji(
-            name='x_icon_transparent',
+            name='x_logo',
             id=1326452546742648862
         )
     )
@@ -49,7 +49,7 @@ def instagram_button(url, text=None):
         style=ButtonStyle.link,
         url=url,
         emoji=PartialEmoji(
-            name='instagram_icon_transparent',
+            name='instagram_logo',
             id=1326452562186211379
         )
     )
@@ -60,7 +60,7 @@ def blocknative_button(url, text=None):
         style=ButtonStyle.link,
         url=url,
         emoji=PartialEmoji(
-            name='blocknative_icon',
+            name='blocknative_logo',
             id=1341781218827698247
         )
     )
@@ -92,27 +92,5 @@ def telegram_button(url, text = None):
         emoji=PartialEmoji(
             name='telegram_logo',
             id=1326452582117281843
-        )
-    )
-
-def x_button(url, text = None):
-    return Button(
-        label='X' if not text else text,
-        style=ButtonStyle.link,
-        url=url,
-        emoji=PartialEmoji(
-            name='x_logo',
-            id=1326452546742648862
-        )
-    )
-
-def instagram_button(url, text=None):
-    return Button(
-        label='Instagram' if not text else text,
-        style=ButtonStyle.link,
-        url=url,
-        emoji=PartialEmoji(
-            name='instagram_logo',
-            id=1326452562186211379
         )
     )
