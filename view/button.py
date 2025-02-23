@@ -84,7 +84,7 @@ def discord_button(url, text=None):
         )
     )
 
-def telegram_button(url, text = None):
+def telegram_button(url, text=None):
     return Button(
         label='Telegram' if not text else text,
         style=ButtonStyle.link,
@@ -112,4 +112,20 @@ def favorite_collection_button(text, emoji):
         style=ButtonStyle.primary,
         emoji=emoji,
         custom_id=emoji
+    )
+
+def download_img_button(url, text=None):
+    return Button(
+        label='Download Full Resolution Image' if not text else text,
+        style=ButtonStyle.link,
+        url=url,
+        emoji='🖼️'
+    )
+
+def metadata_button(url, text=None):
+    return Button(
+        label='View NFT Metadata' if not text else text,
+        style=ButtonStyle.link,
+        url=url,
+        emoji='💾'
     )

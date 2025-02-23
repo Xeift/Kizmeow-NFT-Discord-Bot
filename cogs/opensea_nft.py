@@ -12,6 +12,8 @@ from embed.err_embed import general_err_embed, missing_param_embed
 from utils.chain import get_code_by_name, get_info_by_code
 from utils.datetime_to_timestamp import datetime_to_timestamp
 from utils.load_config import load_config_from_json, update_config_to_json
+from view.button import (download_img_button, exp_button, metadata_button,
+                         opensea_button)
 
 
 class opensea_nft(commands.Cog):
@@ -179,49 +181,19 @@ class opensea_nft(commands.Cog):
                 nft_name = f'{collection}#{identifier}'
 
             display_img_url = nft_data['display_image_url']
-
             opensea_url = nft_data['opensea_url']
-            opensea_button = Button(
-                label='OpenSea',
-                style=ButtonStyle.link,
-                url=opensea_url,
-                emoji=PartialEmoji(name='opensea_icon',
-                                   id=1326452492644515963),
-                disabled=disable_link_button
-            )
-            view.add_item(opensea_button)
-
-            exp_button = Button(
-                label=exp_name,
-                style=ButtonStyle.link,
-                url=f'{exp_token_url}{address}',
-                emoji=PartialEmoji(name=f'{exp_token_url.lower()}_logo',
-                                   id=exp_emoji),
-                disabled=disable_link_button
-            )
-            view.add_item(exp_button)
-
             original_img_url = nft_data['image_url']
-            download_img_button = Button(
-                label='Download Full Resolution Image',
-                style=ButtonStyle.link,
-                url=original_img_url,
-                emoji='🖼️',
-                disabled=disable_link_button
-            )
-            view.add_item(download_img_button)
-
             metadata_url = nft_data['metadata_url']
 
-            metadata_button = Button(
-                label='View NFT Metadata',
-                style=ButtonStyle.link,
-                url=metadata_url,
-                emoji='💾',
-                disabled=disable_link_button
-            )
-            if len(metadata_url) < 128:
-                view.add_item(metadata_button)
+
+            view.add_item(opensea_button(opensea_url))
+            view.add_item(exp_button(
+                exp_name,
+                exp_token_url,
+                exp_emoji
+            ))
+            view.add_item(download_img_button(original_img_url))
+            if len(metadata_url) < 128: view.add_item(metadata_button(metadata_url))
 
             last_update_time = datetime_to_timestamp(
                 nft_data['updated_at'])
