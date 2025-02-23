@@ -2,7 +2,6 @@ import json
 
 from discord import Embed
 
-from api.get_os_collection_statistics import get_os_collection_statistics
 from utils.chain import get_info_by_code
 from utils.datetime_to_timestamp import datetime_to_timestamp
 
