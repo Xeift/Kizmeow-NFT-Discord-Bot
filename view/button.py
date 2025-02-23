@@ -114,6 +114,14 @@ def favorite_collection_button(text, emoji):
         custom_id=emoji
     )
 
+def favorite_nft_button(text, emoji):
+    return Button(
+        label=text,
+        style=ButtonStyle.primary,
+        emoji=emoji,
+        custom_id=emoji
+    )
+
 def download_img_button(url, text=None):
     return Button(
         label='Download Full Resolution Image' if not text else text,

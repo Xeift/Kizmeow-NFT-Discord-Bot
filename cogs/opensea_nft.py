@@ -8,12 +8,13 @@ from discord.ui import Button, View
 from discord.utils import basic_autocomplete
 
 from api.get_os_nft import get_os_nft
+from callback.fav_nft_button_callback import fav_nft_button_callback
 from embed.err_embed import general_err_embed, missing_param_embed
 from utils.chain import get_code_by_name, get_info_by_code
 from utils.datetime_to_timestamp import datetime_to_timestamp
 from utils.load_config import load_config_from_json, update_config_to_json
-from view.button import (download_img_button, exp_button, metadata_button,
-                         opensea_button)
+from view.button import (download_img_button, exp_button, favorite_nft_button,
+                         metadata_button, opensea_button)
 
 
 class opensea_nft(commands.Cog):
@@ -286,49 +287,27 @@ class opensea_nft(commands.Cog):
                         value=value if value != None else ''
                     )
 
-            fav_nft_button = Button(
-                style=ButtonStyle.primary,
-            )
+            fav_nft_button = Button()
             if nft_name in favorite_nfts:
-                fav_nft_button.label = 'Remove from favorite'
-                fav_nft_button.emoji = '🖤'
-                add_to_favorite = False
+                fav_nft_button = favorite_nft_button(
+                    'Remove from favorite',
+                    '🖤'
+                )
             else:
-                fav_nft_button.label = 'Add to favorite'
-                fav_nft_button.emoji = '❤️'
-                add_to_favorite = True
+                fav_nft_button = favorite_nft_button(
+                    'Add to favorite',
+                    '❤️'
+                )
 
-            async def fav_nft_button_callback(interaction):
-                if ctx.author != interaction.user:
-                    return
-
-                embed = Embed(color=0xFFA46E)
-                if add_to_favorite:
-                    if len(favorite_nfts) >= 20:
-                        embed = general_err_embed('You can only have 20 favorite NFT slots.')
-                    else:
-                        favorite_nfts[nft_name] = {
-                            'chain': chain,
-                            'address': address,
-                            'token_id': token_id
-                        }
-                        update_config_to_json(
-                            uid=str(interaction.user.id),
-                            favorite_nfts=favorite_nfts
-                        )
-                        embed.title = 'NFT added'
-                        embed.description = f'The NFT `{nft_name}` has added to your favorite NFTs.'
-                else:
-                    del favorite_nfts[nft_name]
-                    update_config_to_json(
-                        uid=str(interaction.user.id),
-                        favorite_nfts=favorite_nfts
-                    )
-                    embed.title = 'NFT removed'
-                    embed.description = f'The NFT `{nft_name}` has removed from your favorite NFTs.'
-                await interaction.response.send_message(embed=embed, ephemeral=not visibility)
-
-            fav_nft_button.callback = fav_nft_button_callback
+            fav_nft_button.callback = lambda interaction: fav_nft_button_callback(
+                interaction,
+                ctx.author.id,
+                favorite_nfts,
+                nft_name,
+                chain,
+                address,
+                token_id
+            )
             view.add_item(fav_nft_button)            
         else:
             embed.title = '[Failed]'
