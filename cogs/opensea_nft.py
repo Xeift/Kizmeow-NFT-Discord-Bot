@@ -10,8 +10,8 @@ from discord.utils import basic_autocomplete
 from api.get_os_nft import get_os_nft
 from callback.fav_nft_button_callback import fav_nft_button_callback
 from embed.err_embed import general_err_embed, missing_param_embed
+from embed.opensea_nft_embed import opensea_nft_embed
 from utils.chain import get_code_by_name, get_info_by_code
-from utils.datetime_to_timestamp import datetime_to_timestamp
 from utils.load_config import load_config_from_json
 from view.button import (download_img_button, exp_button, favorite_nft_button,
                          metadata_button, opensea_button)
@@ -148,45 +148,24 @@ class opensea_nft(commands.Cog):
             return
 
         (success, nft_data) = get_os_nft(chain, address, token_id)
-        embed = Embed(color=0xFFA46E)
+        embed = Embed()
         view = View()
 
         if success:
-            (chain_name, exp_name, exp_address_url,
-             exp_token_url, exp_emoji, _, token_standards) = get_info_by_code(chain)
-
-            with open('collection_name_data.json', 'r', encoding='utf-8') as of:
-                collection_name_data = json.load(of)
             nft_data = nft_data['nft']
-            contract = nft_data['contract']
-            contract_address_short = contract[:7]
-            contract_exp_url = f'{exp_token_url}{contract}'
-
-            token_standard = nft_data['token_standard']
-            for ts in token_standards:
-                if token_standard == ts:
-                    token_standard = token_standards[ts]
-                    break
-
-            collection = nft_data['collection']
-            for c in collection_name_data:
-                if collection_name_data[c]['slug'] == collection:
-                    collection = c
-                    break
-            identifier = nft_data['identifier']
-            if len(identifier) > 7:
-                identifier = identifier[:7]
-
-            nft_name = nft_data['name']
-            if nft_name == None:
-                nft_name = f'{collection}#{identifier}'
-
-            display_img_url = nft_data['display_image_url']
+            embed = opensea_nft_embed(chain, nft_data)
+            (
+                _,
+                exp_name,
+                _,
+                exp_token_url,
+                exp_emoji,
+                _,
+                _
+            ) = get_info_by_code(chain)
             opensea_url = nft_data['opensea_url']
             original_img_url = nft_data['image_url']
             metadata_url = nft_data['metadata_url']
-
-
             view.add_item(opensea_button(opensea_url))
             view.add_item(exp_button(
                 exp_name,
@@ -195,99 +174,8 @@ class opensea_nft(commands.Cog):
             ))
             view.add_item(download_img_button(original_img_url))
             if len(metadata_url) < 128: view.add_item(metadata_button(metadata_url))
-
-            last_update_time = datetime_to_timestamp(
-                nft_data['updated_at'])
-
-            # is_disabled = nft_data['is_disabled']
-            # is_nsfw = nft_data['is_nsfw']
-            # is_suspicious = nft_data['is_suspicious']
-
-            creator_address = nft_data['creator']
-            if creator_address != None:
-                creator_address_short = creator_address[:7]
-                creator_os_url = f'https://www.opensea.io/{creator_address}'
-
-            owners = nft_data['owners']
-            owner_text = ''
-            if owners == None:
-                owner_text = '(Too much owners!)'
-            elif len(owners) == 1:
-                owner = owners[0]
-                owner_address = owner['address']
-                owner_address_short = owner['address'][:7]
-                owner_exp_url = f'{exp_address_url}{owner_address}'
-                owner_os_url = f'https://www.opensea.io/{owner_address}'
-                owner_text = f'{owner_address_short}\n[Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})'
-            elif len(owners) <= 5:
-                for owner in owners:
-                    owner_address = owner['address']
-                    owner_address_short = owner['address'][:7]
-                    owner_exp_url = f'{exp_address_url}{owner_address}'
-                    owner_os_url = f'https://www.opensea.io/{owner_address}'
-                    owner_text += f'{owner_address_short} [Exp]({owner_exp_url})｜[OpenSea]({owner_os_url})\n'
-            else:
-                owner_text = f'({len(owners)} owners)'
-
-            rarity_rk = 0
-            if nft_data['rarity'] != None:
-                rarity_rk = nft_data['rarity']['rank']
-
-            embed.title = nft_name
-            embed.set_image(url=display_img_url)
-            embed.set_footer(
-                text='Source: OpenSea API',
-                icon_url='https://raw.githubusercontent.com/Xeift/Kizmeow-NFT-Discord-Bot/refs/heads/main/img/opensea_logo.png'
-            )
-            embed.add_field(
-                name='Contract Address',
-                value=f'[{contract_address_short}]({contract_exp_url})',
-            )
-            embed.add_field(
-                name='Owner',
-                value=owner_text
-            )
-            if creator_address != None:
-                embed.add_field(
-                    name='Creator',
-                    value=f'{creator_address_short}\n[Exp]({exp_address_url}{creator_address})｜[OpenSea]({creator_os_url})'
-                )
-            embed.add_field(
-                name='Chain',
-                value=chain_name
-            )
-            embed.add_field(
-                name='Token Standard',
-                value=token_standard
-            )
-            if rarity_rk != 0:
-                embed.add_field(
-                    name='Rarity Rank',
-                    value=rarity_rk
-                )
-
-            embed.add_field(
-                name='Last Update Time',
-                value=f'<t:{last_update_time}:D>'
-            )
-
-            embed.add_field(
-                name='════════════    Traits    ════════════',
-                value='',
-                inline=False
-            )
-            traits = nft_data['traits']
-            if traits != None:
-                for trait in traits:
-                    type = trait['trait_type']
-                    value = trait['value']
-
-                    embed.add_field(
-                        name=type,
-                        value=value if value != None else ''
-                    )
-
             fav_nft_button = Button()
+            nft_name = nft_data['name']
             if nft_name in favorite_nfts:
                 fav_nft_button = favorite_nft_button(
                     'Remove from favorite',
