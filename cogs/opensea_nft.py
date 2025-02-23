@@ -198,10 +198,12 @@ class opensea_nft(commands.Cog):
             )
             view.add_item(fav_nft_button)            
         else:
-            embed.title = '[Failed]'
-            embed.description = f'Command execution failed. Reason:\n```{nft_data}```'
+            embed=general_err_embed(nft_data)
 
-        await ctx.respond(embed=embed, view=view, ephemeral=not visibility)
+        await ctx.respond(
+            embed=embed,
+            view=view
+        )
 
 
 def setup(bot):
