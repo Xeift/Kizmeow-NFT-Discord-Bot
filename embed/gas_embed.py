@@ -46,7 +46,7 @@ def gas_blocknative_embed(gas_data):
 
     txn_count = block_price['estimatedTransactionCount']
     base_fee = block_price['baseFeePerGas']
-    blob_fee = block_price['blobBaseFeePerGas']
+    blob_fee = block_price.get('blobBaseFeePerGas')
 
     estimated_prices = block_price['estimatedPrices']
     priority_fee = estimated_prices[0]['maxPriorityFeePerGas']
@@ -58,7 +58,8 @@ def gas_blocknative_embed(gas_data):
     embed.add_field(name='Priority Fee', value=f'{priority_fee:.2f} {unit}')
     embed.add_field(name='Max Fee', value=f'{max_fee:.2f} {unit}')
 
-    embed.add_field(name='Blob Fee', value=f'{blob_fee:.5f} {unit}')
+    if blob_fee:
+        embed.add_field(name='Blob Fee', value=f'{blob_fee:.5f} {unit}')
     embed.add_field(name='Last Update', value=f'<t:{last_update}:R>')
     embed.add_field(name='Current Block → Pending Block', value=f'{current_block} → {pending_block}')
     

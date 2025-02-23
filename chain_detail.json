@@ -26,8 +26,8 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
+		"gas_source": {
+			"Blocknative API": 42161
 		}
 	},
 	"avalanche": {
@@ -41,8 +41,8 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
+		"gas_source": {
+			"Blocknative API": 43114
 		}
 	},
 	"solana": {
@@ -55,9 +55,7 @@
 		"token_standards": {
 			"metaplex": "Metaplex"
 		},
-         "gas_source": {
-            "Etheracan API": null
-		}
+		"gas_source": {}
 	},
 	"base": {
 		"chain_name": "Base",
@@ -70,8 +68,8 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
+		"gas_source": {
+			"Blocknative API": 8453
 		}
 	},
 	"blast": {
@@ -85,8 +83,8 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
+		"gas_source": {
+			"Blocknative API": 81457
 		}
 	},
 	"klaytn": {
@@ -100,9 +98,7 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-         "gas_source": {
-            "Etheracan API": null
-		}
+		"gas_source": {}
 	},
 	"matic": {
 		"chain_name": "Polygon",
@@ -115,8 +111,8 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
+		"gas_source": {
+			"Blocknative API": 137
 		}
 	},
 	"sei": {
@@ -130,8 +126,8 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
+		"gas_source": {
+			"Blocknative API": 1329
 		}
 	},
 	"zora": {
@@ -145,8 +141,8 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
+		"gas_source": {
+			"Blocknative API": 7777777
 		}
 	},
 	"bera_chain": {
@@ -160,8 +156,8 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
+		"gas_source": {
+			"Blocknative API": 80094
 		}
 	},
 	"flow": {
@@ -175,9 +171,7 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
-		}
+		"gas_source": {}
 	},
 	"ape_chain": {
 		"chain_name": "ApeChain",
@@ -190,8 +184,6 @@
 			"erc721": "ERC-721",
 			"erc1155": "ERC-1155"
 		},
-        "gas_source": {
-            "Etheracan API": null
-		}
+		"gas_source": {}
 	}
 }

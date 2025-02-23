@@ -3,7 +3,6 @@ import os
 import requests
 from dotenv import load_dotenv
 
-
 load_dotenv()
 BLOCKNATIVE_API_KEY = os.getenv('BLOCKNATIVE_API_KEY')
 
@@ -14,7 +13,7 @@ def get_gas_blocknative(chain_id):
         'Authorization': BLOCKNATIVE_API_KEY
     }
     params = {
-        'chain_id': chain_id
+        'chainid': chain_id
     }
 
     response = requests.get(
