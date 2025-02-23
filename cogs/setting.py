@@ -36,38 +36,38 @@ class SettingPanel(commands.Cog):
         ) = load_config_from_json(str(mid))
 
         # ---------- user_button_select  ----------
-        user_button_select = Select(
-            placeholder='enable/disable button',
-            options=[
-                discord.SelectOption(
-                    label='Button: Clickable',
-                    description='Makes buttons clickable.',
-                    emoji='✅',
-                    default=user_button
-                ),
-                discord.SelectOption(
-                    label='Button: Non clickable',
-                    description='Makes button not clickable.',
-                    emoji='❌',
-                    default=not user_button
-                )
-            ]
-        )
+        # user_button_select = Select(
+        #     placeholder='enable/disable button',
+        #     options=[
+        #         discord.SelectOption(
+        #             label='Button: Clickable',
+        #             description='Makes buttons clickable.',
+        #             emoji='✅',
+        #             default=user_button
+        #         ),
+        #         discord.SelectOption(
+        #             label='Button: Non clickable',
+        #             description='Makes button not clickable.',
+        #             emoji='❌',
+        #             default=not user_button
+        #         )
+        #     ]
+        # )
 
-        async def user_button_select_callback(interaction: discord.Interaction):
-            selected_opt = user_button_select.values[0]
-            button_status = False
-            if selected_opt == 'Button: Clickable':
-                button_status = True
+        # async def user_button_select_callback(interaction: discord.Interaction):
+        #     selected_opt = user_button_select.values[0]
+        #     button_status = False
+        #     if selected_opt == 'Button: Clickable':
+        #         button_status = True
 
-            update_config_to_json(str(mid), button=button_status)
-            embed = Embed(
-                title='[Success]',
-                description=f'The setting `{selected_opt}` has been applied',
-                color=0xffa46e
-            )
-            await interaction.response.send_message(embed=embed, ephemeral=True)
-        user_button_select.callback = user_button_select_callback
+        #     update_config_to_json(str(mid), button=button_status)
+        #     embed = Embed(
+        #         title='[Success]',
+        #         description=f'The setting `{selected_opt}` has been applied',
+        #         color=0xffa46e
+        #     )
+        #     await interaction.response.send_message(embed=embed, ephemeral=True)
+        # user_button_select.callback = user_button_select_callback
         # ---------- user_button_select  ----------
 
         # ---------- user_visibility_select  ----------
@@ -115,7 +115,7 @@ class SettingPanel(commands.Cog):
             color=0xffa46e
         )
         view = View()
-        view.add_item(user_button_select)
+        # view.add_item(user_button_select)
         view.add_item(user_visibility_select)
 
         await ctx.respond(embed=embed, view=view, ephemeral=True)

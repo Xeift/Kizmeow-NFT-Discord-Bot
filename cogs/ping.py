@@ -37,7 +37,10 @@ class ping(commands.Cog):
         ) = load_config_from_json(mid)
         latency = self.bot.latency
 
-        await ctx.respond(embed=ping_embed(latency), ephemeral=not visibility)
+        await ctx.respond(
+            embed=ping_embed(latency),
+            ephemeral=not visibility
+        )
 
 
 def setup(bot):
