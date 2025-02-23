@@ -1,8 +1,8 @@
 
-from discord import (ApplicationContext, Embed, IntegrationType,
-                     InteractionContextType)
+from discord import ApplicationContext, IntegrationType, InteractionContextType
 from discord.ext import commands
 
+from embed.ping_embed import ping_embed
 from utils.load_config import load_config_from_json
 
 
@@ -36,12 +36,8 @@ class ping(commands.Cog):
             _
         ) = load_config_from_json(mid)
         latency = self.bot.latency
-        embed = Embed(
-            title='Bot Latency',
-            description=f'{latency * 1000:.2f} ms ({latency:.2f} s)',
-            color=0xFFA46E
-        )
-        await ctx.respond(embed=embed, ephemeral=not visibility)
+
+        await ctx.respond(embed=ping_embed(latency), ephemeral=not visibility)
 
 
 def setup(bot):
