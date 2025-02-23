@@ -1,8 +1,8 @@
 import json
 import re
 
-from discord import (ApplicationContext, ButtonStyle, Embed, IntegrationType,
-                     InteractionContextType, Option, PartialEmoji)
+from discord import (ApplicationContext, Embed, IntegrationType,
+                     InteractionContextType, Option)
 from discord.ext import commands
 from discord.ui import Button, View
 from discord.utils import basic_autocomplete
@@ -12,7 +12,7 @@ from callback.fav_nft_button_callback import fav_nft_button_callback
 from embed.err_embed import general_err_embed, missing_param_embed
 from utils.chain import get_code_by_name, get_info_by_code
 from utils.datetime_to_timestamp import datetime_to_timestamp
-from utils.load_config import load_config_from_json, update_config_to_json
+from utils.load_config import load_config_from_json
 from view.button import (download_img_button, exp_button, favorite_nft_button,
                          metadata_button, opensea_button)
 

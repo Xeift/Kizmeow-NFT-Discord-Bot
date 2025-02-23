@@ -12,12 +12,10 @@ from callback.fav_collection_button_callback import \
     fav_collection_button_callback
 from embed.err_embed import general_err_embed
 from embed.opensea_collection_embed import opensea_collection_embed
-from utils.chain import get_info_by_code
 from utils.load_config import load_config_from_json
-from view.button import (discord_button, exp_button,
-                         favorite_collection_button, instagram_button,
-                         opensea_button, telegram_button, website_button,
-                         wiki_button, x_button)
+from view.button import (discord_button, favorite_collection_button,
+                         instagram_button, opensea_button, telegram_button,
+                         website_button, wiki_button, x_button)
 
 
 class opensea_collection(commands.Cog):
