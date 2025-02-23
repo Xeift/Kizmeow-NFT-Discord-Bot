@@ -14,7 +14,7 @@ async def on_ready():
 if __name__ == '__main__':
     extensions = [
         'cogs.ping',
-        'cogs.setting',
+        'cogs.settings',
         'cogs.opensea_account',
         'cogs.opensea_collection',
     	'cogs.opensea_nft',

@@ -4,6 +4,7 @@ from discord import (ApplicationContext, Embed, IntegrationType,
 from discord.ext import commands
 from discord.ui import Select, View
 
+from embed.settings_embed import settings_embed
 from utils.load_config import load_config_from_json, update_config_to_json
 
 
@@ -12,8 +13,8 @@ class SettingPanel(commands.Cog):
         self.bot = bot
 
     @commands.slash_command(
-        name='setting',
-        description='Show preference setting panel.',
+        name='settings',
+        description='Show preference settings panel.',
         integration_types=[
             IntegrationType.user_install,
             IntegrationType.guild_install,
@@ -109,16 +110,12 @@ class SettingPanel(commands.Cog):
         # TODO: custom IPFS gsteway(select)
         # TODO: custom block exp(select)
 
-        embed = Embed(
-            title='User setting',
-            description=f'Click the dropdown menu below to set the bot.',
-            color=0xffa46e
-        )
+
         view = View()
         # view.add_item(user_button_select)
         view.add_item(user_visibility_select)
 
-        await ctx.respond(embed=embed, view=view, ephemeral=True)
+        await ctx.respond(embed=settings_embed(), view=view, ephemeral=True)
 
 
 def setup(bot):
