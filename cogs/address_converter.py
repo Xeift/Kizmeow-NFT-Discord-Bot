@@ -9,7 +9,7 @@ from embed.opensea_account_embed import opensea_account_embed
 from utils.load_config import load_config_from_json
 from view.button import (etherscan_button, instagram_button, opensea_button,
                          website_button, x_button)
-
+from web3 import Web3
 
 class address_converter(commands.Cog):
     def __init__(self, bot):
@@ -31,9 +31,9 @@ class address_converter(commands.Cog):
     async def address_converter(
         self,
         ctx: ApplicationContext,
-        address_or_username: Option(
+        address: Option(
             str,
-            'EVM address (ENS supported) or OpenSea username.'
+            'EVM address'
         )
     ):
         await ctx.defer()
@@ -46,42 +46,17 @@ class address_converter(commands.Cog):
             _,
             _
         ) = load_config_from_json(mid)
-        disable_link_button = not enable_link_button
-        (success, account_data) = get_os_account(address_or_username)
-        embed = Embed()
-        view = View()
+        embed = Embed(title='Address converter')
+        embed.add_field(name='Checksum address', value=Web3.to_checksum_address(address))
+        await ctx.respond(embed=embed)
 
-        if success:
-            embed = opensea_account_embed(account_data)
-            address = account_data['address']
-            username = account_data['username']
-            opensea_url = f'https://opensea.io/{address}'
-            etherscan_url = f'https://etherscan.io/address/{address}'
-            website_url = account_data['website']
-            social_media_accounts = account_data['social_media_accounts']
-
-            view.add_item(opensea_button(opensea_url))
-            view.add_item(etherscan_button(etherscan_url))
-            if website_url: view.add_item(website_button(website_url))
-
-            for social_media_account in social_media_accounts:
-                platform = social_media_account['platform']
-                username = social_media_account['username']
-
-                if platform == 'twitter':
-                    x_url = f'https://x.com/{username}'
-                    view.add_item(x_button(x_url))
-                elif platform == 'instagram':
-                    instagram_url=f'https://www.instagram.com/{username}'
-                    view.add_item(instagram_button(instagram_url))
-                else:
-                    embed = general_err_embed(account_data)
-
-        await ctx.respond(
-            embed=embed,
-            view=view,
-            ephemeral=not visibility
-        )
+        # if success:
+            
+        # await ctx.respond(
+            # embed=embed,
+            # view=view,
+            # ephemeral=not visibility
+        # )
 
 
 def setup(bot):
