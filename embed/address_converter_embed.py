@@ -6,7 +6,7 @@ def address_converter_embed(address):
         title='Address converter'
     )
     embed.add_field(
-        name='Checksum address',
+        name='Checksum address (EIP-55)',
         value=f'```{Web3.to_checksum_address(address)}```'
     )
     embed.add_field(
