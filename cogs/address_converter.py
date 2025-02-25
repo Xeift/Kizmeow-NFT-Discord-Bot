@@ -10,6 +10,7 @@ from utils.load_config import load_config_from_json
 from view.button import (etherscan_button, instagram_button, opensea_button,
                          website_button, x_button)
 from embed.address_converter_embed import address_converter_embed
+from embed.err_embed import general_err_embed
 
 class address_converter(commands.Cog):
     def __init__(self, bot):
@@ -37,17 +38,24 @@ class address_converter(commands.Cog):
         )
     ):
         await ctx.defer()
-        
-        mid = str(ctx.author.id)
-        (
-            enable_link_button,
-            _,
-            visibility,
-            _,
-            _
-        ) = load_config_from_json(mid)
 
-        await ctx.respond(embed=address_converter_embed(address))
+        embed = Embed()
+        if not address.startswith('0x'):
+            embed = general_err_embed('A valid EVM address should start with 0x')
+        elif not len(address) == 42:
+            embed = general_err_embed('A valid EVM address should be 42 character long(include 0x)')
+        else:
+            mid = str(ctx.author.id)
+            (
+                enable_link_button,
+                _,
+                visibility,
+                _,
+                _
+            ) = load_config_from_json(mid)
+            embed = address_converter_embed(address)
+            
+        await ctx.respond(embed=embed)
 
         # if success:
             
