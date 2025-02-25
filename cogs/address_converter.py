@@ -53,8 +53,10 @@ class address_converter(commands.Cog):
                 _,
                 _
             ) = load_config_from_json(mid)
-            embed = address_converter_embed(address)
-            
+            try:
+                embed = address_converter_embed(address)
+            except ValueError:
+                embed = general_err_embed('A vaild EVM address should be hex format (can only contain 0, 1, 2 ... 9, a, b, c, d, e, f)')        
         await ctx.respond(embed=embed)
 
         # if success:
