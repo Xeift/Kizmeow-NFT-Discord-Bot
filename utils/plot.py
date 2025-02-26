@@ -89,7 +89,7 @@ def gas_blocknative_plot(gas_data):
     confidences = [item["confidence"] for item in gas_data]
     maxFeePerGas = [item["maxFeePerGas"] for item in gas_data]
     maxPriorityFeePerGas = [item["maxPriorityFeePerGas"] for item in gas_data]
-
+    print(gas_data)
     color_maxFeePerGas = "#FFA46E"
     color_maxPriorityFeePerGas = "#FFFFFF"
     background_color = "#2E2E2E"
@@ -131,7 +131,8 @@ def gas_blocknative_plot(gas_data):
     ax2.set_xticks(index)
     ax2.set_xticklabels(confidences, color='white')
 
-    y_min2 = min(maxPriorityFeePerGas) * 0.98
+    # y_min2 = min(maxPriorityFeePerGas) * 0.98
+    y_min2 = max(min(maxPriorityFeePerGas) * 0.98, 1e-6) 
     y_max2 = max(maxPriorityFeePerGas) * 1.02
     ax2.set_ylim([y_min2, y_max2])
 
@@ -139,6 +140,5 @@ def gas_blocknative_plot(gas_data):
 
     for i, v in enumerate(maxPriorityFeePerGas):
         ax2.text(i, v + 0.001, f'{v:.3f}', ha='center', color='white', fontsize=8)
-
-    plt.tight_layout(pad=3.0)
+    plt.tight_layout(pad=1.5)
     plt.savefig('tmp/gas_blocknative_plot.png', dpi=300, bbox_inches='tight')
