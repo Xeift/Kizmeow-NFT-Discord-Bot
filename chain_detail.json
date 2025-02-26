@@ -55,7 +55,9 @@
 		"token_standards": {
 			"metaplex": "Metaplex"
 		},
-		"gas_source": {}
+		"gas_source": {
+			"QuickNode API": null
+		}
 	},
 	"base": {
 		"chain_name": "Base",
