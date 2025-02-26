@@ -41,4 +41,4 @@ def get_gas_quicknode():
 # --------------------     TEST        --------------------
 
 # valid requests
-print(get_gas_quicknode())
+# print(get_gas_quicknode())
